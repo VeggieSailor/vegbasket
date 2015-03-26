@@ -1,4 +1,4 @@
-{% load staticfiles %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +8,22 @@
   <meta name="author" content="Rafał Zawadzki">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="{% static "css/normalize.css" %}">
-  <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
-  <link rel="stylesheet" href="{% static "css/custom.css" %}">
+  <link rel="stylesheet" href="/static/css/normalize.css">
+  <link rel="stylesheet" href="/static/css/skeleton.css">
+  <link rel="stylesheet" href="/static/css/custom.css">
 </head>
 <body>
   <div class="section hero">
     <div class="container">
       <div class="row">
         <div class="one-half column">
-          <h4 class="hero-heading">Sorry, we have a problem with a map for this place.</h4>
+          <h4 class="hero-heading">Sorry, but there was a problem with this page. Error 500.</h4>
+          <a class="button button-primary" href="/">Go back to homepage</a>
         </div>
         <div class="one-half column phones">
-          <img class="phone" src="{% static "images/veggiesailor_logo.png" %}">
+          <img class="phone" src="/static/images/veggiesailor_logo.png">
         </div>
       </div>
     </div>
   </div>
 </body>
-</html>
