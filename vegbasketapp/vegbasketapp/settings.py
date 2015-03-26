@@ -46,7 +46,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'foundation',
-    'vegbasketapp.home'
+    'vegbasketapp.home',
+    'vegbasketapp.transformer'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -104,3 +105,4 @@ STATICFILES_DIRS = (
         os.path.join(PROJECT_DIR, "static/"),
 )
 
+from vegbasketapp.settings_secret import GOOGLE_GEOCODE_API_KEY
