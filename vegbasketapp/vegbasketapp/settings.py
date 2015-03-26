@@ -25,9 +25,6 @@ TEMPLATE_DIRS = (
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '56jt5jzx9*8!mcm7-6+&zt(_w4wfr+wd5fh@t+3%)w_o($(h+3'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -106,3 +103,4 @@ STATICFILES_DIRS = (
 )
 
 from vegbasketapp.settings_secret import GOOGLE_GEOCODE_API_KEY
+from vegbasketapp.settings_secret import SECRET_KEY

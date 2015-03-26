@@ -11,6 +11,12 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+
+
+
+    url(r'^transformer/entry/(?P<entry_id>.*)/map$', 'vegbasketapp.transformer.views.entry_map', name='map'),
+
+
 )
 
 urlpatterns += patterns('',

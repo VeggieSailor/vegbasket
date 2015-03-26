@@ -1,0 +1,115 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Veggie Sailor - Vegetatian / Vegan Guide</title>
+  <meta name="description" content="">
+  <meta name="author" content="Rafał Zawadzki">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="{% static "css/normalize.css" %}">
+  <link rel="stylesheet" href="{% static "css/skeleton.css" %}">
+  <link rel="stylesheet" href="{% static "css/custom.css" %}">
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <link rel="icon" type="image/png" href="{% static "images/favicon.png" %}">
+
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Veggie Sailor" />
+        <meta property="twitter:site" content="blvszcz" />
+        <meta property="twitter:description" content="SailfishOS edition, powered by Vegguide.org" />
+        <meta property="twitter:image:src" content="{% static "images/veggiesailor.png" %}"/>
+        <meta property="og:title" content="Veggie Sailor" />
+        <meta property="og:url" content="https://veggiesailor.com/" />
+        <meta property="og:image" content="https://veggiesailor.com/images/veggiesailor.png" />
+        <meta property="og:description" 
+          content="SailfishOS edition, powered by Vegguide.org" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="VeggieSailor.com" />
+
+
+</head>
+<body>
+  <div class="section hero">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <h4 class="hero-heading">Vegetarian / vegan <em>sailing</em> guide</h4>
+          <a class="button button-primary" href="https://openrepos.net/content/bluszcz/veggie-sailor">Open Repos</a>
+          <a class="button button-primary" href="https://github.com/VeggieSailor/VeggieSailor">Get sources</a>
+          <h5 class="">SailfishOS edition</h5>
+        </div>
+        <div class="one-half column phones">
+          <img class="phone" src="{% static "images/veggiesailor.png" %}">
+          <img class="phone" src="{% static "images/veggiesailor_2.png" %}">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section values">
+    <div class="container">
+      <div class="row">
+        <div class="one-half column value">
+          <h5 class="value-heading">Open Source</h5>
+               <p>Available on very liberate <a href="https://github.com/VeggieSailor/VeggieSailor/blob/master/LICENSE">zlib</a> license. You can adapt to your needs.</p>
+        </div>
+        <div class="one-half column value">
+          <h5 class="value-heading">In Development</h5>
+<p>New features are coming: geosearch, favourites, more data providers.</p>
+        </div>
+        </div>
+      <div class="row">
+        <div class="one-half column value">
+          <h5 class="value-heading">Portable</h5>
+<p>Thanks for using QML platform - new platforms are coming!</p>
+        </div>
+        <div class="one-half column value">
+          <h5 class="value-heading">Community driven</h5>
+<p><a href="http://www.vegguide.org/">Add / edit content</a>, submit new <a href="https://github.com/bluszcz/VeggieSailor/issues/new">bugs and ideas</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="section get-help">
+    <div class="container">
+      <h3 class="section-heading">Powered by:</h3>
+        <div class="row">
+        <div class="two-half column category">
+          <a href="http://www.vegguide.org/">
+            <img class="u-max-full-width"  src="{% static "images/vegguide-logo-front-page.png" %}">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["trackPageView"]);
+  _paq.push(["enableLinkTracking"]);
+
+  (function() {
+    var u=(("https:" == document.location.protocol) ? "https" : "http") + "://s.glam.pl/";
+    _paq.push(["setTrackerUrl", u+"piwik.php"]);
+    _paq.push(["setSiteId", "9"]);
+    var d=document, g=d.createElement("script"), s=d.getElementsByTagName("script")[0]; g.type="text/javascript";
+    g.defer=true; g.async=true; g.src=u+"piwik.js"; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//s.glam.pl/piwik.php?idsite=9" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+</body>
+</html>
