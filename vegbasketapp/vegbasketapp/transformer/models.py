@@ -16,6 +16,7 @@ class Entry(models.Model):
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
     results_geo = models.TextField(null=False, blank=True, default="")
+    results_geo_place = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     modified_source = models.DateTimeField(null=True)
     modified_geo = models.DateTimeField(null=True)
@@ -44,4 +45,7 @@ class Entry(models.Model):
         self.set_obj_geo()
         lng = self.obj_geo['results'][0]['geometry']['location']['lng']
         lat = self.obj_geo['results'][0]['geometry']['location']['lat']
+
+        # print (self.obj_geo['results'][0]['geometry']['location']['place_id']
+        # )
         return {'lng': lng, 'lat':lat}

@@ -49,16 +49,42 @@ def get_entry_by_id(source_id):
 
 geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=%s"
 
+geocode_place_url = "https://maps.googleapis.com/maps/api/place/details/json?placeid=%s&key=%s"
+
+
 def get_entry_geo(entry):
     obj = json.loads(entry.results_source)
     address_prepared = entry.get_address_str().replace(' ', '+').encode('utf-8')
+    print(address_prepared)
     if not entry.results_geo:
-        url = geocode_url % (address_prepared, settings.GOOGLE_GEOCODE_API_KEY)
+        url = geocode_url % (address_prepared.decode('utf-8'), settings.GOOGLE_GEOCODE_API_KEY)
+        print(url)
         req = request.urlopen(url)
         data = req.readall().decode('utf-8')
         result = data
         entry.results_geo = result
         entry.save()
+
+
+        entry.set_obj_geo()
+
+
+
+
+        location = entry.obj_geo['results'][0]
+
+        if 'place_id' in location:
+            place_id = location['place_id']
+            url = geocode_place_url % (place_id, settings.GOOGLE_GEOCODE_API_KEY)
+            req = request.urlopen(url)
+            data = req.readall().decode('utf-8')
+            entry.results_geo_place = data
+            entry.save()
+        
+
+        # print (self.obj_geo['results'][0]['geometry']['location']['place_id']
+        # )
+
     return entry.get_cord()
 
 
