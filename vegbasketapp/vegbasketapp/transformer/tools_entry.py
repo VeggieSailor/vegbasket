@@ -51,7 +51,7 @@ geocode_url = "https://maps.googleapis.com/maps/api/geocode/json?address=%s&key=
 
 def get_entry_geo(entry):
     obj = json.loads(entry.results_source)
-    address_prepared = entry.get_address_str().replace(' ', '+')
+    address_prepared = entry.get_address_str().replace(' ', '+').encode('utf-8')
     if not entry.results_geo:
         url = geocode_url % (address_prepared, settings.GOOGLE_GEOCODE_API_KEY)
         req = request.urlopen(url)
@@ -63,6 +63,8 @@ def get_entry_geo(entry):
 
 
     
+
+# def get_full_entry_by_id(source_id):
 
     
 
