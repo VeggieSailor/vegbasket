@@ -8,8 +8,15 @@ class Region(models.Model):
     results_source = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     modified_source = models.DateTimeField(null=True)
+    obj = None
+
+    def set_obj(self):
+        if not self.obj:
+            self.obj = json.loads(self.results_source)
+
     def __str__(self):
-        return '%s' % (self.source_id,)
+        self.set_obj()
+        return '%s - %s' % (self.source_id,self.obj['name'])
 
 class Entry(models.Model):
     region = models.ForeignKey(Region, null=False)
@@ -49,3 +56,10 @@ class Entry(models.Model):
         # print (self.obj_geo['results'][0]['geometry']['location']['place_id']
         # )
         return {'lng': lng, 'lat':lat}
+
+    def __str__(self):
+        self.set_obj()
+        return '%s - %s, %s' % (self.source_id,self.obj['name'], self.obj['city'])
+
+    class Meta:
+        verbose_name_plural = "entries"

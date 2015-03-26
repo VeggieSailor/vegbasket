@@ -43,7 +43,7 @@ def get_entry_by_id(source_id):
         obj = json.loads(entry.results_source)
         region_uri = obj['region']['uri']
         region = get_region(region_uri)
-        entry.region = region
+        entry.parent= region
         entry.save()
     return entry
 
