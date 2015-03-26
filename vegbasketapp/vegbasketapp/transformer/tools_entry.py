@@ -1,17 +1,15 @@
+from urllib import request
+from urllib.parse   import quote
+import json
+import datetime
+import re
 from django.core.exceptions import ObjectDoesNotExist
+from django.conf import settings
 from vegbasketapp.transformer.vegguide import VegGuideObject
 from vegbasketapp.transformer.models import Entry, Region
 
-
-import datetime
-import re
-from django.conf import settings
 regex_region = re.compile(r'http.*region/(\d*)')
 regex_entry = re.compile(r'http.*entry/(\d*)')
-
-from urllib import request
-
-import json
 
 def get_region(uri):
     source_id = regex_region.findall(uri)[0]
@@ -43,7 +41,7 @@ def get_entry_by_id(source_id):
         obj = json.loads(entry.results_source)
         region_uri = obj['region']['uri']
         region = get_region(region_uri)
-        entry.parent= region
+        entry.region = region
         entry.save()
     return entry
 
@@ -54,10 +52,10 @@ geocode_place_url = "https://maps.googleapis.com/maps/api/place/details/json?pla
 
 def get_entry_geo(entry):
     obj = json.loads(entry.results_source)
-    address_prepared = entry.get_address_str().replace(' ', '+').encode('utf-8')
+    address_prepared = quote(entry.get_address_str().replace(' ', '+'))
     print(address_prepared)
     if not entry.results_geo:
-        url = geocode_url % (address_prepared.decode('utf-8'), settings.GOOGLE_GEOCODE_API_KEY)
+        url = geocode_url % (address_prepared, settings.GOOGLE_GEOCODE_API_KEY)
         print(url)
         req = request.urlopen(url)
         data = req.readall().decode('utf-8')
