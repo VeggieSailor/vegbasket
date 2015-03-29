@@ -59,7 +59,9 @@ class Entry(models.Model):
 
     def __str__(self):
         self.set_obj()
-        return '%s - %s, %s' % (self.source_id,self.obj['name'], self.obj['city'])
+        name = self.obj.get('name', 'Unknown name')
+        city = self.obj.get('name', 'Unknown city')
+        return '%s - %s, %s' % (self.source_id,name, city)
 
     class Meta:
         verbose_name_plural = "entries"
