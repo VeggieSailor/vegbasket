@@ -60,7 +60,7 @@ class Entry(models.Model):
     def __str__(self):
         self.set_obj()
         name = self.obj.get('name', 'Unknown name')
-        city = self.obj.get('name', 'Unknown city')
+        city = self.obj.get('city', 'Unknown city')
         return '%s - %s, %s' % (self.source_id,name, city)
 
     class Meta:
