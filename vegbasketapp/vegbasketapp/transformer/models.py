@@ -65,3 +65,30 @@ class Entry(models.Model):
 
     class Meta:
         verbose_name_plural = "entries"
+
+class Reviews(models.Model):
+    """Reviews transformer model.
+
+    Attributes
+    ----------
+
+    entry : Entry, foreign key 
+    source_id : int, id of the entry
+    results_source : str, result of the origin VegGuide.org call
+    created : datetime, timestamp of the creation
+    modified_source : datetime, timestamp of the last modification
+    """
+    entry = models.ForeignKey(Entry, null=False, unique=True)
+    source_id = models.IntegerField(null=False, unique=True)
+    results_source = models.TextField(null=False, blank=True, default="")
+    created = models.DateTimeField(auto_now_add=True)
+    modified_source = models.DateTimeField(null=True)
+    obj = None
+
+    def set_obj(self):
+        if not self.obj:
+            self.obj = json.loads(self.results_source)
+
+    def __str__(self):
+        self.set_obj()
+        return '%s - %s' % (self.source_id,self.obj['name'])

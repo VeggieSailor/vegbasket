@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from vegbasketapp.transformer.models import Entry, Region
-from vegbasketapp.transformer.tools_entry import get_entry_by_id
+#from vegbasketapp.transformer.models import Entry, Region, Review
+from vegbasketapp.transformer.tools_entry import get_entry_by_id, get_reviews_by_entry_id
 from django.http import HttpResponse
 
 # Create your views here.
@@ -15,9 +15,15 @@ def entry_map(request, entry_id):
 	return render(request, "entry_map.html", {'cords':cords})
 
 def entry(request, entry_id):
+	print(entry_id)
 	entry_tmp = get_entry_by_id(entry_id)
 	return HttpResponse(entry_tmp.results_source)
 
+def entry_reviews(request, entry_id):
+	entry_reviews_tmp = get_reviews_by_entry_id(entry_id)
+	return HttpResponse(entry_reviews_tmp.results_source)
+
+
 def region(request, region_id):
-	region_tmp = get_entry_by_id(region_id)	
+	region_tmp = get_region_by_id(region_id)	
 	return HttpResponse(region_tmp.results_source)
