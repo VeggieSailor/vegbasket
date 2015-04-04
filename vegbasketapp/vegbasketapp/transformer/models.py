@@ -91,4 +91,6 @@ class Reviews(models.Model):
 
     def __str__(self):
         self.set_obj()
-        return '%s - %s' % (self.source_id,self.obj['name'])
+        return '%s' % (self.entry.__str__())
+    class Meta:
+        verbose_name_plural = "reviews"
