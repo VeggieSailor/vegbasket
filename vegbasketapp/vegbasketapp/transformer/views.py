@@ -1,7 +1,7 @@
 from django.shortcuts import render
 #from vegbasketapp.transformer.models import Entry, Region, Review
 from vegbasketapp.transformer.tools_entry import get_entry_by_id, \
-	get_reviews_by_entry_id, get_region_by_id
+	get_reviews_by_entry_id, get_region_by_id, get_entry_geo
 from django.http import HttpResponse
 
 # Create your views here.
