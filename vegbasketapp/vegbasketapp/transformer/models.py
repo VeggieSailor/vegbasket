@@ -16,7 +16,12 @@ class Region(models.Model):
 
     def __str__(self):
         self.set_obj()
-        return '%s - %s' % (self.source_id,self.obj['name'])
+        try:
+            return '%s - %s' % (self.source_id,self.obj['name'])
+        except:
+            return '%s - %s' % (self.source_id,"[[ no name ]]")
+
+
 
 class Entry(models.Model):
     region = models.ForeignKey(Region, null=False)
