@@ -26,3 +26,8 @@ def region(request, region_id):
 	force = request.GET.get('force', False)
 	region_tmp = get_region_by_id(region_id, force)	
 	return HttpResponse(region_tmp.results_source)
+
+def region_root(request, region_id):
+	force = request.GET.get('force', False)
+	region_tmp = get_region_by_id(0, force)	
+	return HttpResponse(region_tmp.results_source)	
