@@ -1,61 +1,74 @@
 from urllib import request
 from urllib.parse   import quote
 import json
-import datetime
+# import datetime
 import re
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from vegbasketapp.transformer.vegguide import VegGuideObject
 from vegbasketapp.transformer.models import Entry, Region, Reviews
+from django.utils import timezone
 
 regex_region = re.compile(r'http.*region/(\d*)')
 regex_entry = re.compile(r'http.*entry/(\d*)')
 
-def get_region(uri):
+def get_region(uri, force=False):
     source_id = regex_region.findall(uri)[0]
     return get_region_by_id(source_id)
 
-def get_region_by_id(source_id):
-    try:
+def fetch_region(source_id, force=False):
+    vgo = VegGuideObject('http://www.vegguide.org/region/%s' % source_id)
+    region, created = Region.objects.update_or_create(source_id=source_id,
+        defaults={'results_source':vgo.results_json, 
+        'modified_source':timezone.now()})
+    # region = Region(source_id=source_id)
+
+    
+    # region.results_source = vgo.results_json
+    # region.modified_source = 
+    # region.save()
+    return region    
+
+def get_region_by_id(source_id, force=False):
+    if force or Region.objects.filter(source_id=source_id).count()==0:
+        region = fetch_region(source_id, force)
+    else:
         region = Region.objects.get(source_id=source_id)
-    except ObjectDoesNotExist:
-        region = Region(source_id=source_id)
-        vgo = VegGuideObject('http://www.vegguide.org/region/%s' % source_id)
-        region.results_source = vgo.results_json
-        region.modified_source = datetime.datetime.now()
-        region.save()
     return region
 
-def get_entry(uri):
-    source_id = regex_entry.findall(uri)[0]
-    return(get_entry_by_id(source_id))
 
-def get_entry_by_id(source_id):
-    try:
+def get_entry(uri, force=False):
+    source_id = regex_entry.findall(uri)[0]
+    return(get_entry_by_id(source_id), force)
+
+def fetch_entry(source_id, force=False):
+    vgo = VegGuideObject('http://www.vegguide.org/entry/%s' % source_id)
+    obj = json.loads(vgo.results_json)
+    region_uri = obj['region']['uri']
+    region = get_region(region_uri, force)
+
+    entry, created = Entry.objects.update_or_create(source_id=source_id,
+        defaults={'region':region, 'results_source':vgo.results_json,
+        'modified_source':timezone.now()})
+    entry.save()
+    return entry
+
+def get_entry_by_id(source_id, force=False):
+    if force or Entry.objects.filter(source_id=source_id).count()==0:
+        entry = fetch_entry(source_id)
+    else:
         entry = Entry.objects.get(source_id=source_id)
-    except ObjectDoesNotExist:
-        print("no entry")
-        entry = Entry(source_id=source_id)
-        vgo = VegGuideObject('http://www.vegguide.org/entry/%s' % source_id)
-        entry.results_source = vgo.results_json
-        entry.modified_source = datetime.datetime.now()
-        obj = json.loads(entry.results_source)
-        region_uri = obj['region']['uri']
-        region = get_region(region_uri)
-        entry.region = region
-        entry.save()
     return entry
 
 def get_reviews_by_entry_id(source_id):
     try:
         reviews = Reviews.objects.get(source_id=source_id)
     except ObjectDoesNotExist:
-        print("no entry")
         entry = get_entry_by_id(source_id)
         reviews = Reviews(source_id=source_id,entry=entry)
         vgo = VegGuideObject('http://www.vegguide.org/entry/%s/reviews' % source_id)
         reviews.results_source = vgo.results_json
-        reviews.modified_source = datetime.datetime.now()
+        reviews.modified_source = timezone.now()
         reviews.save()
     return reviews
 
@@ -67,7 +80,6 @@ def get_entry_geo(entry):
     address_prepared = quote(entry.get_address_str().replace(' ', '+'))
     if not entry.results_geo:
         url = geocode_url % (address_prepared, settings.GOOGLE_GEOCODE_API_KEY)
-        print(url)
         req = request.urlopen(url)
         data = req.readall().decode('utf-8')
         result = data

@@ -12,6 +12,8 @@ urlpatterns = patterns('',
     url(r'^transformer/entry/(?P<entry_id>\d*)/map$', 'vegbasketapp.transformer.views.entry_map', name='map'),
     url(r'^transformer/entry/(?P<entry_id>.*)$', 'vegbasketapp.transformer.views.entry', name='entry'),
     url(r'^transformer/region/(?P<region_id>.*)$', 'vegbasketapp.transformer.views.region', name='region'),
+    url(r'^transformer/region$', 'vegbasketapp.transformer.views.region_root', name='region_root'),
+
     
     
 

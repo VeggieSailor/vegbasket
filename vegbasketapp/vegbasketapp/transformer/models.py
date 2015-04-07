@@ -21,8 +21,6 @@ class Region(models.Model):
         except:
             return '%s - %s' % (self.source_id,"[[ no name ]]")
 
-
-
 class Entry(models.Model):
     region = models.ForeignKey(Region, null=False)
     source_id = models.IntegerField(null=False, unique=True)
@@ -57,9 +55,6 @@ class Entry(models.Model):
         self.set_obj_geo()
         lng = self.obj_geo['results'][0]['geometry']['location']['lng']
         lat = self.obj_geo['results'][0]['geometry']['location']['lat']
-
-        # print (self.obj_geo['results'][0]['geometry']['location']['place_id']
-        # )
         return {'lng': lng, 'lat':lat}
 
     def __str__(self):
@@ -97,5 +92,6 @@ class Reviews(models.Model):
     def __str__(self):
         self.set_obj()
         return '%s' % (self.entry.__str__())
+    
     class Meta:
         verbose_name_plural = "reviews"
