@@ -12,6 +12,10 @@ from django.utils import timezone
 regex_region = re.compile(r'http.*region/(\d*)')
 regex_entry = re.compile(r'http.*entry/(\d*)')
 
+def is_cached_region(source_id):
+    return True if Region.objects.filter(source_id=source_id).count() > 0 else False 
+
+
 def get_region(uri, force=False):
     source_id = regex_region.findall(uri)[0]
     return get_region_by_id(source_id)
