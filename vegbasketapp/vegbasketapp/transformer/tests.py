@@ -24,10 +24,10 @@ class ViewsTestCase(TestCase):
         r = c.get('/transformer/region/66?force=True')
         self.assertEqual(r.content.decode('utf-8').find('Spain')>-1,True)
 
-    def test_view_get_map(self):
-        c = Client()
-        r = c.get('/transformer/entry/12188/map')
-        self.assertEqual(r.content.decode('utf-8').find('2.1773')>-1,True)
+    #def test_view_get_map(self):
+    #    c = Client()
+    #    r = c.get('/transformer/entry/12188/map')
+    #    self.assertEqual(r.content.decode('utf-8').find('2.1773')>-1,True)
 
     def test_view_get_reviews(self):
         c = Client()
