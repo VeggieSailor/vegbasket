@@ -1,0 +1,7 @@
+django
+django-zurb-foundation
+psycopg2
+djangorestframework
+markdown
+django-filter
+python-social-auth
