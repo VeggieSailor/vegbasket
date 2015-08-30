@@ -1,7 +1,7 @@
 from urllib import request
 from urllib.parse   import quote
 import json
-# import datetime
+import datetime
 import re
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
@@ -33,12 +33,17 @@ def fetch_region(source_id, force=False):
     # region.save()
     return region    
 
+
 def get_region_by_id(source_id, force=False):
-    if force or Region.objects.filter(source_id=source_id).count()==0:
+    if force or Region.objects.filter(source_id=source_id,
+                                      modified__gte=datetime.datetime.now()-datetime.timedelta(
+                                          days=settings.DEFALT_EXPIRE_TIME)).count()==0:
         region = fetch_region(source_id, force)
     else:
         region = Region.objects.get(source_id=source_id)
-    return region
+        
+    print (region.modified_source)
+    return regionq
 
 
 def get_entry(uri, force=False):
@@ -58,10 +63,16 @@ def fetch_entry(source_id, force=False):
     return entry
 
 def get_entry_by_id(source_id, force=False):
-    if force or Entry.objects.filter(source_id=source_id).count()==0:
+    if force or Entry.objects.filter(source_id=source_id,
+                                     modified__gte=datetime.datetime.now()-datetime.timedelta(
+                                         days=settings.DEFALT_EXPIRE_TIME)).count()==0:
         entry = fetch_entry(source_id)
     else:
         entry = Entry.objects.get(source_id=source_id)
+        
+        
+    print (entry.modified)
+        
     return entry
 
 def get_reviews_by_entry_id(source_id):

@@ -106,3 +106,6 @@ from vegbasketapp.settings_secret import GOOGLE_GEOCODE_API_KEY
 from vegbasketapp.settings_secret import SECRET_KEY
 # DEBUG=False
 ALLOWED_HOSTS=['localhost:8000']
+
+# Days
+DEFALT_EXPIRE_TIME = 3

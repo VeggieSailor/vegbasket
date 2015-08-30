@@ -1,12 +1,15 @@
+import datetime
+
 from django.db import models
 import json
-# Create your models here.
+
 
 class Region(models.Model):
     parent = models.ForeignKey('self', null=True)
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)    
     modified_source = models.DateTimeField(null=True)
     obj = None
 
@@ -28,6 +31,7 @@ class Entry(models.Model):
     results_geo = models.TextField(null=False, blank=True, default="")
     results_geo_place = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     modified_source = models.DateTimeField(null=True)
     modified_geo = models.DateTimeField(null=True)
     obj = None
@@ -82,6 +86,7 @@ class Reviews(models.Model):
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)    
     modified_source = models.DateTimeField(null=True)
     obj = None
 
