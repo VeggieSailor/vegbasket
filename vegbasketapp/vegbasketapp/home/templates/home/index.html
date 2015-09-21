@@ -37,8 +37,17 @@
 
 </head>
 <body>
+{% if not user.is_authenticated %}
+<div class="row">
+<div class="col-lg-8">
+              <a href="/login/" class="button" style="float:right; margin:10px;" href="#">Login</a>
+              </div>
+        </div>
+{% endif %}
   <div class="section hero">
     <div class="container">
+    <div class="row"> 
+    </div>
       <div class="row">
         <div class="one-half column">
           <h4 class="hero-heading">Vegetarian / vegan <em>sailing</em> guide</h4>

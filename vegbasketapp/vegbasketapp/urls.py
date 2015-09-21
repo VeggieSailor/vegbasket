@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
-
+from django.conf.urls.static import static
 
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
@@ -15,9 +15,11 @@ urlpatterns = patterns('',
     url(r'^transformer/region$', 'vegbasketapp.transformer.views.region_root', name='region_root'),
 
     
+    url('', include('social.apps.django_app.urls', namespace='social')),
     
-
-
+    url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
+    url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
+    url('^', include('django.contrib.auth.urls'))
 )
 
 urlpatterns += patterns('',
