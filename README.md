@@ -1,3 +1,5 @@
+[![Build Status](https://drone.io/github.com/VeggieSailor/vegbasket/status.png)](https://drone.io/github.com/VeggieSailor/vegbasket/latest)
+
 VegBasket
 ---------
 
