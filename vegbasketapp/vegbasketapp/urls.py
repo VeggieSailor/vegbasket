@@ -2,6 +2,8 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
@@ -19,6 +21,7 @@ urlpatterns = patterns('',
     
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
+    url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
     url('^', include('django.contrib.auth.urls'))
 )
 
