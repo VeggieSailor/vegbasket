@@ -46,20 +46,22 @@
                 </a>            
             </div>	            
         </div>
-        <form>
+        <form action="/login/openid/" method="POST">{% csrf_token %}
         <h4 class="page-header">or with OpenID:</h4>
           <div class="row">
-        
           <div class="col-lg-8">
-                <input type="text" class="form-control" id="exampleInputAmount" placeholder="Your OpenID Provider">
+          
+                <input type="text" class="form-control" name="openid_identifier" id="openid_identifier"  placeholder="Your OpenID Provider">
         </div>
         
         <div class="col-lg-4">
-                  <a class="btn btn-social btn-openid">
+                  <button class="btn btn-social btn-openid" type="submit">
                     <i class="fa fa-openid"></i>OpenID
-                </a>  
+                </button>  
             
-            </div>              
+            </div>   
+                            
+
             </div>          
             </form>
             
