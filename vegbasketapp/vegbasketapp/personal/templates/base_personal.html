@@ -42,7 +42,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{% block sb_admin_header_url %}{% url "accounts_setup" %}{% endblock sb_admin_header_url %}">{% block sb_admin_header %}Veggie Sailor{% endblock sb_admin_header %}</a>
+                <a class="navbar-brand" href="{% block sb_admin_header_url %}{% url "home" %}{% endblock sb_admin_header_url %}">{% block sb_admin_header %}Veggie Sailor{% endblock sb_admin_header %}</a>
             </div>
             <!-- Top Menu Items -->
             {% if not user.userprofile.first_time %}
