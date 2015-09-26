@@ -42,8 +42,8 @@ def get_region_by_id(source_id, force=False):
     else:
         region = Region.objects.get(source_id=source_id)
         
-    print (region.modified_source)
-    return regionq
+    #print (region.modified_source)
+    return region
 
 
 def get_entry(uri, force=False):
