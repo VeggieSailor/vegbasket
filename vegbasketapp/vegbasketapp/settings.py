@@ -1,12 +1,3 @@
-"""
-Django settings for vegbasketapp project.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/1.7/topics/settings/
-
-For the full list of settings and their values, see
-https://docs.djangoproject.com/en/1.7/ref/settings/
-"""
 import os
 PROJECT_DIR = os.path.dirname(__file__)
 
@@ -44,6 +35,7 @@ INSTALLED_APPS = (
     'vegbasketapp.home',
     'vegbasketapp.transformer',
     'vegbasketapp.personal',
+    'vegbasketapp.content',
     'social.apps.django_app.default',
     'django_sb_admin',
     

@@ -1,11 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
-from django.db import models
-import json
-
-
 class VeggieSailorRegion(models.Model):
     name = models.CharField(max_length=512, default="")
     parent = models.ForeignKey('self', null=True)
