@@ -10,4 +10,4 @@ before_script:
 # command to install dependencies
 install: "ls;pip install -r requirements.txt;cp vegbasketapp/vegbasketapp/settings_secret.py.example vegbasketapp/vegbasketapp/settings_secret.py"
 # command to run tests
-script: "python vegbasketapp/manage.py test --settings vegbasketapp.settings_travis"
+script: "cd vegbasketapp;python vegbasketapp/manage.py test --settings vegbasketapp.settings_travis"
