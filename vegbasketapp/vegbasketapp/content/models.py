@@ -7,7 +7,7 @@ class VeggieSailorRegion(models.Model):
     parent = models.ForeignKey('self', null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    source_region = models.ForeignKey(Region, null=True)
+    source_region = models.ForeignKey(Region, null=True, unique=True)
     
     
 class VeggieSailorEntry(models.Model):
