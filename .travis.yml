@@ -8,6 +8,6 @@ addons:
 before_script:
   - psql -c 'create database vegbasket;' -U postgres        
 # command to install dependencies
-install: "ls;pip install -r requirements.txt;cp vegbasketapp/settings_secret.py.example vegbasketapp/settings_secret.py"
+install: "ls;pip install -r requirements.txt;cp vegbasketapp/vegbasketapp/settings_secret.py.example vegbasketapp/vegbasketapp/settings_secret.py"
 # command to run tests
 script: "python vegbasketapp/manage.py test --settings vegbasketapp.settings_travis"
