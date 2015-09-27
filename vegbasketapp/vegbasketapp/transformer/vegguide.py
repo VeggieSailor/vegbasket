@@ -31,7 +31,7 @@ class VegGuideTree(object):
                 try:
                     self.__setattr__('%s_%s_list' % (key, subkey), [ x[subkey] for x in val ])
                 except KeyError:
-                    pass
+                    print ("subkey %s problem" % subkey)
 
 class RegionsTree(VegGuideTree):
     def __init__(self, tree_regions):
