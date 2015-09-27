@@ -59,7 +59,7 @@ def save_profile(backend, user, response, is_new,  *args, **kwargs):
                     response = request('GET', url)
                     response.raise_for_status()
                 except ConnectionError:
-                    pass
+                    return False
                 else:
                     # No avatar so sync it with the google one.
                     # Passing '' for name will invoke my upload_to function
@@ -80,7 +80,7 @@ def save_profile(backend, user, response, is_new,  *args, **kwargs):
                 response = request('GET', url)
                 response.raise_for_status()
             except ConnectionError:
-                pass
+                return False
             else:
                 # No avatar so sync it with the google one.
                 # Passing '' for name will invoke my upload_to function

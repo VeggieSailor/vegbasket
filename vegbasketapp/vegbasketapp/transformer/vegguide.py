@@ -20,7 +20,7 @@ class VegGuideParser:
 
 class VegGuideTree(object):
     def __init__(self, name, tree,
-            subkeys=['children', 'uri', 'name', 'entries_uri']):
+            subkeys=('children', 'uri', 'name', 'entries_uri')):
         self.__setattr__(name, tree)
         self.regions = tree
         for key in self.regions[name].keys():
