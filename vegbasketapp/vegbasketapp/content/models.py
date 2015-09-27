@@ -1,10 +1,13 @@
 from django.db import models
 
+from vegbasketapp.transformer.models import Region
+
 class VeggieSailorRegion(models.Model):
     name = models.CharField(max_length=512, default="")
     parent = models.ForeignKey('self', null=True)
     created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)    
+    modified = models.DateTimeField(auto_now=True)
+    source_region = models.ForeignKey(Region, null=True)
     
     
 class VeggieSailorEntry(models.Model):
