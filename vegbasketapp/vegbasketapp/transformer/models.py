@@ -14,6 +14,8 @@ class Region(models.Model):
     obj = None
 
     def set_obj(self):
+        """Create object from the json string.
+        """
         if not self.obj:
             self.obj = json.loads(self.results_source)
 
@@ -38,14 +40,20 @@ class Entry(models.Model):
     obj_geo = None
 
     def set_obj(self):
+        """Create object from the json string.
+        """        
         if not self.obj:
             self.obj = json.loads(self.results_source)
 
     def set_obj_geo(self):
+        """Create object from the json string.
+        """        
         if not self.obj_geo:
             self.obj_geo = json.loads(self.results_geo)
 
     def get_address_str(self):
+        """Get address.
+        """
         self.set_obj()
         add1 = self.obj.get('address1', '')
         add2 = self.obj.get('address2', '')
@@ -56,6 +64,8 @@ class Entry(models.Model):
         return address
 
     def get_cord(self):
+        """Get coordinates.
+        """
         self.set_obj_geo()
         lng = self.obj_geo['results'][0]['geometry']['location']['lng']
         lat = self.obj_geo['results'][0]['geometry']['location']['lat']
@@ -91,6 +101,8 @@ class Reviews(models.Model):
     obj = None
 
     def set_obj(self):
+        """Create object from the json string.
+        """        
         if not self.obj:
             self.obj = json.loads(self.results_source)
 

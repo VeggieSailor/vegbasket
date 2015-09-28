@@ -3,6 +3,12 @@ from vegbasketapp.transformer.models import Region
 import json
 
 def convert_region(region_id):
+    """Convert region.
+
+    Parameters
+    ----------
+    region_id
+    """
     region = Region.objects.get(source_id=region_id)
     region.set_obj()
     vs_region = VeggieSailorRegion()

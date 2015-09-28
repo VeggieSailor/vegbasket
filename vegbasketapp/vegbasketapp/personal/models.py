@@ -12,6 +12,8 @@ class UserProfile(models.Model):
 
 
 def create_user_profile(sender, instance, created, **kwargs):
+    """Create user profile signal.
+    """
     if created:
         UserProfile.objects.create(user=instance)
 
