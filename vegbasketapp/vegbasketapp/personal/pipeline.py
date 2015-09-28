@@ -40,7 +40,7 @@ def save_profile(backend, user, response, is_new,  *args, **kwargs):
                 response = request('GET', url, params={'type': 'large'})
                 response.raise_for_status()
             except ConnectionError:
-                pass
+                return False
             else:
                 prof.avatar.save(u'%s.jpg' % user.id,
                                  ContentFile(response.content),
