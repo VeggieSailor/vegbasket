@@ -7,9 +7,12 @@ addons:
   postgresql: "9.3"
 before_script:
   - psql -c 'create database vegbasket;' -U postgres        
+before_install:
+  - pip install codecov
 # command to install dependencies
 install: "ls;pip install -r requirements.txt;cp vegbasketapp/vegbasketapp/settings_secret.py.example vegbasketapp/vegbasketapp/settings_secret.py; pip install coveralls"
 # command to run tests
 script: "cd vegbasketapp;coverage run --source='.' manage.py test --settings vegbasketapp.settings_travis"
 after_success:
-  coveralls
+  - coveralls
+  - codecov
