@@ -23,7 +23,7 @@ class Region(models.Model):
         self.set_obj()
         try:
             return '%s - %s' % (self.source_id,self.obj['name'])
-        except:
+        except (KeyError,AttributeError) as e:
             return '%s - %s' % (self.source_id,"[[ no name ]]")
 
 class Entry(models.Model):
