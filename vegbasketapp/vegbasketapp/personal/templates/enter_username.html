@@ -1,0 +1,39 @@
+<div class="container" style="padding-top: 60px;">
+  <!--<h1 class="page-header">Edit Profile</h1>-->
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img width="75" height="75" src="{{ MEDIA_URL }}/{{ user.userprofile.avatar }}" class="avatar img-circle img-thumbnail" alt="avatar">
+
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      
+      
+        <fieldset>
+    <div id="legend">
+      <legend class=""><h3>Enter username</h3</legend>
+    </div>
+    <div class="form-group">
+      <!-- Username -->
+          <label class="col-md-3 control-label">Username:</label>
+          <div class="col-md-8">
+        <input type="text" id="id_username" name="username" placeholder="" class="input-xlarge" value="{{user.username}}">
+        </div>
+     
+    </div>
+            <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Save Changes" type="submit">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+ 
+  
+    </div>
+  </div>
+</div>

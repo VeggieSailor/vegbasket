@@ -6,3 +6,5 @@ markdown
 django-filter
 python-social-auth
 uwsgi
+django-sb-admin
+Pillow

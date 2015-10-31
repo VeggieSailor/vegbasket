@@ -1,0 +1,107 @@
+{% extends "sb_admin_blank.html" %}
+{% block sb_admin_sidebar %}{% endblock sb_admin_sidebar %}
+{% block sb_admin_title %}{% endblock sb_admin_title %}
+{% block sb_admin_subheading %}Login{% endblock sb_admin_subheading %}
+{% block sb_admin_breadcrumb %}{% endblock sb_admin_breadcrumb %}
+{% block sb_admin_breadcrumb_active %}
+{% endblock sb_admin_breadcrumb_active %}
+{% block sb_admin_content %}
+{% block sb_admin_breadcrumb_div %}{% endblock sb_admin_breadcrumb_div %}
+
+<!--<table>-->
+<!--<tr><th><label for="id_username">Username:</label></th><td><input id="id_username" maxlength="30" name="username" type="text" /></td></tr>-->
+<!--<tr><th><label for="id_email">Username:</label></th><td><input id="id_email" maxlength="30" name="email" type="email" /></td></tr>-->
+<!--<tr><th><label for="id_password">Password:</label></th><td><input id="id_password" name="password" type="password" /></td></tr>-->
+<!--<tr><th><label for="id_password_confirmation">Password confirmation:</label></th><td><input id="id_password_confirmation" name="password_confirmation" type="password" /></td></tr>-->
+<!--</table>-->
+
+{% load i18n %}<div class="container">
+
+    <div class="omb_login">
+        <h4 class="page-header">using your social network accounts:</h4>
+        <div class="row omb_row-sm-offset-3 omb_socialButtons">
+            <div class="col-xs-4 col-sm-2">
+              <a href="/login/facebook/" class="btn btn-block btn-social btn-facebook">
+                    <i class="fa fa-facebook"></i>Facebook
+              </a>
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <form method="post" action="/complete/persona/">
+                  <input type="hidden" name="assertion" value="" />
+                     <a id="persona" class="btn btn-block btn-social btn-info">
+                      <i class="fa fa-envelope"></i>Persona
+                     </a>
+                </form>
+
+            </div>
+            <div class="col-xs-4 col-sm-2">
+                <a href="/login/vk-oauth2/"  class="btn btn-block btn-social btn-vk">
+                    <i class="fa fa-vk"></i>VKontakt
+                </a>
+            </div>            
+
+            <div class="col-xs-4 col-sm-2">
+                <a  href="/login/google-oauth2/"  class="btn btn-block btn-social btn-google">
+                    <i class="fa fa-google"></i>Google
+                </a>            
+            </div>	            
+        </div>
+        <form action="/login/openid/" method="POST">{% csrf_token %}
+        <h4 class="page-header">or with OpenID:</h4>
+          <div class="row">
+          <div class="col-lg-8">
+          
+                <input type="text" class="form-control" name="openid_identifier" id="openid_identifier"  placeholder="Your OpenID Provider">
+        </div>
+        
+        <div class="col-lg-4">
+                  <button class="btn btn-social btn-openid" type="submit">
+                    <i class="fa fa-openid"></i>OpenID
+                </button>  
+            
+            </div>   
+                            
+
+            </div>          
+            </form>
+            
+                    
+  </div>              
+    <form class="form-horizontal" action='.' method="POST">{% csrf_token %} 
+{% if form.errors and not form.non_field_errors %}
+<p class="errornote">
+{% if form.errors.items|length == 1 %}{% trans "Please correct the error below." %}{% else %}{% trans "Please correct the errors below." %}{% endif %}
+</p>
+{% endif %}
+{% if form.non_field_errors %}
+{% for error in form.non_field_errors %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <i class="fa fa-info-circle"></i>  <strong>{{ error }}</strong>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endif %}
+
+ </div> 
+
+  <h2 class="form-signin-heading">Please sign in</h2>
+  {{ form.username.errors }}
+  <label for="id_username" class="sr-only">Username</label>
+  <input type="username" class="form-control" placeholder="Username" required autofocus id="id_username" maxlength="254" name="username" type="text" />
+  {{ form.password.errors }}
+  <label for="id_password" class="sr-only">Password</label>
+  <input  id="id_password" name="password" type="password" class="form-control" placeholder="Password" required>
+  <div class="checkbox">
+    <!--<label>-->
+      <!--<input type="checkbox" value="remember-me"> Remember me-->
+    <!--</label>-->
+  </div>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+</form>
+
+
+{% endblock sb_admin_content %}

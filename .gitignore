@@ -2,3 +2,5 @@
 *.swp
 *.swo
 settings_secret.py
+*.wpu
+vegbasketapp/.coverage

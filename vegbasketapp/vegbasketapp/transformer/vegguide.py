@@ -20,7 +20,7 @@ class VegGuideParser:
 
 class VegGuideTree(object):
     def __init__(self, name, tree,
-            subkeys=['children', 'uri', 'name', 'entries_uri']):
+            subkeys=('children', 'uri', 'name', 'entries_uri')):
         self.__setattr__(name, tree)
         self.regions = tree
         for key in self.regions[name].keys():
@@ -31,7 +31,7 @@ class VegGuideTree(object):
                 try:
                     self.__setattr__('%s_%s_list' % (key, subkey), [ x[subkey] for x in val ])
                 except KeyError:
-                    pass
+                    print ("subkey %s problem" % subkey)
 
 class RegionsTree(VegGuideTree):
     def __init__(self, tree_regions):
