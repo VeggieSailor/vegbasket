@@ -13,6 +13,11 @@ class Region(models.Model):
     modified_source = models.DateTimeField(null=True)
     obj = None
 
+    def get_children(self):
+        self.set_obj()
+        result = [ x['uri'].split('/')[-1] for x in self.obj['children'] ]
+        return result
+
     def set_obj(self):
         """Create object from the json string.
         """

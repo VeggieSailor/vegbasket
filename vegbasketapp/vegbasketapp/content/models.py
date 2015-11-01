@@ -1,6 +1,8 @@
 from django.db import models
 
 from vegbasketapp.transformer.models import Region
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes.fields import GenericForeignKey
 
 class VeggieSailorRegion(models.Model):
     """Main Veggie Sailor Region.
@@ -10,6 +12,10 @@ class VeggieSailorRegion(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     source_region = models.ForeignKey(Region, null=True, unique=True)
+    
+    content_type = models.ForeignKey(ContentType, null=True, blank=True)
+    object_id = models.PositiveIntegerField(null=True, blank=True)
+    content_object = GenericForeignKey('content_type', 'object_id')
 
 class VeggieSailorEntry(models.Model):
     """Main Veggie Sailor Entry.
@@ -22,6 +28,11 @@ class VeggieSailorEntry(models.Model):
     results_geo_place = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')      
+    
     class Meta:
         verbose_name_plural = "veggie sailor entries"
 
