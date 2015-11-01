@@ -8,6 +8,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^frontend/', include('vegbasketapp.frontend.urls')),
     url(r'^e404$', 'vegbasketapp.home.views.handler404'),
     url(r'^e500$', 'vegbasketapp.home.views.handler500'),
     url(r'^transformer/entry/(?P<entry_id>\d*)/reviews$', 'vegbasketapp.transformer.views.entry_reviews', name='reviews'),
@@ -20,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
     url('^', include('django.contrib.auth.urls'))
+    
 )
 
 urlpatterns += patterns('',

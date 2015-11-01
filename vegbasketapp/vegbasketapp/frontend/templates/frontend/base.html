@@ -1,0 +1,102 @@
+{% load staticfiles %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% block meta %}{% endblock meta %}
+    {% block base_title %}
+    <title>{% block title %}Veggie Sailor{% endblock title %}</title>
+    {% endblock base_title %}
+
+    {# Base Foundation CSS #}
+    {% block foundation_css %}
+    <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/>
+    <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
+    
+    {% endblock foundation_css %}  
+    
+    {# Custom CSS #}
+    {% block css %}
+    <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,500,700,400italic,500italic,700italic,900italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="{% static "frontend/css/app.css" %}" rel="stylesheet"/>
+    {% endblock css %}
+
+    {# Override if you need another version of modernizr #}
+    {% block foundation_modernizer %}
+    <script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>
+    {% endblock foundation_modernizer %}
+
+    {# Custom head JS #}
+    {% block head_js %}{% endblock head_js %}
+</head>
+<body {% block body_attr %}{% endblock body_attr %}>
+    {# Main content goes here #}
+{% block base_body %}
+    {% block base_body_header %}
+
+<div class="contain-to-grid fixed">
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1><a href="/"><img  width="36px" src="{% static "frontend/img/logo.png" %}" style=""/> <strong>Veggie Sailor</strong></a> </h1>
+            </li>
+            <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+            <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <section class="top-bar-section">
+            <!-- Right Nav Section -->
+            <ul class="right">
+                <li class="has-form">
+                    <div class="row collapse">
+                        <div class="large-9 small-9 columns">
+                            <input type="text" placeholder="" class="radius">
+                        </div>
+                        <div class="large-3 small-3 columns">
+                            <a href="#" class="secondary button expand radius">Sail!</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">Help</a></li>
+                <li class="has-dropdown">
+                    <a href="#">My Account</a>
+                    <ul class="dropdown">
+                        <li><a href="#">link</a></li>
+                        <li><a href="#">link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Left Nav Section -->
+            <ul class="left">
+            </ul>
+        </section>
+    </nav>
+  </div>
+{% endblock base_body_header %}
+{% block base_body_content %}
+
+{% endblock base_body_content %}
+{% endblock base_body %}
+
+    {# Override if you need another version of jQuery #}
+    {% block foundation_jquery %}
+    <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+    {% endblock foundation_jquery %}
+
+    {# Foundation JS #}
+    {% block foundation_js %}
+    <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+    {% endblock foundation_js %}
+
+    {# Custom JS #}
+    {% block body_js %}{% endblock body_js %}
+
+    {# Init Foundation #}
+    {% block foundation_js_init %}
+    <script>
+        $(document).foundation();
+    </script>
+    {% endblock foundation_js_init %}
+</body>
+</html>
