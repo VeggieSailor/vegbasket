@@ -8,3 +8,4 @@ python-social-auth
 uwsgi
 django-sb-admin==0.3.5
 Pillow
+sphinxcontrib-napoleon
