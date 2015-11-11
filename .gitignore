@@ -4,3 +4,5 @@
 settings_secret.py
 *.wpu
 vegbasketapp/.coverage
+build/
+veggiesailor.egg-info/

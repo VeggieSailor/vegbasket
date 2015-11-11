@@ -8,6 +8,7 @@ setup(name='veggiesailor',
       author_email='bluszcz@bluszcz.net',
       license='TODO',
       packages=['vegbasketapp'],
+      package_dir={'vegbasketapp': 'vegbasketapp'},
       zip_safe=False,
       install_requires=[
           'Django',
