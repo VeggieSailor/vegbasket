@@ -6,16 +6,18 @@
 Welcome to vegbasketapp's documentation!
 ========================================
 
-Contents:
+Architecture:
 
 .. toctree::
    :maxdepth: 1
 
-   vegbasketapp.content
-   vegbasketapp.home
-   vegbasketapp.frontend
-   vegbasketapp.personal
-   vegbasketapp.transformer
+   datatypes
+
+..   vegbasketapp.content
+..   vegbasketapp.home
+..   vegbasketapp.frontend
+..   vegbasketapp.personal
+..   vegbasketapp.transformer
 
 
 Indices and tables
