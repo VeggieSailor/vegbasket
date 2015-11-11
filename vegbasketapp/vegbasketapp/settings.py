@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'vegbasketapp.frontend',
     'social.apps.django_app.default',
     'django_sb_admin',
+    'django-dia',
     
     
 )
