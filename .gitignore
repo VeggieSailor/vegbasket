@@ -6,3 +6,4 @@ settings_secret.py
 vegbasketapp/.coverage
 build/
 veggiesailor.egg-info/
+dist/
