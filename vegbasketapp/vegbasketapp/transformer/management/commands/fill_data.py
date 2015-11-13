@@ -4,6 +4,8 @@ from django.conf import settings
 from vegbasketapp.transformer.tools_entry import get_entry_by_id,get_entry_geo
 
 class Command(BaseCommand):
+    """Fill data for entries.
+    """
     args = '<entry_id entry-id ...>'
 
     def handle(self, *args, **options):

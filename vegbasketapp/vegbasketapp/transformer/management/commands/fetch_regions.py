@@ -39,10 +39,11 @@ def fetch_region_recursion(region_id, number):
     return (region_id, number)
 
 class Command(BaseCommand):
+    """Feth regions.
+    """
     args = 'regions_number region_start'
-
     help = 'Fetches 20 regions'
-
+    
     def handle(self, *args, **options):
         number = int(args[0])
         start = int(args[1])

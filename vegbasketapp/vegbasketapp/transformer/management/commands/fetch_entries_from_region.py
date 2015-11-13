@@ -9,10 +9,14 @@ from time import sleep
 from random import randint
 
 def sleep_random(min, max):
+    """Sleep random time.    
+    """
     sleep_time = randint(min, max)
     sleep(sleep_time)
 
 class Command(BaseCommand):
+    """Get all entries for provided regions list.
+    """
     args = '<region_id region_id ...>'
 
     def handle(self, *args, **options):
@@ -30,6 +34,4 @@ class Command(BaseCommand):
                 sleep_random(4, 12)
             except KeyError:
                 print("key error")
-                
-
         self.stdout.write('Successfully got data')

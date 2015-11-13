@@ -5,6 +5,8 @@ import xml.etree.ElementTree as etree
 import urllib.request
 
 class Command(BaseCommand):
+    """Update from rss.
+    """
     help = 'Refresh new entries from the rss'
 
     def handle(self, *args, **options):
