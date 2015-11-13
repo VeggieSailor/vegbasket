@@ -26,8 +26,8 @@ class Command(BaseCommand):
                 for result in entries.results:
                     print(region_id, result['uri'])
                     get_entry(result['uri'])
-                    sleep_random(1, 2)
-                sleep_random(2, 5)
+                    sleep_random(1, 5)
+                sleep_random(4, 12)
             except KeyError:
                 print("key error")
                 
