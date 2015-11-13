@@ -8,6 +8,10 @@ from json import loads
 from time import sleep
 from random import randint
 
+def sleep_random(min, max):
+    sleep_time = randint(min, max)
+    sleep(sleep_time)
+
 class Command(BaseCommand):
     args = '<region_id region_id ...>'
 
@@ -20,12 +24,10 @@ class Command(BaseCommand):
                 region.set_obj()
                 entries = get_entries(region.obj['uri'])
                 for result in entries.results:
-                    print(result['uri'])
+                    print(region_id, result['uri'])
                     get_entry(result['uri'])
-                    sleep(1)
-                sleep_time = randint(2, 5)
-                print("sleeping", sleep_time)
-                sleep(sleep_time)
+                    sleep_random(1, 2)
+                sleep_random(2, 5)
             except KeyError:
                 print("key error")
                 

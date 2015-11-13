@@ -71,7 +71,7 @@ def get_entry_by_id(source_id, force=False):
         entry = Entry.objects.get(source_id=source_id)
         
         
-    print (entry.modified)
+    #print (entry.modified)
         
     return entry
 
@@ -116,5 +116,5 @@ def get_entry_geo(entry):
 
 def get_entries(url):
     entries = VegGuideObjectEntries(url)
-    print(entries)
+    #print(entries)
     return entries
