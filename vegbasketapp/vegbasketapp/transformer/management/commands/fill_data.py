@@ -5,7 +5,6 @@ from vegbasketapp.transformer.tools_entry import get_entry_by_id,get_entry_geo
 
 class Command(BaseCommand):
     args = '<entry_id entry-id ...>'
-    # help = 'Closes the specified poll for voting'
 
     def handle(self, *args, **options):
         print(args)

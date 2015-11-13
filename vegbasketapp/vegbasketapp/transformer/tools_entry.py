@@ -5,7 +5,7 @@ import datetime
 import re
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
-from vegbasketapp.transformer.vegguide import VegGuideObject
+from vegbasketapp.transformer.vegguide import VegGuideObject, VegGuideObjectEntries
 from vegbasketapp.transformer.models import Entry, Region, Reviews
 from django.utils import timezone
 
@@ -112,3 +112,9 @@ def get_entry_geo(entry):
             entry.results_geo_place = data
             entry.save()
     return entry.get_cord()
+
+
+def get_entries(url):
+    entries = VegGuideObjectEntries(url)
+    print(entries)
+    return entries
