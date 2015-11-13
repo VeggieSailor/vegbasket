@@ -19,7 +19,6 @@ class Command(BaseCommand):
                 region = get_region_by_id(region_id)
                 region.set_obj()
                 entries = get_entries(region.obj['uri'])
-                print(entries.results)
                 for result in entries.results:
                     print(result['uri'])
                     get_entry(result['uri'])
