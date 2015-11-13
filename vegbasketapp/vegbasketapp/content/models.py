@@ -22,7 +22,10 @@ class VeggieSailorEntry(models.Model):
     """    
     name = models.CharField(max_length=512, default="")
     short_description = models.CharField(max_length=512, default="")
-    description = models.TextField(default="")    
+    description = models.TextField(default="")
+    address1 = models.CharField(max_length=256, default="")
+    address2 = models.CharField(max_length=256, default="")
+    zipcode = models.CharField(max_length=32, default="")
     summary = models.CharField(max_length=512, default="")
     region = models.ForeignKey(VeggieSailorRegion, null=False)
     results_geo_place = models.TextField(null=False, blank=True, default="")
