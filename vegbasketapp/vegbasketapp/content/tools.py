@@ -27,7 +27,7 @@ def convert_region_down(region_id, global_list=[]):
         #for child in obj['children']:
             #print child['url']
     
-    from ipdb import set_trace; set_trace()
+    #from ipdb import set_trace; set_trace()
     
     vs_region = VeggieSailorRegion()
     vs_region.name = region.obj['name']
