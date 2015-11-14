@@ -1,10 +1,12 @@
 from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry
 from vegbasketapp.transformer.models import Region
-from vegbasketapp.transformer.tools_entry import get_region_by_id
+from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 import json
 
 from django.contrib.contenttypes.models import ContentType
-region_type = ContentType.objects.get(app_label="transformer", model="region")
+
+vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
 
 def get_region_id(url):
     """Extract id of the region.
@@ -30,14 +32,14 @@ def convert_region(region_id):
     
     if VeggieSailorRegion.objects.filter(source_region=region).count()>0:
         vs_region = VeggieSailorRegion.objects.get(source_region=region)
-        vs_region.content_type = region_type
+        vs_region.content_type = vg_region_type
         vs_region.object_id = region.source_id        
         vs_region.save()
         return vs_region
 
     vs_region = VeggieSailorRegion()
     vs_region.name = region.obj['name']
-    vs_region.content_type = region_type
+    vs_region.content_type = vg_region_type
     vs_region.object_id = region.source_id
     vs_region.source_region = region
     vs_region.save()
@@ -83,4 +85,31 @@ def convert_region_down(region_id, global_list=[]):
         convert_region_down(int(child), global_list)
    
     return (region, vs_region)
+    
+    
+def convert_entry(entry_id):
+    """Convert entry to the VeggieSailor object.
+    
+    """
+    vg_entry = get_entry_by_id(entry_id)    
+    vg_region = vg_entry.region
+      
+    try:
+        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=vg_entry.id)
+    except VeggieSailorEntry.DoesNotExist:
+        vs_entry= VeggieSailorEntry(content_type=vg_entry_type, object_id=vg_entry.id)
+        
+    try:
+        vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type, object_id=vg_region.id)
+    except VeggieSailorRegion.DoesNotExist:
+        vs_region = convert_region(vg_region.id)
+        
+    vs_entry.name = vg_entry.get_name()
+    vs_entry.region =  vs_region
+    
+    vs_entry.save()
+    
+    print(VeggieSailorEntry.objects.all().count())
+    
+    
     

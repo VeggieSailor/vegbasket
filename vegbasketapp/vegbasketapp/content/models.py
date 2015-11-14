@@ -41,8 +41,8 @@ class VeggieSailorEntry(models.Model):
     
     def __unicode__(self):
         return u"%s" % self.name    
-    def str(self):
-        return "%s" % self.name      
+    def __str__(self):
+        return "%s in %s" % (self.name, self.region.name)
     
     class Meta:
         verbose_name_plural = "veggie sailor entries"
@@ -53,3 +53,6 @@ class VeggieSailorCousine(models.Model):
     name = models.CharField(max_length=128, default="")
     parent = models.ForeignKey('self', null=True)
     description = models.TextField(default="")
+
+
+    

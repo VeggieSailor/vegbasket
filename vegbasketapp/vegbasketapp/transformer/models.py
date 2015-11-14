@@ -92,6 +92,26 @@ class Entry(models.Model):
         lat = self.obj_geo['results'][0]['geometry']['location']['lat']
         return {'lng': lng, 'lat':lat}
 
+    def get_name(self):
+        """Get the name of the entry.
+        
+        """
+        self.set_obj()
+        try:
+            name = self.obj['name']
+        except TypeError: 
+            name = None
+        return name
+    
+    def get_short_description(self):
+        """Get the short description.
+        
+        """
+        self.set_obj()
+        short_description = self.obj['short_description']        
+        return short_description
+
+
     def __str__(self):
         self.set_obj()
         name = self.obj.get('name', 'Unknown name')
