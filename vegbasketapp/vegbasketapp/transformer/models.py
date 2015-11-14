@@ -21,6 +21,8 @@ class Region(models.Model):
         
         """
         self.set_obj()
+        if 'children' not in self.obj:
+            return []
         result = [ x['uri'].split('/')[-1] for x in self.obj['children'] ]
         return result
 

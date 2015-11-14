@@ -17,6 +17,9 @@ class VeggieSailorRegion(models.Model):
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
+    def __str__(self):
+        return "%s " % self.name    
+
 class VeggieSailorEntry(models.Model):
     """Main Veggie Sailor Entry.
     """    
@@ -34,7 +37,12 @@ class VeggieSailorEntry(models.Model):
     
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')      
+    content_object = GenericForeignKey('content_type', 'object_id') 
+    
+    def __unicode__(self):
+        return u"%s" % self.name    
+    def str(self):
+        return "%s" % self.name      
     
     class Meta:
         verbose_name_plural = "veggie sailor entries"
