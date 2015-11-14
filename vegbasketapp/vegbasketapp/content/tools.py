@@ -110,6 +110,16 @@ def convert_entry(entry_id):
     vs_entry.save()
     
     print(VeggieSailorEntry.objects.all().count())
+    return vs_entry
     
     
+def get_entry_by_vg_id(entry_id):
+    try:
+        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=entry_id)
+    except VeggieSailorEntry.DoesNotExist:
+        vs_entry = convert_entry(entry_id)
     
+    return vs_entry
+        
+        
+        
