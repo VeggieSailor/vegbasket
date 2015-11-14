@@ -5,6 +5,9 @@ import json
 
 
 class Region(models.Model):
+    """VegGuide region class.
+    
+    """
     parent = models.ForeignKey('self', null=True)
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
@@ -14,12 +17,16 @@ class Region(models.Model):
     obj = None
 
     def get_children(self):
+        """Get children of the region.
+        
+        """
         self.set_obj()
         result = [ x['uri'].split('/')[-1] for x in self.obj['children'] ]
         return result
 
     def set_obj(self):
         """Create object from the json string.
+        
         """
         if not self.obj:
             self.obj = json.loads(self.results_source)
@@ -32,6 +39,9 @@ class Region(models.Model):
             return '%s - %s' % (self.source_id,"[[ no name ]]")
 
 class Entry(models.Model):
+    """VegGuide entry class.
+        
+    """    
     region = models.ForeignKey(Region, null=False)
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
@@ -46,18 +56,21 @@ class Entry(models.Model):
 
     def set_obj(self):
         """Create object from the json string.
+        
         """        
         if not self.obj:
             self.obj = json.loads(self.results_source)
 
     def set_obj_geo(self):
-        """Create object from the json string.
+        """Create geo object from the json string.
+        
         """        
         if not self.obj_geo:
             self.obj_geo = json.loads(self.results_geo)
 
     def get_address_str(self):
         """Get address.
+        
         """
         self.set_obj()
         add1 = self.obj.get('address1', '')
@@ -70,6 +83,7 @@ class Entry(models.Model):
 
     def get_cord(self):
         """Get coordinates.
+        
         """
         self.set_obj_geo()
         lng = self.obj_geo['results'][0]['geometry']['location']['lng']

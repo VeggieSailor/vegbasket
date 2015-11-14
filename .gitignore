@@ -7,3 +7,4 @@ vegbasketapp/.coverage
 build/
 veggiesailor.egg-info/
 dist/
+docs/
