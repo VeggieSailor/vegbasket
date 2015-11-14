@@ -7,13 +7,20 @@ from django.contrib.contenttypes.models import ContentType
 region_type = ContentType.objects.get(app_label="transformer", model="region")
 
 def get_region_id(url):
-    """Extrac id of the region.
+    """Extract id of the region.
     
     """
     return url.split('/')[-1]
 
 
 def convert_region(region_id):
+    """Convert single region and it's parent.
+    
+    Notes
+    -----
+        Works in the recursive way.
+        
+    """
     
     try:
         region = Region.objects.get(source_id=region_id)
@@ -53,7 +60,6 @@ def convert_region_down(region_id, global_list=[]):
     region_id
     """
     print ("current region ", region_id, global_list)
-
     
     if region_id  in global_list:
         print ("Leaving", region_id)
@@ -71,21 +77,10 @@ def convert_region_down(region_id, global_list=[]):
     
     children = region.get_children()
     print (region_id, children)    
-    #if region.parent_id:
-        #convert_region_down(parent_id, global_list)
     
     for child in children:
         print ("doing child", child)
         convert_region_down(int(child), global_list)
-    
-    
-    #from ipdb import set_trace; set_trace()
-    #if region.obj.has_key('children'):
-        #for child in obj['children']:
-            #print child['url']
-    
-        
-    
-    
+   
     return (region, vs_region)
     
