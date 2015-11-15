@@ -4,7 +4,6 @@ from vegbasketapp.transformer.tools_entry import get_entry_by_id
 from vegbasketapp.transformer.tools_entry import get_region_by_id
 
 from vegbasketapp.content.tools import convert_region
-
 from vegbasketapp.content.models import VeggieSailorRegion
 
 

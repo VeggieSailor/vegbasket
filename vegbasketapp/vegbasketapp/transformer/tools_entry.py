@@ -53,7 +53,10 @@ def get_entry(uri, force=False):
 def fetch_entry(source_id, force=False):
     vgo = VegGuideObject('http://www.vegguide.org/entry/%s' % source_id)
     obj = json.loads(vgo.results_json)
-    region_uri = obj['region']['uri']
+    try:
+        region_uri = obj['region']['uri']
+    except KeyError:
+        from ipdb import set_trace; set_trace()
     region = get_region(region_uri, force)
 
     entry, created = Entry.objects.update_or_create(source_id=source_id,

@@ -38,7 +38,10 @@ def convert_region(region_id):
         return vs_region
 
     vs_region = VeggieSailorRegion()
-    vs_region.name = region.obj['name']
+    try:
+        vs_region.name = region.obj['name']
+    except KeyError:
+        from ipdb import set_trace; set_trace()
     vs_region.content_type = vg_region_type
     vs_region.object_id = region.source_id
     vs_region.source_region = region
@@ -102,11 +105,11 @@ def convert_entry(entry_id):
     try:
         vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type, object_id=vg_region.id)
     except VeggieSailorRegion.DoesNotExist:
-        vs_region = convert_region(vg_region.id)
+        vs_region = convert_region(vg_region.source_id)
         
     vs_entry.name = vg_entry.get_name()
     vs_entry.region =  vs_region
-    
+    vs_entry.short_description = vg_entry.get_short_description()
     vs_entry.save()
     
     print(VeggieSailorEntry.objects.all().count())
