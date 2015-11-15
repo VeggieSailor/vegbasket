@@ -1,5 +1,4 @@
 -e git+https://github.com/django/django.git@stable/1.8.x#egg=django
-django
 django-zurb-foundation
 psycopg2
 djangorestframework
