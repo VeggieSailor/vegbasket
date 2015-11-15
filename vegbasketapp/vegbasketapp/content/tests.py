@@ -7,13 +7,13 @@ from vegbasketapp.content.tools import convert_region
 from vegbasketapp.content.models import VeggieSailorRegion
 
 
-#class ToolsTestCase(TestCase):
-    #def test_convert_region_by_id(self):
-        #region = get_region_by_id(52)
-        #vs_region = convert_region(52)
-        #region.set_obj()
-        #self.assertEqual(region.obj['name'], 'Europe')
-        #self.assertEqual(region.obj['name'], vs_region.name)
+class ToolsTestCase(TestCase):
+    def test_convert_region_by_id(self):
+        region = get_region_by_id(52)
+        vs_region = convert_region(52)
+        region.set_obj()
+        self.assertEqual(region.obj['name'], 'Europe')
+        self.assertEqual(region.obj['name'], vs_region.name)
 
 
 
