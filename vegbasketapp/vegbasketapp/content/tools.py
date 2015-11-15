@@ -5,8 +5,7 @@ import json
 
 from django.contrib.contenttypes.models import ContentType
 
-vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
+
 
 def get_region_id(url):
     """Extract id of the region.
@@ -16,6 +15,8 @@ def get_region_id(url):
 
 
 def convert_region(region_id):
+    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     """Convert single region and it's parent.
     
     Notes
@@ -64,6 +65,8 @@ def convert_region_down(region_id, global_list=[]):
     ----------
     region_id
     """
+    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     print ("current region ", region_id, global_list)
     
     if region_id  in global_list:
@@ -94,6 +97,8 @@ def convert_entry(entry_id):
     """Convert entry to the VeggieSailor object.
     
     """
+    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     vg_entry = get_entry_by_id(entry_id)    
     vg_region = vg_entry.region
       
@@ -117,6 +122,8 @@ def convert_entry(entry_id):
     
     
 def get_entry_by_vg_id(entry_id):
+    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     try:
         vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=entry_id)
     except VeggieSailorEntry.DoesNotExist:
