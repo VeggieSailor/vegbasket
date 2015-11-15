@@ -15,7 +15,7 @@ before_install:
 # command to install dependencies
 install: "ls;pip install -r requirements.txt;cp vegbasketapp/vegbasketapp/settings_secret.py.example vegbasketapp/vegbasketapp/settings_secret.py; pip install coveralls"
 # command to run tests
-script: "cd vegbasketapp;coverage run --source='.' manage.py test --settings vegbasketapp.settings_travis"
+script: "cd vegbasketapp;coverage run --source='.' manage.py test -v 3 --settings vegbasketapp.settings_travis"
 after_success:
   - coveralls
   - codecov
