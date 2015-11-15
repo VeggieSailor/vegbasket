@@ -1,6 +1,6 @@
 from django.contrib import admin
 # Register your models here.
-from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorCousine, VeggieSailorEntry 
+from vegbasketapp.vsdata.models import VeggieSailorRegion, VeggieSailorCousine, VeggieSailorEntry 
 
 class VSEntryAdmin(admin.ModelAdmin):
     pass

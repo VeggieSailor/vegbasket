@@ -1,4 +1,4 @@
-from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry
+from vegbasketapp.vsdata.models import VeggieSailorRegion, VeggieSailorEntry
 from vegbasketapp.transformer.models import Region
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 import json

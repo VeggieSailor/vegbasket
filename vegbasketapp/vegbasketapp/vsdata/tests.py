@@ -3,8 +3,8 @@ from django.test import TestCase
 from vegbasketapp.transformer.tools_entry import get_entry_by_id
 from vegbasketapp.transformer.tools_entry import get_region_by_id
 
-from vegbasketapp.content.tools import convert_region
-from vegbasketapp.content.models import VeggieSailorRegion
+from vegbasketapp.vsdata.tools import convert_region
+from vegbasketapp.vsdata.models import VeggieSailorRegion
 
 
 class ToolsTestCase(TestCase):

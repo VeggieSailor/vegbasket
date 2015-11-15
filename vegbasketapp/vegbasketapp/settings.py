@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'vegbasketapp.home',
     'vegbasketapp.transformer',
     'vegbasketapp.personal',
-    'vegbasketapp.content',
+    'vegbasketapp.vsdata',
     'vegbasketapp.frontend',
     'social.apps.django_app.default',
     'django_sb_admin',
