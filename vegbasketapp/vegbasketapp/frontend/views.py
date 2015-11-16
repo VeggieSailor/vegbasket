@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from vegbasketapp.content.tools import get_entry_by_vg_id
 
+
 # Create your views here.
 
 def index(request):

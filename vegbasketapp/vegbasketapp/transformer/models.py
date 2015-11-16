@@ -70,6 +70,11 @@ class Entry(models.Model):
         if not self.obj_geo:
             self.obj_geo = json.loads(self.results_geo)
 
+    def get_elem(self, elem, default=''):
+        self.set_obj()
+        result = self.obj.get(elem, default)
+        return result
+
     def get_address_str(self):
         """Get address.
         
@@ -110,6 +115,30 @@ class Entry(models.Model):
         self.set_obj()
         short_description = self.obj['short_description']        
         return short_description
+    
+    
+    def get_long_description(self):
+        """Get the long description.
+        
+        """
+        self.set_obj()
+        try:
+            long_description = self.obj['long_description'] ['text/html']    
+            ##long_description = json.loads(long_description)['text/html']
+        except KeyError:
+            long_description = ''
+            
+        return long_description    
+    def get_postal_code(self):
+        """Get the postal code.
+        
+        """
+        self.set_obj()
+        try:
+            postal_code = self.obj['postal_code']
+        except KeyError:
+            postal_code = ''
+        return postal_code
 
 
     def __str__(self):

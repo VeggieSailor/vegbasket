@@ -5,9 +5,12 @@
         <div class="row bg-white">
             <div class="columns">
                 <ul class="vs-crumbs">
-                    <li><a href="#">Europe</a></li>
-                    <li><a href="#">Spain</a></li>
-                    <li><a href="#">Platja D'Aro</a></li>
+
+
+                    {% for obj in entry.region.get_parents_list reversed %}              
+                    <li><a href="#">{{ obj }}</a></li>
+                    {% endfor %}
+                    
             </div>
         </div>
     </div>
@@ -38,12 +41,13 @@
             </div>
             <div class="medium-4 large-5 columns ">
                 <h1 class="green">{{ entry.name }}</h1>
-                <h2>Platja D'Aro</h2>
+                <h2>{{ entry.city }}</h2>
                     <span class="label">Vegan Friendly</span>
                 
                     <h2>{{ entry.short_description }}</h2>
-                          <h3>Passeig del Mar, 82</h3>
-                <h3>Platja d'Aro 17250</h3>
+                          <h3>{{ entry.address1 }}</h3>
+                          <h3>{{ entry.address2 }}</h3>
+                <h3>{{ entry.city}}  {{ entry.zipcode }}</h3>
                 <p>Hours</p>
             </div>
             <div class="large-5 medium-4 columns ">
@@ -59,8 +63,7 @@
     <div class="row">
 
         <div class="large-9 medium-6 columns">
-            <p class=""><h3 class="black">Placed next to beach with sea view rooms and vegan dishes (seitan steaks and others) three star hotels. Friendly staff. Also a restaurant facing the sea. Also buffet on breakfast with vegan options.</p>
-             Added by VeggieSailor.com on Oct 11 (last updated Oct 11) </h3></p>
+            <p class=""><h3 class="black">{{ entry.description }}</h3></p>
         </div>
         <div class="large-3 medium-6 columns">
             <img src="http://lorempixel.com/400/400/animals/4/Awesome place" class="image-entry" />

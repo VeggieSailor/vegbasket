@@ -115,6 +115,14 @@ def convert_entry(entry_id):
     vs_entry.name = vg_entry.get_name()
     vs_entry.region =  vs_region
     vs_entry.short_description = vg_entry.get_short_description()
+    vs_entry.city = vg_entry.get_elem('city')
+    vs_entry.address1 = vg_entry.get_elem('address1')
+    vs_entry.address2 = vg_entry.get_elem('address2')
+    
+    vs_entry.description = vg_entry.get_long_description()
+
+    vs_entry.zipcode = vg_entry.get_postal_code()
+    
     vs_entry.save()
     
     print(VeggieSailorEntry.objects.all().count())

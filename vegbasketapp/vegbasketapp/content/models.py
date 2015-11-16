@@ -17,6 +17,19 @@ class VeggieSailorRegion(models.Model):
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
+    def _get_parents_list(self, elems=[]):
+        elems.append(self.name)
+        if self.parent:
+            elemes = self.parent._get_parents_list(elems)
+        return elems
+    
+    def get_parents_list(self):
+        elems = []
+        return self._get_parents_list([])
+        
+        
+
+
     def __str__(self):
         return "%s " % self.name    
 
@@ -28,6 +41,7 @@ class VeggieSailorEntry(models.Model):
     description = models.TextField(default="")
     address1 = models.CharField(max_length=256, default="")
     address2 = models.CharField(max_length=256, default="")
+    city = models.CharField(max_length=256, default="")
     zipcode = models.CharField(max_length=32, default="")
     summary = models.CharField(max_length=512, default="")
     region = models.ForeignKey(VeggieSailorRegion, null=False)
@@ -46,6 +60,17 @@ class VeggieSailorEntry(models.Model):
     
     class Meta:
         verbose_name_plural = "veggie sailor entries"
+
+
+class VeggieSailorImage(models.Model):
+    entry = models.ForeignKey(VeggieSailorEntry, null=False)
+    photo = models.ImageField(upload_to='entries/photos',
+                              height_field='height',
+                              width_field='width')
+    height = models.IntegerField()
+    width = models.IntegerField()
+    
+
 
 class VeggieSailorCousine(models.Model):
     """Main Veggie Sailor Cousine.
