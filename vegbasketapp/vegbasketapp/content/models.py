@@ -69,6 +69,7 @@ class VeggieSailorImage(models.Model):
     """Class storing images for the entries.
     
     """
+    title = models.CharField(max_length=256, default="")
     entry = models.ForeignKey(VeggieSailorEntry, null=False)
     photo = models.ImageField(upload_to='entries/photos',
                               height_field='height',

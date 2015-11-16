@@ -1,7 +1,8 @@
-from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry
-from vegbasketapp.transformer.models import Region
+from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, VeggieSailorImage
+from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 import json
+from hashlib import md5
 
 from django.contrib.contenttypes.models import ContentType
 
@@ -118,6 +119,16 @@ def convert_entry(entry_id):
     vs_entry.city = vg_entry.get_elem('city')
     vs_entry.address1 = vg_entry.get_elem('address1')
     vs_entry.address2 = vg_entry.get_elem('address2')
+
+    # List of images to download
+    image_urls = [
+        'http://i.thegrindstone.com/wp-content/uploads/2013/01/how-to-get-awesome-back.jpg',
+    ]
+    
+
+    
+
+
     
     vs_entry.description = vg_entry.get_long_description()
 
@@ -125,17 +136,81 @@ def convert_entry(entry_id):
     
     vs_entry.save()
     
+    images = []
+    
+    images_list = [x for x in vg_entry.get_elem('images',[]) ]
+    print ("images", images_list)
+    for image_elem in images_list:
+        # Steam the image from the url
+        try:
+            title = image_elem['caption']
+            for image_file in image_elem['files']:
+                print (image_file)
+                
+                image_url = image_file['uri']
+                new_name = md5(image_url.encode('utf-8')).hexdigest()
+                
+                request = requests.get(image_url, stream=True)
+            
+                width = image_file['width']
+                height = image_file['height']
+            
+            
+                # Was the request OK?
+                if request.status_code != requests.codes.ok:
+                    # Nope, error handling, skip file etc etc etc
+                    continue
+            
+                # Get the filename from the url, used for saving later
+                file_name = image_url.split('/')[-1]
+            
+                # Create a temporary file
+                lf = tempfile.NamedTemporaryFile()
+            
+                # Read the streamed image in sections
+                for block in request.iter_content(1024 * 8):
+            
+                    # If no more file then stop
+                    if not block:
+                        break
+            
+                    # Write image block to temporary file
+                    lf.write(block)
+            
+                # Create the model you want to save the image to
+                image = VeggieSailorImage()
+                image.title = title
+                image.entry = vs_entry
+                image.width = width
+                image.height = height
+                
+            
+                # Save the temporary image to the model#
+                # This saves the model so be sure that is it valid
+                image.photo.save(file_name, files.File(lf))    
+                image.save()
+        except KeyError:
+            pass
     print(VeggieSailorEntry.objects.all().count())
     return vs_entry
     
+
+import requests
+import tempfile
+
+from django.core import files
+
     
 def get_entry_by_vg_id(entry_id):
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
-    try:
-        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=entry_id)
-    except VeggieSailorEntry.DoesNotExist:
-        vs_entry = convert_entry(entry_id)
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")   
+    
+    
+    
+    #try:
+        #vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=entry_id)
+    #except VeggieSailorEntry.DoesNotExist:
+    vs_entry = convert_entry(entry_id)
     
     return vs_entry
         
