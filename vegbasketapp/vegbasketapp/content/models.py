@@ -24,6 +24,9 @@ class VeggieSailorRegion(models.Model):
         return elems
     
     def get_parents_list(self):
+        """Get names of the parents in a recursive way.
+        
+        """
         elems = []
         return self._get_parents_list([])
         
@@ -63,6 +66,9 @@ class VeggieSailorEntry(models.Model):
 
 
 class VeggieSailorImage(models.Model):
+    """Class storing images for the entries.
+    
+    """
     entry = models.ForeignKey(VeggieSailorEntry, null=False)
     photo = models.ImageField(upload_to='entries/photos',
                               height_field='height',
