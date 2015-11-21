@@ -125,7 +125,7 @@ def convert_entry(entry_id):
     vs_entry.vg_object_id = vg_entry.source_id
 
 
-    vs_entry.level = vg_entry.get_elem('veg_level')
+    vs_entry.level = int(vg_entry.get_elem('veg_level',0))
     
     price_range = vg_entry.get_elem('price_range')
     

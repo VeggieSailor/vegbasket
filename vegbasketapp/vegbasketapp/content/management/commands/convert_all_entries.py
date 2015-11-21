@@ -25,9 +25,12 @@ class Command(BaseCommand):
             
         for entry in entries:
             print (entry.source_id)
-            convert_entry(entry.source_id)
-            if settings.DEBUG==False:
-                sleep_random(2,5)
+            try:
+                convert_entry(entry.source_id)
+                if settings.DEBUG==False:
+                    sleep_random(2,5)
+            except KeyError:
+                print ("ERROR with", entry.source_id)
 
 
 
