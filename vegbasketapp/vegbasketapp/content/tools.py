@@ -140,7 +140,7 @@ def convert_entry(entry_id):
         
     vs_entry.price = price
     
-    print (price, price_range)
+    print (vg_entry.source_id, price, price_range)
 
     # List of images to download
     image_urls = []
@@ -292,7 +292,7 @@ def convert_entry(entry_id):
                         print ("Error with the picture", vg_entry.source_id)
             except KeyError:
                 pass
-    print(VeggieSailorEntry.objects.all().count())
+    print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
     return vs_entry
       
 def get_entry_by_vg_id(entry_id):

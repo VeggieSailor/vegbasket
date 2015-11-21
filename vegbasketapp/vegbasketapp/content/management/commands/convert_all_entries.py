@@ -20,7 +20,7 @@ class Command(BaseCommand):
     help = 'Converts all entries'
 
     def handle(self, *args, **options):
-        entries = Entry.objects.all()
+        entries = Entry.objects.all().order_by('source_id')
         
             
         for entry in entries:
