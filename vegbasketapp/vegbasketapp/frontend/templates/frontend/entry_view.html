@@ -76,10 +76,10 @@
     <div class="large-12 columns bg-vs-block-dark-grey ">
         <div class="row">
 
-            <div class="large-9 medium-6  columns vs-margin-top">
+            <div class="large-3 medium-2  columns vs-margin-top">
               <ul>
-                <li>Allows Smoking - {{ entry.allows_smoking_verbose }}</li>
-                <li>Allows Reservations - {{ entry.allows_reservations_verbose }}</li>
+                <li>Smoking - {{ entry.allows_smoking_verbose }}</li>
+                <li>Reservations - {{ entry.allows_reservations_verbose }}</li>
 
                 <li>Payment
                   <ul>
@@ -88,6 +88,10 @@
                   {% endfor %}
                   </ul>
                 </li>
+                </ul>
+            </div>
+            <div class="large-3 medium-2  columns vs-margin-top">
+                <ul>
                 <li>Cuisines
                   <ul>
                   {% for cuisine in entry.cuisines.all %}
@@ -95,6 +99,10 @@
                   {% endfor %}
                   </ul>
                 </li>
+                </ul>
+            </div>
+            <div class="large-3 medium-2  columns vs-margin-top">       
+                <ul>
                 <li>Features
                   <ul>
                   {% for tag in entry.tags.all %}
