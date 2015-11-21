@@ -4,6 +4,15 @@ from vegbasketapp.transformer.models import Region
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
+
+class VeggieSailorCategory(models.Model):
+    """Main Veggie Sailor Category.
+    
+    """
+    name = models.CharField(max_length=128)
+    def __str__(self):
+        return "%s" % self.name       
+
 class VeggieSailorRegion(models.Model):
     """Main Veggie Sailor Region.
     """
@@ -17,22 +26,18 @@ class VeggieSailorRegion(models.Model):
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    def _get_parents_list(self, elems=()):
+    def get_parents_list(self, elems=None):
+        """Get names of the parents in a recursive way.
+                
+        """        
+        if elems == None:
+            elems = []
+        
         elems.append(self.name)
         if self.parent:
-            elemes = self.parent._get_parents_list(elems)
+            elems = self.parent.get_parents_list(elems)
         return elems
     
-    def get_parents_list(self):
-        """Get names of the parents in a recursive way.
-        
-        """
-        elems = []
-        return self._get_parents_list([])
-        
-        
-
-
     def __str__(self):
         return "%s " % self.name    
 
@@ -60,6 +65,8 @@ class VeggieSailorEntry(models.Model):
     
     vg_object_id = models.IntegerField(null=True)
     
+    categories = models.ManyToManyField(VeggieSailorCategory)
+    
     def __unicode__(self):
         return u"%s" % self.name    
     def __str__(self):
@@ -70,11 +77,9 @@ class VeggieSailorEntry(models.Model):
     
     def get_images_height_400(self):
         return self.get_images_height(400)
-    
-    
+       
     class Meta:
         verbose_name_plural = "veggie sailor entries"
-
 
 class VeggieSailorImage(models.Model):
     """Class storing images for the entries.
@@ -98,4 +103,5 @@ class VeggieSailorCousine(models.Model):
     description = models.TextField(default="")
 
 
-    
+
+

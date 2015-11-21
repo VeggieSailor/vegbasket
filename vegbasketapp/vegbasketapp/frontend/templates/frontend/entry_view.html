@@ -31,10 +31,9 @@
                 <h2>4.3 / 1 Vote</h2>
                 <span class="warning label">Prices $$ - average</span>
                 <ul class="green">
-                    <li>Restaurant</li>
-                 <li>Coffee/Tea/Juice</li>
-                 <li>Bar</li> 
-                 <li>Hotel/B&amp;B</li>
+                {% for category in entry.categories.all %}
+                    <li>{{ category.name }}</li>
+                    {% endfor %}
              </ul>
 
 

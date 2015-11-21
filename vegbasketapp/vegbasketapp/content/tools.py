@@ -6,7 +6,8 @@ from hashlib import md5
 
 from django.core import files
 
-from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, VeggieSailorImage
+from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, VeggieSailorImage, \
+     VeggieSailorCategory
 from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 from django.contrib.contenttypes.models import ContentType
@@ -129,7 +130,23 @@ def convert_entry(entry_id):
     
     vs_entry.description = vg_entry.get_long_description()
     vs_entry.zipcode = vg_entry.get_postal_code()
+    
+    
+    
     vs_entry.save()
+    
+    categories = vg_entry.get_elem('categories', [])
+    vs_categories = []
+    for category in categories:
+        vs_category, created = VeggieSailorCategory.objects.get_or_create(name=category)        
+        vs_categories.append(vs_category)
+    
+    if categories:
+        vs_entry.categories = vs_categories
+        vs_entry.save()
+        
+        
+    
     
     images = []
     

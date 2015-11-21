@@ -11,6 +11,12 @@ class ExampleEntry(TestCase):
         c = Client()
         r = c.get('/frontend/e/vg/20647')
         self.assertEqual(r.content.decode('utf-8').find('Flax')>-1,True)        
+
+    def test_view_other_enjoy(self):
+        c = Client()
+        r = c.get('/frontend/e/vg/20703')
+        self.assertEqual(r.content.decode('utf-8').find('Other')>-1,True)        
+
         
-    
+
     
