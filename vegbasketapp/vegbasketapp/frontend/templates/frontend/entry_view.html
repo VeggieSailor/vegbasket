@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-    <div class="large-12 bg-vs-block-dark-grey "  style="background: url(http://lorempixel.com/800/800/animals/4/) no-repeat; background-size: 100%;">
+    <div class="large-12 bg-vs-block-dark-grey "  style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
       <div style="background-color: #000;
     border: 1px solid black;
     opacity: 0.8;
@@ -66,7 +66,7 @@
             <p class=""><h3 class="black">{{ entry.description }}</h3></p>
         </div>
         <div class="large-3 medium-6 columns">
-            <img src="{{ MEDIA_URL }}{{ entry.veggiesailorimage_set.all.0.photo }}" class="image-entry" />
+            <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
 
         </div>
     </div>
@@ -117,7 +117,9 @@
 
             </div>
             <div class="large-3 medium-6  columns">
-                <img src="http://lorempixel.com/400/400/animals/1/Awesome place" class="image-entry" />
+                {% if entry.get_images_height_400.1.photo %}
+                <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
+                {% endif %}
             </div>
         </div>
     </div>

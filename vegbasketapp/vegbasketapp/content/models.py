@@ -17,7 +17,7 @@ class VeggieSailorRegion(models.Model):
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
-    def _get_parents_list(self, elems=[]):
+    def _get_parents_list(self, elems=()):
         elems.append(self.name)
         if self.parent:
             elemes = self.parent._get_parents_list(elems)
@@ -58,12 +58,19 @@ class VeggieSailorEntry(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id') 
     
-    vs_object_id = models.IntegerField(null=True)
+    vg_object_id = models.IntegerField(null=True)
     
     def __unicode__(self):
         return u"%s" % self.name    
     def __str__(self):
         return "%s in %s" % (self.name, self.region.name)
+    
+    def get_images_height(self, height):
+        return self.veggiesailorimage_set.filter(height='%s' % height)
+    
+    def get_images_height_400(self):
+        return self.get_images_height(400)
+    
     
     class Meta:
         verbose_name_plural = "veggie sailor entries"

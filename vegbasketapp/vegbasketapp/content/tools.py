@@ -103,6 +103,7 @@ def convert_entry(entry_id):
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     vg_entry = get_entry_by_id(entry_id)    
     vg_region = vg_entry.region
+    print ("Region", vg_region.source_id)
       
     try:
         vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=vg_entry.id)
@@ -110,7 +111,7 @@ def convert_entry(entry_id):
         vs_entry= VeggieSailorEntry(content_type=vg_entry_type, object_id=vg_entry.id)
         
     try:
-        vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type, object_id=vg_region.id)
+        vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type, object_id=vg_region.source_id)
     except VeggieSailorRegion.DoesNotExist:
         vs_region = convert_region(vg_region.source_id)
         
@@ -120,6 +121,7 @@ def convert_entry(entry_id):
     vs_entry.city = vg_entry.get_elem('city')
     vs_entry.address1 = vg_entry.get_elem('address1')
     vs_entry.address2 = vg_entry.get_elem('address2')
+    vs_entry.vg_object_id = vg_entry.source_id
 
     # List of images to download
     image_urls = []
@@ -130,6 +132,8 @@ def convert_entry(entry_id):
     vs_entry.save()
     
     images = []
+    
+    VeggieSailorImage.objects.filter(entry=vs_entry).delete()
     
     images_list = [x for x in vg_entry.get_elem('images',[]) ]
     print ("images", images_list)
@@ -151,8 +155,9 @@ def convert_entry(entry_id):
                     continue
             
                 # Get the filename from the url, used for saving later
-                file_name = image_url.split('/')[-1]
-            
+                url_file_name_ext = image_url.split('/')[-1].split(".")[-1]
+                
+                file_name = '%s.%s' % (new_name, url_file_name_ext)
                 # Create a temporary file
                 lf = tempfile.NamedTemporaryFile()
             
