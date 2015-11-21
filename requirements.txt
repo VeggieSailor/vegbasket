@@ -6,7 +6,7 @@ markdown
 django-filter
 python-social-auth
 uwsgi
-django-sb-admin==0.3.5
+django-sb-admin==0.3.6
 Pillow
 sphinxcontrib-napoleon
 django-dia
