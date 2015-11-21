@@ -42,10 +42,11 @@ def convert_region(region_id):
         return vs_region
 
     vs_region = VeggieSailorRegion()
-    try:
-        vs_region.name = region.obj['name']
-    except KeyError:
-        from ipdb import set_trace; set_trace()
+    vs_region.name = region.obj['name']
+    #try:
+        #vs_region.name = region.obj['name']
+    #except KeyError:
+        #from ipdb import set_trace; set_trace()
     vs_region.content_type = vg_region_type
     vs_region.object_id = region.source_id
     vs_region.source_region = region
