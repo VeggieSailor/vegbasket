@@ -65,7 +65,11 @@
             <p class=""><h3 class="black">{{ entry.description|safe }}</h3></p>
         </div>
         <div class="large-3 medium-6 columns">
+            {% if entry.get_images_height_400.0.photo  %}
             <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
+            {% else %}
+            <img src="{% static "images/no_photo.png" %}" class="image-entry" />
+            {% endif %}
 
         </div>
     </div>

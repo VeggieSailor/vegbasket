@@ -3,3 +3,9 @@
 {{ object.description }}
 {{ object.summary }}
 {{ object.city }}
+{{ object.get_level_display }}
+{{ object.get_price_display }}
+{{ object.categories.all|join:" " }}
+{{ object.cuisines.all|join:" " }}
+{{ object.tags.all|join:" " }}
+{{ object.payments.all|join:" " }}
