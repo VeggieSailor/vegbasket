@@ -7,7 +7,7 @@ from hashlib import md5
 from django.core import files
 
 from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, VeggieSailorImage, \
-     VeggieSailorCategory, VeggieSailorCuisine
+     VeggieSailorCategory, VeggieSailorCuisine, VeggieSailorTag, VeggieSailorPayment
 from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 from django.contrib.contenttypes.models import ContentType
@@ -124,12 +124,35 @@ def convert_entry(entry_id):
     vs_entry.address2 = vg_entry.get_elem('address2')
     vs_entry.vg_object_id = vg_entry.source_id
 
+
+    vs_entry.level = vg_entry.get_elem('veg_level')
+    
+    price_range = vg_entry.get_elem('price_range')
+    
+    if price_range == '$ - inexpensive':
+        price = 1
+    elif price_range == '$$ - average':
+        price = 2
+    elif price_range == '$$$ - expensive':
+        price = 3
+    else:
+        price = 0
+        
+    vs_entry.price = price
+    
+    print (price, price_range)
+
     # List of images to download
     image_urls = []
     
     
     vs_entry.description = vg_entry.get_long_description()
     vs_entry.zipcode = vg_entry.get_postal_code()
+    
+    
+    #print ("smokesy",vg_entry.get_elem('allows_smoking'))
+    vs_entry.allows_smoking = vg_entry.get_elem('allows_smoking')
+    vs_entry.allows_reservations = vg_entry.get_elem('accepts_reservations')
     
     
     
@@ -144,9 +167,7 @@ def convert_entry(entry_id):
     if categories:
         vs_entry.categories = vs_categories
         vs_entry.save()
-        
-        
-    
+            
     cuisines = vg_entry.get_elem('cuisines',[])    
     vs_cuisines = []
     for cuisine in cuisines:
@@ -156,6 +177,60 @@ def convert_entry(entry_id):
     if cuisines:
         vs_entry.cuisines = vs_cuisines
         vs_entry.save()
+
+        cuisines = vg_entry.get_elem('cuisines',[])    
+        vs_cuisines = []
+        for cuisine in cuisines:
+            vs_cuisine, created = VeggieSailorCuisine.objects.get_or_create(name=cuisine)
+            vs_cuisines.append(vs_cuisine)
+            
+        if cuisines:
+            vs_entry.cuisines = vs_cuisines
+            vs_entry.save()
+
+        
+    tags = vg_entry.get_elem('tags',[])    
+    vs_tags = []
+    for tag in tags:
+        vs_tag, created = VeggieSailorTag.objects.get_or_create(name=tag)
+        vs_tags.append(vs_tag)
+        
+    if tags:
+        vs_entry.tags = vs_tags
+        vs_entry.save()
+
+        tags = vg_entry.get_elem('tags',[])    
+        vs_tags = []
+        for tag in tags:
+            vs_tag, created = VeggieSailorTag.objects.get_or_create(name=tag)
+            vs_tags.append(vs_tag)
+            
+        if tags:
+            vs_entry.tags = vs_tags
+            vs_entry.save()
+
+        
+    payments = vg_entry.get_elem('payment_options',[])    
+    print ("payments",payments)
+    vs_payments = []
+    for payment in payments:
+        vs_payment, created = VeggieSailorPayment.objects.get_or_create(name=payment)
+        vs_payments.append(vs_payment)
+        
+    if payments:
+        vs_entry.payments = vs_payments
+        vs_entry.save()
+
+        payments = vg_entry.get_elem('payments',[])    
+        vs_payments = []
+        for payment in payments:
+            vs_payment, created = VeggieSailorPayment.objects.get_or_create(name=payment)
+            vs_payments.append(vs_payment)
+            
+        if payments:
+            vs_entry.payments = vs_payments
+            vs_entry.save()
+
         
     
     images = []

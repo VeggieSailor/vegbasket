@@ -5,6 +5,25 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
 
+VEG_LEVEL_CHOICES = (
+    ('0', 'Not Veg-Friendly'),
+    ('1', 'Vegetarian-Friendly'),
+    ('2', 'Vegan-Friendly'),
+    ('3', 'Vegetarian (But Not Vegan-Friendly)'),
+    ('4', 'Vegetarian'),
+    ('5', 'Vegan'),
+    
+)
+
+PRICE_CHOICES = (
+    (0,'Unknown'),
+    (1, 'Inexpensive'),
+    (2, 'Average'),
+    (3, 'Expensive'),   
+)
+
+
+
 class VeggieSailorCategory(models.Model):
     """Main Veggie Sailor Category.
     
@@ -13,6 +32,25 @@ class VeggieSailorCategory(models.Model):
 
     def __str__(self):
         return "%s" % self.name       
+
+class VeggieSailorPayment(models.Model):
+    """Main Veggie Sailor Payment.
+    
+    """
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return "%s" % self.name    
+
+class VeggieSailorTag(models.Model):
+    """Main Veggie Sailor Tag.
+    
+    """
+    name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return "%s" % self.name       
+
 
 class VeggieSailorCuisine(models.Model):
     """Main Veggie Sailor Cuisine.
@@ -24,6 +62,7 @@ class VeggieSailorCuisine(models.Model):
 
     def __str__(self):
         return "%s" % self.name       
+
 
 class VeggieSailorRegion(models.Model):
     """Main Veggie Sailor Region.
@@ -77,8 +116,16 @@ class VeggieSailorEntry(models.Model):
     
     vg_object_id = models.IntegerField(null=True)
     
+    allows_smoking = models.NullBooleanField(null=True)
+    allows_reservations = models.NullBooleanField(null=True)
     categories = models.ManyToManyField(VeggieSailorCategory)
     cuisines = models.ManyToManyField(VeggieSailorCuisine)
+    tags = models.ManyToManyField(VeggieSailorTag)
+    payments = models.ManyToManyField(VeggieSailorPayment)
+    
+    level = models.IntegerField(choices = VEG_LEVEL_CHOICES,default=0)
+    price = models.IntegerField(choices = PRICE_CHOICES,default=0)
+    
     
     
     def __unicode__(self):
@@ -91,6 +138,29 @@ class VeggieSailorEntry(models.Model):
     
     def get_images_height_400(self):
         return self.get_images_height(400)
+
+
+    def get_boolean_verbose(self, field):
+        
+        value = self.__getattribute__(field)
+        print (field,value)
+        
+        
+        if value is None:
+            return "Not clear"
+        elif self.allows_smoking == '0':
+            return "Yes"
+        elif self.allows_smoking == '1':
+            return "No"    
+        return "Not sure" # huh?
+
+    
+    def allows_smoking_verbose(self):
+        return self.get_boolean_verbose("allows_smoking")
+
+    def allows_reservations_verbose(self):
+        return self.get_boolean_verbose("allows_reservations")
+            
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
