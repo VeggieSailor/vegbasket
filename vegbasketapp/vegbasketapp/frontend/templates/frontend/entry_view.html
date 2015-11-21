@@ -85,7 +85,9 @@
                 </li>
                 <li>Cuisines
                   <ul>
-                    <li>Spanish</li>
+                  {% for cuisine in entry.cuisines.all %}
+                    <li>{{ cuisine.name }}</li>
+                  {% endfor %}
                   </ul>
                 </li>
                 <li>Features

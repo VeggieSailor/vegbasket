@@ -1,6 +1,6 @@
 from django.contrib import admin
 # Register your models here.
-from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorCousine, VeggieSailorEntry 
+from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorCuisine, VeggieSailorEntry 
 
 class VSEntryAdmin(admin.ModelAdmin):
     pass
@@ -10,7 +10,7 @@ class VSRegionAdmin(admin.ModelAdmin):
     pass
 admin.site.register(VeggieSailorRegion, VSRegionAdmin)
 
-class VSCousineAdmin(admin.ModelAdmin):
+class VSCuisineAdmin(admin.ModelAdmin):
     pass
-admin.site.register(VeggieSailorCousine, VSCousineAdmin)
+admin.site.register(VeggieSailorCuisine, VSCuisineAdmin)
 

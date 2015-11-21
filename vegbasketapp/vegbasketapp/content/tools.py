@@ -7,7 +7,7 @@ from hashlib import md5
 from django.core import files
 
 from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, VeggieSailorImage, \
-     VeggieSailorCategory
+     VeggieSailorCategory, VeggieSailorCuisine
 from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 from django.contrib.contenttypes.models import ContentType
@@ -147,6 +147,16 @@ def convert_entry(entry_id):
         
         
     
+    cuisines = vg_entry.get_elem('cuisines',[])    
+    vs_cuisines = []
+    for cuisine in cuisines:
+        vs_cuisine, created = VeggieSailorCuisine.objects.get_or_create(name=cuisine)
+        vs_cuisines.append(vs_cuisine)
+        
+    if cuisines:
+        vs_entry.cuisines = vs_cuisines
+        vs_entry.save()
+        
     
     images = []
     

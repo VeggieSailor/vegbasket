@@ -27,8 +27,17 @@ class EntryTest(TestCase):
         """        
         c = Client()
         r = c.get('/frontend/e/vg/20703')
-        self.assertEqual(r.content.decode('utf-8').find('Other')>-1,True)        
-
+        self.assertEqual(r.content.decode('utf-8').find('Other')>-1,True)     
         
+        
+    def test_view_african_ugarit(self):
+        """Test food type in Ugarit.
+                
+        """        
+        c = Client()
+        r = c.get('/frontend/e/vg/20704')
+        self.assertEqual(r.content.decode('utf-8').find('African')>-1,True)            
+
+    
 
     

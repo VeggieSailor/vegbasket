@@ -10,6 +10,18 @@ class VeggieSailorCategory(models.Model):
     
     """
     name = models.CharField(max_length=128)
+
+    def __str__(self):
+        return "%s" % self.name       
+
+class VeggieSailorCuisine(models.Model):
+    """Main Veggie Sailor Cuisine.
+    
+    """    
+    name = models.CharField(max_length=128, default="")
+    parent = models.ForeignKey('self', null=True)
+    description = models.TextField(default="")
+
     def __str__(self):
         return "%s" % self.name       
 
@@ -66,6 +78,8 @@ class VeggieSailorEntry(models.Model):
     vg_object_id = models.IntegerField(null=True)
     
     categories = models.ManyToManyField(VeggieSailorCategory)
+    cuisines = models.ManyToManyField(VeggieSailorCuisine)
+    
     
     def __unicode__(self):
         return u"%s" % self.name    
@@ -95,12 +109,7 @@ class VeggieSailorImage(models.Model):
     
 
 
-class VeggieSailorCousine(models.Model):
-    """Main Veggie Sailor Cousine.
-    """    
-    name = models.CharField(max_length=128, default="")
-    parent = models.ForeignKey('self', null=True)
-    description = models.TextField(default="")
+
 
 
 
