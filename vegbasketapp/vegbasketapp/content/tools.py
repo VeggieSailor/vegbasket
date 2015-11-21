@@ -10,7 +10,7 @@ from vegbasketapp.content.models import VeggieSailorRegion, VeggieSailorEntry, V
 from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 from django.contrib.contenttypes.models import ContentType
-
+from django.db.utils import DataError
 def get_region_id(url):
     """Extract id of the region.
     
@@ -276,17 +276,20 @@ def convert_entry(entry_id):
                         lf.write(block)
                 
                     # Create the model you want to save the image to
-                    image = VeggieSailorImage()
-                    image.title = title
-                    image.entry = vs_entry
-                    image.width = width
-                    image.height = height
+                    try:
+                        image = VeggieSailorImage()
+                        image.title = title
+                        image.entry = vs_entry
+                        image.width = width
+                        image.height = height
+                        
                     
-                
-                    # Save the temporary image to the model#
-                    # This saves the model so be sure that is it valid
-                    image.photo.save(file_name, files.File(lf))    
-                    image.save()
+                        # Save the temporary image to the model#
+                        # This saves the model so be sure that is it valid
+                        image.photo.save(file_name, files.File(lf))    
+                        image.save()
+                    except DataError:
+                        print ("Error with the picture", vg_entry.source_id)
             except KeyError:
                 pass
     print(VeggieSailorEntry.objects.all().count())
