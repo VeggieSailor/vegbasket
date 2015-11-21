@@ -30,7 +30,7 @@ class VeggieSailorRegion(models.Model):
         """Get names of the parents in a recursive way.
                 
         """        
-        if elems == None:
+        if elems is None:
             elems = []
         
         elems.append(self.name)
@@ -39,7 +39,7 @@ class VeggieSailorRegion(models.Model):
         return elems
     
     def __str__(self):
-        return "%s " % self.name    
+        return "%s" % self.name    
 
 class VeggieSailorEntry(models.Model):
     """Main Veggie Sailor Entry.
