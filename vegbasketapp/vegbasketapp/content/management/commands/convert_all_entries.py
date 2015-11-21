@@ -28,6 +28,7 @@ class Command(BaseCommand):
             try:
                 convert_entry(entry.source_id)
                 if entry.get_elem("images"):
+                    print ("Had images, wait...")
                     if settings.DEBUG==False:
                         sleep_random(2,5)
             except KeyError:
