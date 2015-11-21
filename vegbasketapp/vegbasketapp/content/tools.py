@@ -1,4 +1,3 @@
-
 import json
 import requests
 import tempfile
@@ -235,58 +234,60 @@ def convert_entry(entry_id):
     
     images = []
     
-    VeggieSailorImage.objects.filter(entry=vs_entry).delete()
+    if not VeggieSailorImage.objects.filter(entry=vs_entry):
     
-    images_list = [x for x in vg_entry.get_elem('images',[]) ]
-    print ("images", images_list)
-    # http://stackoverflow.com/questions/16174022/download-a-remote-image-and-save-it-to-a-django-model
-    for image_elem in images_list:
-        # Steam the image from the url
-        try:
-            title = image_elem['caption']
-            for image_file in image_elem['files']:
-                print (image_file)                
-                image_url = image_file['uri']
-                new_name = md5(image_url.encode('utf-8')).hexdigest()            
-                request = requests.get(image_url, stream=True)            
-                width = image_file['width']
-                height = image_file['height']            
-                # Was the request OK?
-                if request.status_code != requests.codes.ok:
-                    # Nope, error handling, skip file etc etc etc
-                    continue
-            
-                # Get the filename from the url, used for saving later
-                url_file_name_ext = image_url.split('/')[-1].split(".")[-1]
+        #VeggieSailorImage.objects.filter(entry=vs_entry).delete()
+        
+        images_list = [x for x in vg_entry.get_elem('images',[]) ]
+        print ("images", images_list)
+        # http://stackoverflow.com/questions/16174022/download-a-remote-image-and-save-it-to-a-django-model
+        for image_elem in images_list:
+            # Steam the image from the url
+            try:
+                title = image_elem['caption']
+                for image_file in image_elem['files']:
+                    print (image_file)                
+                    image_url = image_file['uri']
+                    new_name = md5(image_url.encode('utf-8')).hexdigest()            
+                    request = requests.get(image_url, stream=True)            
+                    width = image_file['width']
+                    height = image_file['height']            
+                    # Was the request OK?
+                    if request.status_code != requests.codes.ok:
+                        # Nope, error handling, skip file etc etc etc
+                        continue
                 
-                file_name = '%s.%s' % (new_name, url_file_name_ext)
-                # Create a temporary file
-                lf = tempfile.NamedTemporaryFile()
-            
-                # Read the streamed image in sections
-                for block in request.iter_content(1024 * 8):
-            
-                    # If no more file then stop
-                    if not block:
-                        break
-            
-                    # Write image block to temporary file
-                    lf.write(block)
-            
-                # Create the model you want to save the image to
-                image = VeggieSailorImage()
-                image.title = title
-                image.entry = vs_entry
-                image.width = width
-                image.height = height
+                    # Get the filename from the url, used for saving later
+                    url_file_name_ext = image_url.split('/')[-1].split(".")[-1]
+                    
+                    file_name = '%s.%s' % (new_name, url_file_name_ext)
+                    # Create a temporary file
+                    lf = tempfile.NamedTemporaryFile()
                 
-            
-                # Save the temporary image to the model#
-                # This saves the model so be sure that is it valid
-                image.photo.save(file_name, files.File(lf))    
-                image.save()
-        except KeyError:
-            pass
+                    # Read the streamed image in sections
+                    for block in request.iter_content(1024 * 8):
+                
+                        # If no more file then stop
+                        if not block:
+                            break
+                
+                        # Write image block to temporary file
+                        lf.write(block)
+                
+                    # Create the model you want to save the image to
+                    image = VeggieSailorImage()
+                    image.title = title
+                    image.entry = vs_entry
+                    image.width = width
+                    image.height = height
+                    
+                
+                    # Save the temporary image to the model#
+                    # This saves the model so be sure that is it valid
+                    image.photo.save(file_name, files.File(lf))    
+                    image.save()
+            except KeyError:
+                pass
     print(VeggieSailorEntry.objects.all().count())
     return vs_entry
       

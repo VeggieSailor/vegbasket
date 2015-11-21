@@ -7,14 +7,23 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.core.urlresolvers import reverse
 
 VEG_LEVEL_CHOICES = (
-    ('0', 'Not Veg-Friendly'),
-    ('1', 'Vegetarian-Friendly'),
-    ('2', 'Vegan-Friendly'),
-    ('3', 'Vegetarian (But Not Vegan-Friendly)'),
-    ('4', 'Vegetarian'),
-    ('5', 'Vegan'),
+    (0, 'Not Veg-Friendly'),
+    (1, 'Vegetarian-Friendly'),
+    (2, 'Vegan-Friendly'),
+    (3, 'Vegetarian (But Not Vegan-Friendly)'),
+    (4, 'Vegetarian'),
+    (5, 'Vegan'),
     
 )
+
+
+# From Katya
+# F44336    0 - Not Veg-Friendly
+# 2764AE    1 - Vegetarian-Friendly
+# 388E3C    2 - Vegan-Friendly
+# F38F1B    3 - Vegetarian (But Not Vegan-Friendly)
+# 60C4E3    4 - Vegetarian
+# 88BD24    5 - Vegan
 
 PRICE_CHOICES = (
     (0,'Unknown'),
