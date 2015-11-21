@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
+    url(r'^search/', include('haystack.urls')),
     url('^', include('django.contrib.auth.urls'))
     
 )

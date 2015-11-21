@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.frontend.views.index', name='frontend'),
     url(r'^entry_example/$', 'vegbasketapp.frontend.views.entry_example', name='entry_example'),
     url(r'^e/vg/(?P<entry_id>.*)$', 'vegbasketapp.frontend.views.entry_vg', name='entry_vg'),
-    
+    url(r'^e/vs/(?P<entry_id>.*)$', 'vegbasketapp.frontend.views.entry_vs', name='entry_vs'),
     
 
     

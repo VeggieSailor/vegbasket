@@ -303,5 +303,11 @@ def get_entry_by_vg_id(entry_id):
     
     return vs_entry
         
+def get_vs_entry_by_id(entry_id)        :
+    """Get entry by id.
+    
+    """
+    entry = VeggieSailorEntry.objects.get(id = entry_id)
+    return entry
         
         

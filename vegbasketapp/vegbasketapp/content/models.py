@@ -4,6 +4,7 @@ from vegbasketapp.transformer.models import Region
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
+from django.core.urlresolvers import reverse
 
 VEG_LEVEL_CHOICES = (
     ('0', 'Not Veg-Friendly'),
@@ -160,7 +161,10 @@ class VeggieSailorEntry(models.Model):
 
     def allows_reservations_verbose(self):
         return self.get_boolean_verbose("allows_reservations")
-            
+
+
+    def get_absolute_url(self):
+        return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
@@ -177,6 +181,8 @@ class VeggieSailorImage(models.Model):
     height = models.IntegerField()
     width = models.IntegerField()
     
+
+
 
 
 
