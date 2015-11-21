@@ -1,0 +1,128 @@
+{% extends "frontend/base.html" %}{% load staticfiles %}
+{% block base_body_content %}
+    <!--<h2>Search</h2>-->
+    <div class="large-12 bg-vs-block-dark-grey">
+
+    <form method="get" action=".">
+        <!--<table>-->
+            <!--{{ form.as_table }}-->
+            <!--<tr>-->
+                <!--<td>&nbsp;</td>-->
+                <!--<td>-->
+                    <!--<input type="submit" value="Search">-->
+                <!--</td>-->
+            <!--</tr>-->
+        <!--</table>-->
+
+        {% if query %}
+            <!--<h3>Results</h3>-->
+
+            {% for result in page.object_list %}
+            
+            
+<div class="row ">
+
+        <div class="large-2 columns">
+                {% if result.object.get_images_height_400.0.photo %}
+                          <a href="#"> <span> </span><img src="{{ MEDIA_URL }}{{ result.object.get_images_height_400.0.photo }}" alt="book cover" class=" thumbnail"></a>
+                {% else %}
+          <a href="#"> <span> </span><img src="http://placehold.it/150x200&text=no photo :(" alt="no photo" class=" thumbnail"></a>
+{% endif %}
+        </div>
+
+        <div class="large-10 columns">
+
+          <div class="row">
+
+            <div class=" large-9 columns">
+
+              <h5>                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>
+</h5>
+
+              <p><a href="#"> Info</a> | <a href="#">Buy this book</a></p>
+
+            </div>
+
+            <div class=" large-3 columns">
+
+              <!--<a href="#"  class="button  expand medium"><span>Open Book</span> </a>-->
+
+              <!--<a href="#"  class="button  expand medium"><span>Add to List</span></a> -->
+
+            </div>
+
+            <div class="row">
+
+              <div class=" large-12 columns">
+
+                <ul class="large-block-grid-2">
+
+                  <li>
+
+                    <ul>
+
+                      <li><strong>Veggie level: </strong>{{ result.object.get_level_display }}</li>
+
+                      <!--<li><strong>Published:</strong> 2008</li>-->
+
+                      <!--<li><strong>More info:</strong> Lorem ipsum</li>-->
+
+                      <!--<li><strong>More cat stuff: </strong> cats cats cats</li>-->
+
+                    </ul>
+
+                  </li>
+
+                  <li>
+
+                    <ul>
+                      <li><strong>Price level: </strong>{{ result.object.get_price_display }}</li>
+
+                      <!--<li><strong>Wow cats:</strong> so wow</li>-->
+
+                      <!--<li><strong>Lorem cats:</strong> ipsum kitty</li>-->
+
+                      <!--<li><strong>Series:</strong> all the cats</li>-->
+
+                    </ul>
+
+                  </li>
+
+                </ul>
+
+                {{ result.object.description|safe }}
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div>
+            
+            
+                <!--<p>-->
+                    <!--<a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>-->
+                <!--</p>-->
+            {% empty %}
+                <p>No results found.</p>
+            {% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+                    |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
+        {% else %}
+            {# Show some example queries to run, maybe query syntax, something else? #}
+        {% endif %}
+    </form>
+    
+    </div>
+{% endblock %}

@@ -31,6 +31,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'haystack',
     'foundation',
     'vegbasketapp.home',
     'vegbasketapp.transformer',
@@ -134,3 +135,10 @@ LOGIN_REDIRECT_URL = '/p/'
 MEDIA_ROOT = 'media/'
 MEDIA_URL = '/media/'
 
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
