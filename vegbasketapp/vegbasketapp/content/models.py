@@ -146,6 +146,13 @@ class VeggieSailorEntry(models.Model):
     def get_images_height(self, height):
         return self.veggiesailorimage_set.filter(height='%s' % height)
     
+    def get_images_width_height(self, width, height):
+        return self.veggiesailorimage_set.filter(width='%s' % width, height='%s' % height)
+            
+    
+    def get_images_600_400(self)    :
+        return self.get_images_width_height(600, 400)
+    
     def get_images_height_400(self):
         return self.get_images_height(400)
 
