@@ -1,3 +1,6 @@
+from random import randint
+from time import sleep
+
 from django.core.management.base import BaseCommand, CommandError
 from vegbasketapp.content.tools import convert_entry
 
