@@ -47,7 +47,9 @@ class VeggieSailorEntry(models.Model):
     city = models.CharField(max_length=256, default="")
     zipcode = models.CharField(max_length=32, default="")
     summary = models.CharField(max_length=512, default="")
+    
     region = models.ForeignKey(VeggieSailorRegion, null=False)
+    
     results_geo_place = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -55,6 +57,8 @@ class VeggieSailorEntry(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id') 
+    
+    vs_object_id = models.IntegerField(null=True)
     
     def __unicode__(self):
         return u"%s" % self.name    
