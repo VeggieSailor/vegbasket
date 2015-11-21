@@ -71,9 +71,20 @@ class Entry(models.Model):
             self.obj_geo = json.loads(self.results_geo)
 
     def get_elem(self, elem, default=''):
+        """Get elem by name from json obj.
+        
+        """
         self.set_obj()
         result = self.obj.get(elem, default)
         return result
+
+    def get_credits_string(self):
+        """Get credits string for HTML.
+        
+        """
+        name = self.get_elem('user')['name']
+        uri = self.get_elem('user')['uri']
+        return 'Added by <a target="_blank"  href="%s">%s</a>' % (uri, name)
 
     def get_address_str(self):
         """Get address.

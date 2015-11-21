@@ -131,6 +131,8 @@
                 {% if entry.get_images_height_400.1.photo %}
                 <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
                 {% endif %}
+                <br/>
+                {{ entry.content_object.get_credits_string|safe }}
             </div>
         </div>
     </div>

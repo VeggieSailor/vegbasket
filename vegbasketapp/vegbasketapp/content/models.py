@@ -138,6 +138,7 @@ class VeggieSailorEntry(models.Model):
     
     
     
+    
     def __unicode__(self):
         return u"%s" % self.name    
     def __str__(self):
