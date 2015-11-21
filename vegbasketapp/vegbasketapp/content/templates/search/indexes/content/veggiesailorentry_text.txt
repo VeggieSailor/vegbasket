@@ -9,3 +9,4 @@
 {{ object.cuisines.all|join:" " }}
 {{ object.tags.all|join:" " }}
 {{ object.payments.all|join:" " }}
+{{ object.region.get_parents_list|join:" " }}

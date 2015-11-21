@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles entry_cards %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,35 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-  
+  <style>
+    html,body {
+  height:100%;
+}
+
+ figure {
+
+    position: relative;
+    overflow: auto;
+
+
+}
+
+ figure img {
+    vertical-align: bottom;
+}
+
+ figure figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    color: #fff; 
+    padding: 10px;
+}
+  </style
 
 
         <meta property="twitter:card" content="summary_large_image" />
@@ -42,6 +70,7 @@
 </head>
 <body>
 {% comment %}
+
 <div class="row">
   <div class="col-lg-8">
   {% if not user.is_authenticated %}
@@ -52,13 +81,65 @@
   </div>
 </div>
 {% endcomment %}
+<div   class="cointaner" style="height:100%; min-height:100%;" >
+  <div class="row" style="padding-top:15%">
+    <div class="twelve columns" style="">
+      <center><img  width="400px" src="{% static "images/logo_tattoo_640.png" %}"/></center>
+    </div>
+  </div>
+  
+  <div class="row" style="">
+    <form method="GET" action="/search/">  
+    <div class="four columns">
+    &nbsp;
+    </div>
+      <div class="six columns center">
+          <input class="" style="width:470px" placeholder="Barcelona Vegan" id="id_q" type="search" name="q">
+      </div>
+      </div>
+      <div class="row" style="">
+          <div class="five columns">&nbsp;</div>
+      <div class="two   columns">
+      <center>
+        <button class="u-full-width"> Sail</button>
+        <a href="#explore">Explore more</a>
+        </center>
+      </div>
+      
+    </form>  
+  </div>
+  </div>
+  <div class="cointaner" id="explore"  >
+
+    <div class="row" style="background-color:#9c3">
+    <div class="twelve columns">
+      <center><h4 class="docs-header" style="color:white;padding-top:1.5em;padding-bottom:0.5em;"><strong>Explore delicious vegan places</strong></h4></center>
+       </div>
+<div class="twelve columns" style="padding-top:0em;">
+               {% skeleton_card_vg 12209 %}
+               {% skeleton_card_vg 14327 %}
+               {% skeleton_card_vg 20953 %}
+</div>
+<div class="twelve columns">
+               {% skeleton_card_vg 20849 %}
+               {% skeleton_card_vg 11981 %}
+               {% skeleton_card_vg 7132 %}
+
+</div>
+<div class="twelve columns" style="padding-bottom:2.5em;">
+               {% skeleton_card_vg 8279 %}
+               {% skeleton_card_vg 4411 %}
+               {% skeleton_card_vg 10251 %}
+</div>
+  </div>
+</div>
   <div class="section hero moveup">
     <div class="container">
     <div class="row"> 
     </div>
       <div class="row">
         <div class="one-half column">
-        <center><img  width="400px" src="{% static "images/logo_tattoo_640.png" %}"/></center>
+        <!--<center><img  width="400px" src="{% static "images/logo_tattoo_640.png" %}"/></center>-->
           <center><h4 class="hero-heading">Vegetarian / vegan <em>sailing</em> guide</h4></center>
          <center> <a class="button button-primary" href="https://openrepos.net/content/bluszcz/veggie-sailor">Open Repos</a>
           <a class="button button-primary" href="https://github.com/VeggieSailor/VeggieSailor">Get sources</a></center>
