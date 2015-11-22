@@ -85,8 +85,25 @@
 {% block base_body_content %}
 
 {% endblock base_body_content %}
-{% endblock base_body %}
 
+{% endblock base_body %}
+    <div class="row" style="padding-bottom:1em;">
+        <div class="large-2 medium-2 columns" style="padding-top:1em" >
+          <a taget="_blank" href="https://creativecommons.org/licenses/by-sa">  <img src="{% static "images/CC_by-sa.png" %}" width="100" /> </a>
+        </div>
+        <div class="large-3 medium-2 columns" style="padding-top:1em" >
+        
+            <span style="color:black">Powered by <a taget="_blank" style="color:#78ae0e" href="https://vegguide.org">Vegguide.org</a>.</spam>
+        </div>
+        <div class="large-4 medium-2 columns" style="padding-top:1em" >
+            <span style="color:black">Copyright &copy; 2015 <a style="color:#78ae0e" href="mailto:contact@veggiesailor.com">VeggieSailor</a>.</span> 
+        </div>
+        
+        <div class="large-3 medium-6 columns">
+ &nbsp;
+
+        </div>
+    </div>
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
     <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
