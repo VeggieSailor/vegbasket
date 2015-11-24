@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'home/index.html')
+    return render(request, 'home/index_fd.html')
 
 def handler404(request):
     return render(request, '404.html')

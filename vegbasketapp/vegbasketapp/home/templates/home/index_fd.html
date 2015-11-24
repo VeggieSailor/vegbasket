@@ -1,0 +1,116 @@
+{% load staticfiles %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <head profile="http://www.w3.org/2005/10/profile">
+    <link rel="icon" 
+          type="image/png" 
+          href="{% static "images/favicon32.png" %}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Rafał Zawadzki, Katia Kru">
+
+    {% block meta %}{% endblock meta %}
+    {% block base_title %}
+    <title>{% block title %}Veggie Sailor{% endblock title %}</title>
+    {% endblock base_title %}
+
+    {# Base Foundation CSS #}
+    {% block foundation_css %}
+    <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/>
+    <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
+    
+    {% endblock foundation_css %}  
+    
+    {# Custom CSS #}
+    {% block css %}
+    <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,500,700,400italic,500italic,700italic,900italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    <link href="{% static "frontend/css/app.css" %}" rel="stylesheet"/>
+    
+    <style>
+    #id_q {
+        background-color:white;
+    }
+    </style>
+    
+    {% endblock css %}
+
+    {# Override if you need another version of modernizr #}
+    {% block foundation_modernizer %}
+    <script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>
+    {% endblock foundation_modernizer %}
+
+    {# Custom head JS #}
+    {% block head_js %}{% endblock head_js %}
+</head>
+<body {% block body_attr %}{% endblock body_attr %} style="background-color:white">
+    {# Main content goes here #}
+{% block base_body %}
+    {% block base_body_header %}
+{% endblock base_body_header %}
+{% block base_body_content %}
+
+{% endblock base_body_content %}
+
+{% endblock base_body %}
+<div class="row">
+  <div class="small-6 small-centered large-centered columns"><img class=""  src="{% static "images/logo_tattoo_420.png" %}"/></div>
+</div>
+
+      <form method="GET" action="/search/">  
+      
+      <!--<div class="three columns">&nbsp;</div>-->
+      <div class="two columns"> <input  class="white-input-class"  placeholder="Barcelona Vegan" id="id_q" type="search" name="q"></div>
+      <!--<div class="three columns">&nbsp;</div>-->
+  </div>
+  <div class="row" style="">
+      <!--<div class="five columns">&nbsp;</div>-->
+      <div class="two   columns">
+        <center>
+        <button class="u-full-width"> Sail</button>
+        <a href="#explore">Explore more</a>
+        </center>
+      </div>
+      
+    </form>  
+
+    {# Override if you need another version of jQuery #}
+    {% block foundation_jquery %}
+    <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+    {% endblock foundation_jquery %}
+
+    {# Foundation JS #}
+    {% block foundation_js %}
+    <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+    {% endblock foundation_js %}
+
+    {# Custom JS #}
+    {% block body_js %}{% endblock body_js %}
+
+    {# Init Foundation #}
+    {% block foundation_js_init %}
+    <script>
+        $(document).foundation();
+        
+    </script>
+    <!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//s.glam.pl/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 9]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//s.glam.pl/piwik.php?idsite=9" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+    {% endblock foundation_js_init %}
+</body>
+</html>

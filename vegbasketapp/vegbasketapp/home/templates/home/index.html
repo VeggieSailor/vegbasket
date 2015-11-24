@@ -24,7 +24,8 @@
 
   <style>
     html,body {
-  height:100%;
+    height:100%;
+  min-height:100%;
 }
 
  figure {
@@ -81,22 +82,23 @@
   </div>
 </div>
 {% endcomment %}
-<div   class="cointaner" style="height:100%; min-height:100%;" >
-  <div class="row" style="padding-top:15%">
-    <div class="twelve columns" style="">
-      <center><img class="u-max-full-width"  src="{% static "images/logo_tattoo_640.png" %}"/></center>
+<div class="">
+<div   class="container" style="width:100%;height:100%; min-height:100%;" >
+  <div class="row" style="padding-top:10%">
+    <div class="four column" >
+      <img class="u-max-full-width"  src="{% static "images/logo_tattoo_420.png" %}"/>
     </div>
   </div>
   
-  <div class="row" style="">
+  <div class="row" style="display:block;margin-left:auto;margin-right:">
       <form method="GET" action="/search/">  
       
-      <div class="three columns">&nbsp;</div>
-      <div class="six columns"><input  class="u-max-full-width u-full-width" placeholder="Barcelona Vegan" id="id_q" type="search" name="q"></div>
-      <div class="three columns">&nbsp;</div>
+      <!--<div class="three columns">&nbsp;</div>-->
+      <div class="two columns"> <input  class="u-max-full-width"  placeholder="Barcelona Vegan" id="id_q" type="search" name="q"></div>
+      <!--<div class="three columns">&nbsp;</div>-->
   </div>
   <div class="row" style="">
-      <div class="five columns">&nbsp;</div>
+      <!--<div class="five columns">&nbsp;</div>-->
       <div class="two   columns">
         <center>
         <button class="u-full-width"> Sail</button>
@@ -107,9 +109,10 @@
     </form>  
   </div>
   </div>
-  <div class="cointaner" id="explore"  >
+  <div  style="background-color:#9c3">
+  <div class="container" id="explore" >
 
-    <div class="row" style="background-color:#9c3">
+    <div class="row" >
     <div class="twelve columns">
       <center><h4 class="docs-header" style="color:white;padding-top:1.5em;padding-bottom:0.5em;"><strong>Explore delicious vegan places</strong></h4></center>
        </div>
@@ -134,6 +137,9 @@
 
   </div>
 </div>
+</div>
+</div>
+
   <div class="section hero moveup"  >
     <div class="container"  id="jolla">
 
