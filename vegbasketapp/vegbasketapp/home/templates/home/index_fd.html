@@ -29,9 +29,9 @@
     <link href="{% static "frontend/css/app.css" %}" rel="stylesheet"/>
     
     <style>
-    #id_q {
-        background-color:white;
-    }
+    <!--#id_q {-->
+        <!--background-color:white;-->
+    <!--}-->
     </style>
     
     {% endblock css %}
@@ -44,7 +44,7 @@
     {# Custom head JS #}
     {% block head_js %}{% endblock head_js %}
 </head>
-<body {% block body_attr %}{% endblock body_attr %} style="background-color:white">
+<body {% block body_attr %}{% endblock body_attr %} style="" class="bgwhite">
     {# Main content goes here #}
 {% block base_body %}
     {% block base_body_header %}
@@ -54,26 +54,21 @@
 {% endblock base_body_content %}
 
 {% endblock base_body %}
-<div class="row">
-  <div class="small-6 small-centered large-centered columns"><img class=""  src="{% static "images/logo_tattoo_420.png" %}"/></div>
+<div class="row" id="id_image_logo">
+  <div class="small-12 small-centered medium-8 medium-centered  large-6 large-centered columns"><img  class=""  src="{% static "images/logo_tattoo_640.png" %}"/></div>
 </div>
-
-      <form method="GET" action="/search/">  
-      
-      <!--<div class="three columns">&nbsp;</div>-->
-      <div class="two columns"> <input  class="white-input-class"  placeholder="Barcelona Vegan" id="id_q" type="search" name="q"></div>
-      <!--<div class="three columns">&nbsp;</div>-->
-  </div>
-  <div class="row" style="">
-      <!--<div class="five columns">&nbsp;</div>-->
-      <div class="two   columns">
-        <center>
-        <button class="u-full-width"> Sail</button>
-        <a href="#explore">Explore more</a>
-        </center>
-      </div>
-      
-    </form>  
+<form method="GET" action="/search/">  
+<!--<div class="three columns">&nbsp;</div>-->
+<div class="small-8 small-centered large-4 large-centered columns"> <input  placeholder="Barcelona Vegan" id="id_q" type="search" name="q" class="custom-input-class"  ></div>
+<!--<div class="three columns">&nbsp;</div>-->
+</div>
+<div class="row" style="" id="id_row_sail">
+    <!--<div class="five columns">&nbsp;</div>-->
+    <div class="small-6 small-centered large-2 large-centered   columns small">    
+        <button class="home-ghost-button-class info expand"><strong>SAIL</strong></button>
+        <!--<a href="#explore">Explore more</a>-->      
+    </div>    
+</form>  
 
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
