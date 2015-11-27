@@ -97,6 +97,8 @@
 
                 <p class="black">{% if result.object.description %}{{ result.object.description|striptags|safe }}{% else %}No description.{% endif %}</p>
 
+
+                <h6 class="black">Cuisines: {% if result.object.cuisines.all %}{{ result.object.cuisines.all|join:", " }}{% else %}Unknown{% endif %}</h6>
               </div>
 
             </div>

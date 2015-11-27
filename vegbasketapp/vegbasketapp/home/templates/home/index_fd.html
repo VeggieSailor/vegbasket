@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles  entry_cards %}
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -45,6 +45,9 @@
     {% block head_js %}{% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %} style="" class="bgwhite">
+<div><a href="#explore" class=""><span class="right black">Explore more</a></div><p>&nbsp;</p>
+
+
     {# Main content goes here #}
 {% block base_body %}
     {% block base_body_header %}
@@ -69,7 +72,27 @@
         <!--<a href="#explore">Explore more</a>-->      
     </div>    
 </form>  
+</div>
+<div class="row" >
+    <div class="twelve columns">
+      <center><h4 class="black" style="" id="explore"><strong>Explore delicious vegan places</strong></h4></center>
+       </div>
+       </div>
+<div class="" style="padding-top:0em;">
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+               <li>{% skeleton_card_vg 12209 %}</li>
+               <li>{% skeleton_card_vg 14327 %}</li>
+               <li>{% skeleton_card_vg 20953 %}</li>
+               <li>{% skeleton_card_vg 20849 %}</li>
+               <li>{% skeleton_card_vg 11981 %}</li>
+               <li>{% skeleton_card_vg 7132 %}</li>
 
+               <li>{% skeleton_card_vg 8279 %}</li>
+               <li>{% skeleton_card_vg 4411 %}</li>
+               <li>{% skeleton_card_vg 10251 %}</li>
+               </ul>
+</div>
+</div>
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
     <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
