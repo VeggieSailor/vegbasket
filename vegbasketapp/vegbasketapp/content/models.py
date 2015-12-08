@@ -161,6 +161,9 @@ class VeggieSailorEntry(models.Model):
         return self.get_images_height(400)
 
 
+    def get_images_height_348(self):
+        return self.get_images_height(348)
+
     def get_boolean_verbose(self, field):
         
         value = self.__getattribute__(field)
