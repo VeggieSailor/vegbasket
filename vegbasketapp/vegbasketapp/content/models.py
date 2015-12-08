@@ -153,6 +153,9 @@ class VeggieSailorEntry(models.Model):
     
     def get_images_600_400(self)    :
         return self.get_images_width_height(600, 400)
+
+    def get_images_533_400(self)    :
+        return self.get_images_width_height(533, 400)
     
     def get_images_height_400(self):
         return self.get_images_height(400)
