@@ -143,3 +143,12 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
+
+
+META_SITE_DOMAIN = 'veggiesailor.com'
+META_SITE_TYPE = 'restaurant.restaurant'
+META_SITE_NAME = 'Veggie Sailor'
+META_IMAGE_URL = 'https://veggiesailor.com/static/frontend/img/logo.png'
+META_DEFAULT_KEYWORDS = ['Veggie Sailor', 'Vegeterian', 'Vegan', 'Veggie', 'Bar', 'Hotel', 'Restaurant']
+META_USE_OG_PROPERTIES = True
+META_USE_TWITTER_PROPERTIES = True

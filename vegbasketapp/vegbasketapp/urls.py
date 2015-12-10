@@ -3,7 +3,25 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from datetime import date
+from meta.views import Meta
 
+
+from haystack.generic_views import SearchView
+
+class MySearchView(SearchView):
+
+    def get_queryset(self):
+        queryset = super(MySearchView, self).get_queryset()
+        # further filter queryset based on some set of criteria
+        return queryset
+    
+    def get_context_data(self, *args, **kwargs):
+        context = super(MySearchView, self).get_context_data(*args, **kwargs)
+        
+        context['meta'] = Meta(title="Search result...")  
+        context['test'] = 'aero'
+        return context
 
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
@@ -20,7 +38,9 @@ urlpatterns = patterns('',
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
-    url(r'^search/', include('haystack.urls')),
+  ##url(r'^search/', include('haystack.urls')),
+    url(r'^search/?$', MySearchView.as_view(), name='haystack_search'),
+    
     url('^', include('django.contrib.auth.urls'))
     
 )
