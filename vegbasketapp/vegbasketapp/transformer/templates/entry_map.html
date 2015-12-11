@@ -1,7 +1,7 @@
 {% load static %}<html>
-<link rel="stylesheet" href="{% static "transformer/css/leaflet.css" %}" />
+<link rel="stylesheet" href="{% static "transformer/leaflet/leaflet.css" %}" />
 <div id="map" style="height:100%"></div>
-<script src="{% static "transformer/js/leaflet.js" %}"></script>    
+<script src="{% static "transformer/leaflet/leaflet.js" %}"></script>    
 <script>
 var map = L.map('map').setView([{{ cords.lat }}, {{ cords.lng }}], 15);
 
