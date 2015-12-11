@@ -1,9 +1,9 @@
 {% extends "frontend/base.html" %}{% load staticfiles %}
 {% block base_body_content %}
-    <div class="  bg-vs-dark-grey">
+    <div class="  bg-vs-dark-grey " style="background-color: black !important">
         <div class="row bg-white">
             <div class="columns">
-                <ul class="vs-crumbs">
+                <ul class="vs-crumbs" style="background-color: black !important">
                     {% for obj in entry.region.get_parents_list reversed %}              
                     <li><a href="#">{{ obj }}</a></li>
                     {% endfor %}                 
@@ -37,15 +37,14 @@
 
             </div>
             <div class="medium-4 large-5 columns ">
-                <h1 class="green">{{ entry.name }}</h1>
-                <h2>{{ entry.city }}</h2>
+                <h2 class="green">{{ entry.name }}</h2>
                     <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
                 
-                    <h2>{{ entry.short_description }}</h2>
-                          <h3>{{ entry.address1 }}</h3>
-                          <h3>{{ entry.address2 }}</h3>
-                <h3>{{ entry.city}}  {{ entry.zipcode }}</h3>
-                <p>Hours</p>
+                    <h4>{{ entry.short_description }}</h4>
+                                    <h3>{{ entry.city }}</h3>
+
+                          <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
+                <!--<p>Hours</p>-->
             </div>
             <div class="large-5 medium-4 columns ">
       
