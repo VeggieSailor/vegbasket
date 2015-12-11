@@ -87,6 +87,7 @@ class VeggieSailorRegion(models.Model):
     object_id = models.PositiveIntegerField(null=True, blank=True)
     content_object = GenericForeignKey('content_type', 'object_id')
 
+
     def get_parents_list(self, elems=None):
         """Get names of the parents in a recursive way.
                 
@@ -136,7 +137,17 @@ class VeggieSailorEntry(models.Model):
     level = models.IntegerField(choices = VEG_LEVEL_CHOICES,default=0)
     price = models.IntegerField(choices = PRICE_CHOICES,default=0)
     
+    rating = models.FloatField(default="0.0", null=False)
+    rating_count = models.IntegerField(default=0, null=False)
     
+
+    def get_rating_lists(self):
+        full = int(self.rating)
+        half = 1 if self.rating-int(self.rating)>0 else 0
+        empty = 5 - half - full
+        return (range(full), range(half), range(empty))
+        
+        
     
     
     def __unicode__(self):
@@ -167,7 +178,7 @@ class VeggieSailorEntry(models.Model):
     def get_boolean_verbose(self, field):
         
         value = self.__getattribute__(field)
-        print (field,value)
+        #print (field,value)
         
         
         if value is None:

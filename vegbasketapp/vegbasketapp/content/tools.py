@@ -54,7 +54,7 @@ def convert_region(region_id):
     
     if 'parent' in region.obj and 'uri' in region.obj['parent']:
         parent_id = get_region_id(region.obj['parent']['uri'])
-        print ("has parent", region_id, parent_id)
+        #print ("has parent", region_id, parent_id)
         vs_region_parent = convert_region(parent_id)
         vs_region.parent = vs_region_parent
         vs_region.save()
@@ -70,10 +70,10 @@ def convert_region_down(region_id, global_list=[]):
     """
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
-    print ("current region ", region_id, global_list)
+    #print ("current region ", region_id, global_list)
     
     if region_id  in global_list:
-        print ("Leaving", region_id)
+        #print ("Leaving", region_id)
         return None
         
     vs_region = convert_region(region_id)
@@ -84,13 +84,13 @@ def convert_region_down(region_id, global_list=[]):
         region = Region.objects.get(source_id=region_id)
     except Region.DoesNotExist:
         region = get_region_by_id(region_id)
-    print (region)
+    #print (region)
     
     children = region.get_children()
-    print (region_id, children)    
+    #print (region_id, children)    
     
     for child in children:
-        print ("doing child", child)
+        #print ("doing child", child)
         convert_region_down(int(child), global_list)
   
     return (region, vs_region)
@@ -104,7 +104,7 @@ def convert_entry(entry_id):
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
     vg_entry = get_entry_by_id(entry_id)    
     vg_region = vg_entry.region
-    print ("Region", vg_region.source_id)
+    #print ("Region", vg_region.source_id)
       
     try:
         vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=vg_entry.id)
@@ -124,6 +124,8 @@ def convert_entry(entry_id):
     vs_entry.address2 = vg_entry.get_elem('address2')
     vs_entry.vg_object_id = vg_entry.source_id
 
+    vs_entry.rating = float(vg_entry.get_elem('weighted_rating', '0.0'))
+    vs_entry.rating_count = int(vg_entry.get_elem('rating_count', '0'))
 
     vs_entry.level = int(vg_entry.get_elem('veg_level',0))
     
@@ -140,7 +142,7 @@ def convert_entry(entry_id):
         
     vs_entry.price = price
     
-    print (vg_entry.source_id, price, price_range)
+    #print (vg_entry.source_id, price, price_range)
 
     # List of images to download
     image_urls = []
@@ -211,7 +213,7 @@ def convert_entry(entry_id):
 
         
     payments = vg_entry.get_elem('payment_options',[])    
-    print ("payments",payments)
+    #print ("payments",payments)
     vs_payments = []
     for payment in payments:
         vs_payment, created = VeggieSailorPayment.objects.get_or_create(name=payment)
@@ -240,14 +242,14 @@ def convert_entry(entry_id):
         #VeggieSailorImage.objects.filter(entry=vs_entry).delete()
         
         images_list = [x for x in vg_entry.get_elem('images',[]) ]
-        print ("images", images_list)
+        #print ("images", images_list)
         # http://stackoverflow.com/questions/16174022/download-a-remote-image-and-save-it-to-a-django-model
         for image_elem in images_list:
             # Steam the image from the url
             try:
                 title = image_elem['caption']
                 for image_file in image_elem['files']:
-                    print (image_file)                
+                    #print (image_file)                
                     image_url = image_file['uri']
                     new_name = md5(image_url.encode('utf-8')).hexdigest()            
                     request = requests.get(image_url, stream=True)            
@@ -292,7 +294,7 @@ def convert_entry(entry_id):
                         print ("Error with the picture", vg_entry.source_id)
             except KeyError:
                 pass
-    print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
+    #print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
     return vs_entry
       
 def get_entry_by_vg_id(entry_id):

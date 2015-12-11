@@ -10,7 +10,7 @@ def entry_map(request, entry_id):
 	cords['c2lng'] = cords['lng']-0.01
 	cords['c1lat'] = cords['lat']+0.01
 	cords['c2lat'] = cords['lat']-0.01
-	return render(request, "entry_map.html", {'cords':cords})
+	return render(request, "entry_map.html", {'cords':cords, 'name':entry.get_elem('name')})
 
 def entry(request, entry_id):
 	force = request.GET.get('force', False)

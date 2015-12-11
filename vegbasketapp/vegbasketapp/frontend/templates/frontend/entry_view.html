@@ -15,13 +15,18 @@
         <div class="row" >
             <div class="medium-4 large-2 col-sm-4 columns ">
                 <ul class="inline-list">
+                {% for i in entry.get_rating_lists.0 %}
                     <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
-                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
-                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
-                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
-                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
+                {% endfor %}
+                {% for i in entry.get_rating_lists.1 %}
+                    <li><img src="{% static "frontend/img/leaf_05.png" %}" /></li>
+                {% endfor %} 
+                {% for i in entry.get_rating_lists.2 %}
+                    <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
+                {% endfor %}             
                 </ul>
-                <h2>4.3 / 1 Vote</h2>
+                </ul>
+                <h2> {{ entry.rating }} / {{ entry.rating_count }} Vote</h2>
                 <span class="warning label">Prices - {{ entry.get_price_display }}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
