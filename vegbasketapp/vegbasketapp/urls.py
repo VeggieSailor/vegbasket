@@ -26,7 +26,6 @@ class MySearchView(SearchView):
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^frontend/', include('vegbasketapp.frontend.urls')),
     url(r'^e404$', 'vegbasketapp.home.views.handler404'),
     url(r'^e500$', 'vegbasketapp.home.views.handler500'),
     url(r'^transformer/entry/(?P<entry_id>\d*)/reviews$', 'vegbasketapp.transformer.views.entry_reviews', name='reviews'),
@@ -41,7 +40,8 @@ urlpatterns = patterns('',
   url(r'^search/', include('haystack.urls')),
     #url(r'^search/?$', MySearchView.as_view(), name='haystack_search'),
     
-    url('^', include('django.contrib.auth.urls'))
+    url('^', include('django.contrib.auth.urls')),
+    url(r'^/*', include('vegbasketapp.frontend.urls')),
     
 )
 
