@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^e/vg/(?P<entry_id>.*)$', 'vegbasketapp.frontend.views.entry_vg', name='entry_vg'),
     url(r'^e/vs/(?P<entry_id>.*)$', 'vegbasketapp.frontend.views.entry_vs', name='entry_vs'),
     
-
+    url(r'^(?P<slug>[\w-]+)/$', 'vegbasketapp.frontend.views.entry_slug', name='entry_slug'),
     
 )
 

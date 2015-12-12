@@ -11,6 +11,9 @@ from vegbasketapp.transformer.models import Region, Entry
 from vegbasketapp.transformer.tools_entry import get_region_by_id, get_entry_by_id
 from django.contrib.contenttypes.models import ContentType
 from django.db.utils import DataError
+from pytils.translit import slugify
+from unidecode import unidecode
+
 def get_region_id(url):
     """Extract id of the region.
     
@@ -19,7 +22,7 @@ def get_region_id(url):
 
 def convert_region(region_id):
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
     """Convert single region and it's parent.
     
     Notes
@@ -117,6 +120,7 @@ def convert_entry(entry_id):
         vs_region = convert_region(vg_region.source_id)
         
     vs_entry.name = vg_entry.get_name()
+    
     vs_entry.region =  vs_region
     vs_entry.short_description = vg_entry.get_short_description()
     vs_entry.city = vg_entry.get_elem('city')
@@ -295,6 +299,8 @@ def convert_entry(entry_id):
             except KeyError:
                 pass
     #print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
+    vs_entry.slug = '%s-%s' % (slugify(unidecode(vs_entry.name))[0:44] , vs_entry.id)
+    vs_entry.save()
     return vs_entry
       
 def get_entry_by_vg_id(entry_id):
@@ -318,3 +324,8 @@ def get_vs_entry_by_id(entry_id)        :
     return entry
         
         
+def get_entry_by_slug(entry_slug):
+    """Get entry by slug.
+    """
+    entry = VeggieSailorEntry.objects.get(slug=entry_slug)
+    return entry

@@ -24,12 +24,12 @@ class Command(BaseCommand):
         
             
         for entry in entries:
-            print (entry.source_id)
+            #print (entry.source_id)
             try:
                 convert_entry(entry.source_id)
                 if entry.get_elem("images"):
-                    print ("Had images, wait...")
-                    if settings.DEBUG==False:
+                    #print ("Had images, wait...")
+                    if settings.DEBUG==False and False:
                         sleep_random(2,5)
             except KeyError:
                 print ("ERROR with", entry.source_id)

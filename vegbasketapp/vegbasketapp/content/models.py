@@ -5,7 +5,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 
 from django.core.urlresolvers import reverse
-
+from autoslug import AutoSlugField
 VEG_LEVEL_CHOICES = (
     (0, 'Not Veg-Friendly'),
     (1, 'Vegetarian-Friendly'),
@@ -107,6 +107,7 @@ class VeggieSailorEntry(models.Model):
     """Main Veggie Sailor Entry.
     """    
     name = models.CharField(max_length=512, default="")
+    slug = models.SlugField()
     short_description = models.CharField(max_length=512, default="")
     description = models.TextField(default="")
     address1 = models.CharField(max_length=256, default="")
@@ -198,7 +199,8 @@ class VeggieSailorEntry(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            
+        return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
+        #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
