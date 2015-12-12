@@ -25,6 +25,7 @@ class MySearchView(SearchView):
 
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
+    url(r'opensource$', 'vegbasketapp.home.views.opensource', name='opensource'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^e404$', 'vegbasketapp.home.views.handler404'),
     url(r'^e500$', 'vegbasketapp.home.views.handler500'),
@@ -37,7 +38,7 @@ urlpatterns = patterns('',
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
-  url(r'^search/', include('haystack.urls')),
+    url(r'^search/', include('haystack.urls')),
     #url(r'^search/?$', MySearchView.as_view(), name='haystack_search'),
     
     url('^', include('django.contrib.auth.urls')),
