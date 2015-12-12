@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from vegbasketapp.transformer.tools_entry import get_entry_by_id, \
 	get_reviews_by_entry_id, get_region_by_id, get_entry_geo

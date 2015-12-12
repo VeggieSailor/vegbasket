@@ -13,3 +13,6 @@ django-dia
 django-haystack==2.4.1
 elasticsearch==2.1.0
 django-meta==0.3.1
+django-autoslug==1.9.3
+pytils==0.3
+Unidecode==0.4.18

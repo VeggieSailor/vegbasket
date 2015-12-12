@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id
 
@@ -44,8 +44,9 @@ def entry_vg(request, entry_id):
     """
     vs_entry = get_entry_by_vg_id(entry_id)
     meta = get_meta_entry(request, vs_entry)
-    return render(request, 'frontend/entry_view.html',
-                  {'entry':vs_entry,'meta':meta})
+    return redirect(vs_entry)
+    #return render(request, 'frontend/entry_view.html',
+                  #{'entry':vs_entry,'meta':meta})
 
 def entry_vs(request, entry_id):
     """Entry by vegguide id.
