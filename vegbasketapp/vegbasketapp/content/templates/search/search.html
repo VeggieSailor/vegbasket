@@ -1,20 +1,24 @@
 {% extends "frontend/base.html" %}{% load staticfiles %}
 {% block meta %}
 
-<meta name="description" content="Veggie Sailor search results - {{ query }}">
+<meta name="description" content="{{ query }} - search results.">
 <meta name="keywords" content="{{ query }}, vegeterian, vegan, bar, restaurant">
 <meta property="og:title" content="Welcome to Veggie Sailor">
 <meta property="og:url" content="https://veggiesailor.com/search/?q={{ query }}">
-<meta property="og:description" content="Veggie Sailor search results - {{ query }}">
+<meta property="og:description" content="{{ query }} - search results.">
 <meta property="og:image" content="https://veggiesailor.com/static/frontend/img/logo.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Veggie Sailor">
 <meta name="twitter:title" content="Welcome to Veggie Sailor">
 <meta name="twitter:url" content="https://veggiesailor.com/search/?q={{ query }}">
-<meta name="twitter:description" content="Veggie Sailor search results - {{ query }}">
+<meta name="twitter:description" content="{{ query }} - search results.">
 <meta name="twitter:image" content="https://veggiesailor.com/static/frontend/img/logo.png">
 <meta name="twitter:site" content="@veggiesailor">
 <meta name="twitter:card" content="summary">
+<meta itemprop="name" content="Welcome to Veggie Sailor">
+<meta itemprop="url" content="https://veggiesailor.com/search/?q={{ query }}">
+<meta itemprop="description" content="{{ query }} - search results.">
+<meta itemprop="image" content="https://veggiesailor.com/static/frontend/img/logo.png">
 {% endblock meta %}
 {% block base_body_content %}
     <!--<h2>Search</h2>-->
