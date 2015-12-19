@@ -13,5 +13,6 @@ def get_vsmeta():
         twitter_card='summary',
         use_og=True,
         user_twitter=True,
+        use_googleplus=True,
     )
     return vsmeta
