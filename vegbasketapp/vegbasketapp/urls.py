@@ -5,11 +5,7 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from datetime import date
 from meta.views import Meta
-
-
 from haystack.generic_views import SearchView
-from django.conf.urls import include, patterns, url
-
 
 class MySearchView(SearchView):
     
