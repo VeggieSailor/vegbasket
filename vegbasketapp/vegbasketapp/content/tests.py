@@ -6,6 +6,8 @@ from vegbasketapp.content.tools import get_entry_by_vg_id
 
 from vegbasketapp.content.tools import convert_region
 from vegbasketapp.content.models import VeggieSailorRegion
+from django.core.urlresolvers import reverse
+from django.test import Client
 
 
 class ToolsTestCase(TestCase):
@@ -18,9 +20,7 @@ class ToolsTestCase(TestCase):
         vs_region = convert_region(52)
         region.set_obj()
         self.assertEqual(region.obj['name'], 'Europe')
-        self.assertEqual(region.obj['name'], vs_region.name)
-        
-    
+        self.assertEqual(region.obj['name'], vs_region.name)    
     
     def test_entry_attributes(self):
         """Perform various test on the entry.
@@ -33,5 +33,16 @@ class ToolsTestCase(TestCase):
         
         
 
-
+        
+class SearchTest(TestCase):
+    """Tests for the entries.
+    
+    """
+    def test_basic_search(self):
+        """Test static example entry view.
+        
+        """
+        c = Client()
+        r = c.get(reverse('search_view',args=('barcelona')))
+        self.assertEqual(r.content.decode('utf-8').find('barcelona')>-1,True)
 
