@@ -43,6 +43,6 @@ class SearchTest(TestCase):
         
         """
         c = Client()
-        r = c.get(reverse('search_view',args=('barcelona')))
-        self.assertEqual(r.content.decode('utf-8').find('barcelona')>-1,True)
+        r = c.get(reverse('search_view'))
+        self.assertEqual(r.content.decode('utf-8').find('Veggie Sailor')>-1,True)
 
