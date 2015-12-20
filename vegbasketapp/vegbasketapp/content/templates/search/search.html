@@ -48,7 +48,7 @@
 
         
         <div class="medium-4 large-2 columns " style="padding:0px;">
-                    <span class=" level{{ result.object.level }}-color label" style="border: solid 2px #9c3"><h5 style="color:white;font-size:1.5em">{{ result.object.get_level_display }}</h5></span>
+                    <span class=" level{{ result.object.level }}-color level-label-class" >{{ result.object.get_level_display }}</span>
 
                 {% if result.object.get_images_533_400.0.photo %}
                           <a href="{{ result.object.get_absolute_url }}"> <span> </span><img style="padding:0px; border: solid 0px #9c3" src="{{ MEDIA_URL }}{{ result.object.get_images_533_400.0.photo }}" alt="book cover" class="thumbnail"></a>
