@@ -64,16 +64,17 @@ def convert_region(region_id):
   
     return vs_region
 
-def convert_region_down(region_id, global_list=[]):
+def convert_region_down(region_id, global_list_tmp=()):
     """Convert region.
 
     Parameters
     ----------
     region_id
     """
+    
+    global_list = list(global_list_tmp)
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
-    #print ("current region ", region_id, global_list)
     
     if region_id  in global_list:
         #print ("Leaving", region_id)
