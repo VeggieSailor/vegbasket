@@ -17,7 +17,6 @@ from vegbasketapp.content.tools import convert_region
 from vegbasketapp.content.models import VeggieSailorRegion
 from django.core.urlresolvers import reverse
 
-from vegbasketapp.content.models import VeggieSailorRegion
 from django.core import serializers
 from vegbasketapp.content.models import *
 
