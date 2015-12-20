@@ -298,7 +298,7 @@ def convert_entry(entry_id):
                     except DataError:
                         print ("Error with the picture", vg_entry.source_id)
             except KeyError:
-                print ("KeyError", vg_entry.source_id))
+                print ("KeyError", vg_entry.source_id)
     #print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
     vs_entry.slug = '%s-%s' % (slugify(unidecode(vs_entry.name))[0:44] , vs_entry.id)
     vs_entry.save()
