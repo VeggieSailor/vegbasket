@@ -25,6 +25,7 @@ def fetch_region(source_id, force=False):
     region, created = Region.objects.update_or_create(source_id=source_id,
         defaults={'results_source':vgo.results_json, 
         'modified_source':timezone.now()})
+    print ("DEBUG vg region created %s source_id %s" % (created, source_id))
     # region = Region(source_id=source_id)
 
     
@@ -64,6 +65,8 @@ def fetch_entry(source_id, force=False):
     entry, created = Entry.objects.update_or_create(source_id=source_id,
         defaults={'region':region, 'results_source':vgo.results_json,
         'modified_source':timezone.now()})
+    print ("DEBUG vg entry created %s source_id %s" % (created, source_id))
+    
     entry.save()
     return entry
 

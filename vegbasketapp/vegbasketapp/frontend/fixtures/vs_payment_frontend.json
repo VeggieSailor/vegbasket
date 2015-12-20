@@ -1,0 +1,1 @@
+[{"fields": {"name": "MasterCard"}, "model": "content.veggiesailorpayment", "pk": 1}, {"fields": {"name": "Visa"}, "model": "content.veggiesailorpayment", "pk": 2}]

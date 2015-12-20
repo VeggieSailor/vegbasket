@@ -256,6 +256,7 @@ def convert_entry(entry_id):
                 for image_file in image_elem['files']:
                     #print (image_file)                
                     image_url = image_file['uri']
+                    print ("MAKING IMAGE REQUEST %s", image_url)
                     new_name = md5(image_url.encode('utf-8')).hexdigest()            
                     request = requests.get(image_url, stream=True)            
                     width = image_file['width']
