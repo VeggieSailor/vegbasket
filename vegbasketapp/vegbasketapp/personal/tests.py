@@ -18,6 +18,8 @@ from social.tests.backends.open_id import OpenIdTest, OpenIdConnectTestMixin
 
 # Test take from: https://github.com/omab/python-social-auth/blob/master/social/tests/backends/test_google.py
 class GoogleOAuth2Test(OAuth2Test):
+    """Basic Google login test.
+    """
     backend_path = 'social.backends.google.GoogleOAuth2'
     user_data_url = 'https://www.googleapis.com/plus/v1/people/me'
     expected_username = 'foo'
@@ -80,12 +82,18 @@ class GoogleOAuth2Test(OAuth2Test):
     })
 
     def test_login(self):
+        """Do the login.
+        """
         self.do_login()
 
     def test_partial_pipeline(self):
+        """Do the partial pipeline.
+        """
         self.do_partial_pipeline()
 
     def test_with_unique_user_id(self):
+        """Login with the unique user_id.
+        """
         self.strategy.set_settings({
             'SOCIAL_AUTH_GOOGLE_OAUTH2_USE_UNIQUE_USER_ID': True,
         })

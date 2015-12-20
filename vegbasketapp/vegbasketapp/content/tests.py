@@ -7,7 +7,6 @@ from vegbasketapp.content.tools import get_entry_by_vg_id
 from vegbasketapp.content.tools import convert_region
 from vegbasketapp.content.models import VeggieSailorRegion
 from django.core.urlresolvers import reverse
-from django.test import Client
 
 
 class ToolsTestCase(TestCase):
