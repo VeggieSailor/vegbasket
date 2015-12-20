@@ -8,20 +8,23 @@ from meta.views import Meta
 
 
 from haystack.generic_views import SearchView
+from django.conf.urls import include, patterns, url
+
 
 class MySearchView(SearchView):
-
+    
     def get_queryset(self):
         queryset = super(MySearchView, self).get_queryset()
-        # further filter queryset based on some set of criteria
-        return queryset
+        #if settings.DEBUG: from ipdb import set_trace; set_trace()
+        return queryset.order_by('-photos', '-level', '-rating')
     
-    def get_context_data(self, *args, **kwargs):
-        context = super(MySearchView, self).get_context_data(*args, **kwargs)
+    #def get_context_data(self, *args, **kwargs):
+        #context = super(MySearchView, self).get_context_data(*args, **kwargs)
         
-        context['meta'] = Meta(title="Search result...")  
-        context['test'] = 'aero'
-        return context
+        #context['meta'] = Meta(title="Search result...")  
+        #context['test'] = 'aero'
+        #return context
+
 
 urlpatterns = patterns('',
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
@@ -38,16 +41,22 @@ urlpatterns = patterns('',
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
-    url(r'^search/', include('haystack.urls')),
-    #url(r'^search/?$', MySearchView.as_view(), name='haystack_search'),
+    #url(r'^search/', include('haystack.urls')),
+    url(r'^search/?$', MySearchView.as_view(), name='search_view'),
     
-    url('^', include('django.contrib.auth.urls')),
+    #url('^', include('django.contrib.auth.urls')),
     url(r'^/*', include('vegbasketapp.frontend.urls')),
     
 )
 
 urlpatterns += patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns += patterns('',
+        url(r'^__debug__/', include(debug_toolbar.urls)),
     )
 
 # handler404 = 'vegbasketapp.home.views.handler404'

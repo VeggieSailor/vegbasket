@@ -8,6 +8,9 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
     
     """
     text = indexes.CharField(document=True, use_template=True)
+    level = indexes.IntegerField(model_attr='level')
+    photos = indexes.IntegerField()
+    rating = indexes.FloatField(model_attr='rating')
 
     def get_model(self):
         """Get the model.
@@ -20,3 +23,7 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
         
         """
         return self.get_model().objects.all()
+    
+    def prepare_photos(self, obj):
+        return int(obj.veggiesailorimage_set.count())
+        
