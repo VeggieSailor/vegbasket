@@ -43,15 +43,17 @@
         </div>
             {% for result in object_list %}
             
-            a
-<div class="row" >
+            
+<div class="result-panel row" >
 
         
-        <div class="medium-4 large-2 columns ">
-                {% if result.object.get_images_height_400.0.photo %}
-                          <a href="#"> <span> </span><img style="border: solid 2px #9c3" src="{{ MEDIA_URL }}{{ result.object.get_images_height_400.0.photo }}" alt="book cover" class=" thumbnail "></a>
+        <div class="medium-4 large-2 columns " style="padding:0px;">
+                    <span class=" level{{ result.object.level }}-color label" style="border: solid 2px #9c3"><h5 style="color:white;font-size:1.5em">{{ result.object.get_level_display }}</h5></span>
+
+                {% if result.object.get_images_533_400.0.photo %}
+                          <a href="{{ result.object.get_absolute_url }}"> <span> </span><img style="padding:0px; border: solid 0px #9c3" src="{{ MEDIA_URL }}{{ result.object.get_images_533_400.0.photo }}" alt="book cover" class="thumbnail"></a>
                 {% else %}
-          <a href="#"> <span> </span><img style="border: solid 2px #000" src="{% static "images/no_photo.png" %}" alt="no photo" class=" show-for-medium-up thumbnail"></a>
+          <a href="{{ result.object.get_absolute_url }}"> <span> </span><img style="border: solid 2px #000" src="{% static "images/no_photo.png" %}" alt="no photo" class=""></a>
 {% endif %}
         </div>
 
@@ -59,34 +61,47 @@
 
           <div class="row">
 
-            <div class=" large-9 columns">
-                <h5 class="black right">{{ result.object.region.get_parents_list|join:", " }}</h5>
+            <div class=" large-8 columns">
                 <h3>                    <a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a></h3>
-              
+                <h5>{{ result.object.address1 }}{% if result.object.address2 %}, {{ result.object.address2 }}, {% endif %}, {{ result.object.city}}  {{ result.object.zipcode }}</h5>
+
+                              <p class="black">{% if result.object.short_description %}{{ result.object.short_description|striptags|safe }}{% else %}No description.{% endif %}</p>
+                                    <h6 class="black">Cuisines: {% if result.object.cuisines.all %}{{ result.object.cuisines.all|join:", " }}{% else %}Unknown{% endif %}</h6>
+
 
               <!--<p><a href="#"> Info</a> | <a href="#">Buy this book</a></p>-->
-
             </div>
 
-            <div class=" large-3 columns">
+            <div class=" large-4 columns">
+                            <h6 class="black">{{ result.object.region.get_parents_list|join:", " }}</h6>
 
               <!--<a href="#"  class="button  expand medium"><span>Open Book</span> </a>-->
 
               <!--<a href="#"  class="button  expand medium"><span>Add to List</span></a> -->
+              
+            <ul class="inline-list">
+                {% for i in result.object.get_rating_lists.0 %}
+                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
+                {% endfor %}
+                {% for i in result.object.get_rating_lists.1 %}
+                    <li><img src="{% static "frontend/img/leaf_05.png" %}" /></li>
+                {% endfor %} 
+                {% for i in result.object.get_rating_lists.2 %}
+                    <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
+                {% endfor %}             
+                </ul>              
+              
+                    <a href="{{ result.object.get_absolute_url }}" class="button info radius" style="color: black"><strong>Sail there</strong></a></br>
+                                          <strong>Price level: </strong>{{ result.object.get_price_display }}
+
+
 
             </div>
 
             <div class="row" >
 
-              <div class=" large-12 columns" >
+              <div class=" large-12 columns " >
 
-                <ul class="large-block-grid-2">
-
-                  <li>
-
-                    <ul>
-
-                      <li class="black"><strong>Veggie level: </strong>{{ result.object.get_level_display }}</li>
 
                       <!--<li><strong>Published:</strong> 2008</li>-->
 
@@ -94,14 +109,7 @@
 
                       <!--<li><strong>More cat stuff: </strong> cats cats cats</li>-->
 
-                    </ul>
 
-                  </li>
-
-                  <li>
-
-                    <ul>
-                      <li class="black"><strong>Price level: </strong>{{ result.object.get_price_display }}</li>
 
                       <!--<li><strong>Wow cats:</strong> so wow</li>-->
 
@@ -109,16 +117,12 @@
 
                       <!--<li><strong>Series:</strong> all the cats</li>-->
 
-                    </ul>
-
-                  </li>
-
-                </ul>
-
-                <p class="black">{% if result.object.description %}{{ result.object.description|striptags|safe }}{% else %}No description.{% endif %}</p>
+                    
 
 
-                <h6 class="black">Cuisines: {% if result.object.cuisines.all %}{{ result.object.cuisines.all|join:", " }}{% else %}Unknown{% endif %}</h6>
+
+
+
               </div>
 
             </div>
@@ -127,7 +131,7 @@
 
         </div>
 
-       <hr/>
+       <!--<hr/>-->
 
       </div>
              
