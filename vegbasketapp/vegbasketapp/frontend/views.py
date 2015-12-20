@@ -21,6 +21,8 @@ def entry_example(request):
 
 
 def get_meta_entry(request, vs_entry):
+    """Get the meta enhanced by entry's context.
+    """
     meta = get_vsmeta()
     meta.title = vs_entry.name
     
@@ -40,11 +42,10 @@ def get_meta_entry(request, vs_entry):
 
 
 def entry_slug(request, slug):
+    """Entry by the slug.
+    """
     vs_entry = get_entry_by_slug(slug)
     meta = get_meta_entry(request, vs_entry)
-        
-        
-    
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta})    
     
@@ -64,15 +65,7 @@ def entry_vs(request, entry_id):
     
     """
     
-    
-    
-    
     vs_entry = get_vs_entry_by_id(entry_id)
-    
-
     meta = get_meta_entry(request, vs_entry)
-        
-        
-    
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta})

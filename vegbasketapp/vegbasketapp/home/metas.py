@@ -1,7 +1,8 @@
 from meta.views import Meta
 
-
 def get_vsmeta():
+    """Get Veggie Sailor meta.
+    """
     vsmeta = Meta(
         title="Welcome to Veggie Sailor",
         description='Vegetarian Vegan Open Data Platform',

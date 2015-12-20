@@ -23,6 +23,8 @@ from django.contrib.auth.models import User
         #model = User
     
 class UsernameSetupForm(forms.ModelForm):
+    """Form to setup an username.
+    """
     username = forms.CharField(label='Username', max_length=30)
     def clean_username(self):
         username = self.cleaned_data['username']

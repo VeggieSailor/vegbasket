@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
+    """Basic user profile model.
+    """
     user = models.OneToOneField(User)
     accepted_tos = models.BooleanField(default=False)
     first_time = models.BooleanField(default=True)

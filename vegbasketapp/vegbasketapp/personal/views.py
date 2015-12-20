@@ -6,13 +6,15 @@ from vegbasketapp.personal.forms import UsernameSetupForm
 
 
 def check_user_first_time(user):
+    """First time predicate.
+    """
     return user.userprofile.first_time
-
-
 
 @login_required
 @user_passes_test(check_user_first_time, '/p/', None)
 def accounts_setup(request):
+    """Configure the first time account.
+    """
     if request.method == 'POST':
         form = UsernameSetupForm(request.POST, instance=request.user)
         if form.is_valid():
@@ -29,5 +31,7 @@ def accounts_setup(request):
 
 @login_required
 def personal(request):
+    """Personal page after login view.
+    """
     return render(request, "personal.html")
     
