@@ -74,8 +74,11 @@
             </div>
 
             <div class=" large-4 columns">
-                            <h6 class="black">{{ result.object.region.get_parents_list|join:", " }}</h6>
-
+            
+                            
+                    {% for obj in result.object.region.get_parents_list  %}              
+                    <a href="/search/?q={{ obj }}" style="color:black; font-weight:900">{{ obj }}</a>{% if not forloop.last %},{% endif %}
+                    {% endfor %}  
               <!--<a href="#"  class="button  expand medium"><span>Open Book</span> </a>-->
 
               <!--<a href="#"  class="button  expand medium"><span>Add to List</span></a> -->
