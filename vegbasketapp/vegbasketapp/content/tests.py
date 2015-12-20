@@ -26,6 +26,8 @@ class ToolsTestCase(TestCase):
         """Perform various test on the entry.
         """
         entry = get_entry_by_vg_id(20704)
+        entry.get_images_600_400()
+        self.assertIn('Barcelona', entry.region.__str__())
         self.assertIn('Villa', entry.__unicode__())
         self.assertIn('Villa', entry.__str__())
         
