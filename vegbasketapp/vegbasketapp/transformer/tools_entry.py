@@ -71,7 +71,9 @@ def fetch_entry(source_id, force=False):
     return entry
 
 def get_entry_by_id(source_id, force=False):
-    if force or Entry.objects.filter(source_id=source_id,
+    if force is False:
+        entry = Entry.objects.get(source_id=source_id)
+    elif force or Entry.objects.filter(source_id=source_id,
                                      modified__gte=datetime.datetime.now()-datetime.timedelta(
                                          days=settings.DEFALT_EXPIRE_TIME)).count()==0:
         entry = fetch_entry(source_id)
