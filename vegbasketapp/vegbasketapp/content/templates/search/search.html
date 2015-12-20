@@ -6,19 +6,20 @@
 <meta property="og:title" content="Welcome to Veggie Sailor">
 <meta property="og:url" content="https://veggiesailor.com/search/?q={{ query }}">
 <meta property="og:description" content="{{ query }} - search results.">
-<meta property="og:image" content="https://veggiesailor.com/static/frontend/img/logo.png">
+
+<meta property="og:image" content="{% if object_list.0.object.get_images_533_400.0.photo %}https://veggiesailor.com/media/{{ object_list.0.object.get_images_533_400.0.photo }}{% else %}https://veggiesailor.com/static/frontend/img/logo.png{% endif %}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Veggie Sailor">
 <meta name="twitter:title" content="Welcome to Veggie Sailor">
 <meta name="twitter:url" content="https://veggiesailor.com/search/?q={{ query }}">
 <meta name="twitter:description" content="{{ query }} - search results.">
-<meta name="twitter:image" content="https://veggiesailor.com/static/frontend/img/logo.png">
+<meta name="twitter:image" content="{% if object_list.0.object.get_images_533_400.0.photo %}https://veggiesailor.com/media/{{ object_list.0.object.get_images_533_400.0.photo }}{% else %}https://veggiesailor.com/static/frontend/img/logo.png{% endif %}">
 <meta name="twitter:site" content="@veggiesailor">
 <meta name="twitter:card" content="summary">
 <meta itemprop="name" content="Welcome to Veggie Sailor">
 <meta itemprop="url" content="https://veggiesailor.com/search/?q={{ query }}">
 <meta itemprop="description" content="{{ query }} - search results.">
-<meta itemprop="image" content="https://veggiesailor.com/static/frontend/img/logo.png">
+<meta itemprop="image" content="{% if object_list.0.object.get_images_533_400.0.photo %}https://veggiesailor.com/media/{{ object_list.0.object.get_images_533_400.0.photo }}{% else %}https://veggiesailor.com/static/frontend/img/logo.png{% endif %}">
 {% endblock meta %}
 {% block base_body_content %}
     <!--<h2>Search</h2>-->
@@ -48,7 +49,7 @@
 
 
         <div class="medium-4 large-2 columns " style="padding:0px;">
-<span class=" level{{ result.object.level }}-color level-label-class" style="position:absolute;left:-22px;top:-22px">{{ result.object.get_level_display }}</span>                                        
+<span class=" level{{ result.object.level }}-color level-label-class" style="position:absolute;left:-22px;top:-22px ">{{ result.object.get_level_display }}</span>                                        
 
                 {% if result.object.get_images_533_400.0.photo %}
                           <a href="{{ result.object.get_absolute_url }}"> <span> </span><img style="padding:0px; border: solid 0px #9c3" src="{{ MEDIA_URL }}{{ result.object.get_images_533_400.0.photo }}" alt="book cover" class="thumbnail"></a>
