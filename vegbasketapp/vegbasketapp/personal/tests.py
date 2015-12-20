@@ -94,3 +94,42 @@ class GoogleOAuth2Test(OAuth2Test):
             'SOCIAL_AUTH_GOOGLE_OAUTH2_USE_UNIQUE_USER_ID': True,
         })
         self.do_login()
+import json
+
+from social.exceptions import AuthUnknownError
+
+from social.tests.backends.oauth import OAuth2Test
+
+
+# https://github.com/omab/python-social-auth/blob/master/social/tests/backends/test_facebook.py
+class FacebookOAuth2Test(OAuth2Test):
+    """Basic Facebook test.
+    """
+    backend_path = 'social.backends.facebook.FacebookOAuth2'
+    user_data_url = 'https://graph.facebook.com/v2.3/me'
+    expected_username = 'foobar'
+    access_token_body = json.dumps({
+        'access_token': 'foobar',
+        'token_type': 'bearer'
+    })
+    user_data_body = json.dumps({
+        'username': 'foobar',
+        'first_name': 'Foo',
+        'last_name': 'Bar',
+        'verified': True,
+        'name': 'Foo Bar',
+        'gender': 'male',
+        'updated_time': '2013-02-13T14:59:42+0000',
+        'link': 'http://www.facebook.com/foobar',
+        'id': '110011001100010'
+    })
+
+    def test_login(self):
+        """Do the login.
+        """
+        self.do_login()
+
+    def test_partial_pipeline(self):
+        """Do the partia pipeline.
+        """
+        self.do_partial_pipeline()
