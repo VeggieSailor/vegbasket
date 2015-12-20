@@ -30,5 +30,7 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
         return self.get_model().objects.all()
     
     def prepare_photos(self, obj):
+        """Count number of the images for the entry.
+        """
         return int(obj.veggiesailorimage_set.count())
         

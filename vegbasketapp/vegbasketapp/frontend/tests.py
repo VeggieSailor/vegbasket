@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.test import Client
+from django.core.urlresolvers import reverse
 
 class EntryTest(TestCase):
     """Tests for the entries.
@@ -10,7 +11,7 @@ class EntryTest(TestCase):
         
         """
         c = Client()
-        r = c.get('/frontend/entry_example/')
+        r = c.get(reverse('entry_example'))
         self.assertEqual(r.content.decode('utf-8').find('Hotel')>-1,True)
         
     def test_view_flax(self):
@@ -18,7 +19,8 @@ class EntryTest(TestCase):
                 
         """        
         c = Client()
-        r = c.get('/frontend/e/vg/20647')
+        r = c.get(reverse('entry_vg',args=('20647',)), follow=True)
+        self.assertEqual(r.status_code,200)
         self.assertEqual(r.content.decode('utf-8').find('Flax')>-1,True)        
 
     def test_view_other_enjoy(self):
@@ -26,7 +28,7 @@ class EntryTest(TestCase):
                 
         """        
         c = Client()
-        r = c.get('/frontend/e/vg/20703')
+        r = c.get(reverse('entry_vg',args=('20703',)), follow=True)
         self.assertEqual(r.content.decode('utf-8').find('Other')>-1,True)     
         
         
@@ -35,7 +37,7 @@ class EntryTest(TestCase):
                 
         """        
         c = Client()
-        r = c.get('/frontend/e/vg/20704')
+        r = c.get(reverse('entry_vg',args=('20704',)), follow=True)
         self.assertEqual(r.content.decode('utf-8').find('African')>-1,True)            
 
     
