@@ -11,7 +11,12 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
     level = indexes.IntegerField(model_attr='level')
     photos = indexes.IntegerField()
     rating = indexes.FloatField(model_attr='rating')
+    mod_date = indexes.DateTimeField(model_attr='modified')
 
+
+    def get_updated_field(self):
+        return 'modified'
+    
     def get_model(self):
         """Get the model.
         
