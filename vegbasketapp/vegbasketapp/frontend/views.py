@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-
 from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
-
 from vegbasketapp.home.metas import get_vsmeta
 
 # Create your views here.
@@ -19,7 +17,6 @@ def entry_example(request):
     return render(request, 'frontend/entry_example.html')
 
 
-
 def get_meta_entry(request, vs_entry):
     """Get the meta enhanced by entry's context.
     """
@@ -30,13 +27,11 @@ def get_meta_entry(request, vs_entry):
     meta.keywords = [ x.name for x in vs_entry.tags.all() ] + [ x.name for x in vs_entry.cuisines.all() ]
     meta.object_type = 'restaurant.restaurant'
     
-    
     meta.url = request.build_absolute_uri(vs_entry.get_absolute_url())     
     if len(vs_entry.get_images_height_400())>0:
         meta.image = request.build_absolute_uri(vs_entry.get_images_height_400()[0].photo.url)           
     elif len(vs_entry.get_images_height_348())>0:
         meta.image = request.build_absolute_uri(vs_entry.get_images_height_348()[0].photo.url)           
-
     return meta
     
 

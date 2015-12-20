@@ -8,7 +8,11 @@ from vegbasketapp.content.models import VeggieSailorRegion
 
 
 class ToolsTestCase(TestCase):
+    """Main class for the tools tests.
+    """
     def test_convert_region_by_id(self):
+        """Test convert region by id.
+        """
         region = get_region_by_id(52)
         vs_region = convert_region(52)
         region.set_obj()
