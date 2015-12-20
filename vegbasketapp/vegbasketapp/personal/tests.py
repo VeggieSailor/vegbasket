@@ -10,6 +10,7 @@ from social.actions import do_disconnect
 from social.tests.models import User
 from social.tests.backends.oauth import OAuth1Test, OAuth2Test
 from social.tests.backends.open_id import OpenIdTest, OpenIdConnectTestMixin
+from social.exceptions import AuthUnknownError
 
 
 # Test take from: https://github.com/omab/python-social-auth/blob/master/social/tests/backends/test_google.py
@@ -94,11 +95,8 @@ class GoogleOAuth2Test(OAuth2Test):
             'SOCIAL_AUTH_GOOGLE_OAUTH2_USE_UNIQUE_USER_ID': True,
         })
         self.do_login()
-import json
 
-from social.exceptions import AuthUnknownError
 
-from social.tests.backends.oauth import OAuth2Test
 
 
 # https://github.com/omab/python-social-auth/blob/master/social/tests/backends/test_facebook.py
