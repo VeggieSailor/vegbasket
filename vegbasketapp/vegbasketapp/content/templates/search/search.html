@@ -39,7 +39,14 @@
             <!--<h3>Results</h3>-->
             <div class="row">
         <div class="large-12 columns">
-        <h2 class="black">Search results</h2>
+        <h4 class="black">Search results - {{ query }}</h4>
+                    {% if page_obj.has_previous or page_obj.has_next %}
+                <div class="row">
+                    {% if page_obj.has_previous %}<a href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">{% endif %}&laquo; Previous{% if page_obj.has_previous %}</a>{% endif %}
+                    |
+                    {% if page_obj.has_next %}<a href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">{% endif %}Next &raquo;{% if page_obj.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
         </div>
         </div>
             {% for result in object_list %}
@@ -144,14 +151,21 @@
                     <!--<a href="{{ result.object.get_absolute_url }}">{{ result.object.name }}</a>-->
                 <!--</p>-->
             {% empty %}
-                <p>No results found.</p>
+                        
+<div class="row">
+                <p>No results found, try maybe one of following: 
+                <a href="/search/?q=Europe, Vegan" class="ghostey button">Europe, Vegan</a>,
+                <a href="/search/?q=Asia, Vegetarian" class="ghostey button">Asia, Vegetarian</a>,
+                <a href="/search/?q=Romantic" class="ghostey button">Romantic</a>,
+                </p>
+                </div>
             {% endfor %}
 
-            {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
+            {% if page_obj.has_previous or page_obj.has_next %}
+                <div class="row">
+                    {% if page_obj.has_previous %}<a href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">{% endif %}&laquo; Previous{% if page_obj.has_previous %}</a>{% endif %}
                     |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
+                    {% if page_obj.has_next %}<a href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">{% endif %}Next &raquo;{% if page_obj.has_next %}</a>{% endif %}
                 </div>
             {% endif %}
         {% else %}
