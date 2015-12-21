@@ -77,7 +77,7 @@
             
                             
                     {% for obj in result.object.region.get_parents_list  %}              
-                    <a href="/search/?q={{ obj }}" style="color:black; font-weight:900">{{ obj }}</a>{% if not forloop.last %},{% endif %}
+                    <a href="/search/?q={{ obj }}" style="font-weight:900 " class="button ghostey">{{ obj }}</a>{% if not forloop.last %},{% endif %}
                     {% endfor %}  
               <!--<a href="#"  class="button  expand medium"><span>Open Book</span> </a>-->
 
