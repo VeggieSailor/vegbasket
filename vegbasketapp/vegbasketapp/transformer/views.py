@@ -9,7 +9,7 @@ def entry_map(request, entry_id):
 		cords = get_entry_geo(entry)
 	except IndexError:
 		return render(request, "entry_map.html")
-		return HttpResponse('')
+		#return HttpResponse('')
 	cords['c1lng'] = cords['lng']+0.01
 	cords['c2lng'] = cords['lng']-0.01
 	cords['c1lat'] = cords['lat']+0.01
