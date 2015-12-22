@@ -1,11 +1,15 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.http import HttpResponse
 from vegbasketapp.transformer.tools_entry import get_entry_by_id, \
 	get_reviews_by_entry_id, get_region_by_id, get_entry_geo
 
 def entry_map(request, entry_id):
 	entry = get_entry_by_id(entry_id)
-	cords = get_entry_geo(entry)
+	try:
+		cords = get_entry_geo(entry)
+	except IndexError:
+		return render(request, "entry_map.html")
+		return HttpResponse('')
 	cords['c1lng'] = cords['lng']+0.01
 	cords['c2lng'] = cords['lng']-0.01
 	cords['c1lat'] = cords['lat']+0.01
