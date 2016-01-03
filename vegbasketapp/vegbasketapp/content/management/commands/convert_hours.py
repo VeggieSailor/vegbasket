@@ -1,12 +1,16 @@
+import datetime
 from random import randint
 from time import sleep
 
 from django.core.management.base import BaseCommand, CommandError
-from vegbasketapp.content.tools import convert_entry
-
-from vegbasketapp.transformer.models import Entry
-import parsedatetime as pdt
 from django.conf import settings
+
+import parsedatetime as pdt
+
+from vegbasketapp.content.tools import convert_entry
+from vegbasketapp.transformer.models import Entry
+from vegbasketapp.content.models import VeggieSailorOpeningHour, \
+     VeggieSailorEntry
 
 DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 cal = pdt.Calendar()
@@ -18,6 +22,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         e = Entry.objects.get(id=4015)
+        vse = VeggieSailorEntry.objects.get(source_id = e.id)
+        VeggieSailorOpeningHour.objects.filter(entry = vse).delete()
         hours = e.get_elem('hours')
         for elem in hours:
             days = (elem['days'])
@@ -41,6 +47,7 @@ class Command(BaseCommand):
                         td = cal.parseDT(parsed_hours[1])[0] - cal.parseDT(parsed_hours[0])[0]
                         #print (td, type(td))
                         print (parsed_hours[0],td)
+                vsoh = VeggieSailorOpeningHour()
             
                 
             
