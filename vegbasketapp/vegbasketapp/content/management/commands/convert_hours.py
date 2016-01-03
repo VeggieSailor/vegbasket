@@ -16,11 +16,15 @@ DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 cal = pdt.Calendar()
     
 class Command(BaseCommand):
+    """Convert all hours class.
+    """
     args = ''
 
     help = 'Converts all entries'
 
     def handle(self, *args, **options):
+        """Main 'handle' function.
+        """
         all_entries = Entry.objects.all()
         for e in all_entries:
             #e = Entry.objects.get(id=4015)
