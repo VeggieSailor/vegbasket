@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils.translation import ugettext as _
 from vegbasketapp.transformer.models import Region
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
@@ -204,6 +204,39 @@ class VeggieSailorEntry(models.Model):
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
+
+# Inspired (read stolen and rewritten ;) by:
+# http://stackoverflow.com/questions/12216771/django-objects-for-business-hours
+# http://stackoverflow.com/questions/8128143/any-existing-solution-to-implement-opening-hours-in-django
+
+WEEKDAYS = [
+    (0, _("Monday")),
+    (1, _("Tuesday")),
+    (2, _("Wednesday")),
+    (3, _("Thursday")),
+    (4, _("Friday")),
+    (5, _("Saturday")),
+    (6, _("Sunday")),
+]
+
+class VeggieSailorOpeningHour(models.Model):
+    """Opening hours for the Entry.
+    """
+    entry = models.ForeignKey(VeggieSailorEntry)
+    from_hour = models.TimeField(null=True)
+    duration = models.DurationField(null=True)
+    weekday = models.IntegerField(
+        choices=WEEKDAYS
+    )    
+    created = models.DateTimeField(
+        auto_now_add=True
+    )
+    modified = models.DateTimeField(
+        auto_now=True
+    )
+    is_closed = models.BooleanField(null=False, default=False)
+    class Meta:
+        unique_together = (("entry", "from_hour", "weekday", "is_closed"),)
 
 class VeggieSailorImage(models.Model):
     """Class storing images for the entries.
