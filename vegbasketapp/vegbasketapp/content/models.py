@@ -143,6 +143,8 @@ class VeggieSailorEntry(models.Model):
     
 
     def get_rating_lists(self):
+        """Get the rankings for the display.
+        """
         full = int(self.rating)
         half = 1 if self.rating-int(self.rating)>0 else 0
         empty = 5 - half - full
