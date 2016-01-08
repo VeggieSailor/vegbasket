@@ -1,5 +1,8 @@
 {% extends "frontend/base.html" %}{% load staticfiles %}
 {% block base_body_content %}
+<style>
+
+</style>
     <div class="  bg-vs-dark-grey " style="background-color: black !important">
         <div class="row bg-white">
             <div class="columns">
@@ -35,15 +38,29 @@
 
 
             </div>
+            <style>
+            table tr:nth-of-type(even) {
+    background-color: transparent !important;
+}</style>
             <div class="medium-4 large-5 columns ">
                 <h2 class="green">{{ entry.name }}</h2>
                     <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
-                
                     <h4>{{ entry.short_description }}</h4>
-                                    <h3>{{ entry.city }}</h3>
+                    <h3>{{ entry.city }}</h3>
+                    <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
+                    {% if entry.get_opening_hours_display %}
+                        <table style="color: white;background-color: inherit !important;border: none">
+                          <caption>Opening hours</caption>
+                        {% for oh in entry.get_opening_hours_display %}                    
+                            <tr style="">
+                                <td style="">{{ oh.0 }}</td>
+                                <td style="">{{ oh.1 }}</td>
+                                <td style="">{{ oh.2 }}</td>
 
-                          <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
-                <!--<p>Hours</p>-->
+                            </tr>
+                        {% endfor %}
+                        </table>                    
+                    {% endif %}
             </div>
             <div class="large-5 medium-4 columns ">
       

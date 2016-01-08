@@ -42,25 +42,28 @@ class Command(BaseCommand):
                         result = list(range(result[0], result[1]+1))
                     for new_elem in result:
                         try:
-                            print (DAYS[new_elem], new_elem)
+                            #print (DAYS[new_elem], new_elem)
                             #print (hours)
                             for hour in elem['hours']:
                                 parsed_hours = hour.split(' - ')
                                 #print (parsed_hours)
             
                                 if parsed_hours[0] == 'closed':
-                                    print ("closed!")
+                                    #print ("closed!")
+                                    is_closed = True
                                 else:
                                     #print (hour[0], hour[1])
                                     td = cal.parseDT(parsed_hours[1])[0] - cal.parseDT(parsed_hours[0])[0]
                                     #print (td, type(td))
                                     opening_time = cal.parseDT(parsed_hours[0])[0]
-                                    print (parsed_hours[0],td, opening_time.hour, opening_time.minute)
+                                    is_closed = False
+                                    #print (parsed_hours[0],td, opening_time.hour, opening_time.minute)
                             vsoh = VeggieSailorOpeningHour()
                             vsoh.entry = vse
                             vsoh.weekday = new_elem
                             vsoh.from_hour = datetime.time(hour=opening_time.hour,minute=opening_time.minute)
                             vsoh.duration = td
+                            vsoh.is_closed = is_closed
                             vsoh.save()
                         except IndexError:
                             print("Index Error: %s" % (e.id))

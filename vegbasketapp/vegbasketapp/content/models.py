@@ -1,3 +1,5 @@
+import datetime as dt
+
 from django.db import models
 from django.utils.translation import ugettext as _
 from vegbasketapp.transformer.models import Region
@@ -152,6 +154,29 @@ class VeggieSailorEntry(models.Model):
         
         
     
+    def get_opening_hours_display(self):
+        """Get opening hours in the human format.
+        """
+        hours = self.opening_hours.all()
+        
+        results = []
+        
+        for hour in hours:
+            if hour.is_closed is True:
+                results.append((
+                    hour.get_weekday_display(), 
+                    _("closed")
+                ))                
+            else:
+                results.append((
+                    hour.get_weekday_display(), 
+                    hour.from_hour,
+                    hour.to_hour()
+                ))
+                
+        
+        return results
+    
     
     def __unicode__(self):
         return u"%s" % self.name    
@@ -224,7 +249,7 @@ WEEKDAYS = [
 class VeggieSailorOpeningHour(models.Model):
     """Opening hours for the Entry.
     """
-    entry = models.ForeignKey(VeggieSailorEntry)
+    entry = models.ForeignKey(VeggieSailorEntry, related_name='opening_hours')
     from_hour = models.TimeField(null=True)
     duration = models.DurationField(null=True)
     weekday = models.IntegerField(
@@ -237,8 +262,27 @@ class VeggieSailorOpeningHour(models.Model):
         auto_now=True
     )
     is_closed = models.BooleanField(null=False, default=False)
+    
+    def to_hour(self):
+        """Get closing hour.
+        http://stackoverflow.com/questions/12448592/how-to-add-delta-to-python-datetime-time
+        """
+        
+        now = dt.datetime.now()
+        delta = self.duration
+        t = self.from_hour       
+        
+        result = (dt.datetime.combine(dt.date(1,1,1),t) + delta).time()
+        return result
+    
+    def __unicode__(self):
+        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name, self.get_weekday_display(), self.from_hour)
+    def __str__(self):
+        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name, self.get_weekday_display(), self.from_hour)
+    
     class Meta:
         unique_together = (("entry", "from_hour", "weekday", "is_closed"),)
+        ordering = ['weekday', 'from_hour']
 
 class VeggieSailorImage(models.Model):
     """Class storing images for the entries.
