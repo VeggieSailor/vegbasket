@@ -50,7 +50,7 @@
                     <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
-                          <caption>Opening hours</caption>
+                          <caption>Opening hours <small>{{ entry.is_open_verbose }}</small></caption>
                         {% for oh in entry.get_opening_hours_display %}                    
                             <tr style="">
                                 <td style="">{{ oh.0 }}</td>

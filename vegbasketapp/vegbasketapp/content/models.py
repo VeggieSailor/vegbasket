@@ -219,12 +219,28 @@ class VeggieSailorEntry(models.Model):
 
     
     def allows_smoking_verbose(self):
+        """Get smoking verbose info.
+        """
         return self.get_boolean_verbose("allows_smoking")
 
     def allows_reservations_verbose(self):
+        """Get reservations verbose info.
+        """
         return self.get_boolean_verbose("allows_reservations")
 
-
+    def is_open(self):
+        """If the place is open right now.
+        """
+        result = True if True in [x.is_open() for x in self.opening_hours.all() ] else False
+        return result
+    
+    def is_open_verbose(self):
+        """Check if it is open now.
+        """
+        if self.is_open() is True:
+            return "( Open now )"
+        else:
+            return "( Closed now )"
     def get_absolute_url(self):
         return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
         #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            
@@ -275,11 +291,25 @@ class VeggieSailorOpeningHour(models.Model):
         result = (dt.datetime.combine(dt.date(1,1,1),t) + delta).time()
         return result
     
+    def is_open(self):
+        """If the place is open right now.
+        """
+        current_day = dt.date.weekday(dt.date.today())
+        current_time = dt.datetime.now().time()
+        if current_day == self.weekday:
+            if current_time <= self.from_hour and current_time <= self.to_hour():
+                return True
+        return False
+
+
+
     def __unicode__(self):
-        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name, self.get_weekday_display(), self.from_hour)
+        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name,
+                                     self.get_weekday_display(), self.from_hour)
     def __str__(self):
-        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name, self.get_weekday_display(), self.from_hour)
-    
+        return u"%s - %s - %s %s" % (self.entry.id, self.entry.name,
+                                     self.get_weekday_display(), self.from_hour)
+
     class Meta:
         unique_together = (("entry", "from_hour", "weekday", "is_closed"),)
         ordering = ['weekday', 'from_hour']
