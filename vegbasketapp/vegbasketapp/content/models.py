@@ -238,9 +238,9 @@ class VeggieSailorEntry(models.Model):
         """Check if it is open now.
         """
         if self.is_open() is True:
-            return "( Open now )"
+            return '( <span class="green">Open now</span> )'
         else:
-            return "( Closed now )"
+            return '( <span class="vs-alert">Closed now</span> )'
     def get_absolute_url(self):
         return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
         #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            

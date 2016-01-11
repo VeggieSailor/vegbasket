@@ -50,7 +50,7 @@
                     <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
-                          <caption>Opening hours <small>{{ entry.is_open_verbose }}</small></caption>
+                          <caption>Opening hours <small>{{ entry.is_open_verbose|safe }}</small></caption>
                         {% for oh in entry.get_opening_hours_display %}                    
                             <tr style="">
                                 <td style="">{{ oh.0 }}</td>
@@ -59,14 +59,14 @@
 
                             </tr>
                         {% endfor %}
-                        </table>                    
+                        </table>
                     {% endif %}
             </div>
             <div class="large-5 medium-4 columns ">
-      
+
                             <div class="flex-video">
             <iframe src="/transformer/entry/{{ entry.vg_object_id}}/map"></iframe>
-            
+
             </div>
             </div>
         </div>
