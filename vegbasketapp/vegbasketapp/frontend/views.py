@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
 from vegbasketapp.home.metas import get_vsmeta
+from vegbasketapp.content.models import VeggieSailorEntry
 
 # Create your views here.
 
@@ -8,7 +9,12 @@ def index(request):
     """Main frontend view.
     
     """
-    return render(request, 'frontend/index.html')
+    
+    latest_entries = VeggieSailorEntry.objects.all().order_by('-created')[0:20]    
+    
+    rc = {'latest_entries':latest_entries}
+    
+    return render(request, 'frontend/index.html',rc)
 
 def entry_example(request):
     """Example entry view with new layout.

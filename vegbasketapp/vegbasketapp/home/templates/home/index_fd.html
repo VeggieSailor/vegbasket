@@ -73,7 +73,6 @@
     </div>    
 </form>  
 </div>
-<div class="row" >
     <div class="twelve columns">
       <center><h4 class="black" style="" id="explore"><strong>Explore delicious vegan places</strong></h4></center>
        </div>
@@ -93,6 +92,22 @@
                <li>{% skeleton_card_vg_533 12293 %}</li>
                <li>{% skeleton_card_vg_533 17140 %}</li>
                </ul>
+</div>
+<div class="row" >
+
+<ul class="pricing-table">
+  <li class="title">Recent places</li>
+  <!--<li class="price">$99.99</li>-->
+  <li class="description">Latest added places</li>
+  <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
+
+
+{% for latest_entry in latest_entries %}
+  <a href='{{ latest_entry.get_absolute_url}}'><li class="bullet-item"><strong>{{ latest_entry.name }}</strong>, {{ latest_entry.short_description}}</li></a>
+
+
+{% endfor %}
+</ul>
 </div>
 
 </div>
