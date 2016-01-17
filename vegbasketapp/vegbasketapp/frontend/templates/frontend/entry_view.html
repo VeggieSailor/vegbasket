@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div itemscope itemtype="http://schema.org/Review" class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
+    <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Restaurant" class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
       <div style="background-color: #000;border: 1px solid black; opacity: 0.8; filter: alpha(opacity=80); /* For IE8 and */">
         <div class="row" >
             <div class="medium-4 large-2 col-sm-4 columns ">
@@ -28,7 +28,7 @@
                     <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
                 {% endfor %}             
                 </ul>
-                <h2> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue">{{ entry.rating }}</span></span> / {{ entry.rating_count }} Vote</h2>
+                <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> Vote</h2>
                 <span class="warning label">Prices - {{ entry.get_price_display }}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
@@ -60,12 +60,26 @@
   <!--</div>-->
 <!--</div>-->
 
+<!--<div itemscope itemtype="http://schema.org/Thing">-->
+  <!--<h2 itemprop="name"> Super Book </h2>-->
+  <!--<div itemprop="description">Ultra interesting. Super impressive.</div>-->
+  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <!--<div>Book rating:-->
+      <span itemprop="ratingValue">88</span> out of 
+      <span itemprop="bestRating">100</span> with
+      <span itemprop="ratingCount">20</span> ratings
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
             <div class="medium-4 large-5 columns " >
-            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Restaurant">
+            <div >
                 <h2 class="green"><span itemprop="name">{{ entry.name }}</span></h2>
                 </div>
                     <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
-                    <h4>{{ entry.short_description }}</h4>
+                    <div itemprop="description"><h4>{{ entry.short_description }}</h4></div>
                     <h3>{{ entry.city }}</h3>
                     <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
                     {% if entry.get_opening_hours_display %}
