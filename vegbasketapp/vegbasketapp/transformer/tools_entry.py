@@ -25,7 +25,7 @@ def fetch_region(source_id, force=False):
     region, created = Region.objects.update_or_create(source_id=source_id,
         defaults={'results_source':vgo.results_json, 
         'modified_source':timezone.now()})
-    print ("DEBUG vg region created %s source_id %s" % (created, source_id))
+    #print ("DEBUG vg region created %s source_id %s" % (created, source_id))
     # region = Region(source_id=source_id)
 
     
@@ -37,7 +37,7 @@ def fetch_region(source_id, force=False):
 
 def get_region_by_id(source_id, force=False):
     if force or Region.objects.filter(source_id=source_id,
-                                      modified__gte=datetime.datetime.now()-datetime.timedelta(
+                                      modified__gte=timezone.now()-datetime.timedelta(
                                           days=settings.DEFALT_EXPIRE_TIME)).count()==0:
         region = fetch_region(source_id, force)
     else:
@@ -65,7 +65,7 @@ def fetch_entry(source_id, force=False):
     entry, created = Entry.objects.update_or_create(source_id=source_id,
         defaults={'region':region, 'results_source':vgo.results_json,
         'modified_source':timezone.now()})
-    print ("DEBUG vg entry created %s source_id %s" % (created, source_id))
+    #print ("DEBUG vg entry created %s source_id %s" % (created, source_id))
     
     entry.save()
     return entry

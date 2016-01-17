@@ -2,7 +2,7 @@
 
 from django.db import models
 import json
-
+from django.utils import timezone
 
 class Region(models.Model):
     """VegGuide region class.
@@ -12,7 +12,7 @@ class Region(models.Model):
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)    
+    modified = models.DateTimeField(auto_now=timezone.now)
     modified_source = models.DateTimeField(null=True)
     obj = None
 

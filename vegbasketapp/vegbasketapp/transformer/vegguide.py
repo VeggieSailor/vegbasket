@@ -10,12 +10,16 @@ BASE_URL = 'https://www.vegguide.org/'
 
 class VegGuideRequest(request.Request):
     def __init__(self, url=BASE_URL):
-        print ("VG Request %s",url)
+        """Initialisation.
+        """
+        #print ("VG Request %s",url)
         super().__init__(url, headers={'X-Requested-WIth':'XMLHttpRequest'})
 
 class VegGuideParser:
     def __init__(self, vegguide_request):
-        print ("VG Request PARSER %s",vegguide_request)
+        """Initialisation.
+        """        
+        #print ("VG Request PARSER %s",vegguide_request)
         req = request.urlopen(vegguide_request)
         data = req.readall().decode('utf-8')
         self.result = json.loads(data)
@@ -23,6 +27,8 @@ class VegGuideParser:
 class VegGuideTree(object):
     def __init__(self, name, tree,
             subkeys=('children', 'uri', 'name', 'entries_uri')):
+        """Initialisation.
+        """        
         self.__setattr__(name, tree)
         self.regions = tree
         for key in self.regions[name].keys():
