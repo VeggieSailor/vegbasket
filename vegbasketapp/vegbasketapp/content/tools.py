@@ -310,11 +310,12 @@ def get_entry_by_vg_id(entry_id):
     
     """
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")       
-    #try:
-        #vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=entry_id)
-    #except VeggieSailorEntry.DoesNotExist:
-    vs_entry = convert_entry(entry_id)
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")     
+    vg_entry = get_entry_by_id(entry_id)
+    try:
+        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=vg_entry.id)
+    except VeggieSailorEntry.DoesNotExist:
+        vs_entry = convert_entry(entry_id)
     
     return vs_entry
         
