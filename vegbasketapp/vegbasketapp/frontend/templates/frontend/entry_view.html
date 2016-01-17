@@ -53,7 +53,9 @@
                     <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
                     <div itemprop="description"><h4>{{ entry.short_description }}</h4></div>
                     <h3>{{ entry.city }}</h3>
-                    <h4>{{ entry.address1 }}{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, {{ entry.city}}  {{ entry.zipcode }}</h4>
+                    <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <h4><span itemprop="streetAddress">{{ entry.address1 }}</span>{% if entry.address2 %}, {{ entry.address2 }}, {% endif %}, <span itemprop="addressLocality">{{ entry.city}}</span> <span itemprop="postalCode">{{ entry.zipcode }}</span></h4>
+                    </div>
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
                           <caption>Opening hours <small>{{ entry.is_open_verbose|safe }}</small></caption>
@@ -126,7 +128,7 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
                 <li>Cuisines
                   <ul>
                   {% for cuisine in entry.cuisines.all %}
-                    <li>{{ cuisine.name }}</li>
+                    <li><span itemprop="servesCuisine">{{ cuisine.name }}</span></li>
                   {% endfor %}
                   </ul>
                 </li>
