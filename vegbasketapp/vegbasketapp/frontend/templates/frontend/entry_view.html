@@ -43,34 +43,6 @@
     background-color: transparent !important;
 }</style>
 
-<!--<div itemscope itemtype="http://schema.org/Review">-->
-  <!--<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Restaurant">-->
-    <!--<span itemprop="name">Legal Seafood</span>-->
-  <!--</div>-->
-  <!--<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
-    <!--<span itemprop="ratingValue">4</span>-->
-  <!--</span> stars --->
-  <!--<b>"<span itemprop="name">A good seafood place.</span>" </b>-->
-  <!--<span itemprop="author" itemscope itemtype="http://schema.org/Person">-->
-    <!--<span itemprop="name">Bob Smith</span>-->
-  <!--</span>-->
-  <!--<span itemprop="reviewBody">The seafood is great.</span>-->
-  <!--<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
-    <!--<meta itemprop="name" content="Washington Times">-->
-  <!--</div>-->
-<!--</div>-->
-
-<!--<div itemscope itemtype="http://schema.org/Thing">-->
-  <!--<h2 itemprop="name"> Super Book </h2>-->
-  <!--<div itemprop="description">Ultra interesting. Super impressive.</div>-->
-  <!--<div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">-->
-    <!--<!--<div>Book rating:-->-->
-      <!--<span itemprop="ratingValue">88</span> out of -->
-      <!--<span itemprop="bestRating">100</span> with-->
-      <!--<span itemprop="ratingCount">20</span> ratings-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
 
 
 
@@ -122,9 +94,9 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
         </div>
         <div class="large-3 medium-6 columns">
             {% if entry.get_images_height_400.0.photo  %}
-            <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
+            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
             {% elif  entry.get_images_height_348.0.photo %} 
-            <img src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
+            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
             {% else %}
             <img src="{% static "images/no_photo.png" %}" class="image-entry" />
             {% endif %}
@@ -174,7 +146,7 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
             </div>
             <div class="large-3 medium-6  columns">
                 {% if entry.get_images_height_400.1.photo %}
-                <img src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
+                <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.1.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
                 {% endif %}
                 <br/>
                 {{ entry.content_object.get_credits_string|safe }}
