@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <div class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
+    <div itemscope itemtype="http://schema.org/Review" class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
       <div style="background-color: #000;border: 1px solid black; opacity: 0.8; filter: alpha(opacity=80); /* For IE8 and */">
         <div class="row" >
             <div class="medium-4 large-2 col-sm-4 columns ">
@@ -28,7 +28,7 @@
                     <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
                 {% endfor %}             
                 </ul>
-                <h2> {{ entry.rating }} / {{ entry.rating_count }} Vote</h2>
+                <h2> <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"><span itemprop="ratingValue">{{ entry.rating }}</span></span> / {{ entry.rating_count }} Vote</h2>
                 <span class="warning label">Prices - {{ entry.get_price_display }}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
@@ -42,8 +42,28 @@
             table tr:nth-of-type(even) {
     background-color: transparent !important;
 }</style>
-            <div class="medium-4 large-5 columns ">
-                <h2 class="green">{{ entry.name }}</h2>
+
+<!--<div itemscope itemtype="http://schema.org/Review">-->
+  <!--<div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Restaurant">-->
+    <!--<span itemprop="name">Legal Seafood</span>-->
+  <!--</div>-->
+  <!--<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
+    <!--<span itemprop="ratingValue">4</span>-->
+  <!--</span> stars --->
+  <!--<b>"<span itemprop="name">A good seafood place.</span>" </b>-->
+  <!--<span itemprop="author" itemscope itemtype="http://schema.org/Person">-->
+    <!--<span itemprop="name">Bob Smith</span>-->
+  <!--</span>-->
+  <!--<span itemprop="reviewBody">The seafood is great.</span>-->
+  <!--<div itemprop="publisher" itemscope itemtype="http://schema.org/Organization">-->
+    <!--<meta itemprop="name" content="Washington Times">-->
+  <!--</div>-->
+<!--</div>-->
+
+            <div class="medium-4 large-5 columns " >
+            <div itemprop="itemReviewed" itemscope itemtype="http://schema.org/Restaurant">
+                <h2 class="green"><span itemprop="name">{{ entry.name }}</span></h2>
+                </div>
                     <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
                     <h4>{{ entry.short_description }}</h4>
                     <h3>{{ entry.city }}</h3>
@@ -61,6 +81,10 @@
                         {% endfor %}
                         </table>
                     {% endif %}
+                    Added by: 
+                    <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span itemprop="name">VegGuide</span>
+  </span>
             </div>
             <div class="large-5 medium-4 columns ">
 

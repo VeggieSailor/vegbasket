@@ -45,7 +45,7 @@
     {% block head_js %}{% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %} style="" class="bgwhite">
-<div><a href="#explore" class=""><span class="right black">Explore more</a></div><p>&nbsp;</p>
+<div>&nbsp;<span class="right black" style="margin-right:5px"><a href="#explore" class="">Explore more</a>, <a href="#recent">Recent</a>&nbsp;</span><p></p></div>
 
 
     {# Main content goes here #}
@@ -93,7 +93,7 @@
                <li>{% skeleton_card_vg_533 17140 %}</li>
                </ul>
 </div>
-<div class="row" >
+<div class="row" id="recent">
 
 <ul class="pricing-table">
   <li class="title">Recent places</li>
