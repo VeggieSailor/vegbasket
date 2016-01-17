@@ -173,7 +173,7 @@ class Reviews(models.Model):
     created : datetime, timestamp of the creation
     modified_source : datetime, timestamp of the last modification
     """
-    entry = models.ForeignKey(Entry, null=False, unique=True)
+    entry = models.OneToOneField(Entry, null=False)
     source_id = models.IntegerField(null=False, unique=True)
     results_source = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)

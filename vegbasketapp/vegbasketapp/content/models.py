@@ -83,7 +83,7 @@ class VeggieSailorRegion(models.Model):
     parent = models.ForeignKey('self', null=True)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    source_region = models.ForeignKey(Region, null=True, unique=True)
+    source_region = models.OneToOneField(Region, null=True)
     
     content_type = models.ForeignKey(ContentType, null=True, blank=True)
     object_id = models.PositiveIntegerField(null=True, blank=True)

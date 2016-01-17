@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 from vegbasketapp.transformer.tools_entry import get_entry_by_id
 from vegbasketapp.transformer.models import Entry
+from vegbasketapp.content.tools import convert_entry
 import xml.etree.ElementTree as etree
 import urllib.request
 import warnings
@@ -25,4 +26,5 @@ class Command(BaseCommand):
             number = Entry.objects.filter(source_id=source_id).count()
             if number==0:
                 print ("New entry %s" % source_id, number)
+                convert_entry(source_id)
             get_entry_by_id(source_id, force=True)
