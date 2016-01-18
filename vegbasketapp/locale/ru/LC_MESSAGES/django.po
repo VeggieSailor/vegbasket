@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-18 20:19+0000\n"
-"PO-Revision-Date: 2016-01-18 20:21+0000\n"
+"PO-Revision-Date: 2016-01-18 20:23+0000\n"
 "Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/veggiesailor/veggiesailorweb/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -28,11 +28,11 @@ msgstr ""
 
 #: vegbasketapp/content/models.py:15
 msgid "Vegan-Friendly"
-msgstr ""
+msgstr "Веган-дружественный"
 
 #: vegbasketapp/content/models.py:16
 msgid "Vegetarian (But Not Vegan-Friendly)"
-msgstr ""
+msgstr "Вегетарианский (Но Не Веган-дружественный)"
 
 #: vegbasketapp/content/models.py:17
 msgid "Vegetarian"
