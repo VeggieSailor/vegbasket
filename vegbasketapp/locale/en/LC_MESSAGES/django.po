@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-18 19:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: vegbasketapp/content/models.py:168
+msgid "closed"
+msgstr ""
+
+#: vegbasketapp/content/models.py:256
+msgid "Monday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:257
+msgid "Tuesday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:258
+msgid "Wednesday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:259
+msgid "Thursday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:260
+msgid "Friday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:261
+msgid "Saturday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:262
+msgid "Sunday"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:51
+msgid "Explore more"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:51
+msgid "Recent"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:74
+msgid "SAIL"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:80
+msgid "Explore delicious vegan places"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:102
+msgid "Recent places"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:104
+msgid "Latest added places"
+msgstr ""
+
+#: vegbasketapp/personal/templates/registration/login.html:73
+msgid "Please correct the error below."
+msgstr ""
+
+#: vegbasketapp/personal/templates/registration/login.html:73
+msgid "Please correct the errors below."
+msgstr ""
+
+#: vegbasketapp/settings.py:170
+msgid "Russian"
+msgstr ""
+
+#: vegbasketapp/settings.py:171
+msgid "English"
+msgstr ""
+
+#: vegbasketapp/settings.py:172
+msgid "Spanish"
+msgstr ""
