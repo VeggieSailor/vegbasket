@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-18 21:08+0000\n"
-"PO-Revision-Date: 2016-01-18 21:50+0000\n"
+"PO-Revision-Date: 2016-01-18 22:26+0000\n"
 "Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/veggiesailor/veggiesailorweb/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -112,7 +112,7 @@ msgstr "Итальянская"
 
 #: vegbasketapp/content/templates/trans.html:7
 msgid "Middle Eastern/Persian"
-msgstr "Ближневосточная / Персидская"
+msgstr "Ближневосточная/Персидская"
 
 #: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:172
 msgid "English"
@@ -128,7 +128,7 @@ msgstr "Русская"
 
 #: vegbasketapp/content/templates/trans.html:11
 msgid "Raw Food"
-msgstr ""
+msgstr "Сыроедение"
 
 #: vegbasketapp/content/templates/trans.html:12
 msgid "French"
@@ -236,7 +236,7 @@ msgstr "Карибская"
 
 #: vegbasketapp/content/templates/trans.html:38
 msgid "Sri Lankan"
-msgstr ""
+msgstr "Шри-ланская"
 
 #: vegbasketapp/content/templates/trans.html:39
 msgid "African"
@@ -248,75 +248,75 @@ msgstr ""
 
 #: vegbasketapp/content/templates/trans.html:41
 msgid "Tibetan"
-msgstr ""
+msgstr "Тибетская"
 
 #: vegbasketapp/content/templates/trans.html:42
 msgid "Turkish"
-msgstr ""
+msgstr "Турецкая"
 
 #: vegbasketapp/content/templates/trans.html:43
 msgid "Ethiopian/Eritrean"
-msgstr ""
+msgstr "Эфиопская/Эритрейская"
 
 #: vegbasketapp/content/templates/trans.html:44
 msgid "Nepalese"
-msgstr ""
+msgstr "Непальская"
 
 #: vegbasketapp/content/templates/trans.html:45
 msgid "Italian (Northern)"
-msgstr ""
+msgstr "Итальянская (Северная)"
 
 #: vegbasketapp/content/templates/trans.html:46
 msgid "Cambodian"
-msgstr ""
+msgstr "Камбоджийская"
 
 #: vegbasketapp/content/templates/trans.html:47
 msgid "Central American"
-msgstr ""
+msgstr "Центральноамериканская"
 
 #: vegbasketapp/content/templates/trans.html:48
 msgid "Indo-Chinese"
-msgstr ""
+msgstr "Индо-китайская"
 
 #: vegbasketapp/content/templates/trans.html:49
 msgid "Lebanese"
-msgstr ""
+msgstr "Ливанская"
 
 #: vegbasketapp/content/templates/trans.html:50
 msgid "Moroccan"
-msgstr ""
+msgstr "Марокканская"
 
 #: vegbasketapp/content/templates/trans.html:51
 msgid "Romanian"
-msgstr ""
+msgstr "Румынская"
 
 #: vegbasketapp/content/templates/trans.html:52
 msgid "Tex-Mex"
-msgstr ""
+msgstr "Текс-мекс"
 
 #: vegbasketapp/content/templates/trans.html:53
 msgid "Hmong"
-msgstr ""
+msgstr "Хмонг"
 
 #: vegbasketapp/content/templates/trans.html:54
 msgid "Malaysian"
-msgstr ""
+msgstr "Малазийская"
 
 #: vegbasketapp/content/templates/trans.html:55
 msgid "Jewish (Sephardic)"
-msgstr ""
+msgstr "Еврейская (Сефардская)"
 
 #: vegbasketapp/content/templates/trans.html:56
 msgid "Cajun"
-msgstr ""
+msgstr "Каджунская"
 
 #: vegbasketapp/content/templates/trans.html:57
 msgid "Mongolian"
-msgstr ""
+msgstr "Монгольская"
 
 #: vegbasketapp/content/templates/trans.html:58
 msgid "Egyptian"
-msgstr ""
+msgstr "Египетская"
 
 #: vegbasketapp/content/templates/trans.html:59
 msgid "Hunanese"
