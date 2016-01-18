@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 20:19+0000\n"
+"POT-Creation-Date: 2016-01-18 21:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Mediterranean"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:172
+#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:173
 msgid "Spanish"
 msgstr ""
 
@@ -113,7 +113,7 @@ msgstr ""
 msgid "Middle Eastern/Persian"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:171
+#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:172
 msgid "English"
 msgstr ""
 
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Jewish (Eastern European)"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:170
+#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:171
 msgid "Russian"
 msgstr ""
 
@@ -367,10 +367,6 @@ msgstr ""
 
 #: vegbasketapp/content/templates/trans.html:71
 msgid "Kurdish"
-msgstr ""
-
-#: vegbasketapp/dummy_trans.py:74
-msgid " "
 msgstr ""
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32

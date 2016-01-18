@@ -14,4 +14,6 @@ urlpatterns = patterns('',
     url(r'^(?P<slug>[\w-]+)/$', 'vegbasketapp.frontend.views.entry_slug', name='entry_slug'),
     
 )
+from django.conf.urls.i18n import i18n_patterns
+
 

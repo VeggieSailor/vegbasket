@@ -63,17 +63,16 @@
 <div class="row collapse" id="id_image_logo">
   <div class=" small-7 small-centered medium-7 medium-centered  large-6 large-centered columns wide"><center><img  class=""  src="{% static "images/logo_tattoo_640.png" %}"/></center></div>
 </div>
-<form method="GET" action="/search/">  
+<form method="GET" action="{% url "search_view" %}">  
 <!--<div class="three columns">&nbsp;</div>-->
 <div class="small-8 small-centered large-4 large-centered columns"> <input  placeholder="Barcelona Vegan" id="id_q" type="search" name="q" class="custom-input-class"  ></div>
 <!--<div class="three columns">&nbsp;</div>-->
 </div>
 <div class="row" style="" id="id_row_sail">
     <!--<div class="five columns">&nbsp;</div>-->
-    <div class="small-6 small-centered large-2 large-centered   columns small">    
+    <div class="small-6 small-centered large-2 large-centered columns small">    
         <button class="home-ghost-button-class info expand"><strong>{% trans "SAIL" %}</strong></button>
-        <!--<a href="#explore">Explore more</a>-->      
-    </div>    
+    </div>
 </form>  
 </div>
     <div class="twelve columns">
@@ -112,8 +111,26 @@
 {% endfor %}
 </ul>
 </div>
-
+<div class="row">
+<h6 class="black">{% trans "Change the language" %}</h6>
+<hr/>
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}" />
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go" />
+</form>
 </div>
+</div>
+
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
     <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
@@ -151,5 +168,8 @@
 <!-- End Piwik Code -->
 
     {% endblock foundation_js_init %}
+    
+
+    
 </body>
 </html>

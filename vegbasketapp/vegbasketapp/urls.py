@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from datetime import date
 from meta.views import Meta
 from haystack.generic_views import SearchView
-
+from django.conf.urls.i18n import i18n_patterns
 class MySearchView(SearchView):
     
     def get_queryset(self):
@@ -23,6 +23,8 @@ class MySearchView(SearchView):
 
 
 urlpatterns = patterns('',
+    url(r'^i18n/', include('django.conf.urls.i18n')),
+                       
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
     url(r'opensource$', 'vegbasketapp.home.views.opensource', name='opensource'),
     url(r'^admin/', include(admin.site.urls)),
@@ -37,18 +39,27 @@ urlpatterns = patterns('',
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
     url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
-    #url(r'^search/', include('haystack.urls')),
-    url(r'^search/?$', MySearchView.as_view(), name='search_view'),
+    #url(r'^search/', include('haystack.urls'))
+    
+    
     
     #url('^', include('django.contrib.auth.urls')),
     url(r'^/*', include('vegbasketapp.frontend.urls')),
-    
 )
+
+urlpatterns += i18n_patterns(
+    url(r'^search/?$', MySearchView.as_view(), name='search_view'),
+
+)   
 
 urlpatterns += patterns('',
     (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )
 
+urlpatterns += i18n_patterns(
+    url(r'^(?P<slug>[\w-]+)/$', 'vegbasketapp.frontend.views.entry_slug', name='entry_slug'),
+
+)   
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns += patterns('',

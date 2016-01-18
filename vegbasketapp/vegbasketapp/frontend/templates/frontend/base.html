@@ -56,7 +56,7 @@
             <!-- Right Nav Section -->
             <ul class="right">
                 <li class="has-form">
-                <form method="get" action="/search/">
+                <form method="get" action="{% url "search_view" %}">
                     <div class="row collapse">
                         <div class="large-9 small-9 columns">
                             <input id="id_q" name="q" type="search" placeholder="" class="radius" value="{{ query }}">

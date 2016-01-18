@@ -57,6 +57,7 @@ AUTHENTICATION_BACKENDS = (
 )
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -172,4 +173,5 @@ LANGUAGES = [
     ('es', _('Spanish'))
 ]
 
-from vegbasketapp.dummy_trans import output
+#from vegbasketapp.dummy_trans import output
+LOCALE_PATHS = ('locale',)

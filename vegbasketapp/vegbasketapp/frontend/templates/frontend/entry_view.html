@@ -58,10 +58,10 @@
                     </div>
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
-                          <caption>{% trans "Opening hours" %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
+                          <caption>{% blocktrans %}Opening hours{% endblocktrans %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
                         {% for oh in entry.get_opening_hours_display %}                    
                             <tr style="">
-                                <td style="">{{ oh.0 }}</td>
+                                <td style="">{% trans oh.0 %}</td>
                                 <td style="">{{ oh.1 }}</td>
                                 <td style="">{{ oh.2 }}</td>
 
