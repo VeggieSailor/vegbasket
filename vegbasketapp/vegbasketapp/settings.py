@@ -1,4 +1,6 @@
 import os
+
+from django.utils.translation import ugettext_lazy as _
 PROJECT_DIR = os.path.dirname(__file__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -162,3 +164,10 @@ if DEBUG:
     MIDDLEWARE_CLASSES.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
     MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
     DEBUG_TOOLBAR_PATCH_SETTINGS = True
+    
+
+LANGUAGES = [
+    ('ru', _('Russian')),
+    ('en', _('English')),
+    ('es', _('Spanish'))
+]

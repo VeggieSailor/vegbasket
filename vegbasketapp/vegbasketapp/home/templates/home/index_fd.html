@@ -1,4 +1,4 @@
-{% load staticfiles  entry_cards %}
+{% load staticfiles entry_cards i18n %}
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -48,7 +48,7 @@
     {% block head_js %}{% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %} style="" class="bgwhite">
-<div>&nbsp;<span class="right black" style="margin-right:5px"><a href="#explore" class="">Explore more</a>, <a href="#recent">Recent</a>&nbsp;</span><p></p></div>
+<div>&nbsp;<span class="right black" style="margin-right:5px"><a href="#explore" class="">{% trans "Explore more"%}</a>, <a href="#recent">{% trans "Recent"%}</a>&nbsp;</span><p></p></div>
 
 
     {# Main content goes here #}
@@ -71,13 +71,13 @@
 <div class="row" style="" id="id_row_sail">
     <!--<div class="five columns">&nbsp;</div>-->
     <div class="small-6 small-centered large-2 large-centered   columns small">    
-        <button class="home-ghost-button-class info expand"><strong>SAIL</strong></button>
+        <button class="home-ghost-button-class info expand"><strong>{% trans "SAIL" %}</strong></button>
         <!--<a href="#explore">Explore more</a>-->      
     </div>    
 </form>  
 </div>
     <div class="twelve columns">
-      <center><h4 class="black" style="" id="explore"><strong>Explore delicious vegan places</strong></h4></center>
+      <center><h4 class="black" style="" id="explore"><strong>{% trans "Explore delicious vegan places" %}</strong></h4></center>
        </div>
        </div>
 <div class="" style="padding-top:0em;">
@@ -99,9 +99,9 @@
 <div class="row" id="recent">
 
 <ul class="pricing-table">
-  <li class="title">Recent places</li>
+  <li class="title">{% trans "Recent places"%}</li>
   <!--<li class="price">$99.99</li>-->
-  <li class="description">Latest added places</li>
+  <li class="description">{% trans "Latest added places"%}</li>
   <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
 
 
