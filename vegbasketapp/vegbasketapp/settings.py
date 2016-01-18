@@ -171,3 +171,5 @@ LANGUAGES = [
     ('en', _('English')),
     ('es', _('Spanish'))
 ]
+
+from vegbasketapp.dummy_trans import output

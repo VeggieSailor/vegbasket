@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 20:06+0000\n"
-"PO-Revision-Date: 2016-01-18 19:44+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish (http://www.transifex.com/veggiesailor/"
-"veggiesailorweb/language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2016-01-18 20:19+0000\n"
+"PO-Revision-Date: 2016-01-18 20:20+0000\n"
+"Last-Translator: Rafał Zawadzki <bluszcz@bluszcz.net>\n"
+"Language-Team: Spanish (http://www.transifex.com/veggiesailor/veggiesailorweb/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: vegbasketapp/content/models.py:13
@@ -90,6 +89,290 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
+#: vegbasketapp/content/templates/trans.html:2
+msgid "Eclectic (Fusion)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:3
+msgid "Eclectic (Varied)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:4
+msgid "Mediterranean"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:172
+msgid "Spanish"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:6
+msgid "Italian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:7
+msgid "Middle Eastern/Persian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:171
+msgid "English"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:9
+msgid "Jewish (Eastern European)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:170
+msgid "Russian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:11
+msgid "Raw Food"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:12
+msgid "French"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:13
+msgid "Chinese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:14
+msgid "Brazilian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:15
+msgid "German"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:16
+msgid "Korean"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:17
+msgid "Greek"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:18
+msgid "American"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:19
+msgid "Indian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:20
+msgid "Macrobiotic"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:21
+msgid "Hungarian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:22
+msgid "Pizza"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:23
+msgid "Indian (Southern)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:24
+msgid "Vietnamese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:25
+msgid "South American"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:26
+msgid "Japanese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:27
+msgid "Thai"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:28
+msgid "Cantonese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:29
+msgid "Dim Sum"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:30
+msgid "Taiwanese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:31
+msgid "Szechuan"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:32
+msgid "Indian (Northern)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:33
+msgid "Italian (Southern)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:34
+msgid "Deli"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:35
+msgid "Mexican"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:36
+msgid "Indonesian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:37
+msgid "Caribbean"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:38
+msgid "Sri Lankan"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:39
+msgid "African"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:40
+msgid "Soul Food"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:41
+msgid "Tibetan"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:42
+msgid "Turkish"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:43
+msgid "Ethiopian/Eritrean"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:44
+msgid "Nepalese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:45
+msgid "Italian (Northern)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:46
+msgid "Cambodian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:47
+msgid "Central American"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:48
+msgid "Indo-Chinese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:49
+msgid "Lebanese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:50
+msgid "Moroccan"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:51
+msgid "Romanian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:52
+msgid "Tex-Mex"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:53
+msgid "Hmong"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:54
+msgid "Malaysian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:55
+msgid "Jewish (Sephardic)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:56
+msgid "Cajun"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:57
+msgid "Mongolian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:58
+msgid "Egyptian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:59
+msgid "Hunanese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:60
+msgid "South African"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:61
+msgid "Ghanaian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:62
+msgid "North African"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:63
+msgid "West African"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:64
+msgid "Burmese"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:65
+msgid "Northern (Beijing)"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:66
+msgid "Hot Pot"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:67
+msgid "Afghani"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:68
+msgid "Laotian"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:69
+msgid "Filipino"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:70
+msgid "Hakka"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:71
+msgid "Kurdish"
+msgstr ""
+
+#: vegbasketapp/dummy_trans.py:74
+msgid " "
+msgstr ""
+
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32
 msgid "Prices"
 msgstr ""
@@ -144,16 +427,4 @@ msgstr ""
 
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the errors below."
-msgstr ""
-
-#: vegbasketapp/settings.py:170
-msgid "Russian"
-msgstr ""
-
-#: vegbasketapp/settings.py:171
-msgid "English"
-msgstr ""
-
-#: vegbasketapp/settings.py:172
-msgid "Spanish"
 msgstr ""
