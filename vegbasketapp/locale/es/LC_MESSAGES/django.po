@@ -1,52 +1,117 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 19:32+0000\n"
+"POT-Creation-Date: 2016-01-18 20:06+0000\n"
 "PO-Revision-Date: 2016-01-18 19:44+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Spanish (http://www.transifex.com/veggiesailor/veggiesailorweb/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/veggiesailor/"
+"veggiesailorweb/language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: vegbasketapp/content/models.py:168
+#: vegbasketapp/content/models.py:13
+msgid "Not Veg-Friendly"
+msgstr ""
+
+#: vegbasketapp/content/models.py:14
+msgid "Vegetarian-Friendly"
+msgstr ""
+
+#: vegbasketapp/content/models.py:15
+msgid "Vegan-Friendly"
+msgstr ""
+
+#: vegbasketapp/content/models.py:16
+msgid "Vegetarian (But Not Vegan-Friendly)"
+msgstr ""
+
+#: vegbasketapp/content/models.py:17
+msgid "Vegetarian"
+msgstr ""
+
+#: vegbasketapp/content/models.py:18
+msgid "Vegan"
+msgstr ""
+
+#: vegbasketapp/content/models.py:32
+msgid "Unknown"
+msgstr ""
+
+#: vegbasketapp/content/models.py:33
+msgid "Inexpensive"
+msgstr ""
+
+#: vegbasketapp/content/models.py:34
+msgid "Average"
+msgstr ""
+
+#: vegbasketapp/content/models.py:35
+msgid "Expensive"
+msgstr ""
+
+#: vegbasketapp/content/models.py:169
 msgid "closed"
 msgstr ""
 
-#: vegbasketapp/content/models.py:256
+#: vegbasketapp/content/models.py:257
 msgid "Monday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:257
+#: vegbasketapp/content/models.py:258
 msgid "Tuesday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:258
+#: vegbasketapp/content/models.py:259
 msgid "Wednesday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:259
+#: vegbasketapp/content/models.py:260
 msgid "Thursday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:260
+#: vegbasketapp/content/models.py:261
 msgid "Friday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:261
+#: vegbasketapp/content/models.py:262
 msgid "Saturday"
 msgstr ""
 
-#: vegbasketapp/content/models.py:262
+#: vegbasketapp/content/models.py:263
 msgid "Sunday"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:32
+msgid "Prices"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:61
+msgid "Opening hours"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:112
+msgid "Smoking"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:113
+msgid "Reservations"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:115
+msgid "Payment"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:126
+msgid "Cuisines"
 msgstr ""
 
 #: vegbasketapp/home/templates/home/index_fd.html:51

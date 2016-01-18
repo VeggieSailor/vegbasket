@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 import datetime as dt
 
 from django.db import models
@@ -9,12 +10,12 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.core.urlresolvers import reverse
 from autoslug import AutoSlugField
 VEG_LEVEL_CHOICES = (
-    (0, 'Not Veg-Friendly'),
-    (1, 'Vegetarian-Friendly'),
-    (2, 'Vegan-Friendly'),
-    (3, 'Vegetarian (But Not Vegan-Friendly)'),
-    (4, 'Vegetarian'),
-    (5, 'Vegan'),
+    (0, _('Not Veg-Friendly')),
+    (1, _('Vegetarian-Friendly')),
+    (2, _('Vegan-Friendly')),
+    (3, _('Vegetarian (But Not Vegan-Friendly)')),
+    (4, _('Vegetarian')),
+    (5, _('Vegan')),
     
 )
 
@@ -28,10 +29,10 @@ VEG_LEVEL_CHOICES = (
 # 88BD24    5 - Vegan
 
 PRICE_CHOICES = (
-    (0,'Unknown'),
-    (1, 'Inexpensive'),
-    (2, 'Average'),
-    (3, 'Expensive'),   
+    (0, _('Unknown')),
+    (1, _('Inexpensive')),
+    (2, _('Average')),
+    (3, _('Expensive')),   
 )
 
 

@@ -1,4 +1,4 @@
-{% extends "frontend/base.html" %}{% load staticfiles %}
+{% extends "frontend/base.html" %}{% load staticfiles i18n %}
 {% block base_body_content %}
 <style>
 
@@ -29,7 +29,7 @@
                 {% endfor %}             
                 </ul>
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> Vote</h2>
-                <span class="warning label">Prices - {{ entry.get_price_display }}</span>
+                <span class="warning label">{% trans "Prices" %} - {{ entry.get_price_display }}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
                     <li>{{ category.name }}</li>
@@ -58,7 +58,7 @@
                     </div>
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
-                          <caption>Opening hours <small>{{ entry.is_open_verbose|safe }}</small></caption>
+                          <caption>{% trans "Opening hours" %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
                         {% for oh in entry.get_opening_hours_display %}                    
                             <tr style="">
                                 <td style="">{{ oh.0 }}</td>
@@ -109,10 +109,10 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
 
             <div class="large-3 medium-2  columns vs-margin-top">
               <ul>
-                <li>Smoking - {{ entry.allows_smoking_verbose }}</li>
-                <li>Reservations - {{ entry.allows_reservations_verbose }}</li>
+                <li>{% trans "Smoking"%} - {{ entry.allows_smoking_verbose }}</li>
+                <li>{% trans "Reservations"%} - {{ entry.allows_reservations_verbose }}</li>
 
-                <li>Payment
+                <li>{% trans "Payment" %}
                   <ul>
                   {% for payment in entry.payments.all %}
                     <li>{{ payment.name }}</li>
@@ -123,10 +123,10 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
             </div>
             <div class="large-3 medium-2  columns vs-margin-top">
                 <ul>
-                <li>Cuisines
+                <li>{% trans "Cuisines" %}
                   <ul>
                   {% for cuisine in entry.cuisines.all %}
-                    <li><span itemprop="servesCuisine">{{ cuisine.name }}</span></li>
+                    <li><span itemprop="servesCuisine">{% trans cuisine.name %}</span></li>
                   {% endfor %}
                   </ul>
                 </li>
