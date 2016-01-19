@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 21:49+0000\n"
+"POT-Creation-Date: 2016-01-19 21:52+0000\n"
 "PO-Revision-Date: 2016-01-19 21:42+0000\n"
 "Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/veggiesailor/"
@@ -399,6 +399,19 @@ msgstr ""
 
 #: vegbasketapp/content/templates/trans.html:76
 msgid "Not sure"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/base.html:66
+msgid "Sail"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/base.html:98
+msgid "Content powered by"
+msgstr ""
+
+#: vegbasketapp/frontend/templates/frontend/base.html:98
+#: vegbasketapp/frontend/templates/frontend/base.html:101
+msgid "Copyright"
 msgstr ""
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32
