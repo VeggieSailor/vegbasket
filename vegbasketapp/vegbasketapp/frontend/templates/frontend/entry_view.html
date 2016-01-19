@@ -28,8 +28,8 @@
                     <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
                 {% endfor %}             
                 </ul>
-                <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> Vote</h2>
-                <span class="warning label">{% trans "Prices" %} - {{ entry.get_price_display }}</span>
+                <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
+                <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
                     <li>{{ category.name }}</li>
@@ -50,7 +50,7 @@
             <div >
                 <h2 class="green"><span itemprop="name">{{ entry.name }}</span></h2>
                 </div>
-                    <span class=" level{{ entry.level }}-color label">{{ entry.get_level_display }}</span>
+                    <span class=" level{{ entry.level }}-color label">{% trans entry.get_level_display %}</span>
                     <div itemprop="description"><h4>{{ entry.short_description }}</h4></div>
                     <h3>{{ entry.city }}</h3>
                     <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
