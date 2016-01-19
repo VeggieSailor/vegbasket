@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 21:41+0000\n"
+"POT-Creation-Date: 2016-01-19 21:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -421,6 +421,10 @@ msgstr ""
 msgid "Cuisines"
 msgstr ""
 
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:137
+msgid "Features"
+msgstr ""
+
 #: vegbasketapp/home/templates/home/index_fd.html:51
 msgid "Explore more"
 msgstr ""
@@ -455,4 +459,8 @@ msgstr ""
 
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the errors below."
+msgstr ""
+
+#: vegbasketapp/transformer/models.py:88
+msgid "Added by"
 msgstr ""

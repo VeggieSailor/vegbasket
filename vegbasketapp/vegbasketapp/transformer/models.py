@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 #import datetime
 
 from django.db import models
@@ -84,7 +85,8 @@ class Entry(models.Model):
         """
         name = self.get_elem('user')['name']
         uri = self.get_elem('user')['uri']
-        return 'Added by <a target="_blank"  href="%s">%s</a>' % (uri, name)
+        added_by = _('Added by')
+        return '%s <a target="_blank"  href="%s">%s</a>' % (added_by, uri, name)
 
     def get_address_str(self):
         """Get address.

@@ -1,22 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Katia Lun <katrix.k@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 21:41+0000\n"
+"POT-Creation-Date: 2016-01-19 21:49+0000\n"
 "PO-Revision-Date: 2016-01-19 21:42+0000\n"
 "Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/veggiesailor/veggiesailorweb/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/veggiesailor/"
+"veggiesailorweb/language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: vegbasketapp/content/models.py:13
 msgid "Not Veg-Friendly"
@@ -422,6 +425,10 @@ msgstr "Оплата"
 msgid "Cuisines"
 msgstr "Кухни"
 
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:137
+msgid "Features"
+msgstr ""
+
 #: vegbasketapp/home/templates/home/index_fd.html:51
 msgid "Explore more"
 msgstr "Исследуйте еще"
@@ -457,3 +464,7 @@ msgstr "Пожалуйста, исправьте ошибку ниже."
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the errors below."
 msgstr "Пожалуйста, исправьте ошибки ниже."
+
+#: vegbasketapp/transformer/models.py:88
+msgid "Added by"
+msgstr ""

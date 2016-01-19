@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 21:41+0000\n"
+"POT-Creation-Date: 2016-01-19 21:49+0000\n"
 "PO-Revision-Date: 2016-01-19 21:01+0000\n"
 "Last-Translator: Rafał Zawadzki <bluszcz@bluszcz.net>\n"
 "Language-Team: Spanish (http://www.transifex.com/veggiesailor/"
@@ -422,6 +422,10 @@ msgstr ""
 msgid "Cuisines"
 msgstr ""
 
+#: vegbasketapp/frontend/templates/frontend/entry_view.html:137
+msgid "Features"
+msgstr ""
+
 #: vegbasketapp/home/templates/home/index_fd.html:51
 msgid "Explore more"
 msgstr ""
@@ -456,4 +460,8 @@ msgstr ""
 
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the errors below."
+msgstr ""
+
+#: vegbasketapp/transformer/models.py:88
+msgid "Added by"
 msgstr ""
