@@ -35,8 +35,9 @@ PRICE_CHOICES = (
     (3, _('Expensive')),   
 )
 
+SMOKING_STATUS = ['Not clear', 'Yes', 'No', 'Not sure']
 
-
+SMOKING_STATUS_TRANS = _(' '.join(SMOKING_STATUS)) 
 class VeggieSailorCategory(models.Model):
     """Main Veggie Sailor Category.
     
@@ -207,15 +208,15 @@ class VeggieSailorEntry(models.Model):
     def get_boolean_verbose(self, field):
 
         value = self.__getattribute__(field)
-
+        
+        
         if value is None:
-            return _("Not clear")
+            return SMOKING_STATUS[0]
         elif self.allows_smoking == '0':
-            return _("Yes")
+            return SMOKING_STATUS[1]
         elif self.allows_smoking == '1':
-            return _("No")    
-        return _("Not sure") # huh?
-
+            return SMOKING_STATUS[2]
+        return SMOKING_STATUS[3] # huh?
     
     def allows_smoking_verbose(self):
         """Get smoking verbose info.
@@ -236,7 +237,7 @@ class VeggieSailorEntry(models.Model):
     def is_open_verbose(self):
         """Check if it is open now.
         """
-        msg_closed = _('Clsoed now')
+        msg_closed = _('Closed now')
         msg_open = _('Open now')
         if self.is_open() is True:
             return '( <span class="green">%s</span> )' % msg_open

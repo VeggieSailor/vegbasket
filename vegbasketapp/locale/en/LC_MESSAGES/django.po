@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 21:13+0000\n"
+"POT-Creation-Date: 2016-01-19 21:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,35 +57,47 @@ msgstr ""
 msgid "Expensive"
 msgstr ""
 
-#: vegbasketapp/content/models.py:169
+#: vegbasketapp/content/models.py:40
+msgid " "
+msgstr ""
+
+#: vegbasketapp/content/models.py:170
 msgid "closed"
 msgstr ""
 
-#: vegbasketapp/content/models.py:257
-msgid "Monday"
+#: vegbasketapp/content/models.py:240
+msgid "Closed now"
+msgstr ""
+
+#: vegbasketapp/content/models.py:241
+msgid "Open now"
 msgstr ""
 
 #: vegbasketapp/content/models.py:258
-msgid "Tuesday"
+msgid "Monday"
 msgstr ""
 
 #: vegbasketapp/content/models.py:259
-msgid "Wednesday"
+msgid "Tuesday"
 msgstr ""
 
 #: vegbasketapp/content/models.py:260
-msgid "Thursday"
+msgid "Wednesday"
 msgstr ""
 
 #: vegbasketapp/content/models.py:261
-msgid "Friday"
+msgid "Thursday"
 msgstr ""
 
 #: vegbasketapp/content/models.py:262
-msgid "Saturday"
+msgid "Friday"
 msgstr ""
 
 #: vegbasketapp/content/models.py:263
+msgid "Saturday"
+msgstr ""
+
+#: vegbasketapp/content/models.py:264
 msgid "Sunday"
 msgstr ""
 
@@ -101,7 +113,7 @@ msgstr ""
 msgid "Mediterranean"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:173
+#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:174
 msgid "Spanish"
 msgstr ""
 
@@ -113,7 +125,7 @@ msgstr ""
 msgid "Middle Eastern/Persian"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:172
+#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:173
 msgid "English"
 msgstr ""
 
@@ -121,7 +133,7 @@ msgstr ""
 msgid "Jewish (Eastern European)"
 msgstr ""
 
-#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:171
+#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:172
 msgid "Russian"
 msgstr ""
 
@@ -369,6 +381,22 @@ msgstr ""
 msgid "Kurdish"
 msgstr ""
 
+#: vegbasketapp/content/templates/trans.html:73
+msgid "Not clear"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:74
+msgid "Yes"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:75
+msgid "No"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:76
+msgid "Not sure"
+msgstr ""
+
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32
 msgid "Prices"
 msgstr ""
@@ -405,16 +433,20 @@ msgstr ""
 msgid "SAIL"
 msgstr ""
 
-#: vegbasketapp/home/templates/home/index_fd.html:80
+#: vegbasketapp/home/templates/home/index_fd.html:79
 msgid "Explore delicious vegan places"
 msgstr ""
 
-#: vegbasketapp/home/templates/home/index_fd.html:102
+#: vegbasketapp/home/templates/home/index_fd.html:101
 msgid "Recent places"
 msgstr ""
 
-#: vegbasketapp/home/templates/home/index_fd.html:104
+#: vegbasketapp/home/templates/home/index_fd.html:103
 msgid "Latest added places"
+msgstr ""
+
+#: vegbasketapp/home/templates/home/index_fd.html:115
+msgid "Change the language"
 msgstr ""
 
 #: vegbasketapp/personal/templates/registration/login.html:73

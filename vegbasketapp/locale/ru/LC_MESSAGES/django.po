@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-18 21:13+0000\n"
-"PO-Revision-Date: 2016-01-19 21:01+0000\n"
-"Last-Translator: Rafał Zawadzki <bluszcz@bluszcz.net>\n"
+"POT-Creation-Date: 2016-01-19 21:41+0000\n"
+"PO-Revision-Date: 2016-01-19 21:42+0000\n"
+"Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/veggiesailor/veggiesailorweb/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,35 +58,47 @@ msgstr "Умеренно"
 msgid "Expensive"
 msgstr "Дорого"
 
-#: vegbasketapp/content/models.py:169
+#: vegbasketapp/content/models.py:40
+msgid " "
+msgstr ""
+
+#: vegbasketapp/content/models.py:170
 msgid "closed"
 msgstr "закрыто"
 
-#: vegbasketapp/content/models.py:257
+#: vegbasketapp/content/models.py:240
+msgid "Closed now"
+msgstr ""
+
+#: vegbasketapp/content/models.py:241
+msgid "Open now"
+msgstr ""
+
+#: vegbasketapp/content/models.py:258
 msgid "Monday"
 msgstr "понедельник"
 
-#: vegbasketapp/content/models.py:258
+#: vegbasketapp/content/models.py:259
 msgid "Tuesday"
 msgstr "вторник"
 
-#: vegbasketapp/content/models.py:259
+#: vegbasketapp/content/models.py:260
 msgid "Wednesday"
 msgstr "среда"
 
-#: vegbasketapp/content/models.py:260
+#: vegbasketapp/content/models.py:261
 msgid "Thursday"
 msgstr "четверг"
 
-#: vegbasketapp/content/models.py:261
+#: vegbasketapp/content/models.py:262
 msgid "Friday"
 msgstr "пятница"
 
-#: vegbasketapp/content/models.py:262
+#: vegbasketapp/content/models.py:263
 msgid "Saturday"
 msgstr "суббота"
 
-#: vegbasketapp/content/models.py:263
+#: vegbasketapp/content/models.py:264
 msgid "Sunday"
 msgstr "воскресенье"
 
@@ -102,7 +114,7 @@ msgstr "Эклектика (Разная)"
 msgid "Mediterranean"
 msgstr "Средиземноморская"
 
-#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:173
+#: vegbasketapp/content/templates/trans.html:5 vegbasketapp/settings.py:174
 msgid "Spanish"
 msgstr "Испанская"
 
@@ -114,7 +126,7 @@ msgstr "Итальянская"
 msgid "Middle Eastern/Persian"
 msgstr "Ближневосточная/Персидская"
 
-#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:172
+#: vegbasketapp/content/templates/trans.html:8 vegbasketapp/settings.py:173
 msgid "English"
 msgstr "Английская"
 
@@ -122,7 +134,7 @@ msgstr "Английская"
 msgid "Jewish (Eastern European)"
 msgstr "Еврейская (Восточно-европейская)"
 
-#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:171
+#: vegbasketapp/content/templates/trans.html:10 vegbasketapp/settings.py:172
 msgid "Russian"
 msgstr "Русская"
 
@@ -340,34 +352,50 @@ msgstr "Западно-африканская"
 
 #: vegbasketapp/content/templates/trans.html:64
 msgid "Burmese"
-msgstr ""
+msgstr "Бирманская"
 
 #: vegbasketapp/content/templates/trans.html:65
 msgid "Northern (Beijing)"
-msgstr ""
+msgstr "Пекинская"
 
 #: vegbasketapp/content/templates/trans.html:66
 msgid "Hot Pot"
-msgstr ""
+msgstr "Хого"
 
 #: vegbasketapp/content/templates/trans.html:67
 msgid "Afghani"
-msgstr ""
+msgstr "Афганская"
 
 #: vegbasketapp/content/templates/trans.html:68
 msgid "Laotian"
-msgstr ""
+msgstr "Лаосская"
 
 #: vegbasketapp/content/templates/trans.html:69
 msgid "Filipino"
-msgstr ""
+msgstr "Филиппинская"
 
 #: vegbasketapp/content/templates/trans.html:70
 msgid "Hakka"
-msgstr ""
+msgstr "Хакка"
 
 #: vegbasketapp/content/templates/trans.html:71
 msgid "Kurdish"
+msgstr "Курдская"
+
+#: vegbasketapp/content/templates/trans.html:73
+msgid "Not clear"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:74
+msgid "Yes"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:75
+msgid "No"
+msgstr ""
+
+#: vegbasketapp/content/templates/trans.html:76
+msgid "Not sure"
 msgstr ""
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32
@@ -406,17 +434,21 @@ msgstr "Недавний"
 msgid "SAIL"
 msgstr "ПОПЛЫЛИ"
 
-#: vegbasketapp/home/templates/home/index_fd.html:80
+#: vegbasketapp/home/templates/home/index_fd.html:79
 msgid "Explore delicious vegan places"
 msgstr "Исследуйте вкуснейшие веганские места"
 
-#: vegbasketapp/home/templates/home/index_fd.html:102
+#: vegbasketapp/home/templates/home/index_fd.html:101
 msgid "Recent places"
 msgstr "Недавние места"
 
-#: vegbasketapp/home/templates/home/index_fd.html:104
+#: vegbasketapp/home/templates/home/index_fd.html:103
 msgid "Latest added places"
 msgstr "Недавно добавленные места"
+
+#: vegbasketapp/home/templates/home/index_fd.html:115
+msgid "Change the language"
+msgstr ""
 
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the error below."
