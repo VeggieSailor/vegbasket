@@ -205,18 +205,16 @@ class VeggieSailorEntry(models.Model):
         return self.get_images_height(348)
 
     def get_boolean_verbose(self, field):
-        
+
         value = self.__getattribute__(field)
-        #print (field,value)
-        
-        
+
         if value is None:
-            return "Not clear"
+            return _("Not clear")
         elif self.allows_smoking == '0':
-            return "Yes"
+            return _("Yes")
         elif self.allows_smoking == '1':
-            return "No"    
-        return "Not sure" # huh?
+            return _("No")    
+        return _("Not sure") # huh?
 
     
     def allows_smoking_verbose(self):
@@ -238,10 +236,12 @@ class VeggieSailorEntry(models.Model):
     def is_open_verbose(self):
         """Check if it is open now.
         """
+        msg_closed = _('Clsoed now')
+        msg_open = _('Open now')
         if self.is_open() is True:
-            return '( <span class="green">Open now</span> )'
+            return '( <span class="green">%s</span> )' % msg_open
         else:
-            return '( <span class="vs-alert">Closed now</span> )'
+            return '( <span class="vs-alert">%s</span> )' % msg_closed
     def get_absolute_url(self):
         return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
         #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            

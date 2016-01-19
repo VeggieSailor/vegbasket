@@ -1,6 +1,7 @@
-{% load staticfiles %}
+{% load staticfiles i18n %}
 <!doctype html>
-<html class="no-js" lang="en">
+{% get_current_language as LANGUAGE_CODE %}
+<html class="no-js" lang="{{ LANGUAGE_CODE }}">
 <head>
     <head profile="http://www.w3.org/2005/10/profile">
     <link rel="icon" 
