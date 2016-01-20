@@ -8,7 +8,7 @@
             <div class="columns">
                 <ul class="vs-crumbs" style="background-color: black !important">
                     {% for obj in entry.region.get_parents_list reversed %}              
-                    <li><a href="{% url "search_view" %}?q={{ obj }}">{{ obj }}</a></li>
+                    <li><a href="{% url "search_view" %}?q={{ obj }}">{% trans obj %}</a></li>
                     {% endfor %}                 
             </div>
         </div>
@@ -32,7 +32,7 @@
                 <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
                 <ul class="green">
                 {% for category in entry.categories.all %}
-                    <li>{{ category.name }}</li>
+                    <li>{% trans category.name %}</li>
                     {% endfor %}
              </ul>
 
@@ -137,7 +137,7 @@ box-shadow:         0px 0px 1px 1px rgba(99, cc, 33, 0.5);">
                 <li>{% trans "Features" %}
                   <ul>
                   {% for tag in entry.tags.all %}
-                    <li>{{ tag.name }}</li>
+                    <li>{% trans tag.name %}</li>
                   {% endfor %}
 
                   </ul>
