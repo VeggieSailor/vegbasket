@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Katia Lun <katrix.k@gmail.com>, 2016
 msgid ""
@@ -9,17 +9,14 @@ msgstr ""
 "Project-Id-Version: VeggieSailorWeb\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-01-19 22:27+0000\n"
-"PO-Revision-Date: 2016-01-19 22:09+0000\n"
+"PO-Revision-Date: 2016-01-20 11:28+0000\n"
 "Last-Translator: Katia Lun <katrix.k@gmail.com>\n"
-"Language-Team: Russian (http://www.transifex.com/veggiesailor/"
-"veggiesailorweb/language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/veggiesailor/veggiesailorweb/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: vegbasketapp/content/models.py:13
 msgid "Not Veg-Friendly"
@@ -71,11 +68,11 @@ msgstr "закрыто"
 
 #: vegbasketapp/content/models.py:240
 msgid "Closed now"
-msgstr ""
+msgstr "Закрыто сейчас"
 
 #: vegbasketapp/content/models.py:241
 msgid "Open now"
-msgstr ""
+msgstr "Открыто сейчас"
 
 #: vegbasketapp/content/models.py:258
 msgid "Monday"
@@ -387,7 +384,7 @@ msgstr "Курдская"
 
 #: vegbasketapp/content/templates/trans.html:73
 msgid "Not clear"
-msgstr ""
+msgstr "Не ясно"
 
 #: vegbasketapp/content/templates/trans.html:74
 msgid "Yes"
@@ -399,132 +396,132 @@ msgstr "Нет"
 
 #: vegbasketapp/content/templates/trans.html:76
 msgid "Not sure"
-msgstr ""
+msgstr "Не точно"
 
 #: vegbasketapp/content/templates/trans.html:77
 msgid "Wi-Fi"
-msgstr ""
+msgstr "Wi-Fi"
 
 #: vegbasketapp/content/templates/trans.html:78
 msgid "(Mostly) Organic"
-msgstr ""
+msgstr "(В основном) Органические"
 
 #: vegbasketapp/content/templates/trans.html:79
 msgid "Brunch"
-msgstr ""
+msgstr "Бранч"
 
 #: vegbasketapp/content/templates/trans.html:80
 msgid "Happy Hour"
-msgstr ""
+msgstr "Счастливый час"
 
 #: vegbasketapp/content/templates/trans.html:81
 msgid "Quiet"
-msgstr ""
+msgstr "Тихо"
 
 #: vegbasketapp/content/templates/trans.html:82
 msgid "Kid-Friendly"
-msgstr ""
+msgstr "Для детей"
 
 #: vegbasketapp/content/templates/trans.html:83
 msgid "Delivery"
-msgstr ""
+msgstr "Доставка"
 
 #: vegbasketapp/content/templates/trans.html:84
 msgid "Outdoor Seating"
-msgstr ""
+msgstr "Столики на улице"
 
 #: vegbasketapp/content/templates/trans.html:85
 msgid "Large Group-Friendly"
-msgstr ""
+msgstr "Для больших компаний"
 
 #: vegbasketapp/content/templates/trans.html:86
 msgid "Private Rooms"
-msgstr ""
+msgstr "Приватные комнаты"
 
 #: vegbasketapp/content/templates/trans.html:87
 msgid "Romantic"
-msgstr ""
+msgstr "Романтично"
 
 #: vegbasketapp/content/templates/trans.html:88
 msgid "Buffet"
-msgstr ""
+msgstr "Буфет"
 
 #: vegbasketapp/content/templates/trans.html:89
 msgid "Live Music"
-msgstr ""
+msgstr "Живая музыка"
 
 #: vegbasketapp/content/templates/trans.html:90
 msgid "Gluten-Free Options"
-msgstr ""
+msgstr "Без глютена"
 
 #: vegbasketapp/content/templates/trans.html:91
 msgid "Valet Parking"
-msgstr ""
+msgstr "Паркинг"
 
 #: vegbasketapp/content/templates/trans.html:92
 msgid "Kosher"
-msgstr ""
+msgstr "Кошерный"
 
 #: vegbasketapp/content/templates/trans.html:93
 msgid "Restaurant"
-msgstr ""
+msgstr "Ресторан"
 
 #: vegbasketapp/content/templates/trans.html:94
 msgid "Grocery/Bakery/Deli"
-msgstr ""
+msgstr "Бакалея/Булочная/Кулинария"
 
 #: vegbasketapp/content/templates/trans.html:95
 msgid "Coffee/Tea/Juice"
-msgstr ""
+msgstr "Кофе/Чай/Сок"
 
 #: vegbasketapp/content/templates/trans.html:96
 msgid "Other"
-msgstr ""
+msgstr "Другое"
 
 #: vegbasketapp/content/templates/trans.html:97
 msgid "Bar"
-msgstr ""
+msgstr "Бар"
 
 #: vegbasketapp/content/templates/trans.html:98
 msgid "Food Court or Street Vendor"
-msgstr ""
+msgstr "Фуд-корт или уличный торговец"
 
 #: vegbasketapp/content/templates/trans.html:99
 msgid "General Store"
-msgstr ""
+msgstr "Продуктовый магазин"
 
 #: vegbasketapp/content/templates/trans.html:100
 msgid "Caterer"
-msgstr ""
+msgstr "Поставщик"
 
 #: vegbasketapp/content/templates/trans.html:101
 msgid "Hotel/B&B"
-msgstr ""
+msgstr "Отель/B&B"
 
 #: vegbasketapp/content/templates/trans.html:102
 msgid "Organization"
-msgstr ""
+msgstr "Организация"
 
 #: vegbasketapp/frontend/templates/frontend/base.html:66
 msgid "Sail"
-msgstr ""
+msgstr "Поплыли"
 
 #: vegbasketapp/frontend/templates/frontend/base.html:98
 msgid "Content powered by"
-msgstr ""
+msgstr "Content powered by"
 
 #: vegbasketapp/frontend/templates/frontend/base.html:98
 #: vegbasketapp/frontend/templates/frontend/base.html:101
 msgid "Copyright"
-msgstr ""
+msgstr "Copyright"
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:31
 msgid "Vote"
-msgstr ""
+msgstr "Голос"
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:32
 msgid "Prices"
-msgstr "Цены"
+msgstr "Цена"
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:61
 msgid "Opening hours"
@@ -548,7 +545,7 @@ msgstr "Кухни"
 
 #: vegbasketapp/frontend/templates/frontend/entry_view.html:137
 msgid "Features"
-msgstr ""
+msgstr "Особенности"
 
 #: vegbasketapp/home/templates/home/index_fd.html:51
 msgid "Explore more"
@@ -576,7 +573,7 @@ msgstr "Недавно добавленные места"
 
 #: vegbasketapp/home/templates/home/index_fd.html:115
 msgid "Change the language"
-msgstr ""
+msgstr "Изменить язык"
 
 #: vegbasketapp/personal/templates/registration/login.html:73
 msgid "Please correct the error below."
@@ -588,4 +585,4 @@ msgstr "Пожалуйста, исправьте ошибки ниже."
 
 #: vegbasketapp/transformer/models.py:88
 msgid "Added by"
-msgstr ""
+msgstr "Добавлено"
