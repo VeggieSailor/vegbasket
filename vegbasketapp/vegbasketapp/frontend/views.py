@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
 from vegbasketapp.home.metas import get_vsmeta
-
+from django.http import Http404
+from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
 
 def index(request):
@@ -41,7 +42,11 @@ def get_meta_entry(request, vs_entry):
 def entry_slug(request, slug):
     """Entry by the slug.
     """
-    vs_entry = get_entry_by_slug(slug)
+    try:
+        vs_entry = get_entry_by_slug(slug)
+    except ObjectDoesNotExist:
+         raise Http404("Page not found...")
+
     meta = get_meta_entry(request, vs_entry)
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta})    

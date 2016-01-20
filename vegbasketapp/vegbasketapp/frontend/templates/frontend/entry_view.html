@@ -8,7 +8,7 @@
             <div class="columns">
                 <ul class="vs-crumbs" style="background-color: black !important">
                     {% for obj in entry.region.get_parents_list reversed %}              
-                    <li><a href="/search/?q={{ obj }}">{{ obj }}</a></li>
+                    <li><a href="{% url "search_view" %}?q={{ obj }}">{{ obj }}</a></li>
                     {% endfor %}                 
             </div>
         </div>
