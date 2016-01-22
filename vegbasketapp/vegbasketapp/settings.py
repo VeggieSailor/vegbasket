@@ -5,7 +5,6 @@ PROJECT_DIR = os.path.dirname(__file__)
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 LOCALE_DIR = os.path.join(BASE_DIR, 'locale')
-print (LOCALE_DIR)
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
