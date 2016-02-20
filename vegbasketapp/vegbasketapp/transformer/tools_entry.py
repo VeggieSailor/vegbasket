@@ -66,16 +66,20 @@ def fetch_entry(source_id, force=False):
         defaults={'region':region, 'results_source':vgo.results_json,
         'modified_source':timezone.now()})
     #print ("DEBUG vg entry created %s source_id %s" % (created, source_id))
-    
+
     entry.save()
     return entry
 
 def get_entry_by_id(source_id, force=False):
-    if force is False:
+    """Get entry for provided VegGuide id.
+    """
+    counter = Entry.objects.filter(source_id=source_id,
+                                     modified__gte=timezone.now()-datetime.timedelta(
+                                         days=settings.DEFALT_EXPIRE_TIME)).count()
+    
+    if force is False and counter>0:
         entry = Entry.objects.get(source_id=source_id)
-    elif force or Entry.objects.filter(source_id=source_id,
-                                     modified__gte=datetime.datetime.now()-datetime.timedelta(
-                                         days=settings.DEFALT_EXPIRE_TIME)).count()==0:
+    elif force or counter==0:
         entry = fetch_entry(source_id)
     else:
         entry = Entry.objects.get(source_id=source_id)
