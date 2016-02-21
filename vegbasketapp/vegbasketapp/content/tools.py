@@ -244,7 +244,8 @@ def convert_entry(entry_id, force=False):
     
     if not VeggieSailorImage.objects.filter(entry=vs_entry) or force is True:
     
-        #VeggieSailorImage.objects.filter(entry=vs_entry).delete()
+        if force is True:
+            VeggieSailorImage.objects.filter(entry=vs_entry).delete()
         
         images_list = [x for x in vg_entry.get_elem('images',[]) ]
         #print ("images", images_list)
