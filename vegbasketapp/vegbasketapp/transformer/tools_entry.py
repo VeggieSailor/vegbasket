@@ -79,7 +79,7 @@ def get_entry_by_id(source_id, force=False):
     
     if force is False and counter>0:
         entry = Entry.objects.get(source_id=source_id)
-    elif force or counter==0:
+    elif force is True or counter==0:
         entry = fetch_entry(source_id)
     else:
         entry = Entry.objects.get(source_id=source_id)

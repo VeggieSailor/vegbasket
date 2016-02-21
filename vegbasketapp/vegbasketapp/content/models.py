@@ -76,7 +76,8 @@ class VeggieSailorCuisine(models.Model):
 
     def __str__(self):
         return "%s" % self.name       
-
+    class Meta:
+        app_label = "content"
 
 class VeggieSailorRegion(models.Model):
     """Main Veggie Sailor Region.
@@ -105,7 +106,10 @@ class VeggieSailorRegion(models.Model):
         return elems
     
     def __str__(self):
-        return "%s" % self.name    
+        return "%s" % self.name
+    class Meta:
+        app_label = "content"
+    
 
 class VeggieSailorEntry(models.Model):
     """Main Veggie Sailor Entry.
@@ -249,6 +253,7 @@ class VeggieSailorEntry(models.Model):
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
+        app_label = "content"
 
 # Inspired (read stolen and rewritten ;) by:
 # http://stackoverflow.com/questions/12216771/django-objects-for-business-hours

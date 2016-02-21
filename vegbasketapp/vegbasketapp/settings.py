@@ -158,11 +158,11 @@ META_USE_TWITTER_PROPERTIES = True
 
 if DEBUG:
     INSTALLED_APPS = list(INSTALLED_APPS)
-    INSTALLED_APPS.insert(0,'debug_toolbar')
+    INSTALLED_APPS.insert(3,'debug_toolbar')
     INSTALLED_APPS = tuple(INSTALLED_APPS)
     
     MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES)
-    MIDDLEWARE_CLASSES.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
+    MIDDLEWARE_CLASSES.insert(3, 'debug_toolbar.middleware.DebugToolbarMiddleware')
     MIDDLEWARE_CLASSES = tuple(MIDDLEWARE_CLASSES)
     DEBUG_TOOLBAR_PATCH_SETTINGS = True
     

@@ -40,6 +40,9 @@ class Region(models.Model):
             return '%s - %s' % (self.source_id,self.obj['name'])
         except (KeyError,AttributeError) as e:
             return '%s - %s' % (self.source_id,"[[ no name ]]")
+        
+    class Meta:
+        app_label = "transformer"
 
 class Entry(models.Model):
     """VegGuide entry class.
@@ -162,7 +165,8 @@ class Entry(models.Model):
 
     class Meta:
         verbose_name_plural = "entries"
-
+        app_label = "transformer"
+        
 class Reviews(models.Model):
     """Reviews transformer model.
 
@@ -195,3 +199,4 @@ class Reviews(models.Model):
     
     class Meta:
         verbose_name_plural = "reviews"
+        app_label = "transformer"

@@ -11,6 +11,8 @@ class UserProfile(models.Model):
     accepted_tos = models.BooleanField(default=False)
     first_time = models.BooleanField(default=True)
     avatar =  models.ImageField(upload_to="img/avatars/")
+    class Meta:
+        app_label = 'personal'
 
 
 def create_user_profile(sender, instance, created, **kwargs):

@@ -106,7 +106,7 @@ def convert_entry(entry_id, force=False):
     """
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
-    vg_entry = get_entry_by_id(entry_id, force)    
+    vg_entry = get_entry_by_id(entry_id, force)
     vg_region = vg_entry.region
     #print ("Region", vg_region.source_id)
       
