@@ -48,88 +48,89 @@
     {% block head_js %}{% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %} style="" class="bgwhite">
-<div>&nbsp;<span class="right black" style="margin-right:5px"><a href="#explore" class="">{% trans "Explore more"%}</a>, <a href="#recent">{% trans "Recent"%}</a>&nbsp;</span><p></p></div>
-
-
-    {# Main content goes here #}
+<!--<div>&nbsp;-->
+    <!--<span class="right black" style="margin-right:5px"><a href="#explore" class="">{% trans "Explore more"%}</a>, <a href="#recent">{% trans "Recent"%}</a>&nbsp;</span><p></p>-->
+<!--</div>-->
+{# Main content goes here #}
 {% block base_body %}
     {% block base_body_header %}
 {% endblock base_body_header %}
 {% block base_body_content %}
-
 {% endblock base_body_content %}
-
 {% endblock base_body %}
+
 <div class="row collapse" id="id_image_logo">
-  <div class=" small-7 small-centered medium-7 medium-centered  large-6 large-centered columns wide"><center><img  class=""  src="{% static "images/logo_tattoo_640.png" %}"/></center></div>
+    <div class=" small-7 small-centered medium-7 medium-centered  large-6 large-centered columns wide">
+        <center><img  class=""  src="{% static "images/logo_tattoo_640.png" %}"/></center>
+    </div>
 </div>
 <form method="GET" action="{% url "search_view" %}">  
-<!--<div class="three columns">&nbsp;</div>-->
-<div class="small-8 small-centered large-4 large-centered columns"> <input  placeholder="Barcelona Vegan" id="id_q" type="search" name="q" class="custom-input-class"  ></div>
-<!--<div class="three columns">&nbsp;</div>-->
-</div>
-<div class="row" style="" id="id_row_sail">
-    <!--<div class="five columns">&nbsp;</div>-->
-    <div class="small-6 small-centered large-2 large-centered columns small">    
-        <button class="home-ghost-button-class info expand"><strong>{% trans "SAIL" %}</strong></button>
+    <!--<div class="three columns">&nbsp;</div>-->
+    <div class="small-8 small-centered large-4 large-centered columns"> 
+        <input  placeholder="Barcelona Vegan" id="id_q" type="search" name="q" class="custom-input-class"  >
     </div>
-</form>  
-</div>
-    <div class="twelve columns">
-      <center><h4 class="black" style="" id="explore"><strong>{% trans "Explore delicious vegan places" %}</strong></h4></center>
-       </div>
-       </div>
-<div class="" style="padding-top:0em;">
-<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
-               <li>{% skeleton_card_vg_533 21041 %}</li>
-               <li>{% skeleton_card_vg_533 21025 %}</li>
-               <li>{% skeleton_card_vg_533 18497 %}</li>
-               <li>{% skeleton_card_vg_533 17862 %}</li>
-               
-               
-               <li>{% skeleton_card_vg_533 13404 %}</li>
-               <li>{% skeleton_card_vg_533 12396 %}</li>
-
-               <li>{% skeleton_card_vg_533 9178 %}</li>
-               <li>{% skeleton_card_vg_533 12293 %}</li>
-               <li>{% skeleton_card_vg_533 17140 %}</li>
-               </ul>
-</div>
-<div class="row" id="recent">
-
-<ul class="pricing-table">
-  <li class="title">{% trans "Recent places"%}</li>
-  <!--<li class="price">$99.99</li>-->
-  <li class="description">{% trans "Latest added places"%}</li>
-  <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
-
-
-{% for latest_entry in latest_entries %}
-  <a href='{{ latest_entry.get_absolute_url}}'><li class="bullet-item"><strong>{{ latest_entry.name }}</strong>, {{ latest_entry.short_description}}</li></a>
-
-
-{% endfor %}
-</ul>
-</div>
-<div class="row">
-<h6 class="black">{% trans "Change the language" %}</h6>
-<hr/>
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}" />
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go" />
+    <!--<div class="three columns">&nbsp;</div>-->
+    <!--</div>-->
+    <div class="row" style="" id="id_row_sail">
+        <!--<div class="five columns">&nbsp;</div>-->
+        <div class="small-6 small-centered large-2 large-centered columns small">    
+            <button class="home-ghost-button-class info expand"><strong>{% trans "SAIL" %}</strong></button>
+        </div>
+    </div>
 </form>
+<div class="row">
+    <div class="twelve columns">
+    </div>
 </div>
+<div class="">
+    <div class="large-10 columns" style="padding-top:0em;">
+        <center><h4 class="black" style="" id="explore"><strong>{% trans "Explore delicious vegan places" %}</strong></h4></center>
+        <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+            <li>{% skeleton_card_vg_533 21041 %}</li>
+            <li>{% skeleton_card_vg_533 21025 %}</li>
+            <li>{% skeleton_card_vg_533 18497 %}</li>
+            <li>{% skeleton_card_vg_533 17862 %}</li>
+            <li>{% skeleton_card_vg_533 13404 %}</li>
+            <li>{% skeleton_card_vg_533 12396 %}</li>
+            <li>{% skeleton_card_vg_533 9178 %}</li>
+            <li>{% skeleton_card_vg_533 12293 %}</li>
+            <li>{% skeleton_card_vg_533 17140 %}</li>
+        </ul>
+    </div>
+    <div class="large-2 columns" id="recent" style="padding-top:0em;">
+        <center><h4 class="black" style="" id="explore"><strong>{% trans "Recent" %}</strong></h4></center>
+        <ul class="pricing-table">
+            <li class="title">{% trans "Recent places"%}</li>
+            <!--<li class="price">$99.99</li>-->
+            <li class="description">{% trans "Latest added places"%}</li>
+            <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
+            {% for latest_entry in latest_entries %}
+                <a href='{{ latest_entry.get_absolute_url}}'><li class="bullet-item"><strong>{{ latest_entry.name }}</strong>, {{ latest_entry.short_description}}</li></a>
+            {% endfor %}
+        </ul>
+         <h6 class="black">{% trans "Change the language" %}</h6>
+        <hr/>
+        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}" />
+            <select name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% get_available_languages as LANGUAGES %}
+                {% get_language_info_list for LANGUAGES as languages %}
+                {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                        {{ language.name_local }} ({{ language.code }})
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Go" />
+        </form>
+    </div>
 </div>
+
+<div class="row">
+   
+</div>
+
 
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}

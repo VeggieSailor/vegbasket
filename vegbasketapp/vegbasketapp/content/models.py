@@ -3,11 +3,14 @@ import datetime as dt
 
 from django.db import models
 from django.utils.translation import ugettext as _
-from vegbasketapp.transformer.models import Region
+from django.utils import timezone
+
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
-
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from vegbasketapp.transformer.models import Region
+
 from autoslug import AutoSlugField
 VEG_LEVEL_CHOICES = (
     (0, _('Not Veg-Friendly')),
@@ -123,31 +126,27 @@ class VeggieSailorEntry(models.Model):
     city = models.CharField(max_length=256, default="")
     zipcode = models.CharField(max_length=32, default="")
     summary = models.CharField(max_length=512, default="")
-    
     region = models.ForeignKey(VeggieSailorRegion, null=False)
-    
     results_geo_place = models.TextField(null=False, blank=True, default="")
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id') 
-    
     vg_object_id = models.IntegerField(null=True)
-    
     allows_smoking = models.NullBooleanField(null=True)
     allows_reservations = models.NullBooleanField(null=True)
     categories = models.ManyToManyField(VeggieSailorCategory)
     cuisines = models.ManyToManyField(VeggieSailorCuisine)
     tags = models.ManyToManyField(VeggieSailorTag)
     payments = models.ManyToManyField(VeggieSailorPayment)
-    
     level = models.IntegerField(choices = VEG_LEVEL_CHOICES,default=0)
     price = models.IntegerField(choices = PRICE_CHOICES,default=0)
-    
     rating = models.FloatField(default="0.0", null=False)
     rating_count = models.IntegerField(default=0, null=False)
+    # Coordinates
+    long = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    lat = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     
 
     def get_rating_lists(self):
@@ -334,11 +333,13 @@ class VeggieSailorImage(models.Model):
     width = models.IntegerField()
     
 
-
-
-
-
-
-
-
+class VeggieSailorRating(models.Model):
+    """Rates the place.
+    """
+    user = models.ForeignKey(User)
+    note = models.TextField(default='', null=False)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=timezone.now)
+    entry = models.ForeignKey(VeggieSailorEntry)
+    rating = models.IntegerField(null=False)
 

@@ -38,7 +38,7 @@ urlpatterns = patterns('',
     url('', include('social.apps.django_app.urls', namespace='social')),    
     url(r'^accounts/setup/$', 'vegbasketapp.personal.views.accounts_setup', name='accounts_setup'),
     url(r'^p/$', 'vegbasketapp.personal.views.personal', name='personal'),
-    url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}),
+    url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}, name='logout'),
     #url(r'^search/', include('haystack.urls'))
     
     
