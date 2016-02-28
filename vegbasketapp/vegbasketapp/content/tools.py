@@ -28,7 +28,7 @@ def convert_region(region_id):
         Works in the recursive way.
     """
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
+    #vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
 
 
     try:
@@ -73,7 +73,7 @@ def convert_region_down(region_id, global_list_tmp=()):
     """
 
     global_list = list(global_list_tmp)
-    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    #vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
 
     if region_id  in global_list:
@@ -148,7 +148,7 @@ def convert_entry(entry_id, force=False):
     #print (vg_entry.source_id, price, price_range)
 
     # List of images to download
-    image_urls = []
+    #image_urls = []
     
     
     vs_entry.description = vg_entry.get_long_description()
@@ -236,7 +236,7 @@ def convert_entry(entry_id, force=False):
 
         
     
-    images = []
+    #images = []
     
     if not VeggieSailorImage.objects.filter(entry=vs_entry) or force is True:
     
@@ -254,32 +254,32 @@ def convert_entry(entry_id, force=False):
                     #print (image_file)                
                     image_url = image_file['uri']
                     print ("MAKING IMAGE REQUEST %s", image_url)
-                    new_name = md5(image_url.encode('utf-8')).hexdigest()            
-                    request = requests.get(image_url, stream=True)            
+                    new_name = md5(image_url.encode('utf-8')).hexdigest()
+                    request = requests.get(image_url, stream=True)
                     width = image_file['width']
-                    height = image_file['height']            
+                    height = image_file['height']
                     # Was the request OK?
                     if request.status_code != requests.codes.ok:
                         # Nope, error handling, skip file etc etc etc
                         continue
-                
+
                     # Get the filename from the url, used for saving later
                     url_file_name_ext = image_url.split('/')[-1].split(".")[-1]
                     
                     file_name = '%s.%s' % (new_name, url_file_name_ext)
                     # Create a temporary file
                     lf = tempfile.NamedTemporaryFile()
-                
+
                     # Read the streamed image in sections
                     for block in request.iter_content(1024 * 8):
-                
+
                         # If no more file then stop
                         if not block:
                             break
-                
+
                         # Write image block to temporary file
                         lf.write(block)
-                
+
                     # Create the model you want to save the image to
                     try:
                         image = VeggieSailorImage()
@@ -287,11 +287,11 @@ def convert_entry(entry_id, force=False):
                         image.entry = vs_entry
                         image.width = width
                         image.height = height
-                        
-                    
+
+
                         # Save the temporary image to the model#
                         # This saves the model so be sure that is it valid
-                        image.photo.save(file_name, files.File(lf))    
+                        image.photo.save(file_name, files.File(lf))
                         image.save()
                     except DataError:
                         print ("Error with the picture", vg_entry.source_id)

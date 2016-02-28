@@ -19,15 +19,15 @@ from django.utils.six import StringIO
 class CommandTestCase(TestCase):
     """Class for testing the commands. Coverage.
     """
-    fixtures = ["region_52.json","entry_52.json", "vs_region_source_52.json",]    
-    def test_command_convert_all_entries(self):
+    fixtures = ["region_52.json","entry_52.json", "vs_region_source_52.json",]
+    def test_convert_all_entries(self):
         """Convert all entries test.
         """
         out = StringIO()
         call_command('convert_all_entries', stdout=out)
         self.assertEqual('', out.getvalue())
 
-    def test_command_convert_all_regions(self):
+    def test_convert_all_regions(self):
         """Convert all regions test.
         """
         out = StringIO()

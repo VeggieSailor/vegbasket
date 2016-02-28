@@ -70,7 +70,6 @@ class VeggieSailorTag(models.Model):
 
 class VeggieSailorCuisine(models.Model):
     """Main Veggie Sailor Cuisine.
-    
     """    
     name = models.CharField(max_length=128, default="")
     parent = models.ForeignKey('self', null=True)
@@ -288,14 +287,12 @@ class VeggieSailorOpeningHour(models.Model):
         """Get closing hour.
         http://stackoverflow.com/questions/12448592/how-to-add-delta-to-python-datetime-time
         """
-        
-        now = dt.datetime.now()
+
         delta = self.duration
         t = self.from_hour       
-        
         result = (dt.datetime.combine(dt.date(1,1,1),t) + delta).time()
         return result
-    
+
     def is_open(self):
         """If the place is open right now.
         """

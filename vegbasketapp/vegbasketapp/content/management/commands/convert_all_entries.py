@@ -13,7 +13,7 @@ def sleep_random(min, max):
     """
     sleep_time = randint(min, max)
     sleep(sleep_time)
-    
+
 class Command(BaseCommand):
     args = ''
     help = 'Converts all entries'
