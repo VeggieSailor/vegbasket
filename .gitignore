@@ -9,3 +9,6 @@ veggiesailor.egg-info/
 dist/
 docs/
 vegbasketapp/media/
+coverage.xml
+htmlcov/
+

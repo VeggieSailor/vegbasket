@@ -67,9 +67,5 @@ class Command(BaseCommand):
                             vsoh.save()
                         except IndexError:
                             print("Index Error: %s" % (e.id))
-            except VeggieSailorEntry.DoesNotExist: 
+            except VeggieSailorEntry.DoesNotExist:
                 print("Not Exists: %s" % (e.id))
-                    
-                
-    
-            

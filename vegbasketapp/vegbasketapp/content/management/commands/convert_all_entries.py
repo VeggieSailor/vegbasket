@@ -1,7 +1,7 @@
 from random import randint
 from time import sleep
 
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from vegbasketapp.content.tools import convert_entry
 
 from vegbasketapp.transformer.models import Entry
@@ -16,15 +16,11 @@ def sleep_random(min, max):
     
 class Command(BaseCommand):
     args = ''
-
     help = 'Converts all entries'
 
     def handle(self, *args, **options):
         entries = Entry.objects.all().order_by('source_id')
-        
-            
         for entry in entries:
-            #print (entry.source_id)
             try:
                 convert_entry(entry.source_id)
                 if entry.get_elem("images"):
