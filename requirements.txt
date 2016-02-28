@@ -22,3 +22,4 @@ unittest2==1.1.0
 parsedatetime==1.5
 codacy-coverage==1.2.8
 coverage==4.0.3
+django-coverage==1.2.4

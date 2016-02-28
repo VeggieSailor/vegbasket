@@ -176,3 +176,4 @@ LANGUAGES = [
 
 #from vegbasketapp.dummy_trans import output
 LOCALE_PATHS = (LOCALE_DIR,)
+
