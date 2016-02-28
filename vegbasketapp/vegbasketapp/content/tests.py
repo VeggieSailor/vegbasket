@@ -41,6 +41,12 @@ class CommandTestCase(TestCase):
         call_command('convert_hours', stdout=out)
         self.assertEqual('', out.getvalue())
 
+    #def test_command_rebuild_index(self):
+        #"""Rebuild index test.
+        #"""
+        #out = StringIO()
+        #call_command('rebuild_index', '--noinput',stdout=out)
+        #self.assertEqual('', out.getvalue())
 
 class SimplyTestCase(TestCase):
     """Simply tests to fix the coverage.

@@ -36,14 +36,16 @@ def fetch_region(source_id, force=False):
 
 
 def get_region_by_id(source_id, force=False):
-    if force or Region.objects.filter(source_id=source_id,
+    """Get region by VegGuide id.
+    """
+    if force is False and Region.objects.filter(source_id=source_id).count()>0:
+        region = Region.objects.get(source_id=source_id)
+    elif force or Region.objects.filter(source_id=source_id,
                                       modified__gte=timezone.now()-datetime.timedelta(
                                           days=settings.DEFALT_EXPIRE_TIME)).count()==0:
         region = fetch_region(source_id, force)
     else:
         region = Region.objects.get(source_id=source_id)
-        
-    #print (region.modified_source)
     return region
 
 
@@ -76,8 +78,11 @@ def get_entry_by_id(source_id, force=False):
     counter = Entry.objects.filter(source_id=source_id,
                                      modified__gte=timezone.now()-datetime.timedelta(
                                          days=settings.DEFALT_EXPIRE_TIME)).count()
+    counter_any = Entry.objects.filter(source_id=source_id).count()
     
-    if force is False and counter>0:
+    if force is False and counter_any > 0:
+        entry = Entry.objects.get(source_id=source_id)
+    elif force is False and counter>0:
         entry = Entry.objects.get(source_id=source_id)
     elif force is True or counter==0:
         entry = fetch_entry(source_id)

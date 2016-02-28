@@ -8,6 +8,8 @@ from urllib import request
 
 BASE_URL = 'https://www.vegguide.org/'
 
+
+
 class VegGuideRequest(request.Request):
     def __init__(self, url=BASE_URL):
         """Initialisation.
@@ -22,6 +24,7 @@ class VegGuideParser:
         #print ("VG Request PARSER %s",vegguide_request)
         req = request.urlopen(vegguide_request)
         data = req.readall().decode('utf-8')
+        #print(data)
         self.result = json.loads(data)
 
 class VegGuideTree(object):
@@ -99,10 +102,11 @@ class VegGuideObject(object):
         if payload_json == None:
             req = VegGuideRequest(self.uri)
             self.results =  VegGuideParser(req).result
+            
             self.results_json = json.dumps(self.results)
         else:
-           self.results_json = payload_json
-           self.results = json.loads(self.results_json)
+            self.results_json = payload_json
+            self.results = json.loads(self.results_json)
 
         self._children = []
         self._entries = []
