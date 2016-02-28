@@ -11,13 +11,13 @@ Pillow
 sphinxcontrib-napoleon
 django-dia
 django-haystack==2.4.1
-elasticsearch==2.1.0
-django-meta==0.3.1
+elasticsearch==2.2.0
+django-meta==0.3.2
 django-autoslug==1.9.3
 pytils==0.3
-Unidecode==0.4.18
+Unidecode==0.04.19
 django-debug-toolbar==1.4
-httpretty==0.8.10
+httpretty==0.8.14
 unittest2==1.1.0
 parsedatetime==1.5
 codacy-coverage==1.2.8
