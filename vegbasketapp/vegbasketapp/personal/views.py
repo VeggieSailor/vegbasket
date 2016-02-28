@@ -23,15 +23,13 @@ def accounts_setup(request):
             request.user.save()
             request.user.userprofile.first_time = False
             request.user.userprofile.save()
-            return HttpResponseRedirect('/p/')     
+            return HttpResponseRedirect('/p/')
     else:
         form = UsernameSetupForm()
     return render(request, "accounts_setup.html", {"form":form})
-
 
 @login_required
 def personal(request):
     """Personal page after login view.
     """
     return render(request, "personal.html")
-    

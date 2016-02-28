@@ -88,40 +88,38 @@ def convert_region_down(region_id, global_list_tmp=()):
         region = Region.objects.get(source_id=region_id)
     except Region.DoesNotExist:
         region = get_region_by_id(region_id)
-    #print (region)
-    
+
     children = region.get_children()
-    #print (region_id, children)    
-    
+
+
     for child in children:
-        #print ("doing child", child)
         convert_region_down(int(child), global_list)
   
     return (region, vs_region)
-    
-    
+
 def convert_entry(entry_id, force=False):
     """Convert entry to the VeggieSailor object.
-    
     """
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
     vg_entry = get_entry_by_id(entry_id, force)
     vg_region = vg_entry.region
     #print ("Region", vg_region.source_id)
-      
+
     try:
-        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type, object_id=vg_entry.id)
+        vs_entry= VeggieSailorEntry.objects.get(content_type=vg_entry_type,
+                                                object_id=vg_entry.id)
     except VeggieSailorEntry.DoesNotExist:
         vs_entry= VeggieSailorEntry(content_type=vg_entry_type, object_id=vg_entry.id)
         
     try:
-        vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type, object_id=vg_region.source_id)
+        vs_region = VeggieSailorRegion.objects.get(content_type=vg_region_type,
+                                                   object_id=vg_region.source_id)
     except VeggieSailorRegion.DoesNotExist:
         vs_region = convert_region(vg_region.source_id)
-        
+
     vs_entry.name = vg_entry.get_name()
-    
+
     vs_entry.region =  vs_region
     vs_entry.short_description = vg_entry.get_short_description()
     vs_entry.city = vg_entry.get_elem('city')
@@ -144,9 +142,9 @@ def convert_entry(entry_id, force=False):
         price = 3
     else:
         price = 0
-        
+
     vs_entry.price = price
-    
+
     #print (vg_entry.source_id, price, price_range)
 
     # List of images to download
@@ -160,22 +158,20 @@ def convert_entry(entry_id, force=False):
     #print ("smokesy",vg_entry.get_elem('allows_smoking'))
     vs_entry.allows_smoking = vg_entry.get_elem('allows_smoking')
     vs_entry.allows_reservations = vg_entry.get_elem('accepts_reservations')
-    
-    
-    
+
     vs_entry.save()
-    
+
     categories = vg_entry.get_elem('categories', [])
     vs_categories = []
     for category in categories:
-        vs_category, created = VeggieSailorCategory.objects.get_or_create(name=category)        
+        vs_category, created = VeggieSailorCategory.objects.get_or_create(name=category)
         vs_categories.append(vs_category)
-    
+
     if categories:
         vs_entry.categories = vs_categories
         vs_entry.save()
             
-    cuisines = vg_entry.get_elem('cuisines',[])    
+    cuisines = vg_entry.get_elem('cuisines',[])
     vs_cuisines = []
     for cuisine in cuisines:
         vs_cuisine, created = VeggieSailorCuisine.objects.get_or_create(name=cuisine)
@@ -185,7 +181,7 @@ def convert_entry(entry_id, force=False):
         vs_entry.cuisines = vs_cuisines
         vs_entry.save()
 
-        cuisines = vg_entry.get_elem('cuisines',[])    
+        cuisines = vg_entry.get_elem('cuisines',[])
         vs_cuisines = []
         for cuisine in cuisines:
             vs_cuisine, created = VeggieSailorCuisine.objects.get_or_create(name=cuisine)
@@ -196,7 +192,7 @@ def convert_entry(entry_id, force=False):
             vs_entry.save()
 
         
-    tags = vg_entry.get_elem('tags',[])    
+    tags = vg_entry.get_elem('tags',[])
     vs_tags = []
     for tag in tags:
         vs_tag, created = VeggieSailorTag.objects.get_or_create(name=tag)
@@ -206,18 +202,18 @@ def convert_entry(entry_id, force=False):
         vs_entry.tags = vs_tags
         vs_entry.save()
 
-        tags = vg_entry.get_elem('tags',[])    
+        tags = vg_entry.get_elem('tags',[])
         vs_tags = []
         for tag in tags:
             vs_tag, created = VeggieSailorTag.objects.get_or_create(name=tag)
             vs_tags.append(vs_tag)
-            
+
         if tags:
             vs_entry.tags = vs_tags
             vs_entry.save()
 
         
-    payments = vg_entry.get_elem('payment_options',[])    
+    payments = vg_entry.get_elem('payment_options',[])
     #print ("payments",payments)
     vs_payments = []
     for payment in payments:
@@ -228,7 +224,7 @@ def convert_entry(entry_id, force=False):
         vs_entry.payments = vs_payments
         vs_entry.save()
 
-        payments = vg_entry.get_elem('payments',[])    
+        payments = vg_entry.get_elem('payments',[])
         vs_payments = []
         for payment in payments:
             vs_payment, created = VeggieSailorPayment.objects.get_or_create(name=payment)

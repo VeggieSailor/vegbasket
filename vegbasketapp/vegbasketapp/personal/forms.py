@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
         #if len(password) < 8:
             #raise forms.ValidationError("Password must be at least 8 chars.")
         #return password
-    
+
     #def clean_password_confirmation(self):
         #password_confirmation = self.cleaned_data.get('password_confirmation')
         #if len(password_confirmation) < 8:
@@ -21,7 +21,7 @@ from django.contrib.auth.models import User
 
     #class Meta:
         #model = User
-    
+
 class UsernameSetupForm(forms.ModelForm):
     """Form to setup an username.
     """
@@ -31,7 +31,9 @@ class UsernameSetupForm(forms.ModelForm):
         if User.objects.exclude(pk=self.instance.pk).filter(username=username).exists():
             raise forms.ValidationError(u'Username "%s" is invalid.' % username)
         return username
-    
+
     class Meta:
+        """Django Meta Class.
+        """
         model = User
         fields = ("username", )

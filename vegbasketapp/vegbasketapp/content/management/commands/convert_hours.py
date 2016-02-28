@@ -26,12 +26,11 @@ class Command(BaseCommand):
         """Main 'handle' function.
         """
         all_entries = Entry.objects.all()
-        for e in all_entries:
-            #e = Entry.objects.get(id=4015)
+        for entry in all_entries:
             try:
-                vse = VeggieSailorEntry.objects.get(vg_object_id = e.source_id)
+                vse = VeggieSailorEntry.objects.get(vg_object_id = entry.source_id)
                 VeggieSailorOpeningHour.objects.filter(entry = vse).delete()
-                hours = e.get_elem('hours')
+                hours = entry.get_elem('hours')
                 for elem in hours:
                     days = (elem['days'])
                     if days in DAYS:
@@ -47,7 +46,6 @@ class Command(BaseCommand):
                             for hour in elem['hours']:
                                 parsed_hours = hour.split(' - ')
                                 #print (parsed_hours)
-            
                                 if parsed_hours[0] == 'closed':
                                     #print ("closed!")
                                     is_closed = True
@@ -66,6 +64,6 @@ class Command(BaseCommand):
                             vsoh.is_closed = is_closed
                             vsoh.save()
                         except IndexError:
-                            print("Index Error: %s" % (e.id))
+                            print("Index Error: %s" % (entry.id))
             except VeggieSailorEntry.DoesNotExist:
-                print("Not Exists: %s" % (e.id))
+                print("Not Exists: %s" % (entry.id))

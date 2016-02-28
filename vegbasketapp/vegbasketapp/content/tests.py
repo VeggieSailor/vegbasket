@@ -2,7 +2,7 @@ from django.test import TestCase, Client
 
 from vegbasketapp.transformer.tools_entry import get_entry_by_id
 from vegbasketapp.transformer.tools_entry import get_region_by_id
-from vegbasketapp.content.tools import get_entry_by_vg_id
+from vegbasketapp.content.tools import get_entry_by_vg_id, convert_region_down
 
 from vegbasketapp.content.tools import convert_region
 from vegbasketapp.content.models import VeggieSailorRegion
@@ -25,6 +25,8 @@ class SimplyTestCase(TestCase):
         self.assertAlmostEqual(region_id, '35')
 
     def test_convert_region_23(self):
+        """Test if name fits - coverage.
+        """
         vs_region = convert_region(23)
         self.assertEqual(vs_region.name, 'Ontario')
 
@@ -69,6 +71,12 @@ class ToolsTestCase(TestCase):
         
 
         
+    def test_convert_region_down(self):
+        """Test convert_region_down.
+        """
+        region, vs_region = convert_region_down(23)
+        self.assertEqual(vs_region.name, 'Ontario')
+        self.assertEqual(region.source_id, 23)
     
     def test_entry_attributes(self):
         """Perform various test on the entry.
@@ -84,10 +92,7 @@ class ToolsTestCase(TestCase):
         #f = open('vegbasketapp/content/fixtures/entry_52.json', 'w')
         #f.write(data)
         #f.close()          
-        
-        
 
-        
 class SearchTest(TestCase):
     """Tests for the entries.
     
