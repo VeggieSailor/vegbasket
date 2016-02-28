@@ -2,7 +2,6 @@ from django.utils.translation import ugettext_lazy as _
 import datetime as dt
 
 from django.db import models
-from django.utils.translation import ugettext as _
 from django.utils import timezone
 
 from django.contrib.contenttypes.models import ContentType
