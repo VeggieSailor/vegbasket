@@ -12,6 +12,35 @@ from django.core import serializers
 from vegbasketapp.content.models import *
 from vegbasketapp.transformer.models import *
 from vegbasketapp.content.tools import get_region_id
+from django.core.management import call_command
+from django.utils.six import StringIO
+
+
+class CommandTestCase(TestCase):
+    """Class for testing the commands. Coverage.
+    """
+    fixtures = ["region_52.json","entry_52.json", "vs_region_source_52.json",]    
+    def test_command_convert_all_entries(self):
+        """Convert all entries test.
+        """
+        out = StringIO()
+        call_command('convert_all_entries', stdout=out)
+        self.assertEqual('', out.getvalue())
+
+    def test_command_convert_all_regions(self):
+        """Convert all regions test.
+        """
+        out = StringIO()
+        call_command('convert_all_regions', '23', stdout=out)
+        self.assertEqual('', out.getvalue())
+        
+    def test_command_convert_hours(self):
+        """Convert hours test.
+        """
+        out = StringIO()
+        call_command('convert_hours', stdout=out)
+        self.assertEqual('', out.getvalue())
+
 
 class SimplyTestCase(TestCase):
     """Simply tests to fix the coverage.
