@@ -51,7 +51,6 @@ def entry_vg(request, entry_id):
 
 def entry_vs(request, entry_id):
     """Entry by vegguide id.
-    
     """
 
     vs_entry = get_vs_entry_by_id(entry_id)

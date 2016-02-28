@@ -11,6 +11,22 @@ from django.core.urlresolvers import reverse
 from django.core import serializers
 from vegbasketapp.content.models import *
 from vegbasketapp.transformer.models import *
+from vegbasketapp.content.tools import get_region_id
+
+class SimplyTestCase(TestCase):
+    """Simply tests to fix the coverage.
+    """
+    
+    def test_get_region_id(self):
+        """Test getting region number.
+        """
+        url = 'https://www.vegguide.org/region/35'
+        region_id = get_region_id(url)
+        self.assertAlmostEqual(region_id, '35')
+
+    def test_convert_region_23(self):
+        vs_region = convert_region(23)
+        self.assertEqual(vs_region.name, 'Ontario')
 
 class ToolsTestCase(TestCase):
     """Main class for the tools tests.

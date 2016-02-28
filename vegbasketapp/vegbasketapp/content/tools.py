@@ -21,26 +21,26 @@ def get_region_id(url):
     return url.split('/')[-1]
 
 def convert_region(region_id):
-    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
-    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
     """Convert single region and it's parent.
-    
+
     Notes
     -----
         Works in the recursive way.
-        
     """
-    
+    vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
+    vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")
+
+
     try:
         region = Region.objects.get(source_id=region_id)
     except Region.DoesNotExist:
-        region = get_region_by_id(region_id)    
-    region.set_obj()    
-    
+        region = get_region_by_id(region_id)
+    region.set_obj()
+
     if VeggieSailorRegion.objects.filter(source_region=region).count()>0:
         vs_region = VeggieSailorRegion.objects.get(source_region=region)
         vs_region.content_type = vg_region_type
-        vs_region.object_id = region.source_id        
+        vs_region.object_id = region.source_id
         vs_region.save()
         return vs_region
 
@@ -61,7 +61,7 @@ def convert_region(region_id):
         vs_region_parent = convert_region(parent_id)
         vs_region.parent = vs_region_parent
         vs_region.save()
-  
+
     return vs_region
 
 def convert_region_down(region_id, global_list_tmp=()):
@@ -71,11 +71,11 @@ def convert_region_down(region_id, global_list_tmp=()):
     ----------
     region_id
     """
-    
+
     global_list = list(global_list_tmp)
     vg_region_type = ContentType.objects.get(app_label="transformer", model="region")
     vg_entry_type = ContentType.objects.get(app_label="transformer", model="entry")    
-    
+
     if region_id  in global_list:
         #print ("Leaving", region_id)
         return None
