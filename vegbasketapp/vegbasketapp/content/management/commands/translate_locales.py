@@ -25,6 +25,4 @@ class Command(BaseCommand):
                 if po_row:
                     print (row[0])
                     po_row.msgstr = row[1]
-                    
-                    
         po.save()
