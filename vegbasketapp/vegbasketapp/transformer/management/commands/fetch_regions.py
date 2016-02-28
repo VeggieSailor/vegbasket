@@ -48,10 +48,6 @@ class Command(BaseCommand):
         number = int(args[0])
         start = int(args[1])
         if number>100:
-            number == 100
-        (last_region, result) = fetch_region_recursion(start, number)    
+            number = 100
+        (last_region, result) = fetch_region_recursion(start, number)
         print("Finished on ", last_region)
-
-
-
-        
