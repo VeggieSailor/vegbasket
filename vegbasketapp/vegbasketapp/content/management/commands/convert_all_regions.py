@@ -1,14 +1,15 @@
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 from vegbasketapp.content.tools import convert_region_down
 
-from vegbasketapp.transformer.models import Region
-
 class Command(BaseCommand):
+    """Convert all regions.
+    """
     args = '<regions>'
-
     help = 'Converts all regions'
 
     def handle(self, *args, **options):
+        """Main method.
+        """
         if args:
             elems = args
         else:
@@ -16,7 +17,3 @@ class Command(BaseCommand):
             
         for region_source_id in elems:
             convert_region_down(region_source_id)
-
-
-
-        
