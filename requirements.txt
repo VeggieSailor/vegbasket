@@ -1,5 +1,5 @@
 -e git+https://github.com/django/django.git@stable/1.8.x#egg=django
-django-zurb-foundation
+django-zurb-foundation=5.5.0
 psycopg2
 djangorestframework
 markdown

@@ -203,11 +203,11 @@
         </ul>
     </div>
     <div class="large-2 columns" id="recent" style="padding-top:0em;">
-        <center><h4 class="black" style="" id="explore"><strong>{% trans "Recent" %}</strong></h4></center>
+        <center><h4 class="black" style="" id="explore"><strong>{% trans "Latest added places"%}</strong></h4></center>
         <ul class="pricing-table">
             <li class="title">{% trans "Recent places"%}</li>
             <!--<li class="price">$99.99</li>-->
-            <li class="description">{% trans "Latest added places"%}</li>
+            <!--<li class="description"></li>-->
             <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
             {% for latest_entry in latest_entries %}
                 <a href='{{ latest_entry.get_absolute_url}}'><li class="bullet-item"><strong>{{ latest_entry.name }}</strong>, {{ latest_entry.short_description}}</li></a>

@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.test import Client
 from vegbasketapp.transformer.tools_entry import get_entry_by_id
 from vegbasketapp.transformer.tools_entry import get_region_by_id
+from vegbasketapp.transformer.tools_entry import get_entry_geo
 
 
 from django.core import serializers
@@ -298,6 +299,20 @@ class MockTestCase(TestCase):
         vg_region =  (get_region_by_id(23))
         vg_region.set_obj()
         self.assertEqual(vg_region.obj['name'], 'Ontario')
+
+class MockTestCaseFixtures(TestCase):
+    """Some tests with mocks.
+    """
+    fixtures = ['entry_transformer.json','region_transformer.json','reviews_transformer.json']
+    @mock.patch('vegbasketapp.transformer.vegguide.VegGuideParser', autospec=True)
+    def test_geo(self, VegGuideParser):
+        vg_entry = get_entry_by_id(12188)
+        cords = get_entry_geo(vg_entry)
+        #VegGuideParser.return_value.result = json.loads(REGION_23)
+        #vg_region =  (get_region_by_id(23))
+        #vg_region.set_obj()
+        #self.assertEqual(vg_region.obj['name'], 'Ontario')
+
 
 class ViewsTestCase(TestCase):
     fixtures = ['entry_transformer.json','region_transformer.json','reviews_transformer.json']
