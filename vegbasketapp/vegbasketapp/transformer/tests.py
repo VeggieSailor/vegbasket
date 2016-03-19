@@ -13,6 +13,8 @@ from vegbasketapp.transformer.models import *
 
 from vegbasketapp.transformer.vegguide import VegGuideParser
 
+ENTRY_12118_JSON = '{"results": [{"place_id": "", "geometry": {"location_type": "ROOFTOP", "location": {"lng": 2.1772622, "lat": 41.3803325}, "viewport": {"southwest": {"lng": 2.175913219708498, "lat": 41.3789835197085}, "northeast": {"lng": 2.178611180291502, "lat": 41.3816814802915}}}, "partial_match": true, "formatted_address": "Carrer dels Escudellers, 42, 08002 Barcelona, Barcelona, Spain", "types": ["street_address"], "address_components": [{"types": ["street_number"], "short_name": "42", "long_name": "42"}, {"types": ["route"], "short_name": "Carrer dels Escudellers", "long_name": "Carrer dels Escudellers"}, {"types": ["locality", "political"], "short_name": "Barcelona", "long_name": "Barcelona"}, {"types": ["administrative_area_level_2", "political"], "short_name": "B", "long_name": "Barcelona"}, {"types": ["administrative_area_level_1", "political"], "short_name": "CT", "long_name": "Catalunya"}, {"types": ["country", "political"], "short_name": "ES", "long_name": "Spain"}, {"types": ["postal_code"], "short_name": "08002", "long_name": "08002"}]}], "status": "OK"}'
+
 REGION_23 = """
 {
    "parent" : {
@@ -303,16 +305,15 @@ class MockTestCase(TestCase):
 class MockTestCaseFixtures(TestCase):
     """Some tests with mocks.
     """
-    fixtures = ['entry_transformer.json','region_transformer.json','reviews_transformer.json']
+    fixtures = ['region_transformer.json','reviews_transformer.json',
+                'entry_transformer.json']
     @mock.patch('vegbasketapp.transformer.vegguide.VegGuideParser', autospec=True)
     def test_geo(self, VegGuideParser):
         vg_entry = get_entry_by_id(12188)
+        vg_entry.obj_get = json.loads(ENTRY_12118_JSON)
         cords = get_entry_geo(vg_entry)
-        #VegGuideParser.return_value.result = json.loads(REGION_23)
-        #vg_region =  (get_region_by_id(23))
-        #vg_region.set_obj()
-        #self.assertEqual(vg_region.obj['name'], 'Ontario')
-
+        self.assertEqual(cords['lat'],41.3803325)
+        self.assertEqual(cords['lng'],2.1772622)
 
 class ViewsTestCase(TestCase):
     fixtures = ['entry_transformer.json','region_transformer.json','reviews_transformer.json']
