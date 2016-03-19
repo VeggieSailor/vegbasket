@@ -154,35 +154,30 @@ class VeggieSailorEntry(models.Model):
         half = 1 if self.rating-int(self.rating)>0 else 0
         empty = 5 - half - full
         return (range(full), range(half), range(empty))
-        
-        
-    
+
     def get_opening_hours_display(self):
         """Get opening hours in the human format.
         """
         hours = self.opening_hours.all()
-        
+
         results = []
-        
+
         for hour in hours:
             if hour.is_closed is True:
                 results.append((
-                    hour.get_weekday_display(), 
+                    hour.get_weekday_display(),
                     _("closed")
                 ))                
             else:
                 results.append((
-                    hour.get_weekday_display(), 
+                    hour.get_weekday_display(),
                     hour.from_hour,
                     hour.to_hour()
                 ))
-                
-        
         return results
-    
-    
+
     def __unicode__(self):
-        return u"%s" % self.name    
+        return u"%s" % self.name
     def __str__(self):
         return "%s in %s" % (self.name, self.region.name)
     
@@ -209,8 +204,7 @@ class VeggieSailorEntry(models.Model):
     def get_boolean_verbose(self, field):
 
         value = self.__getattribute__(field)
-        
-        
+
         if value is None:
             return SMOKING_STATUS[0]
         elif self.allows_smoking == '0':
@@ -218,7 +212,7 @@ class VeggieSailorEntry(models.Model):
         elif self.allows_smoking == '1':
             return SMOKING_STATUS[2]
         return SMOKING_STATUS[3] # huh?
-    
+
     def allows_smoking_verbose(self):
         """Get smoking verbose info.
         """
@@ -246,7 +240,7 @@ class VeggieSailorEntry(models.Model):
             return '( <span class="vs-alert">%s</span> )' % msg_closed
     def get_absolute_url(self):
         return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
-        #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])            
+        #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])
        
     class Meta:
         verbose_name_plural = "veggie sailor entries"
@@ -327,7 +321,6 @@ class VeggieSailorImage(models.Model):
                               width_field='width')
     height = models.IntegerField()
     width = models.IntegerField()
-    
 
 class VeggieSailorRating(models.Model):
     """Rates the place.

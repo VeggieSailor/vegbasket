@@ -310,7 +310,7 @@ class MockTestCaseFixtures(TestCase):
     @mock.patch('vegbasketapp.transformer.vegguide.VegGuideParser', autospec=True)
     def test_geo(self, VegGuideParser):
         vg_entry = get_entry_by_id(12188)
-        vg_entry.obj_get = json.loads(ENTRY_12118_JSON)
+        vg_entry.obj_geo = json.loads(ENTRY_12118_JSON)
         cords = get_entry_geo(vg_entry)
         self.assertEqual(cords['lat'],41.3803325)
         self.assertEqual(cords['lng'],2.1772622)
