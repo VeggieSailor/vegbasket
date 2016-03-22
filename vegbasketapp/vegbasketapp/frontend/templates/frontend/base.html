@@ -29,6 +29,7 @@
     <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,500,700,400italic,500italic,700italic,900italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="{% static "frontend/css/app.css" %}?katia=2016-01-10" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     {% endblock css %}
 
     {# Override if you need another version of modernizr #}
@@ -89,23 +90,99 @@
 {% endblock base_body_content %}
 
 {% endblock base_body %}
-    <div class="row" style="padding-bottom:1em;">
-        <div class="large-2 medium-2 columns" style="padding-top:1em" >
-          <a taget="_blank" href="https://creativecommons.org/licenses/by-sa">  <img src="{% static "images/CC_by-sa.png" %}" width="100" /> </a>
-        </div>
-        <div class="large-3 medium-2 columns" style="padding-top:1em" >
-        
-            <span style="color:black">{% trans "Content powered by" %} &amp; {% trans "Copyright" %} &copy; <a taget="_blank" style="color:#78ae0e" href="https://vegguide.org">Vegguide.org</a>.</spam>
-        </div>
-        <div class="large-4 medium-2 columns" style="padding-top:1em" >
-            <span style="color:black">{% trans "Copyright" %} &copy; 2015 <a style="color:#78ae0e" href="mailto:contact@veggiesailor.com">VeggieSailor</a>.</span> 
-        </div>
-        
-        <div class="large-3 medium-6 columns">
- &nbsp;
+<style>
+h6.black {
+  text-transform: uppercase;
+  font-size:12px;
+  margin-left: 2px;
+  margin-bottom:5px;
+  margin-top:40px;
+}
 
+div>a {
+color: black;
+}
+div>a:hover {
+color: #99cc33;
+}
+</style>
+<div style="background-color:#5e5e5e;  padding-bottom:40px;">
+    <div class="row" style="color:black">
+        <div class="large-3 columns" style='font-size:12px;'>
+            <h6 class="black">About</h6>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-question fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://veggiesailor.freshdesk.com">Support</a></br>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-mobile fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://openrepos.net/content/bluszcz/veggie-sailor">Sailfish OS app</a></br>
         </div>
+        <div class="large-3 columns"  style='font-size:12px;'>
+        <h6 class="black">Follow</h6>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-twitter fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://twitter.com/veggiesailor">twitter</a></br>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-facebook fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://facebook.com/veggiesailor">facebook</a></br>
+
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-vk fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://vk.com/veggiesailor">vkontakte</a></br>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-globe fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://www.meetup.com/Barcelona-Veggie-Sailor/">meetup</a></br>
+        </div>
+        <div class="large-6 columns" style='font-size:12px;margin-bottom:30px;'>
+        <h6 class="black">Contribute</h6>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-globe fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://tree.taiga.io/project/bluszcz-veggie-sailor/">Taiga</a></br>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-github fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://github.com/VeggieSailor/">GitHub</a></br>
+                    <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-globe fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://www.transifex.com/veggiesailor/veggiesailor/">Transifex</a></br>
+            <span class="fa-stack fa-fa-lg">
+              <i class="fa fa-square-o fa-stack-2x"></i>
+              <i class="fa fa-globe fa-stack-1x"></i>
+            </span>
+            <a target="_blank" href="https://www.vegguide.org/">VegGuide</br>
+        </div>   
+        
+<hr style="height:1px;border-width:0;background-color:black;top:40px;margin-left:15px;margin-right:15px;">
     </div>
+            
+    <div class="row" style="color:black;">
+        <div class="large-12 columns" style='font-size:12px;'>
+        <a taget="_blank" href="https://creativecommons.org/licenses/by-sa">  <img class="right" src="{% static "images/CC_by-sa.png" %}" width="100" /> </a>
+        <span style="color:black">&copy; 2016 <a style="color:#78ae0e" href="mailto:contact@veggiesailor.com">VeggieSailor</a> - vegetarian open data platform</span> </br/>
+        
+        <span style="color:black">{% trans "Content powered by" %} &amp; {% trans "Copyright" %} &copy; 2016 <a taget="_blank" style="color:#78ae0e" href="https://vegguide.org">Vegguide.org</a></spam>
+        </div>
+        
+    </div>
+
+</div>
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
     <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
