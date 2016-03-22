@@ -56,6 +56,7 @@ casper.each(viewports, function(casper, viewport) {
   });
   this.then(function(){
     this.echo('Screenshot for ' + viewport.name + ' (' + viewport.viewport.width + 'x' + viewport.viewport.height + ')', 'info');
+    this.capture('screenshots/full/' + screenshotDateTime + '/' + viewport.name + '-' + viewport.viewport.width + 'x' + viewport.viewport.height + '.png');
     this.capture('screenshots/' + screenshotDateTime + '/' + viewport.name + '-' + viewport.viewport.width + 'x' + viewport.viewport.height + '.png', {
         top: 0,
         left: 0,
