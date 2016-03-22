@@ -31,6 +31,14 @@ var screenshotUrl = 'https://veggiesailor.com/',
       {
         'name': 'desktop-standard',
         'viewport': {width: 1280, height: 1024}
+      },
+      {
+        'name': 'desktop-standard-lenovo',
+        'viewport': {width: 1600, height: 900}
+      },
+      {
+        'name': 'desktop-standard-wuxga',
+        'viewport': {width: 1920, height: 1200}
       }
     ];
 
