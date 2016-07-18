@@ -18,24 +18,19 @@ if ("geolocation" in navigator) {
  navigator.geolocation.getCurrentPosition(function(position) {
  map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude),9);
  var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
- console.log(position.coords.latitude);
- console.log(position.coords.longitude);
-
-
 http://localhost:8000/vegapi/?long=2.1941695&lat=41.3892221
 $.ajax({
   url: "/vegapi/?long="+position.coords.longitude+"&lat="+position.coords.latitude,
   dataType: "json",
   context: document.body
 }).done(function(data) {
-console.log(data);
+
   <!--alert(data);-->
-  alert(data.places);
   $.each(data['places'],function(datad)
     {
-    console.log(datad);
-    console.log(data['places'][datad]['long']);
-    console.log(data['places'][datad]['lat']);
+    <!--console.log(datad);-->
+    <!--console.log(data['places'][datad]['long']);-->
+    <!--console.log(data['places'][datad]['lat']);-->
     var lng = data['places'][datad]['long'];
     var lat = data['places'][datad]['lat'];
     var marker = L.marker([lat, lng]).addTo(map);
