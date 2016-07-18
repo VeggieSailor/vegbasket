@@ -12,7 +12,7 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
     photos = indexes.IntegerField()
     rating = indexes.FloatField(model_attr='rating')
     mod_date = indexes.DateTimeField(model_attr='modified')
-
+    location = indexes.LocationField(model_attr='get_location')
 
     def get_updated_field(self):
         return 'modified'

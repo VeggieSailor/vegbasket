@@ -1,4 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.gis.geos import Point
+
 import datetime as dt
 
 from django.db import models
@@ -243,8 +245,18 @@ class VeggieSailorEntry(models.Model):
         #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])
        
     class Meta:
+        """Meta class for the model.
+        """
         verbose_name_plural = "veggie sailor entries"
         app_label = "content"
+        
+    def get_location(self):
+        """Get the location - for the Haystack.
+        """
+        print (self.long, self.lat)
+        if not self.long or not self.lat:
+            return Point(0,0)    
+        return Point(float(self.long), float(self.lat))    
 
 # Inspired (read stolen and rewritten ;) by:
 # http://stackoverflow.com/questions/12216771/django-objects-for-business-hours
