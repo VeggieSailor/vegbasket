@@ -1,4 +1,4 @@
--e git+https://github.com/django/django.git@stable/1.8.x#egg=django
+#-e git+https://github.com/django/django.git@stable/1.8.x#egg=django
 django-zurb-foundation==5.5.0
 psycopg2
 djangorestframework
@@ -10,7 +10,7 @@ django-sb-admin==0.3.6
 Pillow
 sphinxcontrib-napoleon
 django-dia
-django-haystack==2.4.1
+#django-haystack==2.4.1
 elasticsearch==2.2.0
 django-meta==0.3.2
 django-autoslug==1.9.3
@@ -24,3 +24,6 @@ codacy-coverage==1.2.8
 coverage==4.0.3
 django-coverage==1.2.4
 geopy==1.11.0
+django==1.9.8
+django-haystack==2.5.0
+ipython>=5.0
