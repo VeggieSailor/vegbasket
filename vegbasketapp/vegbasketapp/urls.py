@@ -27,6 +27,7 @@ urlpatterns = patterns('',
                        
     url(r'^$', 'vegbasketapp.home.views.index', name='home'),
     url(r'^map/$', 'vegbasketapp.frontend.views.homepage_map', name='home'),
+    url(r'^vegapi/$', 'vegbasketapp.vegapi.views.get_closest', name='vegapi_get_closest'),
     url(r'opensource$', 'vegbasketapp.home.views.opensource', name='opensource'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^e404$', 'vegbasketapp.home.views.handler404'),
