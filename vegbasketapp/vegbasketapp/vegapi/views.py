@@ -29,6 +29,7 @@ def get_closest(request):
         place['long'] = float(elem.object.long)
         place['lat'] = float(elem.object.lat)
         place['title'] = elem.object.name
+        place['level'] = elem.object.level
         data['places'].append(place)
     return HttpResponse(content=json.dumps(data))
         
