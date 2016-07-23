@@ -241,7 +241,7 @@ class VeggieSailorEntry(models.Model):
         else:
             return '( <span class="vs-alert">%s</span> )' % msg_closed
     def get_absolute_url(self):
-        return reverse('vegbasketapp.frontend.views.entry_slug', args=[str(self.slug)])
+        return reverse('entry_slug', args=[str(self.slug)])
         #return reverse('vegbasketapp.frontend.views.entry_vs', args=[str(self.id)])
        
     class Meta:

@@ -29,11 +29,9 @@ L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 
 
 if ("geolocation" in navigator) {
-<!--alert("Fuck yes");-->
  navigator.geolocation.getCurrentPosition(function(position) {
  map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude),zoomDefault);
  var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-http://localhost:8000/vegapi/?long=2.1941695&lat=41.3892221
 $.ajax({
   url: "/vegapi/?long="+position.coords.longitude+"&lat="+position.coords.latitude,
   dataType: "json",
@@ -62,7 +60,7 @@ $.ajax({
  var marker = L.marker([lngDefault, latDefault]).addTo(map);
 http://localhost:8000/vegapi/?long=2.1941695&lat=41.3892221
 $.ajax({
-  url: "/vegapi/?long="+latDefault+"&lat="+lngDefault,
+  url: "/vegapi/closest?long="+latDefault+"&lat="+lngDefault,
   dataType: "json",
   context: document.body
 }).done(function(data) {
@@ -84,19 +82,49 @@ $.ajax({
 
 
 
-
-
 } else {
 
- 
- 
- 
- 
-
-
-
-
 }
+
+
+
+
+map.on('zoomend', function() {
+    alert("yes");
+});
+map.on('dragend', function(e) {
+    console.log(map.getBounds());
+    bounds = map.getBounds();
+    console.log(bounds["_southWest"]);
+    console.log(bounds["_northEast"]);
+
+    bl = bounds["_southWest"];
+    tr = bounds["_northEast"]
+
+    $.ajax({
+  url: "/vegapi/box?long1="+bl['lng']+"&lat1="+bl['lat']+"&"+long2="+tr['lng']+"&lat2="+tr['lat'],
+  dataType: "json",
+  context: document.body
+}).done(function(data) {
+
+  <!--alert(data);-->
+  $.each(data['places'],function(datad)
+    {
+    <!--console.log(datad);-->
+    <!--console.log(data['places'][datad]['long']);-->
+    <!--console.log(data['places'][datad]['lat']);-->
+    var lng = data['places'][datad]['long'];
+    var lat = data['places'][datad]['lat'];
+    var level = data['places'][datad]['level'];
+    var marker = L.marker([lat, lng], {icon: icons[level]}).addTo(map);
+    }
+  )
+
+  });
+  });
+
+
+
 
 </script>
 
