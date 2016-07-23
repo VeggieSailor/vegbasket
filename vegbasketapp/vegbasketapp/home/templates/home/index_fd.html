@@ -6,13 +6,13 @@
 <meta name='yandex-verification' content='5ab4e40a16ea299c' />
 <meta name="msvalidate.01" content="B1CD6D2A026FA2A59F5D39F01C13AA16" />
     <head profile="http://www.w3.org/2005/10/profile">
-    <link rel="icon" 
-          type="image/png" 
+    <link rel="icon"
+          type="image/png"
           href="{% static "images/favicon32.png" %}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Rafał Zawadzki, Katia Kru">
-    
+
     {% block meta %}{% include "meta.html" %}{% endblock meta %}
     {% block base_title %}
     <title>{% block title %}Veggie Sailor{% endblock title %}</title>
@@ -22,15 +22,15 @@
     {% block foundation_css %}
     <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/>
     <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
-    
-    {% endblock foundation_css %}  
-    
+
+    {% endblock foundation_css %}
+
     {# Custom CSS #}
     {% block css %}
     <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,500,700,400italic,500italic,700italic,900italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="{% static "frontend/css/app.css" %}" rel="stylesheet"/>
-    
+
     <style>
     <!--#id_q {-->
         <!--background-color:white;-->
@@ -138,10 +138,10 @@
 .card-section {
   padding: 1rem; }
     </style>
-    
-    
-    
-    
+
+
+
+
     {% endblock css %}
 
     {# Override if you need another version of modernizr #}
@@ -169,16 +169,16 @@
         <center><img  class=""  src="{% static "images/logo_tattoo_640.png" %}"/></center>
     </div>
 </div>
-<form method="GET" action="{% url "search_view" %}">  
+<form method="GET" action="{% url "search_view" %}">
     <!--<div class="three columns">&nbsp;</div>-->
-    <div class="small-8 small-centered large-4 large-centered columns"> 
+    <div class="small-8 small-centered large-4 large-centered columns">
         <input  placeholder="Barcelona Vegan" id="id_q" type="search" name="q" class="custom-input-class"  >
     </div>
     <!--<div class="three columns">&nbsp;</div>-->
     <!--</div>-->
     <div class="row" style="" id="id_row_sail">
         <!--<div class="five columns">&nbsp;</div>-->
-        <div class="small-6 small-centered large-2 large-centered columns small">    
+        <div class="small-6 small-centered large-2 large-centered columns small">
             <button class="home-ghost-button-class info expand"><strong>{% trans "SAIL" %}</strong></button>
         </div>
     </div>
@@ -233,7 +233,7 @@
 </div>
 
 <div class="row">
-   
+
 </div>
 
 
@@ -254,8 +254,18 @@
     {% block foundation_js_init %}
     <script>
         $(document).foundation();
-        
+
     </script>
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1216582-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
     <!-- Piwik -->
 <script type="text/javascript">
   var _paq = _paq || [];
@@ -274,8 +284,8 @@
 <!-- End Piwik Code -->
 
     {% endblock foundation_js_init %}
-    
 
-    
+
+
 </body>
 </html>
