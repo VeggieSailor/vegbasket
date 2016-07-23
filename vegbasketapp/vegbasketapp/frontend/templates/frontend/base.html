@@ -4,8 +4,8 @@
 <html class="no-js" lang="{{ LANGUAGE_CODE }}">
 <head>
     <head profile="http://www.w3.org/2005/10/profile">
-    <link rel="icon" 
-          type="image/png" 
+    <link rel="icon"
+          type="image/png"
           href="{% static "images/favicon32.png" %}">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,13 +22,13 @@
     <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
 <!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />-->
 
-    {% endblock foundation_css %}  
-    
+    {% endblock foundation_css %}
+
     {# Custom CSS #}
     {% block css %}
     <link href='https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,900,500,700,400italic,500italic,700italic,900italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link href="{% static "frontend/css/app.css" %}?katia=2016-01-10" rel="stylesheet"/>
+    <link href="{% static "frontend/css/app.css" %}?katia=2016-01-20" rel="stylesheet"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     {% endblock css %}
 
@@ -170,19 +170,19 @@ color: #99cc33;
               <i class="fa fa-globe fa-stack-1x"></i>
             </span>
             <a target="_blank" href="https://www.vegguide.org/">VegGuide</br>
-        </div>   
-        
+        </div>
+
 <hr style="height:1px;border-width:0;background-color:black;top:40px;margin-left:15px;margin-right:15px;">
     </div>
-            
+
     <div class="row" style="color:black;">
         <div class="large-12 columns" style='font-size:12px;'>
         <a taget="_blank" href="https://creativecommons.org/licenses/by-sa">  <img class="right" src="{% static "images/CC_by-sa.png" %}" width="100" /> </a>
         <span style="color:black">&copy; 2016 <a style="color:#78ae0e" href="mailto:contact@veggiesailor.com">VeggieSailor</a> - vegetarian open data platform</span> </br/>
-        
+
         <span style="color:black">{% trans "Content powered by" %} &amp; {% trans "Copyright" %} &copy; 2016 <a taget="_blank" style="color:#78ae0e" href="https://vegguide.org">Vegguide.org</a></spam>
         </div>
-        
+
     </div>
 
 </div>
@@ -203,10 +203,20 @@ color: #99cc33;
     {% block foundation_js_init %}
     <script>
         $(document).foundation();
-        
+
     </script>
     <!--<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>    -->
     <!-- Piwik -->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1216582-8', 'auto');
+  ga('send', 'pageview');
+
+</script>
 <script type="text/javascript">
   var _paq = _paq || [];
   _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
