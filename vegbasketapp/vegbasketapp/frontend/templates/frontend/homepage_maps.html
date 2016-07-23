@@ -33,7 +33,7 @@ if ("geolocation" in navigator) {
  map.setView(new L.LatLng(position.coords.latitude, position.coords.longitude),zoomDefault);
  var marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
 $.ajax({
-  url: "/vegapi/?long="+position.coords.longitude+"&lat="+position.coords.latitude,
+  url: "/vegapi/closest?long="+position.coords.longitude+"&lat="+position.coords.latitude,
   dataType: "json",
   context: document.body
 }).done(function(data) {
@@ -58,7 +58,6 @@ $.ajax({
 },function(datae){
  map.setView(new L.LatLng(lngDefault, latDefault),zoomDefault);
  var marker = L.marker([lngDefault, latDefault]).addTo(map);
-http://localhost:8000/vegapi/?long=2.1941695&lat=41.3892221
 $.ajax({
   url: "/vegapi/closest?long="+latDefault+"&lat="+lngDefault,
   dataType: "json",
@@ -99,10 +98,10 @@ map.on('dragend', function(e) {
     console.log(bounds["_northEast"]);
 
     bl = bounds["_southWest"];
-    tr = bounds["_northEast"]
+    tr = bounds["_northEast"];
 
     $.ajax({
-  url: "/vegapi/box?long1="+bl['lng']+"&lat1="+bl['lat']+"&"+long2="+tr['lng']+"&lat2="+tr['lat'],
+  url: "/vegapi/box?long1="+bl['lng']+"&lat1="+bl['lat']+"&"+"long2="+tr['lng']+"&lat2="+tr['lat'],
   dataType: "json",
   context: document.body
 }).done(function(data) {
