@@ -18,17 +18,16 @@ def get_closest(request):
 
     if sqs.count()==0:
         return HttpResponse(content=json.dumps(data))
-    
-    
-    
-    for elem in sqs.all():
-        data['counter'] += 1
-        place = {'long':0, 'lat':0, 'title':''}
-        place['long'] = float(elem.object.long)
-        place['lat'] = float(elem.object.lat)
-        place['title'] = elem.object.name
-        place['level'] = elem.object.level
-        data['places'].append(place)
+
+    for elem in sqs.all()[:25]:
+        if elem.object.long:
+            data['counter'] += 1
+            place = {'long':0, 'lat':0, 'title':''}
+            place['long'] = float(elem.object.long)
+            place['lat'] = float(elem.object.lat)
+            place['title'] = elem.object.name
+            place['level'] = elem.object.level
+            data['places'].append(place)
     return HttpResponse(content=json.dumps(data))
         
 
@@ -37,7 +36,7 @@ def get_box(request):
     
     long1 = float(request.GET.get('long1',0))
     lat1 = float(request.GET.get('lat1',0))
-    l
+    
     
     long2 = float(request.GET.get('long2',0))
     lat2 = float(request.GET.get('lat2',0))    
@@ -47,7 +46,7 @@ def get_box(request):
     
     max_dist = D(mi=20)
     sqs = SearchQuerySet().within('location', bl, tr)
-    
+    print (tr,bl)
     data = {'counter':0 ,'places':[]}
 
     if sqs.count()==0:
@@ -56,7 +55,7 @@ def get_box(request):
     
     
     for elem in sqs.all():
-        if elem.title:
+        if elem.object.long:
             data['counter'] += 1
             place = {'long':0, 'lat':0, 'title':''}
             place['long'] = float(elem.object.long)

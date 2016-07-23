@@ -1,0 +1,187 @@
+{% extends "frontend/base.html" %}{% load staticfiles i18n %}
+
+{% block body_js %}
+<script src="{% static "transformer/leaflet/leaflet.js" %}"></script>
+<link rel="stylesheet" href="{% static "transformer/leaflet/leaflet.css" %}" />
+
+<script>
+jQuery( document ).ready(function() {
+
+  var map = L.map('map').setView([{{ entry.lat }}, {{ entry.long }}], 15);
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  });
+
+  console.log(map);
+
+
+
+
+</script>
+
+{% endblock body_js %}
+{% block base_body_content %}
+<div class="  bg-vs-dark-grey " style="background-color: black !important">
+  <div class="row bg-white">
+    <div class="columns">
+      <ul class="vs-crumbs" style="background-color: black !important">
+        {% for obj in entry.region.get_parents_list reversed %}
+        <li><a href="{% url "search_view" %}?q={{ obj }}">{% trans obj %}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="expanded row" data-equalizer>
+  <div class="large-6 columns " data-equalizer-watch>
+    <div  itemscope itemtype="http://schema.org/Restaurant" class="large-12">
+      <div>
+        <div class="expanded row">
+            <div class="medium-4 large-3 col-sm-4 columns ">
+                <ul class="menu simple">
+                {% for i in entry.get_rating_lists.0 %}
+                    <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
+                {% endfor %}
+                {% for i in entry.get_rating_lists.1 %}
+                    <li><img src="{% static "frontend/img/leaf_05.png" %}" /></li>
+                {% endfor %}
+                {% for i in entry.get_rating_lists.2 %}
+                    <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
+                {% endfor %}
+                </ul>
+                <h6> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                  <span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span>
+                  {% trans "Vote" %}</h6>
+                <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
+                <ul class="green">
+                {% for category in entry.categories.all %}
+                    <li>{% trans category.name %}</li>
+                    {% endfor %}
+             </ul>
+
+
+            </div>
+            <style>
+            table tr:nth-of-type(even) {
+    background-color: transparent !important;
+}</style>
+            <div class="medium-4 large-5 columns " >
+            <div >
+                <h4 class="green"><span itemprop="name">{{ entry.name }}</span></h4>
+                </div>
+                    <span class=" level{{ entry.level }}-color label">{% trans entry.get_level_display %}</span>
+                    <div itemprop="description"><h6>{{ entry.short_description }}</h6></div>
+
+
+
+                    <div class="" style="background-color: white;">
+                    <div class="row" >
+
+                        <div class="large-9 medium-6 columns">
+
+                        <div class="" >
+                            <p class="image-entry"><h3 class="black">{{ entry.description|safe }}</h3></p>
+                        </div>
+                        </div>
+                        <div class="large-3 medium-6 columns">
+                            {% if entry.get_images_height_400.0.photo  %}
+                            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
+                            {% elif  entry.get_images_height_348.0.photo %}
+                            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
+                            {% else %}
+                            <img src="{% static "images/no_photo.png" %}" class="image-entry" />
+                            {% endif %}
+
+                        </div>
+                    </div>
+                        </div>
+
+                    <div class="large-12 columns bg-vs-block-dark-grey">
+                        <div class="row">
+
+                            <div class="large-3 medium-2  columns vs-margin-top">
+                              <ul>
+                                <li>{% trans "Smoking"%} - {{ entry.allows_smoking_verbose }}</li>
+                                <li>{% trans "Reservations"%} - {{ entry.allows_reservations_verbose }}</li>
+
+                                <li>{% trans "Payment" %}
+                                  <ul>
+                                  {% for payment in entry.payments.all %}
+                                    <li>{{ payment.name }}</li>
+                                  {% endfor %}
+                                  </ul>
+                                </li>
+                                </ul>
+                            </div>
+                            <div class="large-3 medium-2  columns vs-margin-top">
+                                <ul>
+                                <li>{% trans "Cuisines" %}
+                                  <ul>
+                                  {% for cuisine in entry.cuisines.all %}
+                                    <li><span itemprop="servesCuisine">{% trans cuisine.name %}</span></li>
+                                  {% endfor %}
+                                  </ul>
+                                </li>
+                                </ul>
+                            </div>
+                            <div class="large-3 medium-2  columns vs-margin-top">
+                                <ul>
+                                <li>{% trans "Features" %}
+                                  <ul>
+                                  {% for tag in entry.tags.all %}
+                                    <li>{% trans tag.name %}</li>
+                                  {% endfor %}
+
+                                  </ul>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="large-3 medium-6  columns">
+                                {% if entry.get_images_height_400.1.photo %}
+                                <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.1.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
+                                {% endif %}
+                                <br/>
+                                {{ entry.content_object.get_credits_string|safe }}
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="large-4 medium-4 columns ">
+              <h5>{{ entry.city }}</h5>
+              <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+              <h6><span itemprop="streetAddress">{{ entry.address1 }}</span>{% if entry.address2 %},
+                 {{ entry.address2 }}, {% endif %}
+                <span itemprop="addressLocality">{{ entry.city}}</span>
+                <span itemprop="postalCode">{{ entry.zipcode }}</span></h6>
+              </div>
+              {% if entry.get_opening_hours_display %}
+                  <table style="background-color: inherit !important;border: none">
+                    <caption>{% blocktrans %}Opening hours{% endblocktrans %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
+                  {% for oh in entry.get_opening_hours_display %}
+                      <tr style="">
+                          <td style="">{% trans oh.0 %}</td>
+                          <td style="">{{ oh.1 }}</td>
+                          <td style="">{{ oh.2 }}</td>
+
+                      </tr>
+                  {% endfor %}
+                  </table>
+              {% endif %}
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="large-3 columns" data-equalizer-watch>
+    <div id="map" data-equalizer-watch >
+    </div>
+  </div>
+  <div class="large-3 columns" data-equalizer-watch>
+    <h4><center>Places near by</center></h4>
+  </div>
+</div>
+{% endblock base_body_content %}

@@ -39,7 +39,7 @@ def entry_slug(request, slug):
         raise Http404("Page not found...")
 
     meta = get_meta_entry(request, vs_entry)
-    return render(request, 'frontend/entry_view.html',
+    return render(request, 'frontend/entry_view_f6.html',
                   {'entry':vs_entry,'meta':meta})
 
 
@@ -55,7 +55,7 @@ def entry_vs(request, entry_id):
 
     vs_entry = get_vs_entry_by_id(entry_id)
     meta = get_meta_entry(request, vs_entry)
-    return render(request, 'frontend/entry_view.html',
+    return render(request, 'frontend/entry_view_f67.html',
                   {'entry':vs_entry,'meta':meta})
 
 

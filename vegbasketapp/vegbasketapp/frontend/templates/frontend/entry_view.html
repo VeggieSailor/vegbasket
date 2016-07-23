@@ -1,21 +1,47 @@
 {% extends "frontend/base.html" %}{% load staticfiles i18n %}
-{% block base_body_content %}
-<style>
 
+{% block body_js %}
+<script src="{% static "transformer/leaflet/leaflet.js" %}"></script>
+<link rel="stylesheet" href="{% static "transformer/leaflet/leaflet.css" %}" />
+
+<script>
+jQuery( document ).ready(function() {
+
+  var map = L.map('map').setView([{{ entry.lat }}, {{ entry.long }}], 15);
+
+  L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+  });
+
+  console.log(map);
+
+
+
+
+</script>
+
+{% endblock body_js %}
+{% block base_body_content %}
+
+<style>
 </style>
     <div class="  bg-vs-dark-grey " style="background-color: black !important">
         <div class="row bg-white">
             <div class="columns">
                 <ul class="vs-crumbs" style="background-color: black !important">
-                    {% for obj in entry.region.get_parents_list reversed %}              
+                    {% for obj in entry.region.get_parents_list reversed %}
                     <li><a href="{% url "search_view" %}?q={{ obj }}">{% trans obj %}</a></li>
-                    {% endfor %}                 
+                    {% endfor %}
             </div>
         </div>
     </div>
+    <div class="expanded row" style="width:100%">
+        <div class="large-6 columns ">
+
     <div  itemscope itemtype="http://schema.org/Restaurant" class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
       <div style="background-color: #000;border: 1px solid black; opacity: 0.8; filter: alpha(opacity=80); /* For IE8 and */">
-        <div class="row" >
+        <div class="expanded row" >
             <div class="medium-4 large-2 col-sm-4 columns ">
                 <ul class="inline-list">
                 {% for i in entry.get_rating_lists.0 %}
@@ -23,10 +49,10 @@
                 {% endfor %}
                 {% for i in entry.get_rating_lists.1 %}
                     <li><img src="{% static "frontend/img/leaf_05.png" %}" /></li>
-                {% endfor %} 
+                {% endfor %}
                 {% for i in entry.get_rating_lists.2 %}
                     <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
-                {% endfor %}             
+                {% endfor %}
                 </ul>
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
                 <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
@@ -42,10 +68,6 @@
             table tr:nth-of-type(even) {
     background-color: transparent !important;
 }</style>
-
-
-
-
             <div class="medium-4 large-5 columns " >
             <div >
                 <h2 class="green"><span itemprop="name">{{ entry.name }}</span></h2>
@@ -59,7 +81,7 @@
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
                           <caption>{% blocktrans %}Opening hours{% endblocktrans %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
-                        {% for oh in entry.get_opening_hours_display %}                    
+                        {% for oh in entry.get_opening_hours_display %}
                             <tr style="">
                                 <td style="">{% trans oh.0 %}</td>
                                 <td style="">{{ oh.1 }}</td>
@@ -73,11 +95,7 @@
 
             </div>
             <div class="large-5 medium-4 columns ">
-
-                            <div class="flex-video">
-            <iframe src="/transformer/entry/{{ entry.vg_object_id}}/map"></iframe>
-
-            </div>
+<!-- MAP WAS HERE -->
             </div>
         </div>
       </div>
@@ -86,7 +104,7 @@
     <div class="row" >
 
         <div class="large-9 medium-6 columns">
-        
+
         <div class="" >
             <p class="image-entry"><h3 class="black">{{ entry.description|safe }}</h3></p>
         </div>
@@ -94,7 +112,7 @@
         <div class="large-3 medium-6 columns">
             {% if entry.get_images_height_400.0.photo  %}
             <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
-            {% elif  entry.get_images_height_348.0.photo %} 
+            {% elif  entry.get_images_height_348.0.photo %}
             <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
             {% else %}
             <img src="{% static "images/no_photo.png" %}" class="image-entry" />
@@ -104,7 +122,7 @@
     </div>
         </div>
 
-    <div class="large-12 columns bg-vs-block-dark-grey ">
+    <div class="large-12 columns bg-vs-block-dark-grey">
         <div class="row">
 
             <div class="large-3 medium-2  columns vs-margin-top">
@@ -132,7 +150,7 @@
                 </li>
                 </ul>
             </div>
-            <div class="large-3 medium-2  columns vs-margin-top">       
+            <div class="large-3 medium-2  columns vs-margin-top">
                 <ul>
                 <li>{% trans "Features" %}
                   <ul>
@@ -141,7 +159,7 @@
                   {% endfor %}
 
                   </ul>
-                </li>                
+                </li>
               </ul>
             </div>
             <div class="large-3 medium-6  columns">
@@ -153,5 +171,12 @@
             </div>
         </div>
     </div>
+  </div>
+  <div class="large-6 columns ">
+    <div class="flex-video">
+      <div id="map" style="height:250px">adsdas</div>
 
+  </div>
+  </div>
+</div>
 {% endblock base_body_content %}

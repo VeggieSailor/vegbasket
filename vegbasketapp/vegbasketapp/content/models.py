@@ -111,6 +111,8 @@ class VeggieSailorRegion(models.Model):
     def __str__(self):
         return "%s" % self.name
     class Meta:
+        """Django Model Meta options.
+        """        
         app_label = "content"
     
 
@@ -319,6 +321,8 @@ class VeggieSailorOpeningHour(models.Model):
                                      self.get_weekday_display(), self.from_hour)
 
     class Meta:
+        """Django Model Meta options.
+        """
         unique_together = (("entry", "from_hour", "weekday", "is_closed"),)
         ordering = ['weekday', 'from_hour']
 

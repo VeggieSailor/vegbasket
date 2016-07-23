@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^$', vegbasketapp.home.views.index, name='home'),
     url(r'^map/$', vegbasketapp.frontend.views.homepage_map, name='home'),
     url(r'^vegapi/closest$', vegbasketapp.vegapi.views.get_closest, name='vegapi_get_closest'),
-    url(r'^vegapi/box$', vegbasketapp.vegapi.views.get_closest, name='vegapi_get_closest'),
+    url(r'^vegapi/box$', vegbasketapp.vegapi.views.get_box, name='vegapi_get_box'),
     
     url(r'opensource$', vegbasketapp.home.views.opensource, name='opensource'),
     url(r'^admin/', include(admin.site.urls)),
