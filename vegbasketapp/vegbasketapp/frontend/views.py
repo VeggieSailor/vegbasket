@@ -76,7 +76,6 @@ def entry_vs(request, entry_id):
         other_places = possible_others
     
     
-    print (other_places, possible_others.count())
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta,
                    'other_places':other_places})
