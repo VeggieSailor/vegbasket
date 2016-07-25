@@ -209,7 +209,15 @@
             <!--<li class="description"></li>-->
             <!--<li class="cta-button"><a class="button" href="#">Buy Now</a></li>-->
             {% for latest_entry in latest_entries %}
-                <a href='{{ latest_entry.get_absolute_url}}'><li class="bullet-item"><strong>{{ latest_entry.name }}</strong>, {{ latest_entry.short_description}}</li></a>
+                <a href='{{ latest_entry.get_absolute_url}}'>
+                <li class="bullet-item"><strong>{{ latest_entry.name }}</strong></br>
+                <small>{{ latest_entry.short_description}}</small></br>
+                
+                <small><strong>{{ latest_entry.region.name }}</strong></small>
+                
+                </li>
+                 
+                </a>
             {% endfor %}
         </ul>
          <h6 class="black">{% trans "Change the language" %}</h6>
