@@ -189,17 +189,16 @@
 </div>
 <div class="">
     <div class="large-10 columns" style="padding-top:0em;">
-        <center><h4 class="black" style="" id="explore"><strong>{% trans "Explore delicious vegan places" %}</strong></h4></center>
+        <center><h4 class="black" style="" id="explore"><strong>{% trans "Explore and discover more vegetarian / vegan places around the world..." %}</strong></h4></center>
         <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
-            <li>{% skeleton_card_vg_533 21041 %}</li>
-            <li>{% skeleton_card_vg_533 21025 %}</li>
-            <!--<li>{% skeleton_card_vg_533 18497 %}</li>-->
-            <li>{% skeleton_card_vg_533 17862 %}</li>
-            <li>{% skeleton_card_vg_533 13404 %}</li>
-            <li>{% skeleton_card_vg_533 12396 %}</li>
-            <li>{% skeleton_card_vg_533 9178 %}</li>
-            <li>{% skeleton_card_vg_533 12293 %}</li>
-            <li>{% skeleton_card_vg_533 17140 %}</li>
+        {% for x in places %}
+        <li>{% skeleton_card_vg_533 x %}</li>
+
+        {% endfor %}
+        {{ places_ids   }}
+        
+        
+      
         </ul>
     </div>
     <div class="large-2 columns" id="recent" style="padding-top:0em;">

@@ -3,8 +3,8 @@
     <img src="/media/{{ entry.get_images_533_400.0.photo }}" style="border: solid 1px #9c3;" />
     <div class="card-divider">{{ entry.region.name }}</div>
     <div class="card-section">
-      <h4>{{ entry.name }}</h4>
-      <p>{{ entry.short_description }}</p>
+      <h4>{{ entry.name|truncatechars:30  }}</h4>
+      <p>{{ entry.short_description|truncatechars:40 }}</p>
     </div>
 </a>
 </div>
