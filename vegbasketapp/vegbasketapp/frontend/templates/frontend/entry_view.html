@@ -7,9 +7,9 @@
         <div class="row bg-white">
             <div class="columns">
                 <ul class="vs-crumbs" style="background-color: black !important">
-                    {% for obj in entry.region.get_parents_list reversed %}              
+                    {% for obj in entry.region.get_parents_list reversed %}
                     <li><a href="{% url "search_view" %}?q={{ obj }}">{% trans obj %}</a></li>
-                    {% endfor %}                 
+                    {% endfor %}
             </div>
         </div>
     </div>
@@ -23,18 +23,41 @@
                 {% endfor %}
                 {% for i in entry.get_rating_lists.1 %}
                     <li><img src="{% static "frontend/img/leaf_05.png" %}" /></li>
-                {% endfor %} 
+                {% endfor %}
                 {% for i in entry.get_rating_lists.2 %}
                     <li><img src="{% static "frontend/img/leaf_0.png" %}" /></li>
-                {% endfor %}             
+                {% endfor %}
                 </ul>
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
+
                 <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
-                <ul class="green">
-                {% for category in entry.categories.all %}
-                    <li>{% trans category.name %}</li>
-                    {% endfor %}
-             </ul>
+
+                               <span class="green"><small>{% trans "Payment" %}</small></span>
+                                 <ul>
+               {% if entry.payments.all.0 %}
+
+                 {% for payment in entry.payments.all %}
+                   <li><small>{{ payment.name }}</small></li>
+                 {% endfor %}
+                 </ul>
+                  <span class="green"><small>{% trans "Cuisines" %}</small> </span>
+                   <ul>
+                   {% for cuisine in entry.cuisines.all %}
+                     <li><span itemprop="servesCuisine"><small>{% trans cuisine.name %}</small></span></li>
+                   {% endfor %}
+                   </ul>
+                    <span class="green"><small>{% trans "Smoking"%}</small></span><ul><li><small>{{ entry.allows_smoking_verbose }}</small></li></ul>
+                    <span class="green"><small>{% trans "Reservations"%}</small></span><ul><li><small>{{ entry.allows_reservations_verbose }}</small></li></ul>
+
+
+                     </ul>
+
+{% else %}
+
+  <li>Not sure</li>
+
+</ul>
+               {% endif %}
 
 
             </div>
@@ -59,7 +82,7 @@
                     {% if entry.get_opening_hours_display %}
                         <table style="color: white;background-color: inherit !important;border: none">
                           <caption>{% blocktrans %}Opening hours{% endblocktrans %} <small>{{ entry.is_open_verbose|safe }}</small></caption>
-                        {% for oh in entry.get_opening_hours_display %}                    
+                        {% for oh in entry.get_opening_hours_display %}
                             <tr style="">
                                 <td style="">{% trans oh.0 %}</td>
                                 <td style="">{{ oh.1 }}</td>
@@ -70,6 +93,20 @@
                         </table>
                     {% endif %}
 
+                    <ul class="green inline-list" >
+                    {% for category in entry.categories.all %}
+                        <li>{% trans category.name %}{% if not forloop.last %}, {% endif %}</li>
+                        {% endfor %}
+                 </ul>
+
+
+                       <ul class="green inline-list" >
+                   {% for tag in entry.tags.all %}
+                     <li>{% trans tag.name %}{% if not forloop.last %}, {% endif %}</li>
+                   {% endfor %}
+
+                   </ul>
+
 
             </div>
             <div class="large-5 medium-4 columns ">
@@ -79,6 +116,25 @@
 
             </div>
             </div>
+            <div class="row">
+
+                <div class="large-3 medium-2  columns vs-margin-top">
+
+                </div>
+                <div class="large-3 medium-2  columns vs-margin-top">
+
+                </div>
+                <div class="large-3 medium-2  columns vs-margin-top">
+
+                </div>
+                <div class="large-3 medium-6  columns">
+                    {% if entry.get_images_height_400.1.photo %}
+                    <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.1.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
+                    {% endif %}
+                    <br/>
+
+                </div>
+            </div>
         </div>
       </div>
     </div>
@@ -86,15 +142,16 @@
     <div class="row" >
 
         <div class="large-9 medium-6 columns">
-        
+
         <div class="" >
+
             <p class="image-entry"><h3 class="black">{{ entry.description|safe }}</h3></p>
         </div>
         </div>
         <div class="large-3 medium-6 columns">
             {% if entry.get_images_height_400.0.photo  %}
             <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
-            {% elif  entry.get_images_height_348.0.photo %} 
+            {% elif  entry.get_images_height_348.0.photo %}
             <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
             {% else %}
             <img src="{% static "images/no_photo.png" %}" class="image-entry" />
@@ -105,53 +162,7 @@
         </div>
 
     <div class="large-12 columns bg-vs-block-dark-grey ">
-        <div class="row">
 
-            <div class="large-3 medium-2  columns vs-margin-top">
-              <ul>
-                <li>{% trans "Smoking"%} - {{ entry.allows_smoking_verbose }}</li>
-                <li>{% trans "Reservations"%} - {{ entry.allows_reservations_verbose }}</li>
-
-                <li>{% trans "Payment" %}
-                  <ul>
-                  {% for payment in entry.payments.all %}
-                    <li>{{ payment.name }}</li>
-                  {% endfor %}
-                  </ul>
-                </li>
-                </ul>
-            </div>
-            <div class="large-3 medium-2  columns vs-margin-top">
-                <ul>
-                <li>{% trans "Cuisines" %}
-                  <ul>
-                  {% for cuisine in entry.cuisines.all %}
-                    <li><span itemprop="servesCuisine">{% trans cuisine.name %}</span></li>
-                  {% endfor %}
-                  </ul>
-                </li>
-                </ul>
-            </div>
-            <div class="large-3 medium-2  columns vs-margin-top">       
-                <ul>
-                <li>{% trans "Features" %}
-                  <ul>
-                  {% for tag in entry.tags.all %}
-                    <li>{% trans tag.name %}</li>
-                  {% endfor %}
-
-                  </ul>
-                </li>                
-              </ul>
-            </div>
-            <div class="large-3 medium-6  columns">
-                {% if entry.get_images_height_400.1.photo %}
-                <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.1.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
-                {% endif %}
-                <br/>
-                {{ entry.content_object.get_credits_string|safe }}
-            </div>
-        </div>
     </div>
 
 {% endblock base_body_content %}

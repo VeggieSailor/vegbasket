@@ -89,7 +89,7 @@ class Entry(models.Model):
         name = self.get_elem('user')['name']
         uri = self.get_elem('user')['uri']
         added_by = _('Added by')
-        return '%s <a target="_blank"  href="%s">%s</a>' % (added_by, uri, name)
+        return '%s <a target="_blank"  href="%s" style="color:white">%s</a>' % (added_by, uri, name)
 
     def get_address_str(self):
         """Get address.
