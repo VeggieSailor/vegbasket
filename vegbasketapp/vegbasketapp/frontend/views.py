@@ -48,7 +48,6 @@ def entry_slug(request, slug):
         other_places = possible_others
     
     
-    print (other_places, possible_others.count())
     meta = get_meta_entry(request, vs_entry)
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta,
