@@ -32,7 +32,7 @@
 
                 <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
 
-                               <span class="green"><small>{% trans "Payment" %}</small></span>
+                               <span class="green"><small>{% trans "PAYMENT" %}</small></span>
                                  <ul>
                {% if entry.payments.all.0 %}
 
@@ -40,14 +40,14 @@
                    <li><small>{{ payment.name }}</small></li>
                  {% endfor %}
                  </ul>
-                  <span class="green"><small>{% trans "Cuisines" %}</small> </span>
+                  <span class="green"><small>{% trans "CUISINES" %}</small> </span>
                    <ul>
                    {% for cuisine in entry.cuisines.all %}
                      <li><span itemprop="servesCuisine"><small>{% trans cuisine.name %}</small></span></li>
                    {% endfor %}
                    </ul>
-                    <span class="green"><small>{% trans "Smoking"%}</small></span><ul><li><small>{{ entry.allows_smoking_verbose }}</small></li></ul>
-                    <span class="green"><small>{% trans "Reservations"%}</small></span><ul><li><small>{{ entry.allows_reservations_verbose }}</small></li></ul>
+                    <span class="green"><small>{% trans "SMOKING"%}</small></span><ul><li><small>{{ entry.allows_smoking_verbose }}</small></li></ul>
+                    <span class="green"><small>{% trans "RESERVATIONS"%}</small></span><ul><li><small>{{ entry.allows_reservations_verbose }}</small></li></ul>
 
 
                      </ul>
@@ -144,9 +144,30 @@
         <div class="large-9 medium-6 columns">
 
         <div class="" >
-
+        </br>
+<h4 class="black">DESCRIPTION</h4>
             <p class="image-entry"><h3 class="black">{{ entry.description|safe }}</h3></p>
         </div>
+        <h4 class="black">PLACES IN SAME CITY</h4>
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-2">
+
+        {% for other_place in other_places %}
+
+        <li>
+          <ul class="pricing-table">
+  <li class="title"><small>{{ other_place.name }}</small></li>
+  <li class="bullet-item"><small><strong>{{ other_place.get_level_display }}</strong></small></li>
+  <li class="description"><small>{{ other_place.short_description }}</small></li>
+  <li class="bullet-item"><small>Price level: {{ other_place.get_price_display }}</small></li>
+  <li class="bullet-item"><small>{{ other_place.address1 }}</small></li>
+  <li class="cta-button"><a class="button small" href="{{ other_place.get_absolute_url }}">Explore now</a></li>
+</ul>
+
+
+        </li>
+
+        {% endfor %}
+      </ul>
         </div>
         <div class="large-3 medium-6 columns">
             {% if entry.get_images_height_400.0.photo  %}

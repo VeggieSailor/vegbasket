@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
-from vegbasketapp.home.metas import get_vsmeta
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
+
+from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
+from vegbasketapp.home.metas import get_vsmeta
+from vegbasketapp.content.models import VeggieSailorEntry
+
 # Create your views here.
 
 def index(request):
@@ -37,10 +40,19 @@ def entry_slug(request, slug):
         vs_entry = get_entry_by_slug(slug)
     except ObjectDoesNotExist:
         raise Http404("Page not found...")
-
+    possible_others = VeggieSailorEntry.objects.filter(region=vs_entry.region_id)[0:4]
+    
+    other_places  = []
+    
+    if possible_others.count()==4:
+        other_places = possible_others
+    
+    
+    print (other_places, possible_others.count())
     meta = get_meta_entry(request, vs_entry)
     return render(request, 'frontend/entry_view.html',
-                  {'entry':vs_entry,'meta':meta})
+                  {'entry':vs_entry,'meta':meta,
+                   'other_places':other_places})
 
 
 def entry_vg(request, entry_id):
@@ -55,8 +67,19 @@ def entry_vs(request, entry_id):
 
     vs_entry = get_vs_entry_by_id(entry_id)
     meta = get_meta_entry(request, vs_entry)
+    
+    possible_others = VeggieSailorEntry.objects.filter(region=vs_entry.region_id)[0:4]
+    
+    other_places  = []
+    
+    if possible_others.count()==4:
+        other_places = possible_others
+    
+    
+    print (other_places, possible_others.count())
     return render(request, 'frontend/entry_view.html',
-                  {'entry':vs_entry,'meta':meta})
+                  {'entry':vs_entry,'meta':meta,
+                   'other_places':other_places})
 
 
 def homepage_map(request):
