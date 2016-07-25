@@ -13,6 +13,7 @@ import vegbasketapp.frontend.views
 import vegbasketapp.vegapi.views
 import vegbasketapp.transformer.views
 import vegbasketapp.personal.views
+import vegbasketapp.recipe.views
 import django.views.static
 
 class MySearchView(SearchView):
@@ -20,7 +21,13 @@ class MySearchView(SearchView):
         queryset = super(MySearchView, self).get_queryset()
         return queryset.order_by('-photos', '-level', '-rating')
 
+    
 urlpatterns = [
+    
+    url(r'^pages/', include('django.contrib.flatpages.urls')),
+
+    url(r'recipes/vegan-french-pate/$', vegbasketapp.recipe.views.recipe_french_pate),
+    
     url(r'^i18n/', include('django.conf.urls.i18n')),
                        
     url(r'^$', vegbasketapp.home.views.index, name='home'),
