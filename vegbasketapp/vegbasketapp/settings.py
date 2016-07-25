@@ -53,6 +53,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'meta',
     'haystack',
     'foundation',
@@ -63,6 +65,7 @@ INSTALLED_APPS = (
     'vegbasketapp.frontend',
     'vegbasketapp.diary',
     'vegbasketapp.vegapi',
+    'vegbasketapp.recipe',
     'social.apps.django_app.default',
     'django_sb_admin',
     'django-dia',
@@ -197,4 +200,4 @@ LANGUAGES = [
 
 #from vegbasketapp.dummy_trans import output
 LOCALE_PATHS = (LOCALE_DIR,)
-
+SITE_ID = 1
