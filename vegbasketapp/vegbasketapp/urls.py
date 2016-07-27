@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
 
     url(r'recipes/vegan-french-pate/$', vegbasketapp.recipe.views.recipe_french_pate),
+    url(r'recipes/mediterranean-tabbouleh-salad/$', vegbasketapp.recipe.views.mediterranean_tabbouleh_salad),
     
     url(r'^i18n/', include('django.conf.urls.i18n')),
                        

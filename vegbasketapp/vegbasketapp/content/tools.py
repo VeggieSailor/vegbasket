@@ -131,7 +131,7 @@ def convert_entry(entry_id, force=False):
     vs_entry.rating_count = int(vg_entry.get_elem('rating_count', '0'))
 
     vs_entry.level = int(vg_entry.get_elem('veg_level',0))
-    
+    1
     price_range = vg_entry.get_elem('price_range')
     
     if price_range == '$ - inexpensive':
@@ -296,7 +296,7 @@ def convert_entry(entry_id, force=False):
                     except DataError:
                         print ("Error with the picture", vg_entry.source_id)
             except KeyError:
-                print ("KeyError", vg_entry.source_id)
+                print ("KeyError image", vg_entry.source_id)
     #print(vg_entry.source_id, VeggieSailorEntry.objects.all().count())
     vs_entry.slug = '%s-%s' % (slugify(unidecode(vs_entry.name))[0:44] , vs_entry.id)
     vs_entry.save()
