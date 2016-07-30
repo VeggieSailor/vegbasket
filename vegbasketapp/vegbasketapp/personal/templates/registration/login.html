@@ -1,23 +1,81 @@
-{% extends "sb_admin_blank.html" %}
-{% block sb_admin_sidebar %}{% endblock sb_admin_sidebar %}
-{% block sb_admin_title %}{% endblock sb_admin_title %}
-{% block sb_admin_subheading %}Login{% endblock sb_admin_subheading %}
-{% block sb_admin_breadcrumb %}{% endblock sb_admin_breadcrumb %}
-{% block sb_admin_breadcrumb_active %}
-{% endblock sb_admin_breadcrumb_active %}
-{% block sb_admin_content %}
-{% block sb_admin_breadcrumb_div %}{% endblock sb_admin_breadcrumb_div %}
+{% extends "f6/base.html" %}{% load i18n %}
+{% block css %}
+<style>
+.log-in-form {
+  border: 1px solid #cacaca;
+  padding: 1rem;
+  border-radius: 3px; }
+  </style>
+{% endblock css %}
+{% block base_body %}
 
-<!--<table>-->
-<!--<tr><th><label for="id_username">Username:</label></th><td><input id="id_username" maxlength="30" name="username" type="text" /></td></tr>-->
-<!--<tr><th><label for="id_email">Username:</label></th><td><input id="id_email" maxlength="30" name="email" type="email" /></td></tr>-->
-<!--<tr><th><label for="id_password">Password:</label></th><td><input id="id_password" name="password" type="password" /></td></tr>-->
-<!--<tr><th><label for="id_password_confirmation">Password confirmation:</label></th><td><input id="id_password_confirmation" name="password_confirmation" type="password" /></td></tr>-->
-<!--</table>-->
 
-{% load i18n %}<div class="container">
+<div class="row">
+  <div class="medium-6 large-6 columns">
 
-    <div class="omb_login">
+    <form>
+      <div class="row column log-in-form">
+        <h4 class="text-center">Log in with you email account</h4>
+        <label>Email
+          <input type="text" placeholder="somebody@example.com">
+        </label>
+        <label>Password
+          <input type="password" placeholder="Password">
+        </label>
+        <p><a type="submit" class="button expanded success">Log In</a></p>
+        <button class="button expanded alert" type="button">
+                Forgot your password?
+</button>
+        
+                <a href="/accounts/register/" type="button" class="hollow button expanded">Register</a>
+
+      </div>
+    </form>
+
+  </div>
+    <div class="medium-6 large-6 columns">
+      <div class="row column log-in-form">
+        <h4 class="text-center">Log in with you social account</h4>
+      <button class="hollow button expanded" type="button">
+                <a  href="/login/google-oauth2/">
+<i class="fi-social-google-plus"></i> Google Plus</a>
+    </a>
+</button>
+<button class="hollow button expanded" type="button">
+    <a href="/login/facebook/"><i class="fi-social-facebook"></i> Facebook </a>
+</button>
+<button class="hollow button expanded" type="button">
+    <a href="/login/twitter/"><i class="fi-social-twitter"></i> Twitter </a>
+</button>
+{% comment %}
+<button class="hollow button expanded" type="button">
+                <a href="/login/vk-oauth2/">VKontakt</a>
+</button>
+{% endcomment %}
+<button class="hollow button expanded" type="button">
+                <a href="/login/meetup/">Meetup</a>
+</button>
+
+            <form method="post" action="/complete/persona/">
+                  <input type="hidden" name="assertion" value="" />
+<button class="hollow button expanded" type="button">
+                <span id="persona">Persona</span>
+</button>
+                </form>
+
+
+      </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+{% comment %}
+
         <h4 class="page-header">using your social network accounts:</h4>
         <div class="row omb_row-sm-offset-3 omb_socialButtons">
             <div class="col-xs-4 col-sm-2">
@@ -102,6 +160,6 @@
   </div>
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 </form>
+{% endcomment %}
 
-
-{% endblock sb_admin_content %}
+{% endblock base_body %}

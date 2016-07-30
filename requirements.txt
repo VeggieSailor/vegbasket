@@ -27,3 +27,4 @@ geopy==1.11.0
 django==1.9.8
 django-haystack==2.5.0
 ipython>=5.0
+django-registration==2.1.2

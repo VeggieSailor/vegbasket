@@ -11,5 +11,6 @@ class Visit(models.Model):
     note = models.TextField(default='', null=False)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=timezone.now)
+    visit_timestamp = models.DateField(null=False)
     entry = models.ForeignKey(VeggieSailorEntry)
     rating = models.IntegerField(null=False)

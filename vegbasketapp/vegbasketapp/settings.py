@@ -76,8 +76,10 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.FacebookOAuth2',
     'social.backends.open_id.OpenIdAuth',
     'social.backends.google.GoogleOAuth2',
-    'social.backends.persona.PersonaAuth',    
+    'social.backends.persona.PersonaAuth',
+    'social.backends.twitter.TwitterOAuth',
     'social.backends.vk.VKOAuth2',
+    'social.backends.meetup.MeetupOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 MIDDLEWARE_CLASSES = (
@@ -201,3 +203,6 @@ LANGUAGES = [
 #from vegbasketapp.dummy_trans import output
 LOCALE_PATHS = (LOCALE_DIR,)
 SITE_ID = 1
+
+
+ACCOUNT_ACTIVATION_DAYS = 7

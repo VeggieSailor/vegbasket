@@ -1,0 +1,48 @@
+{% extends "f6/base.html" %}{% load i18n %}
+{% block base_body %}
+ <div class="row">
+  <div class="medium-6 medium-centered large-4 large-centered columns">
+
+
+
+<form method="post" action=".">
+      <div class="row column log-in-form">
+        <h4 class="text-center">Register with email account</h4>
+  {% csrf_token %}
+  {{ form.as_p }}
+
+  <input type="submit" value="{% trans 'Submit' %}" />
+        </div>
+
+</form>
+
+    <!--<form>-->
+      <!--<div class="row column log-in-form">-->
+        <!--<h4 class="text-center">Register with email account</h4>-->
+        <!--<label>Email-->
+          <!--<input type="text" placeholder="somebody@example.com">-->
+        <!--</label>-->
+        <!--<label>Password-->
+          <!--<input type="password" placeholder="Password">-->
+        <!--</label>-->
+        <!--<p><a type="submit" class="button expanded">Log In</a></p>-->
+      <!--</div>-->
+    <!--</form>-->
+
+
+
+
+
+
+
+{% endblock base_body %}
+
+
+{% block css %}
+<style>
+.log-in-form {
+  border: 1px solid #cacaca;
+  padding: 1rem;
+  border-radius: 3px; }
+</style>
+{% endblock css %}

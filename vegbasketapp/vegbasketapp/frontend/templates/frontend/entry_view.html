@@ -16,7 +16,10 @@
     <div  itemscope itemtype="http://schema.org/Restaurant" class="large-12 bg-vs-block-dark-grey" style="background: url({{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}) no-repeat; background-size: 100%;">
       <div style="background-color: #000;border: 1px solid black; opacity: 0.8; filter: alpha(opacity=80); /* For IE8 and */">
         <div class="row" >
+        
             <div class="medium-4 large-2 col-sm-4 columns ">
+            <center>
+
                 <ul class="inline-list">
                 {% for i in entry.get_rating_lists.0 %}
                     <li><img src="{% static "frontend/img/leaf.png" %}" /></li>
@@ -30,7 +33,9 @@
                 </ul>
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
 
-                <span class="warning label">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
+                <button class="button tiny radius level5-color ">Mark visit</button>
+                <span class="warning label radius">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
+                               </center>
 
                                <span class="green"><small>{% trans "PAYMENT" %}</small></span>
                                  <ul>

@@ -1,10 +1,9 @@
-{% extends "frontend/base.html" %}{% load staticfiles i18n %}
-{% block base_body_content %}
+{% extends "f6/base.html" %}{% load i18n %}{% load static %}
 
-{% load static %}<html>
-<script src="{% static "js/jquery.js"%}"></script>
+{% block css %}
 <link rel="stylesheet" href="{% static "transformer/leaflet/leaflet.css" %}" />
-<div id="map" style="height:100%"></div>
+{% endblock css %}
+{% block js %}
 <script src="{% static "transformer/leaflet/leaflet.js" %}"></script>
 <script src="{% static "vegapi/js/map.js" %}"></script>
 <script>
@@ -17,6 +16,18 @@ ga('create', 'UA-1216582-8', 'auto');
 ga('send', 'pageview');
 
 </script>
-</html>
+{% endblock js %}
 
+
+
+
+
+{% block base_body %}
+<div class="row column expanded" >
+<div class="columns large-10" style="height:100vh" >
+<div class="flex-video widescreen" id="map"  ></div>
+</div>
+<div class="columns large-2">
+
+</div>
 {% endblock %}
