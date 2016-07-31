@@ -1,3 +1,8 @@
 from django.db import models
 
-# Create your models here.
+#from registration.backends.default import DefaultBackend
+
+
+#class RecaptchaRegistrationBackend(DefaultBackend):
+    #def get_form_class(self, request):
+        #return RecaptchaRegistrationForm
