@@ -16,16 +16,18 @@ import vegbasketapp.transformer.views
 import vegbasketapp.personal.views
 import vegbasketapp.recipe.views
 import vegbasketapp.diary.views
-from registration.views import RegistrationView
+#from registration.views import RegistrationView
+from registration.backends.hmac.views import RegistrationView
 
 
 #from vegbasketapp.frontend.models import RecaptchaRegistrationForm
 
-from registration.forms import RegistrationForm
+from registration.forms import RegistrationFormUniqueEmail
 from captcha.fields import ReCaptchaField
 
-class RecaptchaRegistrationForm(RegistrationForm):
+class RecaptchaRegistrationForm(RegistrationFormUniqueEmail):
     recaptcha = ReCaptchaField(label="I'm a human")
+    
     
 class MySearchView(SearchView):
     def get_queryset(self):
@@ -37,7 +39,7 @@ urlpatterns = [
     
     url(r'^visit/(?P<entry_id>\d*)/$', vegbasketapp.diary.views.visit, name='visit'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
-    url(r'accounts/register/$', RegistrationView.as_view(form_class=RecaptchaRegistrationForm)),
+    url(r'accounts/register/$', RegistrationView.as_view(form_class=RecaptchaRegistrationForm),name='registration_register',),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
     url(r'recipes/vegan-french-pate/$', vegbasketapp.recipe.views.recipe_french_pate),

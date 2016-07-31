@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from vegbasketapp.personal.forms import UsernameSetupForm
 
+from vegbasketapp.diary.models import Visit
+
 
 def check_user_first_time(user):
     """First time predicate.
@@ -32,4 +34,8 @@ def accounts_setup(request):
 def personal(request):
     """Personal page after login view.
     """
-    return render(request, "personal.html")
+    
+    visits = Visit.objects.filter(user=request.user)
+    
+    
+    return render(request, "personal.html", {'visits':visits})

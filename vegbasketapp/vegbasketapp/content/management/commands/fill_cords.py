@@ -11,7 +11,8 @@ class Command(BaseCommand):
     """Fill all the cords"""
 
     def handle(self, *args, **options):
-        vses = VeggieSailorEntry.objects.all()
+        vses = VeggieSailorEntry.objects.filter(long=None).filter(lat=None)
+        print (vses.count())
         counter = 0
         for vsee in vses:
             source_id = vsee.object_id
@@ -24,6 +25,5 @@ class Command(BaseCommand):
                 print (cords)
             except:
                 counter += 1
-        print (counter)
             
 

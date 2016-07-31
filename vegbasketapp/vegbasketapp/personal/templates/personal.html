@@ -5,7 +5,7 @@
 {% endblock css %}
 {% block js %}
 <script src="{% static "transformer/leaflet/leaflet.js" %}"></script>
-<script src="{% static "vegapi/js/map.js" %}"></script>
+<script src="{% static "vegapi/js/map-p.js" %}"></script>
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -16,6 +16,19 @@ ga('create', 'UA-1216582-8', 'auto');
 ga('send', 'pageview');
 
 </script>
+
+
+<script>
+
+{% for visit in visits %}
+var marker = L.marker([{{ visit.entry.lat }},{{ visit.entry.long }}]).addTo(map);
+console.log({{ visit.entry.lat }});
+console.log({{ visit.entry.long }});
+{% endfor %}
+
+</script>
+    
+
 {% endblock js %}
 
 
@@ -25,12 +38,25 @@ ga('send', 'pageview');
 {% block base_body %}
 
 <div class="row column expanded" >
-<div class="columns large-10" style="height:100vh" >
-<div class="flex-video widescreen" id="map"  ></div>
+    <div class="columns large-10" style="height:100vh" >
+        <div class="flex-video widescreen" id="map"  ></div>
+    </div>
+    <div class="columns large-2">
+    
+        <div class="title-bar">
+            <center><i class="fi-marker"></i>&nbsp;Your&nbsp;visited&nbsp;places&nbsp;<i class="fi-marker"></i></center>
+        </div>
+        <div class="title-bar">
+        {% for visit in visits %}
+        
+        <button onclick="map.panTo(new L.LatLng({{ visit.entry.lat }}, {{ visit.entry.long }}));" class="button expanded">{{ visit.entry.name }}</button>
+        
+        {% endfor %}
+        </div>
+        
+    </div>
 </div>
-<div class="columns large-2">
 
-</div>
 {% endblock %}
 
 
