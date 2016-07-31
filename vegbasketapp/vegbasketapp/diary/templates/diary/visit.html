@@ -30,7 +30,10 @@ $(function(){
   <form method="post" action="{% url "visit" entry.id %}">{% csrf_token %}
 <input type="text" name="visit_date" class="span2" id="id_visit_date">
 <input type="submit" class="button hollow expanded" value="Mark as visited"/>
+
+<center>{{ form.captcha }}</center>
   {{ form.errors}}
+  
   </form>
   </div>
   </div>

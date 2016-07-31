@@ -4,12 +4,14 @@ from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from vegbasketapp.content.models import VeggieSailorEntry
 from .models import Visit
+from captcha.fields import ReCaptchaField
 
 #from 
 
 from django import forms
 class VisitForm(forms.Form):
     visit_date = forms.DateTimeField()
+    captcha = ReCaptchaField()
     
 @login_required
 def visit(request, entry_id):

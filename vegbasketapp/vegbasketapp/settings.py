@@ -69,6 +69,7 @@ INSTALLED_APPS = (
     'social.apps.django_app.default',
     'django_sb_admin',
     'django-dia',
+    'captcha'
     
     
 )
@@ -206,3 +207,5 @@ SITE_ID = 1
 
 
 ACCOUNT_ACTIVATION_DAYS = 7
+
+NOCAPTCHA=True

@@ -31,7 +31,7 @@
 <div class="top-bar-right">
                 <form method="get" action="{% url "search_view" %}">
 <ul class="menu">
-{% if user.is_authenticated %}<li><div class="logo"><img src="{{ MEDIA_URL }}/{{ user.userprofile.avatar }}" width="32" class="radius" alt="avatar">&nbsp;</div></li>{% endif %}
+{% if user.is_authenticated and user.userprofile.avatar  %}<li><div class="logo"><img src="{{ MEDIA_URL }}/{{ user.userprofile.avatar }}" width="32" class="radius" alt="avatar">&nbsp;</div></li>{% endif %}
 
 
 <li><input id="id_q" name="q" type="search" placeholder="Vegan Sushi" class="radius" value="{{ query }}"/></li>
