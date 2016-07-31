@@ -40,7 +40,7 @@ def entry_slug(request, slug):
         vs_entry = get_entry_by_slug(slug)
     except ObjectDoesNotExist:
         raise Http404("Page not found...")
-    possible_others = VeggieSailorEntry.objects.filter(region=vs_entry.region_id)[0:4]
+    possible_others = VeggieSailorEntry.objects.filter(region=vs_entry.region_id).exclude(id=vs_entry.id)[0:4]
     
     other_places  = []
     
