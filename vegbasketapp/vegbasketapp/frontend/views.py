@@ -63,7 +63,8 @@ def entry_slug(request, slug):
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta,
                    'other_places':other_places,
-                   'visited_txt':visited_txt})
+                   'visited_txt':visited_txt,
+                   'price_list':range(0,vs_entry.price)})
 
 
 def entry_vg(request, entry_id):

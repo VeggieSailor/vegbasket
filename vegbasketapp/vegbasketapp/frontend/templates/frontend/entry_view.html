@@ -46,7 +46,14 @@
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
                 <p class="small"><small>{{ visited_txt }}</small></p>
                 <a href="{% url "visit" entry.id %}"><button class="button tiny radius level5-color ">Mark visit</button></a></br>
-                <span class="warning label radius">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
+                {% if entry.price > 0 %}
+                <p><small>Price level: 
+                {% for price in price_list %}
+                <i class="fa fa-euro"></i> 
+                {% endfor %}</small>
+                </p>
+                {% endif %}
+                <!--<span class="warning label radius">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>-->
                                </center>
 
                                <span class="green"><small>{% trans "PAYMENT" %}</small></span>
