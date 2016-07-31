@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from vegbasketapp.content.models import VeggieSailorEntry
 from .models import Visit
 from captcha.fields import ReCaptchaField
-
+from django.contrib import messages
 #from 
 
 from django import forms
@@ -25,6 +25,8 @@ def visit(request, entry_id):
             visit.visit_timestamp = form.cleaned_data['visit_date']
             visit.entry = entry
             visit.save()
+            
+            messages.add_message(request, messages.INFO, 'You have successfuly added %s to your diary.' % entry.name)            
             return HttpResponseRedirect(reverse("entry_slug",args=[entry.slug,]))
     else:
         form = VisitForm()

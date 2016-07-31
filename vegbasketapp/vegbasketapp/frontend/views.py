@@ -6,6 +6,8 @@ from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, g
 from vegbasketapp.home.metas import get_vsmeta
 from vegbasketapp.content.models import VeggieSailorEntry
 
+
+
 # Create your views here.
 
 def index(request):
@@ -48,10 +50,20 @@ def entry_slug(request, slug):
         other_places = possible_others
     
     
+    
+    if request.user.is_authenticated():    
+        amount = vs_entry.visit_set.filter(user=request.user).count()
+        
+        visited_txt = "YOUR VISITS: %d" % amount
+    else:
+        visited_txt = "YOUR VISITS: 0"
+    
+    
     meta = get_meta_entry(request, vs_entry)
     return render(request, 'frontend/entry_view.html',
                   {'entry':vs_entry,'meta':meta,
-                   'other_places':other_places})
+                   'other_places':other_places,
+                   'visited_txt':visited_txt})
 
 
 def entry_vg(request, entry_id):
