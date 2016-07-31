@@ -18,8 +18,10 @@
 <div class="top-bar-left">
 
 <ul class="menu">
-  <li><div class="logo"><a href="/"><img  src="{% static "frontend/img/deer_logo_header.png" %}"  width="40" style=""/></div></a></li>
+  <li>
 
+  
+  <div class="logo"><a href="/"><img  src="{% static "frontend/img/deer_logo_header.png" %}"  width="40" style=""/></div></a></li>
 <!--<li><a href="#">One</a></li>-->
 <!--<li><a href="#">Two</a></li>-->
 <!--<li><a href="#">Three</a></li>-->
@@ -28,16 +30,21 @@
 </div>
 <div class="top-bar-right">
                 <form method="get" action="{% url "search_view" %}">
-
 <ul class="menu">
-<li><input id="id_q" name="q" type="search" placeholder="Vegan Sushi" class="radius" value="{{ query }}"></li>
-<li><button type="button" class="button">Search</button></li>
-</ul>
-</form>
-</div>
-</div>
- 
+{% if user.is_authenticated %}<li><div class="logo"><img src="{{ MEDIA_URL }}/{{ user.userprofile.avatar }}" width="32" class="radius" alt="avatar">&nbsp;</div></li>{% endif %}
 
+
+<li><input id="id_q" name="q" type="search" placeholder="Vegan Sushi" class="radius" value="{{ query }}"/></li>
+
+<li><button type="submit" class="button hollow">Search</button></li>
+
+</form>
+
+{% if user.is_authenticated %}<li><a href="/logout/" style="padding:0;margin:0"><button type="button" class="button hollow alert"><i class="fi-power"></i></button></a></li>{% else %}
+<li><a href="/accounts/login/" style="padding:0;margin:0"><button type="button"  class="button hollow success"><i class="fi-power"></i></button></a></li>{% endif %}
+</ul>
+</div>
+</div>
 {% block base_body %}
 
 

@@ -33,7 +33,7 @@
                 </ul>
                 <h2> <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><span itemprop="ratingValue">{{ entry.rating }}</span> / <span itemprop="ratingCount">{{ entry.rating_count }}</span></span> {% trans "Vote" %}</h2>
 
-                <button class="button tiny radius level5-color ">Mark visit</button>
+                <a href="{% url "visit" entry.id %}"><button class="button tiny radius level5-color ">Mark visit</button></a>
                 <span class="warning label radius">{% trans "Prices" %} - {% trans entry.get_price_display %}</span>
                                </center>
 

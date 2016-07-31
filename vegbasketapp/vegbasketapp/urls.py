@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+import django.views.static
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -14,7 +15,10 @@ import vegbasketapp.vegapi.views
 import vegbasketapp.transformer.views
 import vegbasketapp.personal.views
 import vegbasketapp.recipe.views
-import django.views.static
+import vegbasketapp.diary.views
+
+
+
 
 class MySearchView(SearchView):
     def get_queryset(self):
@@ -24,6 +28,7 @@ class MySearchView(SearchView):
     
 urlpatterns = [
     
+    url(r'^visit/(?P<entry_id>\d*)/$', vegbasketapp.diary.views.visit, name='visit'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
 
@@ -49,7 +54,7 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),    
     url(r'^accounts/setup/$', vegbasketapp.personal.views.accounts_setup, name='accounts_setup'),
     url(r'^p/$', vegbasketapp.personal.views.personal, name='personal'),
-    url('^logout/', auth_views.logout_then_login, {'login_url':"/login/"}, name='logout'),
+    url('^logout/', auth_views.logout_then_login, {'login_url':"/accounts/login/"}, name='logout'),
     #url(r'^search/', include('haystack.urls'))
     #url('^', include('django.contrib.auth.urls')),
     url(r'^.*', include('vegbasketapp.frontend.urls')),

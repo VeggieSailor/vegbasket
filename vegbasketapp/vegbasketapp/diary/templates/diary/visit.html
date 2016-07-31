@@ -1,0 +1,37 @@
+{% extends "f6/base.html" %}{% load i18n static %}
+{% block js %}
+    <script src="{% static "frontend/js/foundation-datepicker.min.js" %}"></script>
+    <script>
+
+
+$(function(){
+        $('#id_visit_date').fdatepicker({
+                initialDate: '{% now "Y-m-d H:i:s" %}',
+                format: 'yyyy-mm-dd hh:ii:ss',
+                disableDblClickSelection: true,
+                pickTime: true
+
+        });
+});
+</script>
+{% endblock js %}
+{% block css %}
+    <link href="{% static "frontend/css/foundation-datepicker.min.css" %}" rel="stylesheet"/>
+
+{% endblock css %}
+{% block base_body %}
+ <div class="row">
+  <div class="medium-6 medium-centered large-4 large-centered columns">
+  <center>
+  <h4>{{ entry.name }}</h4>
+  <h5>{{ entry.get_level_display }}</h5>
+  <h6>{{ entry.region.name }}</h6>
+  </center>
+  <form method="post" action="{% url "visit" entry.id %}">{% csrf_token %}
+<input type="text" name="visit_date" class="span2" id="id_visit_date">
+<input type="submit" class="button hollow expanded" value="Mark as visited"/>
+  {{ form.errors}}
+  </form>
+  </div>
+  </div>
+{% endblock base_body %}
