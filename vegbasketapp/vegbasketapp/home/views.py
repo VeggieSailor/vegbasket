@@ -40,7 +40,7 @@ def index(request):
     #places = VeggieSailorEntry.objects.filter(id__in=GOOD_ENTRIES)
     
     vsmeta = get_vsmeta()
-    latest_entries = VeggieSailorEntry.objects.all().order_by('-created')[0:20]
+    latest_entries = VeggieSailorEntry.objects.all().order_by('-created')[0:10]
     rc = {'latest_entries':latest_entries, 'meta':vsmeta,
           'places':places_ids}   
     return render(request, 'home/index_fd.html', rc)

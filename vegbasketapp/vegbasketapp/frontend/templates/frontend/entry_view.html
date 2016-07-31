@@ -162,18 +162,60 @@
         </div>
       </div>
     </div>
+    
+    
+    
     <div class="" style="background-color: white;">
     <div class="row" >
 
         <div class="large-9 medium-6 columns">
+
+
 
         <div class="" >
         </br>
 <h4 class="black">DESCRIPTION</h4>
             <p class="image-entry"><h3 class="black">{{ entry.description|safe }}</h3></p>
         </div>
+        
+        </div>
+                <div class="large-3 medium-6 columns">
+            {% if entry.get_images_height_400.0.photo  %}
+            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
+            {% elif  entry.get_images_height_348.0.photo %}
+            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
+            {% else %}
+            <img src="{% static "images/no_photo.png" %}" class="image-entry" />
+            {% endif %}
+
+        </div>  
+        <div id="disqus_thread"></div>
+        <script>
+        
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+        /*
+        var disqus_config = function () {
+            this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = '//veggiesailor.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>        
+                
+        
+        
+      
+        
         <h4 class="black">PLACES IN SAME CITY</h4>
-        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-2">
+        <ul class="small-block-grid-2 medium-block-grid-3 large-block-grid-4">
 
         {% for other_place in other_places %}
 
@@ -193,16 +235,7 @@
         {% endfor %}
       </ul>
         </div>
-        <div class="large-3 medium-6 columns">
-            {% if entry.get_images_height_400.0.photo  %}
-            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.0.photo }}" class="image-entry" />
-            {% elif  entry.get_images_height_348.0.photo %}
-            <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_348.0.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_348.0.photo }}" class="image-entry" />
-            {% else %}
-            <img src="{% static "images/no_photo.png" %}" class="image-entry" />
-            {% endif %}
 
-        </div>
     </div>
         </div>
 
