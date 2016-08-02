@@ -8,6 +8,8 @@ class RecipeImageInline(admin.TabularInline):
     """Admin class for RecipeImage.
     """
     model = RecipeImage
+    extra = 2
+    max_num = 5
 
 
 
@@ -15,14 +17,17 @@ class IngredientImageAdmin(admin.TabularInline):
     """Admin class for IngredientImage.
     """
     model = IngredientImage
+    extra = 0    
+    max_num = 5
     
 
 
-@admin.register(IngredientAmount)
-class IngredientAmountAdmin(admin.ModelAdmin):
+class IngredientAmountAdmin(admin.TabularInline):
     """Admin class for IngredientAmount.
     """
-    pass
+    model = IngredientAmount
+    extra = 1    
+    max_num = 60
 
 
 
@@ -35,6 +40,7 @@ class RecipeAdmin(admin.ModelAdmin):
     """Admin class for Recipe.
     """
     inlines = [
+        IngredientAmountAdmin,
         RecipeImageInline,
     ]
     

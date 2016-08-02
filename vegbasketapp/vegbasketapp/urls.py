@@ -55,7 +55,10 @@ urlpatterns = [
     
     url(r'opensource$', vegbasketapp.home.views.opensource, name='opensource'),
     url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),
+    
     url(r'^admin/', include(admin.site.urls)),
+    
     url(r'^e404$', vegbasketapp.home.views.handler404),
     url(r'^e500$', vegbasketapp.home.views.handler500),
     url(r'^transformer/entry/(?P<entry_id>\d*)/reviews$', vegbasketapp.transformer.views.entry_reviews, name='reviews'),

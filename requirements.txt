@@ -24,10 +24,10 @@ codacy-coverage==1.2.8
 coverage==4.0.3
 django-coverage==1.2.4
 geopy==1.11.0
-django==1.9.8
+django==1.9
 django-haystack==2.5.0
 ipython>=5.0
 django-registration==2.1.2
 django-recaptcha==1.0.5
 # For the admin panel
-django-filebrowser-no-grappelli==3.6.2
+#django-filebrowser-no-grappelli==3.6.2

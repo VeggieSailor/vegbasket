@@ -7,9 +7,9 @@ from filebrowser.fields import FileBrowseField
 
     
 class Ingredient(models.Model):
-    slug = models.SlugField(max_length=128)
+    name = models.CharField(max_length=256, unique=True)
+    slug = models.SlugField(max_length=128, unique=True)
     active = models.BooleanField(default=True, null=False)
-    name = models.CharField(max_length=256)
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)    
     description = models.TextField(blank=True, null=False, default="")
@@ -26,26 +26,29 @@ class IngredientImage(models.Model):
         return self.photo.name 
  
 
-class IngredientAmount(models.Model):
-    ingredient = models.ForeignKey(Ingredient)
-    amount = models.TextField(max_length=256)
-    def __str__(self):
-        return "%s %s" % (self.ingredient.name, self.amount)
+
 
 
 class Recipe(models.Model):
-    slug = models.SlugField(max_length=128)
+    name = models.CharField(max_length=256, unique=True)
+    slug = models.SlugField(max_length=128, unique=True)
     active = models.BooleanField(default=False, null=False)
-    name = models.CharField(max_length=256)
+
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)    
-    description = models.TextField(blank=True, null=False, default="")
-    ingredients = models.ManyToManyField(IngredientAmount)    
+    method = models.TextField(blank=True, null=False, default="")
+    #ingredients = models.ManyToManyField(IngredientAmount)    
     author = models.ForeignKey(User)
     
     def __str__(self):
         return self.name    
     
+class IngredientAmount(models.Model):
+    recipe= models.ForeignKey(Recipe)    
+    ingredient = models.ForeignKey(Ingredient)
+    amount = models.TextField(max_length=256)
+    def __str__(self):
+        return "%s %s" % (self.ingredient.name, self.amount)
     
 class RecipeImage(models.Model):
     recipe= models.ForeignKey(Recipe)
