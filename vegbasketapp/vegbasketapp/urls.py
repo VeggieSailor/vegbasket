@@ -19,6 +19,7 @@ import vegbasketapp.diary.views
 #from registration.views import RegistrationView
 from registration.backends.hmac.views import RegistrationView
 
+from filebrowser.sites import site
 
 #from vegbasketapp.frontend.models import RecaptchaRegistrationForm
 
@@ -53,6 +54,8 @@ urlpatterns = [
     url(r'^vegapi/box$', vegbasketapp.vegapi.views.get_box, name='vegapi_get_box'),
     
     url(r'opensource$', vegbasketapp.home.views.opensource, name='opensource'),
+    url(r'^admin/filebrowser/', include(site.urls)),
+    url(r'^grappelli/', include('grappelli.urls')),    
     url(r'^admin/', include(admin.site.urls)),
     url(r'^e404$', vegbasketapp.home.views.handler404),
     url(r'^e500$', vegbasketapp.home.views.handler500),

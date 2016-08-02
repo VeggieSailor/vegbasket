@@ -149,6 +149,8 @@ class VeggieSailorEntry(models.Model):
     # Coordinates
     long = models.DecimalField(max_digits=9, decimal_places=6, null=True)
     lat = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    active = models.BooleanField(default=True, null=False)
+    locked = models.BooleanField(default=False, null=False)
     
 
     def get_rating_lists(self):

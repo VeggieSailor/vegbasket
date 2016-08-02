@@ -156,7 +156,7 @@
                     <img alt="{{ entry.name }} in {{ entry.region.name }}, {{ entry.get_level_display }} {{ entry.get_images_height_400.1.title }}" src="{{ MEDIA_URL }}{{ entry.get_images_height_400.1.photo }}" class="image-entry" />
                     {% endif %}
                     <br/>{% autoescape off %}
-                    {{ entry.content_object.get_credits_string|safe }}
+                    <small>{{ entry.content_object.get_credits_string|safe }}</small>
                     {% endautoescape %}
 
                 </div>

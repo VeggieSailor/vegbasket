@@ -47,6 +47,8 @@ TEMPLATES = [
 # Application definition
 
 INSTALLED_APPS = (
+    'grappelli',
+    'filebrowser',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -209,3 +211,5 @@ SITE_ID = 1
 ACCOUNT_ACTIVATION_DAYS = 7
 
 NOCAPTCHA=True
+
+GRAPPELLI_ADMIN_TITLE = "Veggie Sailor Admin"
