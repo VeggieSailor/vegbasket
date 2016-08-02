@@ -22,7 +22,6 @@ class IngredientImage(models.Model):
     ingredient = models.ForeignKey(Ingredient)
     description = models.TextField(blank=True, null=False, default="")
     photo = FileBrowseField("Image", max_length=200, directory="recipes/ingimgs/", extensions=[".jpg", ".jpeg", ".png"], null=False)
-    author = models.ForeignKey(User)
     def __str__(self):
         return self.photo.name 
  
@@ -53,7 +52,6 @@ class RecipeImage(models.Model):
     description = models.TextField(blank=True, null=False, default="")
     photo = FileBrowseField("Image", max_length=200, directory="recipes/imgs/", extensions=[".jpg", ".jpeg", ".png"], null=False)
 
-    author = models.ForeignKey(User)
     def __str__(self):
         return self.photo.name
 

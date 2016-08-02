@@ -1,27 +1,22 @@
 from django.contrib import admin
 
 from .models import Ingredient, Recipe, IngredientImage, RecipeImage, IngredientAmount
-@admin.register(RecipeImage)
-class RecipeImageAdmin(admin.ModelAdmin):
+
+
+#@admin.register(RecipeImage)
+class RecipeImageInline(admin.TabularInline):
     """Admin class for RecipeImage.
     """
-    def get_form(self, request, obj=None, **kwargs):
-        if request.user.is_superuser:        
-            form = super(RecipeImageAdmin, self).get_form(request, obj, **kwargs)
-            form.base_fields['author'].initial = request.user
-            return form
+    model = RecipeImage
 
-@admin.register(IngredientImage)
-class IngredientImageAdmin(admin.ModelAdmin):
+
+
+class IngredientImageAdmin(admin.TabularInline):
     """Admin class for IngredientImage.
     """
-    def get_form(self, request, obj=None, **kwargs):
-        if request.user.is_superuser:        
-            form = super(IngredientImageAdmin, self).get_form(request, obj, **kwargs)
-            form.base_fields['author'].initial = request.user
-            return form
-    class Media:
-        js = ['/static/admin/js/jquery.min.js','/static/admin/js/jquery.init.js']
+    model = IngredientImage
+    
+
 
 @admin.register(IngredientAmount)
 class IngredientAmountAdmin(admin.ModelAdmin):
@@ -29,10 +24,20 @@ class IngredientAmountAdmin(admin.ModelAdmin):
     """
     pass
 
+
+
+    
+
+
+
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     """Admin class for Recipe.
     """
+    inlines = [
+        RecipeImageInline,
+    ]
+    
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_superuser:        
             form = super(RecipeAdmin, self).get_form(request, obj, **kwargs)
@@ -43,6 +48,9 @@ class RecipeAdmin(admin.ModelAdmin):
 class IngredientAdmin(admin.ModelAdmin):
     """Admin class for Ingredient.
     """
+    inlines = [
+        IngredientImageAdmin,
+    ]    
     def get_form(self, request, obj=None, **kwargs):
         if request.user.is_superuser:        
             form = super(IngredientAdmin, self).get_form(request, obj, **kwargs)
