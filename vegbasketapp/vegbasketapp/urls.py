@@ -26,6 +26,8 @@ from filebrowser.sites import site
 from registration.forms import RegistrationFormUniqueEmail
 from captcha.fields import ReCaptchaField
 
+from vegbasketapp.recipe.views import RecipeDetailView, RecipeListView
+
 class RecaptchaRegistrationForm(RegistrationFormUniqueEmail):
     recaptcha = ReCaptchaField(label="I'm a human")
     
@@ -42,9 +44,14 @@ urlpatterns = [
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'accounts/register/$', RegistrationView.as_view(form_class=RecaptchaRegistrationForm),name='registration_register',),
     url(r'^accounts/', include('registration.backends.hmac.urls')),
+    
+    url(r'^recipes/(?P<slug>[-\w]+)/$', RecipeDetailView.as_view(), name='recipe-detail'),
+    url(r'^recipes/$', RecipeListView.as_view(), name='recipe-list'),
+    
 
-    url(r'recipes/vegan-french-pate/$', vegbasketapp.recipe.views.recipe_french_pate),
-    url(r'recipes/mediterranean-tabbouleh-salad/$', vegbasketapp.recipe.views.mediterranean_tabbouleh_salad),
+    #url(r'recipes/(?P<slug>[\w-]+)/$', vegbasketapp.recipe.views.recipe_slug, name='recipe_slug'),
+    url(r'recipes2/vegan-french-pate/$', vegbasketapp.recipe.views.recipe_french_pate),
+    url(r'recipes2/mediterranean-tabbouleh-salad/$', vegbasketapp.recipe.views.mediterranean_tabbouleh_salad),
     
     url(r'^i18n/', include('django.conf.urls.i18n')),
                        

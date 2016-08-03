@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 from filebrowser.fields import FileBrowseField
 
+from django.core.urlresolvers import reverse
 
     
 class Ingredient(models.Model):
@@ -39,6 +40,8 @@ class Recipe(models.Model):
     method = models.TextField(blank=True, null=False, default="")
     #ingredients = models.ManyToManyField(IngredientAmount)    
     author = models.ForeignKey(User)
+    def get_absolute_url(self):
+        return reverse('recipe-detail', kwargs={'slug': self.slug})
     
     def __str__(self):
         return self.name    
@@ -50,7 +53,7 @@ class RecipeTime(models.Model):
     time = models.IntegerField(null=False, default=10)
     step = models.TextField(max_length=128, blank=False, null=False)
     def __str__(self):
-        return "%s %s" % (self.recipe.name, self.time)
+        return "%sm %s" % (self.time, self.step )
     
     
 class IngredientAmount(models.Model):

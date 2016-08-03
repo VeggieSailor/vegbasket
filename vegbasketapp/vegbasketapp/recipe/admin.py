@@ -60,6 +60,8 @@ class RecipeAdmin(admin.ModelAdmin):
             form.base_fields['author'].initial = request.user
             return form
 
+
+
 @admin.register(Ingredient)
 class IngredientAdmin(admin.ModelAdmin):
     """Admin class for Ingredient.

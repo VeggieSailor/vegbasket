@@ -1,6 +1,6 @@
-<div class="dark card">
+{% load static %}<div class="dark card">
 <a href="{{ entry.get_absolute_url}}" style="color:white;">
-    <img src="/media/{{ entry.get_images_533_400.0.photo }}" style="border: solid 1px #9c3;" />
+    <img src="{% get_media_prefix %}{{ entry.get_images_533_400.0.photo }}" style="border: solid 1px #9c3;" />
     <div class="card-divider">{{ entry.region.name }}</div>
     <div class="card-section">
       <h4>{{ entry.name|truncatechars:30  }}</h4>

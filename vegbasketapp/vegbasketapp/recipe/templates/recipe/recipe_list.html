@@ -1,0 +1,90 @@
+{% extends "frontend/base.html" %}{% load staticfiles i18n %}
+{% block title %}Veggie Sailor vegan recipes{% endblock title %}
+{% block meta %}
+
+<meta name="description" content="Vegan French Pâté">
+<meta name="keywords" content="vegan vegetarian lentijs recipe pate french">
+
+<meta property="og:title" content="Vegan French Pâté">
+<meta property="og:url" content="https://veggiesailor.com/recipes/vegan-french-pate/">
+<meta property="og:description" content="An easy recipe for the classic french bread spread.">
+<meta property="og:image" content="https://veggiesailor.com/static/recipe/img/french_pate.jpg">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Veggie Sailor">
+
+<meta name="twitter:title" content="Vegan French Pâté">
+<meta name="twitter:url" content="https://veggiesailor.com/recipes/vegan-french-pate/">
+<meta name="twitter:description" content="An easy recipe for the classic french bread spread.">
+<meta name="twitter:image" content="https://veggiesailor.com/static/recipe/img/french_pate.jpg">
+<meta name="twitter:site" content="@veggiesailor">
+
+<meta name="twitter:card" content="summary">
+
+
+
+<meta itemprop="name" content="Vegan French Pâté">
+<meta itemprop="url" content="https://veggiesailor.com/recipes/vegan-french-pate/">
+<meta itemprop="description" content="An easy recipe for the classic french bread spread.">
+<meta itemprop="image" content="https://veggiesailor.com/static/recipe/img/french_pate.jpg">
+
+{% endblock meta %}
+
+{% block base_body_content %}
+<style>
+h1  {color: black;}
+h2  {color: black;};
+h3  {color: black;};
+h4  {color: black;};
+h5  {color: black;};
+h6  {color: black;};
+</style>
+<div class="" style="background-color: white; color: black">
+        <div class="row" >
+        <div class="large-12 medium-6 columns">
+        
+        
+<h1>Recipes</h1>
+
+
+<div class="row small-up-1 medium-up-2 large-up-3">
+{% for recipe in object_list %}
+    <div class="large-3 column">
+        <div class="callout">
+            <a href="{{ recipe.get_absolute_url }}">
+            <p><img src="/media/{{ recipe.recipeimage_set.all.0.photo }}" alt="image of a planet called Pegasi B"></p>
+            <p class="lead">{{ recipe.name }}</p>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+    
+    </div>
+
+
+</div>
+
+<div id="disqus_thread"></div>
+<script>
+
+/**
+ *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+ *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
+/*
+var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = '//veggiesailor.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+
+</div>
+{% endblock base_body_content %}
