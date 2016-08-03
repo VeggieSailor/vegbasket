@@ -50,7 +50,7 @@ h6  {color: black;};
 <h2>Ingredients</h2>
 <ul>
 {% for ingredient in object.ingredientamount_set.all %}
-    <li>{{ingredient}}</li>
+    <li>{{ingredient|safe}}</li>
 {% endfor %%}
 
 </ul>
