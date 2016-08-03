@@ -2,12 +2,12 @@
 {% block title %}Veggie Sailor recipes - {{ object.name }}{% endblock title %}
 {% block meta %}
 
-<meta name="description" content="{{  object.method|truncatechars:140 }}">
+<meta name="description" content="{{  object.method|striptags|escape|truncatechars:140 }}">
 <meta name="keywords" content="vegan vegetarian recipe vegan sailor">
 
 <meta property="og:title" content="{{ object.name }}">
 <meta property="og:url" content="https://veggiesailor.com{{ recipe.get_absolute_url }}">
-<meta property="og:description" content="{{ object.method|truncatechars:140 }}">
+<meta property="og:description" content="{{ object.method|striptags|truncatechars:140 }}">
 <meta property="og:image" content="{{ MEDIA_URL }}{{ object.recipeimage_set.all.0.photo }}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Veggie Sailor">
@@ -16,7 +16,7 @@
 
 <meta name="twitter:title" content="{{ object.name }}">
 <meta name="twitter:url" content="https://veggiesailor.com{{ recipe.get_absolute_url }}">
-<meta name="twitter:description" content="{{ object.method|truncatechars:140 }}">
+<meta name="twitter:description" content="{{ object.method|striptags|truncatechars:140 }}">
 <meta name="twitter:image" content="{{ MEDIA_URL }}{{ object.recipeimage_set.all.0.photo }}">
 <meta name="twitter:site" content="@veggiesailor">
 <meta name="twitter:card" content="summary">
@@ -25,7 +25,7 @@
 
 <meta itemprop="name" content="{{ object.name }}">
 <meta itemprop="url" content="https://veggiesailor.com{{ recipe.get_absolute_url }}">
-<meta itemprop="description" content="{{  object.method|truncatechars:140 }}">
+<meta itemprop="description" content="{{  object.method|striptags|truncatechars:140 }}">
 <meta itemprop="image" content="{{ MEDIA_URL }}{{ object.recipeimage_set.all.0.photo }}">
 
 {% endblock meta %}
