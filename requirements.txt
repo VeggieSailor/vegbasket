@@ -30,4 +30,4 @@ ipython>=5.0
 django-registration==2.1.2
 django-recaptcha==1.0.5
 # For the admin panel
-#django-filebrowser-no-grappelli==3.6.2
+django-filebrowser==3.7.1
