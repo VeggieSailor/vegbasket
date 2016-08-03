@@ -1,6 +1,7 @@
 from django.contrib import admin
 
-from .models import Ingredient, Recipe, IngredientImage, RecipeImage, IngredientAmount
+from .models import Ingredient, Recipe, IngredientImage,\
+     RecipeImage, IngredientAmount, RecipeTime
 
 
 #@admin.register(RecipeImage)
@@ -11,6 +12,13 @@ class RecipeImageInline(admin.TabularInline):
     extra = 2
     max_num = 5
 
+
+class RecipeTimeInline(admin.TabularInline):
+    """Inline for RecipeTime.
+    """
+    model = RecipeTime
+    extra = 2
+    max_num = 16
 
 
 class IngredientImageAdmin(admin.TabularInline):
@@ -41,7 +49,9 @@ class RecipeAdmin(admin.ModelAdmin):
     """
     inlines = [
         IngredientAmountAdmin,
+        RecipeTimeInline,
         RecipeImageInline,
+        
     ]
     
     def get_form(self, request, obj=None, **kwargs):

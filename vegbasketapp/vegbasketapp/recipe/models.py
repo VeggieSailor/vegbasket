@@ -43,6 +43,16 @@ class Recipe(models.Model):
     def __str__(self):
         return self.name    
     
+
+class RecipeTime(models.Model):
+    recipe= models.ForeignKey(Recipe)    
+    
+    time = models.IntegerField(null=False, default=10)
+    step = models.TextField(max_length=128, blank=False, null=False)
+    def __str__(self):
+        return "%s %s" % (self.recipe.name, self.time)
+    
+    
 class IngredientAmount(models.Model):
     recipe= models.ForeignKey(Recipe)    
     ingredient = models.ForeignKey(Ingredient)
