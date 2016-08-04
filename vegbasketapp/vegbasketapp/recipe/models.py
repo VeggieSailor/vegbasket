@@ -17,6 +17,8 @@ class Ingredient(models.Model):
     author = models.ForeignKey(User)
     def __str__(self):
         return self.name
+    class Meta:
+        ordering = ['name']
 
  
 class IngredientImage(models.Model):
@@ -25,6 +27,7 @@ class IngredientImage(models.Model):
     photo = FileBrowseField("Image", max_length=200, directory="recipes/ingimgs/", extensions=[".jpg", ".jpeg", ".png"], null=False)
     def __str__(self):
         return self.photo.name 
+    
  
 
 
@@ -62,6 +65,8 @@ class IngredientAmount(models.Model):
     amount = models.TextField(max_length=256)
     def __str__(self):
         return "%s %s" % (self.ingredient.name, self.amount)
+    class Meta:
+        ordering = ['-ingredient']    
     
 class RecipeImage(models.Model):
     recipe= models.ForeignKey(Recipe)
