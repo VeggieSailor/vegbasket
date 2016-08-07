@@ -53,8 +53,10 @@ class RecipeAdmin(admin.ModelAdmin):
         RecipeImageInline,
         
     ]
-    
+
     def get_form(self, request, obj=None, **kwargs):
+        """Prefill forms with the current user.
+        """        
         if request.user.is_superuser:        
             form = super(RecipeAdmin, self).get_form(request, obj, **kwargs)
             form.base_fields['author'].initial = request.user
@@ -70,7 +72,14 @@ class IngredientAdmin(admin.ModelAdmin):
         IngredientImageAdmin,
     ]    
     def get_form(self, request, obj=None, **kwargs):
+        """Prefill forms with the current user.
+        """
         if request.user.is_superuser:        
             form = super(IngredientAdmin, self).get_form(request, obj, **kwargs)
             form.base_fields['author'].initial = request.user
             return form
+
+    def get_ordering(self, request):
+        """Thanks for this we are getting correct sorting in admin panel.
+        """
+        return ['name']
