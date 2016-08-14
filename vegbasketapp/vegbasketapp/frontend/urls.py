@@ -11,8 +11,9 @@ urlpatterns = [
     url(r'^entry_example/$', vegbasketapp.frontend.views.entry_example, name='entry_example'),
     url(r'^e/vg/(?P<entry_id>.*)$', vegbasketapp.frontend.views.entry_vg, name='entry_vg'),
     url(r'^e/vs/(?P<entry_id>.*)$', vegbasketapp.frontend.views.entry_vs, name='entry_vs'),
+    url(r'^(?P<slug>[\w-]+)/refresh$', vegbasketapp.frontend.views.convert_entry_vg, name='entry_slug_refresh'),
+    url(r'^(?P<slug>[\w-]+)/a$', vegbasketapp.frontend.views.entry_slug, name='entry_slug'),
     
-    url(r'^(?P<slug>[\w-]+)/$', vegbasketapp.frontend.views.entry_slug, name='entry_slug'),
     ]
 from django.conf.urls.i18n import i18n_patterns
 

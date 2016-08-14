@@ -5,7 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from vegbasketapp.content.tools import get_entry_by_vg_id, get_vs_entry_by_id, get_entry_by_slug
 from vegbasketapp.home.metas import get_vsmeta
 from vegbasketapp.content.models import VeggieSailorEntry
-
+from django.shortcuts import HttpResponseRedirect
 
 
 # Create your views here.
@@ -97,4 +97,29 @@ def homepage_map(request):
     return render(request, 'frontend/homepage_maps.html')
 
 
+
+
+
+from vegbasketapp.content.tools import convert_entry
+
+from vegbasketapp.transformer.models import Entry
+
+from django.conf import settings
+from django.contrib.auth.decorators import permission_required
+from vegbasketapp.transformer.tools_entry import get_entry_by_id, \
+     get_reviews_by_entry_id, get_region_by_id, get_entry_geo
+@permission_required('content.change_veggiesailorentry')
+def convert_entry_vg(request, slug):
+    try:
+        vs_entry = get_entry_by_slug(slug)
+    except ObjectDoesNotExist:
+        raise Http404("Page not found...")
+    source_id = vs_entry.content_object.source_id
+    entry_tmp = get_entry_by_id(source_id, True)
+    entry_tmp.set_obj()    
+    obj_id = vs_entry.id
+    convert_entry(source_id, True)
+    new_vs = VeggieSailorEntry.objects.get(id=obj_id)
+    return HttpResponseRedirect(new_vs.get_absolute_url())
+    
 

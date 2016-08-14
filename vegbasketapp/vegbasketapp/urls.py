@@ -93,6 +93,7 @@ urlpatterns += [
 
 urlpatterns += i18n_patterns(
     url(r'^(?P<slug>[\w-]+)/$', vegbasketapp.frontend.views.entry_slug, name='entry_slug'),
+    url(r'^(?P<slug>[\w-]+)/refresh/$', vegbasketapp.frontend.views.convert_entry_vg,name='entry_slug_refresh'),
 
 )
 

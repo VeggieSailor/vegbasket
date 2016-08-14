@@ -26,8 +26,18 @@
 
 
 {% endif %}        
-        
-        
+    {% if perms.content.change_veggiesailorentry %}
+    
+<div class="panel" id="idAdminPanel">
+
+<a href="refresh/">Refresh page</a>
+
+<a href="" onclick="$('#idAdminPanel').hide();return null;">Hide panel</a>
+
+
+</div>
+    
+    {% endif %}
 
             <div class="medium-4 large-2 col-sm-4 columns ">
             <center>

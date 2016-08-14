@@ -23,7 +23,8 @@ class VegGuideParser:
         """        
         #print ("VG Request PARSER %s",vegguide_request)
         req = request.urlopen(vegguide_request)
-        data = req.readall().decode('utf-8')
+        #from ipdb import set_trace; set_trace()
+        data = req.read().decode('utf-8')
         #print(data)
         self.result = json.loads(data)
 
