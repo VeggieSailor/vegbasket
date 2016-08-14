@@ -27,7 +27,7 @@ class EntryIndex(indexes.SearchIndex, indexes.Indexable):
         """Used when the entire index for model is updated.
         
         """
-        return self.get_model().objects.all()
+        return self.get_model().objects.filter(active=True)
     
     def prepare_photos(self, obj):
         """Count number of the images for the entry.
