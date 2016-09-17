@@ -20,8 +20,13 @@
 
     {# Base Foundation CSS #}
     {% block foundation_css %}
-    <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/>
-    <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/>
+<!--    <link href="{% static "foundation/css/normalize.css" %}" rel="stylesheet"/> -->
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/5.5.3/css/foundation.min.css"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/g/foundation@5.5.3(css/foundation.css+css/normalize.css)">
+
+
+<!--    <link href="{% static "foundation/css/foundation.min.css" %}" rel="stylesheet"/> -->
 
     {% endblock foundation_css %}
 
@@ -146,7 +151,9 @@
 
     {# Override if you need another version of modernizr #}
     {% block foundation_modernizer %}
-    <script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>
+    <!--<script src="{% static "foundation/js/vendor/modernizr.js" %}"></script>-->
+    <script src="https://cdn.jsdelivr.net/foundation/5.5.3/js/vendor/modernizr.js"></script>
+
     {% endblock foundation_modernizer %}
 
     {# Custom head JS #}
