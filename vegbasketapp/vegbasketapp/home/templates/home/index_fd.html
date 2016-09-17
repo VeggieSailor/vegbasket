@@ -254,12 +254,14 @@
 
     {# Override if you need another version of jQuery #}
     {% block foundation_jquery %}
-    <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+<!--    <script src="{% static "foundation/js/vendor/jquery.js" %}"></script> -->
     {% endblock foundation_jquery %}
 
     {# Foundation JS #}
     {% block foundation_js %}
-    <script src="{% static "foundation/js/foundation.min.js" %}"></script>
+<script src="https://cdn.jsdelivr.net/g/foundation@5.5.3(js/vendor/jquery.js+js/foundation.min.js)"></script>
+
+    <!--<script src="{% static "foundation/js/foundation.min.js" %}"></script>-->
     {% endblock foundation_js %}
 
     {# Custom JS #}
