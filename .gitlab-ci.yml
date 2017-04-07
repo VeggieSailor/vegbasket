@@ -1,0 +1,20 @@
+stages:
+#  - new
+  - prod
+#deploy_new:
+#  stage: new
+#  script: rsync -Pa --exclude "." . /deploymments/new.ukata.me/
+#  environment:
+#    name: new
+#    url: https://new.ukata.me
+
+deploy_prod:
+  stage: prod
+  script: ssh deploy@127.0.0.1 -p 60022 sudo /bin/deploy-veggiesailor.com.sh
+  environment:
+    name: prod
+    url: https://veggiesailor.com
+  when: manual
+  only:
+  - master
+
